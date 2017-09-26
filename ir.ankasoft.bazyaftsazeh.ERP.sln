@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.infrastructure"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.entities", "ir.ankasoft.entities\ir.ankasoft.entities.csproj", "{B0533E2E-F751-4609-80F0-A887ABDF7EE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.bazyafsazeh.ERP.entities", "ir.ankasoft.bazyafsazeh.ERP.entities\ir.ankasoft.bazyafsazeh.ERP.entities.csproj", "{F906136D-80ED-4E62-B6E6-78FEA801B88B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B0533E2E-F751-4609-80F0-A887ABDF7EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0533E2E-F751-4609-80F0-A887ABDF7EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0533E2E-F751-4609-80F0-A887ABDF7EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F906136D-80ED-4E62-B6E6-78FEA801B88B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F906136D-80ED-4E62-B6E6-78FEA801B88B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F906136D-80ED-4E62-B6E6-78FEA801B88B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F906136D-80ED-4E62-B6E6-78FEA801B88B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
