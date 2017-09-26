@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.infrastructure"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.entities", "ir.ankasoft.entities\ir.ankasoft.entities.csproj", "{B0533E2E-F751-4609-80F0-A887ABDF7EE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.bazyafsazeh.ERP.entities", "ir.ankasoft.bazyafsazeh.ERP.entities\ir.ankasoft.bazyafsazeh.ERP.entities.csproj", "{F906136D-80ED-4E62-B6E6-78FEA801B88B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.bazyaftsazeh.ERP.entities", "ir.ankasoft.bazyafsazeh.ERP.entities\ir.ankasoft.bazyaftsazeh.ERP.entities.csproj", "{F906136D-80ED-4E62-B6E6-78FEA801B88B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
