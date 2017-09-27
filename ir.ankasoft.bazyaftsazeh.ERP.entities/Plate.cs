@@ -8,27 +8,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
-    public class Importer : DomainEntity<long>, IDateTracking, IUserTracking
+    public class Plate : DomainEntity<long>, IDateTracking, IUserTracking
     {
-        public long PartyRefRecId { get; set; }
-
-        [ForeignKey(nameof(PartyRefRecId))]
-        public Party Party { get; set; }
-
         [Required]
-        [MaxLength(100)]
-        public string Name { get; set; }
-
-        [Required]
-        [MaxLength(100)]
-        public string Family { get; set; }
-
         [MaxLength(20)]
-        public string ImporterNumber { get; set; }
+        public string Number { get; set; }
 
-        public ICollection<PostalAddress> PostalAddressCollection { get; set; }
+        public Enums.PlateSeries Series { get; set; }
 
-        public ICollection<Communication> CommunicationCollection { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Color { get; set; }
+
+        [MaxLength(100)]
+        public string Shape { get; set; }
 
         #region IDateTracking
 
@@ -56,18 +49,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(Number))
             {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Name)), new[] { nameof(Name) });
+                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Number)), new[] { nameof(Number) });
             }
-            if (string.IsNullOrEmpty(Family))
+            if (string.IsNullOrEmpty(Color))
             {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Family)), new[] { nameof(Family) });
-            }
-
-            if (string.IsNullOrEmpty(ImporterNumber))
-            {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(ImporterNumber)), new[] { nameof(ImporterNumber) });
+                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Color)), new[] { nameof(Color) });
             }
         }
 

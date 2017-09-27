@@ -8,27 +8,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
-    public class Importer : DomainEntity<long>, IDateTracking, IUserTracking
+    public class VehicleTip : DomainEntity<long>, IDateTracking, IUserTracking
     {
-        public long PartyRefRecId { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string System { get; set; }
 
-        [ForeignKey(nameof(PartyRefRecId))]
-        public Party Party { get; set; }
+        public Enums.VehicleType Type { get; set; } = Enums.VehicleType.Personal;
 
         [Required]
         [MaxLength(100)]
-        public string Name { get; set; }
-
-        [Required]
-        [MaxLength(100)]
-        public string Family { get; set; }
-
-        [MaxLength(20)]
-        public string ImporterNumber { get; set; }
-
-        public ICollection<PostalAddress> PostalAddressCollection { get; set; }
-
-        public ICollection<Communication> CommunicationCollection { get; set; }
+        public string Capasity { get; set; }
 
         #region IDateTracking
 
@@ -56,18 +46,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(System))
             {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Name)), new[] { nameof(Name) });
-            }
-            if (string.IsNullOrEmpty(Family))
-            {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Family)), new[] { nameof(Family) });
+                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(System)), new[] { nameof(System) });
             }
 
-            if (string.IsNullOrEmpty(ImporterNumber))
+            if (string.IsNullOrEmpty(Capasity))
             {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(ImporterNumber)), new[] { nameof(ImporterNumber) });
+                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Capasity)), new[] { nameof(Capasity) });
             }
         }
 

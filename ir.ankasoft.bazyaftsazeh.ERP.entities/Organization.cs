@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ir.ankasoft.bazyafsazeh.ERP.entities
+namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
     public class Organization : DomainEntity<long>, IDateTracking, IUserTracking
     {

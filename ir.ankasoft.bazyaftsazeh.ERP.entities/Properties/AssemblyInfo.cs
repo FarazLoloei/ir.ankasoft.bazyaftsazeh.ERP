@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ir.ankasoft.bazyafsazeh.ERP.entities")]
+[assembly: AssemblyTitle("ir.ankasoft.bazyaftsazeh.ERP.entities")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ir.ankasoft.bazyafsazeh.ERP.entities")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCompany("Ankasoft")]
+[assembly: AssemblyProduct("ir.ankasoft.bazyaftsazeh.ERP.entities")]
+[assembly: AssemblyCopyright("Copyright © Ankasoft 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
