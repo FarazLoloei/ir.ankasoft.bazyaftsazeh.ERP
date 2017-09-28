@@ -97,6 +97,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} باید بیشتر از {1} باشد.
+        /// </summary>
+        public static string _0MustBeGreaterThan1 {
+            get {
+                return ResourceManager.GetString("_0MustBeGreaterThan1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} باید انتخاب شود.
         /// </summary>
         public static string _0MustBeSelect {

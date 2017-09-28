@@ -1,29 +1,22 @@
-﻿using ir.ankasoft.infrastructure;
+﻿using ir.ankasoft.entities;
+using ir.ankasoft.infrastructure;
 using ir.ankasoft.resource;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ir.ankasoft.entities
+namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
-    public class Party : DomainEntity<long>, IDateTracking, IUserTracking
+    public class PreDefineTitle : DomainEntity<long>, IDateTracking, IUserTracking
     {
+        public Enums.TitleType Type { get; set; }
+
+        [Required]
         [MaxLength(100)]
         public string Title { get; set; }
 
-        [Required]
-        [MaxLength(10)]
-        public string NationalCode { get; set; }
-
-        public Enums.PersonalTitle PersonalTitle { get; set; }
-
-        public string Description { get; set; }
-
-        public ICollection<PostalAddress> PostalAddressCollection { get; set; }
-
-        public ICollection<Communication> CommunicationCollection { get; set; }
-
+        public double SuggestedPrice { get; set; }
 
         #region IDateTracking
 
@@ -56,9 +49,9 @@ namespace ir.ankasoft.entities
                 yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Title)), new[] { nameof(Title) });
             }
 
-            if (string.IsNullOrEmpty(NationalCode))
+            if (SuggestedPrice < 0)
             {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(NationalCode)), new[] { nameof(NationalCode) });
+                yield return new ValidationResult(string.Format(Resource._0MustBeGreaterThan1, 0, nameof(SuggestedPrice)), new[] { nameof(SuggestedPrice) });
             }
         }
 

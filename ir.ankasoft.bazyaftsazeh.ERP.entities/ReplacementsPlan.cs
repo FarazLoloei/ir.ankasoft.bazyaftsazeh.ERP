@@ -18,7 +18,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public long ImporterRefRecId { get; set; }
 
         [ForeignKey(nameof(ImporterRefRecId))]
-        public Person BeneficiaryImporter { get; set; }
+        public Importer BeneficiaryImporter { get; set; }
 
         public long ReplacementVehicleRefRecId { get; set; }
 

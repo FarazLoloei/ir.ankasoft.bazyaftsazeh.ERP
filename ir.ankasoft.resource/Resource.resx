@@ -801,4 +801,7 @@
   <data name="_0MustBeSelect" xml:space="preserve">
     <value>{0} باید انتخاب شود</value>
   </data>
+  <data name="_0MustBeGreaterThan1" xml:space="preserve">
+    <value>{0} باید بیشتر از {1} باشد</value>
+  </data>
 </root>

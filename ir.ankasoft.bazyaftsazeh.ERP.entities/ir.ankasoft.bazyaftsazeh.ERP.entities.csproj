@@ -41,13 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cost.cs" />
+    <Compile Include="PreDefineTitle.cs" />
     <Compile Include="Document.cs" />
+    <Compile Include="Enums\DocumentPaymentType.cs" />
+    <Compile Include="Enums\PaymentType.cs" />
     <Compile Include="Enums\PlanType.cs" />
     <Compile Include="Enums\PlateSeries.cs" />
+    <Compile Include="Enums\TitleType.cs" />
     <Compile Include="Enums\VehicleType.cs" />
     <Compile Include="GovernmentPlan.cs" />
+    <Compile Include="Imperfection.cs" />
     <Compile Include="Importer.cs" />
     <Compile Include="Organization.cs" />
+    <Compile Include="Payment.cs" />
     <Compile Include="Plan.cs" />
     <Compile Include="Plate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +70,10 @@
     <ProjectReference Include="..\ir.ankasoft.resource\ir.ankasoft.resource.csproj">
       <Project>{68aac2bd-8a85-4e88-869a-2ecd80e20c94}</Project>
       <Name>ir.ankasoft.resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ir.ankasoft.tools\ir.ankasoft.tools.csproj">
+      <Project>{1BFD9D72-B2AF-4C91-A36B-72B677A09E2B}</Project>
+      <Name>ir.ankasoft.tools</Name>
     </ProjectReference>
     <ProjectReference Include="..\ir.ankastore.infrastructure\ir.ankasoft.infrastructure.csproj">
       <Project>{b5eb1da8-33b8-43bd-a574-7bc07714f045}</Project>
