@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.12
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.tools", "ir.ankasoft.tools\ir.ankasoft.tools.csproj", "{1BFD9D72-B2AF-4C91-A36B-72B677A09E2B}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.bazyaftsazeh.ERP.entities", "ir.ankasoft.bazyaftsazeh.ERP.entities\ir.ankasoft.bazyaftsazeh.ERP.entities.csproj", "{F906136D-80ED-4E62-B6E6-78FEA801B88B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF", "ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF\ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.csproj", "{1F534909-A541-4F19-8798-F6D8F5D4ED99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC", "ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC\ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.csproj", "{41D7255E-9F07-40B7-A023-C93B09697C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{1F534909-A541-4F19-8798-F6D8F5D4ED99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F534909-A541-4F19-8798-F6D8F5D4ED99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F534909-A541-4F19-8798-F6D8F5D4ED99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41D7255E-9F07-40B7-A023-C93B09697C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41D7255E-9F07-40B7-A023-C93B09697C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41D7255E-9F07-40B7-A023-C93B09697C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41D7255E-9F07-40B7-A023-C93B09697C23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
