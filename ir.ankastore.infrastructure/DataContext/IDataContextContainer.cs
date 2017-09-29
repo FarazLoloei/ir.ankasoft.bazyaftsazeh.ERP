@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ir.ankasoft.infrastructure.DataContextstore
+namespace ir.ankasoft.infrastructure.DataContext
 {
-    public interface IDataContextstoreContainer<T>
+    public interface IDataContextContainer<T>
     {
         /// <summary>
         /// Returns an object from the container when it exists. Returns null otherwise.

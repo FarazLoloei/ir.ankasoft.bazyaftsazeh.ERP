@@ -14,7 +14,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [MaxLength(100)]
         public string System { get; set; }
 
-        public Enums.VehicleType Type { get; set; } = Enums.VehicleType.Personal;
+        public Enums.VehicleType Type { get; set; } = Enums.VehicleType.MotorCar;
 
         [Required]
         [MaxLength(100)]

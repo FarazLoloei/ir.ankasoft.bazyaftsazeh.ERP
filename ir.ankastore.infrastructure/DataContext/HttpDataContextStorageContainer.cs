@@ -1,12 +1,12 @@
 ﻿using System.Web;
 
-namespace ir.ankasoft.infrastructure.DataContextstore
+namespace ir.ankasoft.infrastructure.DataContext
 {
     /// <summary>
     /// A Helper class to store objects like a DataContext in the HttpContext.Current.Items collection.
     /// </summary>
     /// <typeparam name="T">The type of object to store.</typeparam>
-    public class HttpDataContextstoreContainer<T> : IDataContextstoreContainer<T> where T : class
+    public class HttpDataContextContainer<T> : IDataContextContainer<T> where T : class
     {
         private const string DataContextKey = "DataContext";
 

@@ -49,10 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataContextStorage\DataContextStorageFactory.cs" />
-    <Compile Include="DataContextStorage\HttpDataContextStorageContainer.cs" />
-    <Compile Include="DataContextStorage\IDataContextStorageContainer.cs" />
-    <Compile Include="DataContextStorage\ThreadDataContextStorageContainer.cs" />
+    <Compile Include="DataContext\DataContextFactory.cs" />
+    <Compile Include="DataContext\HttpDataContextStorageContainer.cs" />
+    <Compile Include="DataContext\IDataContextContainer.cs" />
+    <Compile Include="DataContext\ThreadDataContextStorageContainer.cs" />
     <Compile Include="DomainEntity.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />

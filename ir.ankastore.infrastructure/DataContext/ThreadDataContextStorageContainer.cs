@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Threading;
 
-namespace ir.ankasoft.infrastructure.DataContextstore
+namespace ir.ankasoft.infrastructure.DataContext
 {
     /// <summary>
     /// A Helper class to store objects like a DataContext in a static HashTable indexed by the name of a thread.
     /// </summary>
     /// <typeparam name="T">The type of object to store.</typeparam>
-    public class ThreadDataContextstoreContainer<T> : IDataContextstoreContainer<T> where T : class
+    public class ThreadDataContextContainer<T> : IDataContextContainer<T> where T : class
     {
         private static readonly Hashtable StoredContexts = new Hashtable();
 
