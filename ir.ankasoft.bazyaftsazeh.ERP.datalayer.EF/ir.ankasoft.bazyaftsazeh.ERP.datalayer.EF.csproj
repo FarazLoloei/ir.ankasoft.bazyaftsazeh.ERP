@@ -86,9 +86,12 @@
     <Compile Include="DropCreateDatabaseIfModelChanges.cs" />
     <Compile Include="EFUnitOfWork.cs" />
     <Compile Include="EFUnitOfWorkFactory.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ContextInitializer.cs" />
-    <Compile Include="MainDbContext.cs" />
+    <Compile Include="Repositories\ApplicationRoleManagerRepository.cs" />
+    <Compile Include="Repositories\ApplicationSignInManagerRepository.cs" />
+    <Compile Include="Repositories\ApplicationUserManagerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

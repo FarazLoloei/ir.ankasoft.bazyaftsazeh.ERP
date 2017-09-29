@@ -26,9 +26,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [MaxLength(20)]
         public string ImporterNumber { get; set; }
 
-        public ICollection<PostalAddress> PostalAddressCollection { get; set; }
+        public virtual ICollection<PostalAddress> PostalAddressCollection { get; set; }
 
-        public ICollection<Communication> CommunicationCollection { get; set; }
+        public virtual ICollection<Communication> CommunicationCollection { get; set; }
 
         #region IDateTracking
 

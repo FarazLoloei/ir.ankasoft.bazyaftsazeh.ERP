@@ -17,9 +17,9 @@ namespace ir.ankasoft.entities
         [StringLength(100)]
         public string Title { get; set; }
 
-        public long StateRefRecID { get; set; }
+        public long ProvinceRefRecID { get; set; }
 
-        [ForeignKey("ProvinceRefRecID")]
+        [ForeignKey(nameof(ProvinceRefRecID))]
         public Province Province { get; set; }
 
         #region IDateTracking
@@ -53,11 +53,11 @@ namespace ir.ankasoft.entities
                     string.Format(Resource._0CanntBeEmpty,
                                   nameof(Title)),
                     new[] { nameof(Title) });
-            if (StateRefRecID < 1)
+            if (ProvinceRefRecID < 1)
                 yield return new ValidationResult(
                     string.Format(Resource._0MustBeSelect,
-                                  nameof(StateRefRecID)),
-                    new[] { nameof(StateRefRecID) });
+                                  nameof(ProvinceRefRecID)),
+                    new[] { nameof(ProvinceRefRecID) });
         }
 
         #endregion Validation

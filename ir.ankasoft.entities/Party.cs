@@ -20,9 +20,9 @@ namespace ir.ankasoft.entities
 
         public string Description { get; set; }
 
-        public ICollection<PostalAddress> PostalAddressCollection { get; set; }
+        public virtual ICollection<PostalAddress> PostalAddressCollection { get; set; }
 
-        public ICollection<Communication> CommunicationCollection { get; set; }
+        public virtual ICollection<Communication> CommunicationCollection { get; set; }
 
 
         #region IDateTracking

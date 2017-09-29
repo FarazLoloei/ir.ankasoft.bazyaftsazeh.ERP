@@ -56,16 +56,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         /// </summary>
         public Party Contractor { get; set; }
 
-        public ICollection<Cost> Costs { get; set; }
+        public virtual ICollection<Cost> Costs { get; set; }
 
-        public ICollection<Imperfection> Imperfections { get; set; }
+        public virtual ICollection<Imperfection> Imperfections { get; set; }
 
         public long PlanRefRecId { get; set; }
 
         [ForeignKey(nameof(PlanRefRecId))]
         public Plan Plan { get; set; }
 
-        public ICollection<Payment> Payments { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
 
         #region IDateTracking
 

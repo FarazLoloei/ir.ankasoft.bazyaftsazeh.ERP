@@ -43,14 +43,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         public DbSet<entities.Plan> Plans { get; set; }
         public DbSet<entities.Plate> Plates { get; set; }
         public DbSet<entities.PreDefineTitle> PreDefineTitles { get; set; }
-        public DbSet<entities.ReplacementsPlan> ReplacementsPlans { get; set; }
+        public DbSet<entities.ReplacementsPlan> ReplacementsPlan { get; set; }
         public DbSet<entities.Vehicle> Vehicles { get; set; }
         public DbSet<entities.VehicleTip> VehicleTips { get; set; }
 
         public DbSet<City> Cities { get; set; }
         public DbSet<Communication> Communications { get; set; }
         public DbSet<Party> Parties { get; set; }
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<Person> People { get; set; }
         public DbSet<PostalAddress> PostalAddresses { get; set; }
         public DbSet<Province> Provinces { get; set; }
 
@@ -245,111 +245,90 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
             modelBuilder.Entity<ApplicationUserLogin>().ToTable("UserLogins");
             modelBuilder.Entity<ApplicationUserClaim>().ToTable("UserClaims");
 
-            //modelBuilder.Entity<UnitConvertor>()
-            //    .HasRequired(x => x.SourceUnitOfMeasure)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Province>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Invent>()
-            //    .HasRequired(x => x.MasterUnitOfMeasure)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.PreDefineTitle>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Invent>()
-            //    .HasRequired(x => x.creatorUser)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Party>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<InventTrans>()
-            //    .HasRequired(x => x.Invent)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Person>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<InventTrans>()
-            //    .HasRequired(x => x.CounterParty)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Plan>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<InventSite>()
-            //    .HasRequired(x => x.creatorUser)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Organization>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<UnitOfMeasure>()
-            //    .HasRequired(x => x.creatorUser)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Importer>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Label>()
-            //    .HasRequired(x => x.Section)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Vehicle>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<PurchOrder>()
-            //    .HasRequired(x => x.CounterParty)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Plate>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<PurchOrder>()
-            //    .HasRequired(x => x.InvoiceAccount)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.VehicleTip>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<InventDim>()
-            //    .HasRequired(x => x.InventLocation)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Document>()
+                .HasRequired(x => x.Investor)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<VehicleInfo>()
-            //    .HasRequired<InventTrans>(x => x.InventTrans)
-            //    .WithMany(x => x.VehicleInfos)
-            //    .HasForeignKey(x => x.InventTransRefRecId)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Document>()
+                .HasRequired(x => x.PlateOwner)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Transfer>()
-            //    .HasRequired<CounterParty>(x => x.TransportCompany)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Plan>()
+                .HasRequired(x => x.Representor)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            ////modelBuilder.Entity<VehicleInfo>()
-            ////    .HasRequired<Transfer>(x => x.Transfer)
-            ////    .WithOptional(x => x.VehicleInfo)
-            ////    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Plan>()
+                .HasRequired(x => x.Representor)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Transfer>()
-            //    .HasRequired(x => x.InventLocationSource)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.ReplacementsPlan>()
+                .HasRequired(x => x.ReplacementsVehicle)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Transfer>()
-            //    .HasRequired(x => x.InventLocationTransit)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Organization>()
+                .HasRequired(x => x.Party)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Transfer>()
-            //    .HasRequired(x => x.InventLocationDestination)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
-
-            ////modelBuilder.Entity<InventTrans>()
-            ////        .HasOptional<Transfer>(s => s.Transfer)
-            ////        .WithMany(s => s.InventTrans)
-            ////        .HasForeignKey(s => s.TransferRefRecId);
-
-            //modelBuilder.Entity<SalesOrder>()
-            //   .HasRequired(x => x.creatorUser)
-            //   .WithMany()
-            //   .WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<SalesOrder>()
-            //    .HasRequired(x => x.CounterParty)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<SalesOrder>()
-            //    .HasRequired(x => x.InvoiceAccount)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<entities.Importer>()
+                .HasRequired(x => x.Party)
+                .WithMany()
+                .WillCascadeOnDelete(false);
         }
     }
 }
