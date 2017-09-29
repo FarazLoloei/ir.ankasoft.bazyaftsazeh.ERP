@@ -33,36 +33,26 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
             return new ApplicationDbContext();
         }
 
-        //public DbSet<Category> Categories { get; set; }
-        //public DbSet<InventSite> InventSites { get; set; }
-        //public DbSet<UnitOfMeasureCategory> UnitOfMeasureCategory { get; set; }
-        //public DbSet<UnitOfMeasure> UnitOfMeasure { get; set; }
-        //public DbSet<Culture> Cultures { get; set; }
-        //public DbSet<Label> Labels { get; set; }
-        //public DbSet<LabelValues> LabelValues { get; set; }
-        //public DbSet<PersonalTitle> PersonalTitles { get; set; }
-        //public DbSet<CounterParty> CounterParties { get; set; }
-        //public DbSet<UnitConvertor> UnitConvertors { get; set; }
-        //public DbSet<InventLocationType> InventLocationTypes { get; set; }
-        //public DbSet<InventLocation> InventLocations { get; set; }
-        //public DbSet<Invent> Invents { get; set; }
-        //public DbSet<PurchOrder> PurchOrders { get; set; }
-        //public DbSet<PurchStatus> PurchStatuses { get; set; }
-        //public DbSet<PurchType> PurchTypes { get; set; }
-        //public DbSet<InventTransType> InventTransTypes { get; set; }
-        //public DbSet<ReceiptStatus> ReceiptStatuses { get; set; }
-        //public DbSet<InventTrans> InventTrans { get; set; }
-        //public DbSet<VehicleInfo> VehicleInfos { get; set; }
-        //public DbSet<VehicleType> VehicleTypes { get; set; }
-        //public DbSet<Invoice> Invoices { get; set; }
-        //public DbSet<Notification> Notifications { get; set; }
-        //public DbSet<NotificationType> NotificationTypes { get; set; }
-        //public DbSet<TransferStatus> TransferStatuses { get; set; }
-        //public DbSet<Transfer> Transfers { get; set; }
-        //public DbSet<InventDim> InventDims { get; set; }
-        //public DbSet<SalesStatus> SalesStatuses { get; set; }
-        //public DbSet<SalesType> SalesTypes { get; set; }
-        //public DbSet<SalesOrder> SalesOrder { get; set; }
+        public DbSet<entities.Cost> Costs { get; set; }
+        public DbSet<entities.Document> Document { get; set; }
+        public DbSet<entities.GovernmentPlan> GovernmentPlan { get; set; }
+        public DbSet<entities.Imperfection> Imperfection { get; set; }
+        public DbSet<entities.Importer> Importer { get; set; }
+        public DbSet<entities.Organization> Organization { get; set; }
+        public DbSet<entities.Payment> Payment { get; set; }
+        public DbSet<entities.Plan> Plans { get; set; }
+        public DbSet<entities.Plate> Plates { get; set; }
+        public DbSet<entities.PreDefineTitle> PreDefineTitles { get; set; }
+        public DbSet<entities.ReplacementsPlan> ReplacementsPlans { get; set; }
+        public DbSet<entities.Vehicle> Vehicles { get; set; }
+        public DbSet<entities.VehicleTip> VehicleTips { get; set; }
+
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Communication> Communications { get; set; }
+        public DbSet<Party> Parties { get; set; }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<PostalAddress> PostalAddresses { get; set; }
+        public DbSet<Province> Provinces { get; set; }
 
         public override int SaveChanges()
         {
