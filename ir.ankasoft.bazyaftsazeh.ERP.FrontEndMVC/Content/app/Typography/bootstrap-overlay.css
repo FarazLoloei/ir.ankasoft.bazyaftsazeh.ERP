@@ -1,0 +1,35 @@
+﻿html { font-family: BBCNassim, Tahoma; font-size: 16px; }
+
+code,
+kbd,
+pre,
+samp { font-family: BBCNassim, Tahoma; }
+
+body { font-family: BBCNassim, Tahoma; font-size: 16px; }
+
+.tooltip { font-family: BBCNassim, Tahoma; }
+
+.popover { font-family: BBCNassim, Tahoma; }
+
+.carousel-control .icon-prev,
+.carousel-control .icon-next { font-family: BBCNassim, Tahoma; }
+
+.radio label, .checkbox label { padding-left: 0; padding-right: 20px; }
+
+.input-sm { font-size: 15px; }
+
+.has-feedback .form-control { padding-right: 43.75px; padding-left: 16px; }
+
+.bootstrap-tagsinput .label { font-size: 100%; font-weight: normal; }
+
+.English_Regular { font-family: RobotoRegular; font-size: 12px; }
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */ font-family: BBCNassim, Tahoma; font-size: 14px; }
+
+input::-moz-placeholder { /* Firefox 19+ */ font-family: BBCNassim, Tahoma; font-size: 14px; }
+
+input:-ms-input-placeholder { /* IE 10+ */ font-family: BBCNassim, Tahoma; font-size: 14px; }
+
+input:-moz-placeholder { /* Firefox 18- */ font-family: BBCNassim, Tahoma; font-size: 14px; }
+
+.anka_dataTable { margin-top: 6px; border-top: 0px; }
