@@ -55,6 +55,34 @@ namespace Links
         public const string UrlPath = "~/Scripts";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class app {
+            public const string UrlPath = "~/Scripts/app";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string app_init_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/app.init.min.js") ? Url("app.init.min.js") : Url("app.init.js");
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class modules {
+                public const string UrlPath = "~/Scripts/app/modules";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string bootstrap_start_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-start.min.js") ? Url("bootstrap-start.min.js") : Url("bootstrap-start.js");
+                public static readonly string constants_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/constants.min.js") ? Url("constants.min.js") : Url("constants.js");
+                public static readonly string fullscreen_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/fullscreen.min.js") ? Url("fullscreen.min.js") : Url("fullscreen.js");
+                public static readonly string localize_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/localize.min.js") ? Url("localize.min.js") : Url("localize.js");
+                public static readonly string navbar_search_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/navbar-search.min.js") ? Url("navbar-search.min.js") : Url("navbar-search.js");
+                public static readonly string notify_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/notify.min.js") ? Url("notify.min.js") : Url("notify.js");
+                public static readonly string panel_tools_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/panel-tools.min.js") ? Url("panel-tools.min.js") : Url("panel-tools.js");
+                public static readonly string play_animation_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/play-animation.min.js") ? Url("play-animation.min.js") : Url("play-animation.js");
+                public static readonly string select2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2.min.js") ? Url("select2.min.js") : Url("select2.js");
+                public static readonly string sidebar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/sidebar.min.js") ? Url("sidebar.min.js") : Url("sidebar.js");
+                public static readonly string slimscroll_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/slimscroll.min.js") ? Url("slimscroll.min.js") : Url("slimscroll.js");
+                public static readonly string toggle_state_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/toggle-state.min.js") ? Url("toggle-state.min.js") : Url("toggle-state.js");
+                public static readonly string utils_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/utils.min.js") ? Url("utils.min.js") : Url("utils.js");
+            }
+        
+        }
+    
         public static readonly string bootstrap_datetimepicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datetimepicker.min.js") ? Url("bootstrap-datetimepicker.min.js") : Url("bootstrap-datetimepicker.js");
         public static readonly string bootstrap_datetimepicker_min_js = Url("bootstrap-datetimepicker.min.js");
         public static readonly string bootstrap_rtl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-rtl.min.js") ? Url("bootstrap-rtl.min.js") : Url("bootstrap-rtl.js");
@@ -204,6 +232,32 @@ namespace Links
     {
         public static partial class Scripts 
         {
+            public static partial class app 
+            {
+                public static partial class modules 
+                {
+                    public static class Assets
+                    {
+                        public const string bootstrap_start_js = "~/Scripts/app/modules/bootstrap-start.js"; 
+                        public const string constants_js = "~/Scripts/app/modules/constants.js"; 
+                        public const string fullscreen_js = "~/Scripts/app/modules/fullscreen.js"; 
+                        public const string localize_js = "~/Scripts/app/modules/localize.js"; 
+                        public const string navbar_search_js = "~/Scripts/app/modules/navbar-search.js"; 
+                        public const string notify_js = "~/Scripts/app/modules/notify.js"; 
+                        public const string panel_tools_js = "~/Scripts/app/modules/panel-tools.js"; 
+                        public const string play_animation_js = "~/Scripts/app/modules/play-animation.js"; 
+                        public const string select2_js = "~/Scripts/app/modules/select2.js"; 
+                        public const string sidebar_js = "~/Scripts/app/modules/sidebar.js"; 
+                        public const string slimscroll_js = "~/Scripts/app/modules/slimscroll.js"; 
+                        public const string toggle_state_js = "~/Scripts/app/modules/toggle-state.js"; 
+                        public const string utils_js = "~/Scripts/app/modules/utils.js"; 
+                    }
+                }
+                public static class Assets
+                {
+                    public const string app_init_js = "~/Scripts/app/app.init.js"; 
+                }
+            }
             public static partial class i18n 
             {
                 public static class Assets

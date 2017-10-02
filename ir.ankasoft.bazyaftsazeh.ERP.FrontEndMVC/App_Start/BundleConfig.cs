@@ -97,7 +97,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             bundles.Add(new ScriptBundle(Bundles.Scripts.jquery).Include(
                 //Links.scripts.jquery_2_1_4_js
                 //"~/jquery-2.1.4.min.js"
-                Links.Bundles.Scripts.Assets.jquery_2_1_4_min_js
+                Links.Bundles.Scripts.Assets.jquery_2_2_4_min_js
             ));
 
             bundles.Add(new ScriptBundle(Bundles.Scripts.modernizr).Include(
@@ -153,7 +153,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             ));
 
             bundles.Add(new ScriptBundle(Bundles.Scripts.Select2).Include(
-                Links.Bundles.Scripts.Assets.select2_full_min_js
+                //Links.Bundles.Scripts.Assets.select2_full_min_js
+                Links.Bundles.Scripts.Assets.select2_min_js
             ));
 
             bundles.Add(new ScriptBundle(Bundles.Scripts.bootstrapPersianDatePicker).Include(
