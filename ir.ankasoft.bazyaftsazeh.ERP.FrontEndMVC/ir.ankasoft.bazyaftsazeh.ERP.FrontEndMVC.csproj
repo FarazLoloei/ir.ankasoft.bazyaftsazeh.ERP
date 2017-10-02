@@ -241,6 +241,9 @@
     <Content Include="font\context-menu-icons.ttf" />
     <Content Include="font\context-menu-icons.eot" />
     <Content Include="Content\jquery.contextMenu.min.css.map" />
+    <Compile Include="AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\Startup.Auth.cs" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -325,13 +328,58 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PagesController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="DashboardController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="Helpers\EnumDropDownListForHelper.cs" />
+    <Compile Include="Helpers\HTMLHelperExtensions.cs" />
+    <Compile Include="ManageController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Models\Account\ExternalLoginListViewModel.cs" />
+    <Compile Include="Models\Account\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\Account\ForgotViewModel.cs" />
+    <Compile Include="Models\Account\LoginViewModel.cs" />
+    <Compile Include="Models\Account\RegisterViewModel.cs" />
+    <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
+    <Compile Include="Models\Account\SendCodeViewModel.cs" />
+    <Compile Include="Models\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="Models\Admin\EditUserViewModel.cs" />
+    <Compile Include="Models\Admin\RoleViewModel.cs" />
+    <Compile Include="Models\Dashboard\ViewModelDashboard.cs" />
+    <Compile Include="Models\Manage\AddPhoneNumberViewModel.cs" />
+    <Compile Include="Models\Manage\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\Manage\ConfigureTwoFactorViewModel.cs" />
+    <Compile Include="Models\Manage\FactorViewModel.cs" />
+    <Compile Include="Models\Manage\IndexViewModel.cs" />
+    <Compile Include="Models\Manage\ManageLoginsViewModel.cs" />
+    <Compile Include="Models\Manage\SetPasswordViewModel.cs" />
+    <Compile Include="Models\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Models\Notification\ViewModelDisplayNotification.cs" />
+    <Compile Include="Models\PagerModel.cs" />
+    <Compile Include="Models\RolesAdmin\ApplicationRoleViewModel.cs" />
+    <Compile Include="Models\Shared\ViewModelParty.cs" />
+    <Compile Include="Models\ViewModelSelect2List.cs" />
+    <Compile Include="Models\ViewModelWithSelectList.cs" />
+    <Compile Include="PagesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -350,6 +398,35 @@
     <Content Include="Views\Shared\_Pager.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Shared\_TopNavbar.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\_DateTime.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Pages\Error404.cshtml" />
+    <Content Include="Views\Pages\Lock.cshtml" />
+    <Content Include="Views\Pages\Recovery.cshtml" />
+    <Content Include="Views\Pages\Register.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -359,8 +436,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -373,6 +448,14 @@
     <ProjectReference Include="..\ir.ankasoft.entities\ir.ankasoft.entities.csproj">
       <Project>{B0533E2E-F751-4609-80F0-A887ABDF7EE8}</Project>
       <Name>ir.ankasoft.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ir.ankasoft.resource\ir.ankasoft.resource.csproj">
+      <Project>{68AAC2BD-8A85-4E88-869A-2ECD80E20C94}</Project>
+      <Name>ir.ankasoft.resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ir.ankasoft.tools\ir.ankasoft.tools.csproj">
+      <Project>{1BFD9D72-B2AF-4C91-A36B-72B677A09E2B}</Project>
+      <Name>ir.ankasoft.tools</Name>
     </ProjectReference>
     <ProjectReference Include="..\ir.ankastore.infrastructure\ir.ankasoft.infrastructure.csproj">
       <Project>{B5EB1DA8-33B8-43BD-A574-7BC07714F045}</Project>

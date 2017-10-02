@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-6 col-sm-4">
         <label id="datatable1_length" class="dataTables_length">
-            @Resource_fa.RecordsPerPage
+            @Resource.RecordsPerPage
             @Html.DropDownListFor(model => model.PageSize, Model.PageSizeCollection, new { @class = "form-control input-sm", @onchange = "$('#dataTable').submit();", aria_controls = "datatable" })
         </label>
     </div>
@@ -11,7 +11,7 @@
             <span class="btn btn-label">
                 <i class="fa fa-file-excel-o" aria-hidden="true" style="font-size:15px;"></i>
             </span>
-            @Resource_fa.ExportToExcel
+            @Resource.ExportToExcel
         </button>
     </div>
     <div class="col-md-3 col-sm-3 text-center">
@@ -21,7 +21,7 @@
        {
            @class = "form-control input-sm",
            autofocus = "autofocus",
-           placeholder = @Resource_fa.Search,
+           placeholder = @Resource.Search,
            aria_controls = "datatable",
            onchange = "$('#keyword').val($(this).val());$('#CurrentPage').val(1)"
        }

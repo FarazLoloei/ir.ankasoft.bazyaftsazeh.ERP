@@ -1,0 +1,48 @@
+﻿@{
+    Layout = MVC.Shared.Views._LayoutPage;
+}
+<div class="block-center mt-xl wd-xl">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "mb-lg", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+    <!-- START panel-->
+        <div class="panel panel-dark panel-flat">
+            <div class="panel-heading text-center">
+                <a href="#">
+                    <img src="~/Content/Images/logo.png" alt="Image" class="block-center img-rounded" />
+                </a>
+            </div>
+            <div class="panel-body">
+                <p class="text-center pv">SIGNUP TO GET INSTANT ACCESS.</p>
+                <div class="form-group has-feedback">
+                    <label for="signupInputEmail" class="text-muted">@Resource.Email</label>
+                    <input id="signupInputEmail" type="email" placeholder="ایمیل خود را وارد کنید" autocomplete="off" required="required" class="form-control" />
+                    <span class="fa fa-envelope form-control-feedback text-muted"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <label for="signupInputPassword" class="text-muted">@Resource.Password</label>
+                    <input id="signupInputPassword" type="password" placeholder="رمز عبور خود را وارد کنید" autocomplete="off" required="required" class="form-control" />
+                    <span class="fa fa-lock form-control-feedback text-muted"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <label for="signupInputRePassword" class="text-muted">@Resource.ConfirmPassword</label>
+                    <input id="signupInputRePassword" type="password" placeholder="@Resource.ConfirmPassword" autocomplete="off" required="required" data-parsley-equalto="#signupInputPassword1" class="form-control" />
+                    <span class="fa fa-lock form-control-feedback text-muted"></span>
+                </div>
+                <div class="clearfix">
+                    <div class="checkbox c-checkbox pull-right mt0">
+                        <label>
+                            <a href="#"> قوانین سایت</a> را قبول دارم
+                            <input type="checkbox" value="" required="required" name="agreed" />
+                            <span class="fa fa-check"></span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-block btn-primary mt-lg">ایجاد حساب کاربری</button>
+
+                <p class="pt-lg text-center">قبلا حساب کاربری ایجاد نموده اید؟</p><a href="@Url.Action(MVC.Account.Login())" class="btn btn-block btn-default">وارد شوید</a>
+            </div>
+        </div>
+    <!-- END panel-->
+    }
+</div>

@@ -1,0 +1,54 @@
+﻿@model  ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Account.LoginViewModel
+@{
+    Layout = MVC.Shared.Views._LayoutPage;
+}
+
+<div class="block-center mt-xl wd-xl">
+
+    <!-- START panel-->
+    <div class="panel panel-dark panel-flat">
+        <div class="panel-heading text-center">
+            <a href="#">
+                <img src="~/Content/Images/logo.png" alt="Image" class="block-center img-rounded" />
+            </a>
+        </div>
+        <div class="panel-body">
+            <p class="text-center pv">@Resource.UseALocalAccountToLogin</p>
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "mb-lg", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger text-left" })
+                <form role="form" data-parsley-validate="" novalidate="" class="mb-lg">
+                    <div class="form-group has-feedback">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control English_Regular", placeholder = Resource.Email, autocomplete = "off" } })
+                        <span class="fa fa-envelope form-control-feedback text-muted"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = Resource.Password, autocomplete = "off" } })
+                        <span class="fa fa-key form-control-feedback text-muted"></span>
+                    </div>
+                    <div class="clearfix">
+                        <div class="checkbox c-checkbox pull-right mt0">
+                            <label>
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                <span class="fa fa-check"></span>
+                                @Resource.RememberMe
+                                @*<input type="checkbox" value="" name="remember" />*@
+                            </label>
+                        </div>
+                        <div class="pull-left">
+                            <a href="@Url.Action(MVC.Account.ForgotPassword())" class="text-muted">@Resource.ForgotYourPassword؟</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary mt-lg">@Resource.Login</button>
+                </form>
+                <p class="pt-lg text-center disabled">اگر ثبت نام نکرده اید هم اکنون ثبت نام کنید</p>
+                <a href="@Url.Action(MVC.Pages.Register())" class="btn btn-block btn-default disabled">@Resource.Register</a>
+            }
+        </div>
+    </div>
+    <!-- END panel-->
+</div>
+@section styles{
+    @Styles.Render(Bundles.Styles.roboto)
+}

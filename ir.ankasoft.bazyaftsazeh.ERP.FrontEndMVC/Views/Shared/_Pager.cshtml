@@ -9,7 +9,7 @@
                 MaxItem = MaxItem > Model.CurrentPage ? Convert.ToInt32(Model.TotalRows) : MaxItem;
             }
 
-            @Resource_fa.Showing @minItem @Resource_fa.to @MaxItem @Resource_fa.of @Model.TotalRows @Resource_fa.entries
+            @Resource.Showing @minItem @Resource.to @MaxItem @Resource.of @Model.TotalRows @Resource.entries
         </div>
     </div>
     <div class="col-xs-6 text-right">
@@ -18,7 +18,7 @@
                 @{ string isDisabled;
                     isDisabled = Model.CurrentPage == 1 ? "disabled" : "";}
                 <li id="anka_dataTable_previous" class="paginate_button previous @isDisabled" aria-controls="anka_dataTable" tabindex="0">
-                    <a href="#" onclick="managePagination('-');return false;">@Resource_fa.Previous</a>
+                    <a href="#" onclick="managePagination('-');return false;">@Resource.Previous</a>
                 </li>
                 @{
                     int SP = 0, EP = 0;
@@ -47,7 +47,7 @@
                 }
                 @{ isDisabled = Model.CurrentPage == Model.PageCount ? "disabled" : "";}
                 <li id="anka_dataTable_next" class="paginate_button next @isDisabled" aria-controls="anka_dataTable" tabindex="0">
-                    <a href="#" onclick="managePagination('+'); return false;">@Resource_fa.Next</a>
+                    <a href="#" onclick="managePagination('+'); return false;">@Resource.Next</a>
                 </li>
             </ul>
         </div>

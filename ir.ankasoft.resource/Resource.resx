@@ -804,4 +804,7 @@
   <data name="_0MustBeGreaterThan1" xml:space="preserve">
     <value>{0} باید بیشتر از {1} باشد</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>نام کاربری</value>
+  </data>
 </root>

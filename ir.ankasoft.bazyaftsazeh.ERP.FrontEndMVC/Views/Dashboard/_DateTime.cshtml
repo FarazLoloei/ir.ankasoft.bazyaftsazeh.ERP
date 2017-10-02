@@ -1,0 +1,20 @@
+﻿@using ir.anka.Tools
+@using ir.anka.Tools.Utility
+
+@{
+    PersianDateFragments dateInFragmentedForm = PersianDateTime.Now();
+    var AMPM = DateTime.Now.ToString("tt") == "PM" ? Resource.PM : Resource.AM;
+}
+
+<div class="col-xs-4 text-center bg-green pv-lg">
+    <div data-now="خرداد" data-format="MMMM" class="text-sm">@dateInFragmentedForm.MonthOfYear</div>
+    <br />
+    <div data-now="" data-format="D" class="h2 mt0">@dateInFragmentedForm.Day</div>
+</div>
+<div class="col-xs-8 pv-lg">
+    <div data-now="" data-format="dddd" class="text-uppercase">@PersianDateTime.getDayofWeek(DateTime.Now)</div>
+    <br />
+    <div data-now="" data-format="h:mm" class="h2 mt0 clock">@DateTime.Now.ToString("h:mm")</div>
+
+    <div data-now="" data-format="a" class="text-muted text-sm">@AMPM</div>
+</div>

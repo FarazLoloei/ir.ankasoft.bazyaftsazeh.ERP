@@ -1,0 +1,32 @@
+﻿@{
+    Layout = MVC.Shared.Views._LayoutPage;
+}
+<div class="abs-center wd-xl">
+    <!-- START panel-->
+    <div class="text-center mb-xl">
+        <div class="text-lg mb-lg">404</div>
+        <p class="lead m0">متاسفانه صفحه درخواستی یافت نشد</p>
+        <p>صفحه ای که باز کرده اید موجود نیست</p>
+    </div>
+    <div class="input-group mb-xl">
+        <input type="text" placeholder="@Resource_fa.TryWithASearch" class="form-control" disabled="disabled" />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default">
+                <em class="fa fa-search"></em>
+            </button>
+        </span>
+    </div>
+    <ul class="list-inline text-center text-sm mb-xl">
+        @*<li>
+            <a href="@Url.Action(MVC.Pages.Register())" class="text-muted">@Resource_fa.Register</a>
+        </li>*@
+        <li class="text-muted">|</li>
+        <li>
+            <a href="@Url.Action(MVC.Login.Index())" class="text-muted">@Resource_fa.Login</a>
+        </li>
+        <li class="text-muted">|</li>
+        <li>
+            <a href="@Url.Action(MVC.Dashboard.Index())" class="text-muted">@Resource_fa.Dashboard</a>
+        </li>
+    </ul>
+</div>

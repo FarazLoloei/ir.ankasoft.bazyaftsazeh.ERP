@@ -27,6 +27,11 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
+    public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.AccountController Account = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_AccountController();
+    public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DashboardController Dashboard = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_DashboardController();
+    public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.ManageController Manage = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_ManageController();
+    public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PagesController Pages = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PagesController();
+    public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
 namespace T4MVC
@@ -45,6 +50,21 @@ namespace T4MVC
 }
 #pragma warning restore 0436
 
+[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.ActionResult, IT4MVCActionResult
+{
+    public T4MVC_System_Web_Mvc_ActionResult(string area, string controller, string action, string protocol = null): base()
+    {
+        this.InitMVCT4Result(area, controller, action, protocol);
+    }
+     
+    public override void ExecuteResult(System.Web.Mvc.ControllerContext context) { }
+    
+    public string Controller { get; set; }
+    public string Action { get; set; }
+    public string Protocol { get; set; }
+    public RouteValueDictionary RouteValueDictionary { get; set; }
+}
 
 
 

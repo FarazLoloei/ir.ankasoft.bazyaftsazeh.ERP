@@ -1,0 +1,27 @@
+﻿@{
+    Layout = MVC.Shared.Views._LayoutPage;
+}
+<div class="block-center mt-xl wd-xl">
+    @using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("rememberMe", @Model.RememberMe)
+        <div class="panel panel-dark panel-flat">
+            <div class="panel-heading text-center">
+                @*<a href="#">
+                    <img src="~/Content/Images/logo.png" alt="Image" class="block-center img-rounded" />
+                </a>*@
+                @Resource.SendVerificationCode
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        Select Two-Factor Authentication Provider:
+                        @Html.DropDownListFor(model => model.SelectedProvider, Model.Providers)
+                        <button type="submit" class="btn btn-block btn-primary mt-lg">@Resource.Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,13 @@
+﻿@{
+    Layout = MVC.Shared.Views._LayoutPage;
+}
+<h2>
+    @Resource.ConfirmEmail
+</h2>
+
+<div class="row">
+    @*Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })*@
+    @Resource.ThankYouForConfirmingYourEmailPleaseClickToLogin
+    <a href=@Url.Action(MVC.Account.Login())>@Resource.Login</a>
+    @*@Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })*@
+</div>

@@ -1933,6 +1933,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نام کاربری.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to نام کاربری یا رمز عبور معتبر نمی باشد.
         /// </summary>
         public static string UsernameOrPasswordWasNotValid {

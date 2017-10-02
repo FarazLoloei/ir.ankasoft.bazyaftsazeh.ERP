@@ -1,0 +1,142 @@
+﻿@model ir.anka.storage.FrontEndMVC.Models.Dashboard.ViewModelDashboard
+@{
+    ViewBag.Title = Resource.Dashboard;
+    Layout = MVC.Shared.Views._Layout;
+}
+
+<div class="content-heading">
+    <div class="pull-right">
+        <div class="btn-group">
+            <button type="button" data-toggle="dropdown" class="btn btn-default">فارسی</button>
+            <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+                <li>
+                    <a href="#" data-set-lang="en">English</a>
+                </li>
+                <li>
+                    <a href="#" data-set-lang="tr">Turkish</a>
+                </li>
+                <li>
+                    <a href="#" data-set-lang="fa">فارسی</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    @Resource.Dashboard
+    <small>@string.Format(Resource.WelcomeMessage, Resource.ApplicationTitle)</small>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-12 col-lg-offset-9  col-md-offset-6">
+        <!-- START date widget-->
+        <div class="panel widget">
+            <div class="row row-table" id="DateTime">
+                @Html.Partial(MVC.Dashboard.Views._DateTime);
+                @*<div class="col-xs-4 text-center bg-green pv-lg">
+                        <div data-now="خرداد" data-format="MMMM" class="text-sm">@dateInFragmentedForm.MonthOfYear</div>
+                        <br />
+                        <div data-now="" data-format="D" class="h2 mt0">@dateInFragmentedForm.Day</div>
+                    </div>
+                    <div class="col-xs-8 pv-lg">
+                        <div data-now="" data-format="dddd" class="text-uppercase">@PersianDateTime.getDayofWeek(DateTime.Now)</div>
+                        <br />
+                        <div data-now="" data-format="h:mm" class="h2 mt0 clock">@DateTime.Now.ToString("h:mm")</div>
+                        <div data-now="" data-format="a" class="text-muted text-sm">بعد از ظهر</div>
+                    </div>*@
+            </div>
+        </div>
+        <!-- END date widget    -->
+    </div>
+
+    <aside class="col-lg-3 col-md-6 col-sm-12 col-lg-offset-9 col-md-offset-6">
+        <!-- START loader widget-->
+        @*<div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="#" class="text-muted pull-right">
+                        <em class="fa fa-arrow-right"></em>
+                    </a>
+                    <div class="text-info">Average Monthly Uploads</div>
+                    <canvas data-classyloader="" data-percentage="70" data-speed="20" data-font-size="40px" data-diameter="70" data-line-color="#23b7e5" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10" data-rounded-line="true"
+                            class="center-block"></canvas>
+                    <div data-sparkline="" data-bar-color="#23b7e5" data-height="30" data-bar-width="5" data-bar-spacing="2" data-values="5,4,8,7,8,5,4,6,5,5,9,4,6,3,4,7,5,4,7" class="text-center"></div>
+                </div>
+                <div class="panel-footer">
+                    <p class="text-muted">
+                        <em class="fa fa-upload fa-fw"></em>
+                        <span>This Month</span>
+                        <span class="text-dark">1000 Gb</span>
+                    </p>
+                </div>
+            </div>*@
+        <!-- END loader widget-->
+        <!-- START messages and activity-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">@Resource.LatestActivities</div>
+            </div>
+            <!-- START list group-->
+            <div class="list-group">
+                <!-- START list group item-->
+                @if (Model.LatestActivities.Any())
+                {
+                    foreach (var item in Model.LatestActivities)
+                    {
+                        <div class="list-group-item">
+                            <div class="media-box">
+                                <div class="pull-left">
+                                    <span class="fa-stack">
+                                        <em class="fa fa-circle fa-stack-2x text-purple"></em>
+                                        <em class="fa fa-medkit fa-stack-1x fa-inverse text-white"></em>
+                                    </span>
+                                </div>
+                                <div class="media-box-body clearfix">
+                                    <small class="text-muted pull-right ml">@item.Age</small>
+                                    <div class="media-box-heading">
+                                        <a href="#" class="text-purple m0">@item.Subject</a>
+                                    </div>
+                                    <p class="m0">
+                                        <small>
+                                            <a href="#">@item.Summery</a>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                <!-- END list group item-->
+            </div>
+            <!-- END list group-->
+            <!-- START panel footer-->
+            <div class="panel-footer clearfix">
+                <a href="#" class="pull-right">
+                    <small>@Resource.More</small>
+                </a>
+            </div>
+            <!-- END panel-footer-->
+        </div>
+        <!-- END messages and activity-->
+    </aside>
+</div>
+
+@section Styles {
+
+}
+@section Scripts {
+    <script type="text/javascript">
+        setInterval(function () {
+            $.ajax({
+                url: '@Url.Action(MVC.Dashboard.DateTime())',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    $('#DateTime').html(result);
+                },
+                error: function (xhr, status) {
+                    swal("@Resource.Cancelled ", status, "error");
+                }
+            })
+        }, 60000);
+    </script>
+}
