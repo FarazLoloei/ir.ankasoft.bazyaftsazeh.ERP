@@ -185,6 +185,33 @@ namespace Links
         public const string UrlPath = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class app {
+            public const string UrlPath = "~/Content/app";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class css {
+                public const string UrlPath = "~/Content/app/css";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string app_rtl_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/app-rtl.min.css") ? Url("app-rtl.min.css") : Url("app-rtl.css");
+                public static readonly string app_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/app.min.css") ? Url("app.min.css") : Url("app.css");
+                public static readonly string bootstrap_rtl_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-rtl.min.css") ? Url("bootstrap-rtl.min.css") : Url("bootstrap-rtl.css");
+                public static readonly string bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap.min.css") ? Url("bootstrap.min.css") : Url("bootstrap.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class Typography {
+                public const string UrlPath = "~/Content/app/Typography";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string app_overlay_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/app-overlay.min.css") ? Url("app-overlay.min.css") : Url("app-overlay.css");
+                public static readonly string bootstrap_overlay_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-overlay.min.css") ? Url("bootstrap-overlay.min.css") : Url("bootstrap-overlay.css");
+            }
+        
+        }
+    
         public static readonly string bootstrap_datetimepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-datetimepicker.min.css") ? Url("bootstrap-datetimepicker.min.css") : Url("bootstrap-datetimepicker.css");
         public static readonly string bootstrap_datetimepicker_min_css = Url("bootstrap-datetimepicker.min.css");
         public static readonly string bootstrap_rtl_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-rtl.min.css") ? Url("bootstrap-rtl.min.css") : Url("bootstrap-rtl.css");
@@ -207,12 +234,31 @@ namespace Links
             public const string UrlPath = "~/Content/css";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string select2_overlay_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2-overlay.min.css") ? Url("select2-overlay.min.css") : Url("select2-overlay.css");
             public static readonly string select2_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2.min.css") ? Url("select2.min.css") : Url("select2.css");
             public static readonly string select2_min_css = Url("select2.min.css");
         }
     
         public static readonly string font_awesome_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/font-awesome.min.css") ? Url("font-awesome.min.css") : Url("font-awesome.css");
         public static readonly string font_awesome_min_css = Url("font-awesome.min.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class Images {
+            public const string UrlPath = "~/Content/Images";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string logo_single_png = Url("logo-single.png");
+            public static readonly string logo_png = Url("logo.png");
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class user {
+                public const string UrlPath = "~/Content/Images/user";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string _02_jpg = Url("02.jpg");
+            }
+        
+        }
+    
+        public static readonly string jquery_contextMenu_overlay_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.contextMenu-overlay.min.css") ? Url("jquery.contextMenu-overlay.min.css") : Url("jquery.contextMenu-overlay.css");
         public static readonly string jquery_contextMenu_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.contextMenu.min.css") ? Url("jquery.contextMenu.min.css") : Url("jquery.contextMenu.css");
         public static readonly string jquery_contextMenu_min_css = Url("jquery.contextMenu.min.css");
         public static readonly string jquery_contextMenu_min_css_map = Url("jquery.contextMenu.min.css.map");
@@ -224,6 +270,7 @@ namespace Links
             public static readonly string jquery_Bootstrap_PersianDateTimePicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.Bootstrap-PersianDateTimePicker.min.css") ? Url("jquery.Bootstrap-PersianDateTimePicker.min.css") : Url("jquery.Bootstrap-PersianDateTimePicker.css");
         }
     
+        public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
     }
 
     
@@ -352,12 +399,49 @@ namespace Links
         }
         public static partial class Content 
         {
+            public static partial class app 
+            {
+                public static partial class css 
+                {
+                    public static class Assets
+                    {
+                        public const string app_rtl_css = "~/Content/app/css/app-rtl.css";
+                        public const string app_css = "~/Content/app/css/app.css";
+                        public const string bootstrap_rtl_css = "~/Content/app/css/bootstrap-rtl.css";
+                        public const string bootstrap_css = "~/Content/app/css/bootstrap.css";
+                    }
+                }
+                public static partial class Typography 
+                {
+                    public static class Assets
+                    {
+                        public const string app_overlay_css = "~/Content/app/Typography/app-overlay.css";
+                        public const string bootstrap_overlay_css = "~/Content/app/Typography/bootstrap-overlay.css";
+                    }
+                }
+                public static class Assets
+                {
+                }
+            }
             public static partial class css 
             {
                 public static class Assets
                 {
+                    public const string select2_overlay_css = "~/Content/css/select2-overlay.css";
                     public const string select2_css = "~/Content/css/select2.css";
                     public const string select2_min_css = "~/Content/css/select2.min.css";
+                }
+            }
+            public static partial class Images 
+            {
+                public static partial class user 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
+                public static class Assets
+                {
                 }
             }
             public static partial class MdBootstrapPersianDateTimePicker 
@@ -383,8 +467,10 @@ namespace Links
                 public const string bootstrap_min_css = "~/Content/bootstrap.min.css";
                 public const string font_awesome_css = "~/Content/font-awesome.css";
                 public const string font_awesome_min_css = "~/Content/font-awesome.min.css";
+                public const string jquery_contextMenu_overlay_css = "~/Content/jquery.contextMenu-overlay.css";
                 public const string jquery_contextMenu_css = "~/Content/jquery.contextMenu.css";
                 public const string jquery_contextMenu_min_css = "~/Content/jquery.contextMenu.min.css";
+                public const string Site_css = "~/Content/Site.css";
             }
         }
     }

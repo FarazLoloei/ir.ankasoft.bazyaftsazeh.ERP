@@ -1,0 +1,159 @@
+﻿<!-- START Sidebar (left)-->
+<div class="aside-inner">
+    <nav class="sidebar" data-sidebar-anyclick-close="">
+        <!-- START sidebar nav-->
+        <ul class="nav">
+            <!-- START user info-->
+            <li class="has-user-block">
+                <div id="user-block" class="collapse">
+                    <div class="item user-block">
+                        <!-- User picture-->
+                        <div class="user-block-picture">
+                            <div class="user-block-status">
+                                <img src="~/Content/Images/user/02.jpg" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle" />
+                                <div class="circle circle-success circle-lg"></div>
+                            </div>
+                        </div>
+                        <!-- Name and Job-->
+                        <div class="user-block-info">
+                            <span class="user-block-name">
+                                @Resource_fa.Hello, @User.Identity.Name
+                            </span>
+                            @*<span class="user-block-role">Designer</span>*@
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- END user info-->
+            <!-- Iterates over all sidebar items-->
+            <li class="nav-heading">
+                <span>Main Navigation</span>
+            </li>
+            <li class="@Html.isActive(controller: "Dashboard")">
+                <a href="@Url.Action(MVC.Dashboard.Index())" title="@Resource_fa.Dashboard">
+                    @*<div class="label label-info pull-right">3</div>*@
+                    <em class="icon-speedometer"></em>
+                    <span data-localize="sidebar.nav.DASHBOARD">@Resource_fa.Dashboard</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="#warehouse" title="Warehouse" data-toggle="collapse">
+                    <em class="fa fa-building"></em>
+                    <span data-localize="sidebar.nav.warehouse">انبار</span>
+                </a>
+                <ul id="warehouse" class="nav sidebar-subnav collapse">
+                    <li class="@Html.isActive(controller: "InventSite")">
+                        <a href="@Url.Action(MVC.InventSite.Index())" title="@Resource_fa.InventSite">
+                            <span data-localize="sidebar.nav.warehouse.InventSite">@Resource_fa.InventSite</span>
+                        </a>
+                    </li>
+                    <li class="@Html.isActive(controller: "InventLocation")">
+                        <a href="@Url.Action(MVC.InventLocation.Index())" title="@Resource_fa.InventLocation">
+                            <span data-localize="sidebar.nav.warehouse.InventLocation">@Resource_fa.InventLocation</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="">
+                <a href="#initialize" title="initialize" data-toggle="collapse">
+                    <em class="fa fa-pinterest-square"></em>
+                    <span data-localize="sidebar.nav.initialize">تعاریف اولیه</span>
+                </a>
+                <ul id="initialize" class="nav sidebar-subnav collapse">
+                    <li class="@Html.isActive(controller: "Category")">
+                        <a href="@Url.Action(MVC.Category.Index())" title="@Resource_fa.Category">
+                            <span data-localize="sidebar.nav.initialize.Category">@Resource_fa.Category</span>
+                        </a>
+                    </li>
+                    <li class="@Html.isActive(controller: "UnitOfMeasure")">
+                        <a href="@Url.Action(MVC.UnitOfMeasure.Index())" title="@Resource_fa.UnitOfMeasure">
+                            <span data-localize="sidebar.nav.initialize.UnitOfMeasure">@Resource_fa.UnitOfMeasure</span>
+                        </a>
+                    </li>
+                    <li class="@Html.isActive(controller: "UnitConvertor")">
+                        <a href="@Url.Action(MVC.UnitConvertor.Index())" title="@Resource_fa.UnitConvertor">
+                            <span data-localize="sidebar.nav.initialize.UnitConvertor">@Resource_fa.UnitConvertor</span>
+                        </a>
+                    </li>
+                    <li class="@Html.isActive(controller: "Invent")">
+                        <a href="@Url.Action(MVC.Invent.Index())" title="@Resource_fa.Invent">
+                            <span data-localize="sidebar.nav.initialize.Invent">@Resource_fa.Invent</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="@Html.isActive(controller: "CounterParty")">
+                <a href="@Url.Action(MVC.CounterParty.Index())" title="@Resource_fa.CounterParty">
+                    <em class="fa fa-user" aria-hidden="true"></em>
+                    <span data-localize="sidebar.nav.Guild">@Resource_fa.CounterParty</span>
+                </a>
+            </li>
+            <li class="@Html.isActive(controller: "PurchOrder")">
+                <a href="@Url.Action(MVC.PurchOrder.Index())" title="@Resource_fa.PurchOrder">
+                    <em class="fa fa-shopping-basket" aria-hidden="true"></em>
+                    <span data-localize="sidebar.nav.Guild">@Resource_fa.PurchOrder</span>
+                </a>
+            </li>
+            <li class="@Html.isActive(controller: "Invoice")">
+                <a href="@Url.Action(MVC.Invoice.Index())" title="@Resource_fa.Invoice">
+                    <em class="fa fa-usd" aria-hidden="true"></em>
+                    <span data-localize="sidebar.nav.Guild">@Resource_fa.Invoice</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Transfer")">
+                <a href="@Url.Action(MVC.Transfer.Index())" title="@Resource_fa.Transfer">
+                    <em class="fa  fa-exchange" aria-hidden="true"></em>
+                    <span data-localize="sidebar.nav.Guild">@Resource_fa.Transfer</span>
+                </a>
+            </li>
+            <li class="@Html.isActive(controller: "SalesOrder")">
+                <a href="@Url.Action(MVC.SalesOrder.Index())" title="@Resource_fa.SalesOrder">
+                    <em class="fa fa-shopping-basket" aria-hidden="true"></em>
+                    <span data-localize="sidebar.nav.Guild">@Resource_fa.SalesOrder</span>
+                </a>
+            </li>
+            @*<li class="@Html.isActive(controller: "InventOnHandPerCounterPartyAndInventLocation")">
+                    <a href="@Url.Action(MVC.InventOnHandPerCounterPartyAndInventLocation.Index())" title="@Resource_fa.InventOnHandPerCounterPartyAndInventLocation">
+                        <em class="fa fa-usd" aria-hidden="true"></em>
+                        <span data-localize="sidebar.nav.Guild">@Resource_fa.InventOnHandPerCounterPartyAndInventLocation</span>
+                    </a>
+                </li>*@
+
+
+            <li class="">
+                <a href="#InventOnHand" title="InventOnHand" data-toggle="collapse">
+                    <em class="fa fa-pinterest-square"></em>
+                    <span data-localize="sidebar.nav.InventOnHand">@Resource_fa.InventOnHand</span>
+                </a>
+                <ul id="InventOnHand" class="nav sidebar-subnav collapse">
+                    <li class="@Html.isActive(controller: "InventOnHand", action: "Index")">
+                        <a href="@Url.Action(MVC.InventOnHand.Index())" title="@Resource_fa.InventOnHand">
+                            <span data-localize="sidebar.nav.InventOnHand.InventOnHand">@Resource_fa.InventOnHand</span>
+                        </a>
+                    </li>
+                    <li class="@Html.isActive(controller: "InventOnHand", action: "PerCounterParty")">
+                        <a href="@Url.Action(MVC.InventOnHand.PerCounterParty())" title="@Resource_fa.PerCounterParty">
+                            <span data-localize="sidebar.nav.InventOnHand.InventOnHandPerCounterParty">@Resource_fa.PerCounterParty</span>
+                        </a>
+                    </li>
+                    <li class="@Html.isActive(controller: "InventOnHand", action: "PerCounterPartyAndInventLocation")">
+                        <a href="@Url.Action(MVC.InventOnHand.PerCounterPartyAndInventLocation())" title="@Resource_fa.PerCounterPartyAndInventLocation">
+                            <span data-localize="sidebar.nav.InventOnHand.InventOnHandPerCounterPartyAndInventLocation">@Resource_fa.PerCounterPartyAndInventLocation</span>
+                        </a>
+                    </li>
+                    <li class="@Html.isActive(controller: "InventOnHand", action: "PerCounterPartyAndInventLocationAndReferenceNumber")">
+                        <a href="@Url.Action(MVC.InventOnHand.PerCounterPartyAndInventLocationAndReferenceNumber())" title="@Resource_fa.PerCounterPartyAndInventLocationAndReferenceNumber">
+                            <span data-localize="sidebar.nav.InventOnHand.InventOnHandPerCounterPartyAndInventLocationAndReferenceNumber">@Resource_fa.PerCounterPartyAndInventLocationAndReferenceNumber</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+        </ul>
+        <!-- END sidebar nav-->
+    </nav>
+</div>
+<!-- END Sidebar (left)-->

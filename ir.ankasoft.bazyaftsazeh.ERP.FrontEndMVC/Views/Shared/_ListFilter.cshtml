@@ -1,0 +1,32 @@
+﻿@model PagerData
+<div class="row">
+    <div class="col-md-6 col-sm-4">
+        <label id="datatable1_length" class="dataTables_length">
+            @Resource_fa.RecordsPerPage
+            @Html.DropDownListFor(model => model.PageSize, Model.PageSizeCollection, new { @class = "form-control input-sm", @onchange = "$('#dataTable').submit();", aria_controls = "datatable" })
+        </label>
+    </div>
+    <div class="col-md-3 col-sm-4">
+        <button class="btn btn-labeled btn-primary btn-sm" type="button" onclick="$('#ExportToExcel').submit();">
+            <span class="btn btn-label">
+                <i class="fa fa-file-excel-o" aria-hidden="true" style="font-size:15px;"></i>
+            </span>
+            @Resource_fa.ExportToExcel
+        </button>
+    </div>
+    <div class="col-md-3 col-sm-3 text-center">
+        @Html.EditorFor(model => model.Keyword, new
+   {
+       htmlAttributes = new
+       {
+           @class = "form-control input-sm",
+           autofocus = "autofocus",
+           placeholder = @Resource_fa.Search,
+           aria_controls = "datatable",
+           onchange = "$('#keyword').val($(this).val());$('#CurrentPage').val(1)"
+       }
+   })
+    </div>
+
+    @Html.HiddenFor(model => model.CurrentPage)
+</div>
