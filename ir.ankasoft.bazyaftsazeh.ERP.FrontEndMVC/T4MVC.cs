@@ -31,6 +31,7 @@ public static partial class MVC
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DashboardController Dashboard = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_DashboardController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.ManageController Manage = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_ManageController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PagesController Pages = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PagesController();
+    public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.RolesAdminController RolesAdmin = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_RolesAdminController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -278,6 +279,38 @@ namespace Links
         
         }
     
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class IranSans {
+            public const string UrlPath = "~/Content/IranSans";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string IRANSans_Bold_web_eot = Url("IRANSans-Bold-web.eot");
+            public static readonly string IRANSans_Bold_web_ttf = Url("IRANSans-Bold-web.ttf");
+            public static readonly string IRANSans_Bold_web_woff = Url("IRANSans-Bold-web.woff");
+            public static readonly string IRANSans_Bold_web_woff2 = Url("IRANSans-Bold-web.woff2");
+            public static readonly string IRANSans_Medium_web_eot = Url("IRANSans-Medium-web.eot");
+            public static readonly string IRANSans_Medium_web_ttf = Url("IRANSans-Medium-web.ttf");
+            public static readonly string IRANSans_Medium_web_woff = Url("IRANSans-Medium-web.woff");
+            public static readonly string IRANSans_Medium_web_woff2 = Url("IRANSans-Medium-web.woff2");
+            public static readonly string IRANSans_web_eot = Url("IRANSans-web.eot");
+            public static readonly string IRANSans_web_ttf = Url("IRANSans-web.ttf");
+            public static readonly string IRANSans_web_woff = Url("IRANSans-web.woff");
+            public static readonly string IRANSans_web_woff2 = Url("IRANSans-web.woff2");
+            public static readonly string IranSans_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/IranSans.min.css") ? Url("IranSans.min.css") : Url("IranSans.css");
+            public static readonly string IRANSansWeb_eot = Url("IRANSansWeb.eot");
+            public static readonly string IRANSansWeb_woff = Url("IRANSansWeb.woff");
+            public static readonly string IRANSansWeb_woff2 = Url("IRANSansWeb.woff2");
+            public static readonly string IRANSansWeb_Bold_woff = Url("IRANSansWeb_Bold.woff");
+            public static readonly string IRANSansWeb_Bold_woff2 = Url("IRANSansWeb_Bold.woff2");
+            public static readonly string IRANSansWeb_Light_woff = Url("IRANSansWeb_Light.woff");
+            public static readonly string IRANSansWeb_Light_woff2 = Url("IRANSansWeb_Light.woff2");
+            public static readonly string IRANSansWeb_Medium_eot = Url("IRANSansWeb_Medium.eot");
+            public static readonly string IRANSansWeb_Medium_woff = Url("IRANSansWeb_Medium.woff");
+            public static readonly string IRANSansWeb_Medium_woff2 = Url("IRANSansWeb_Medium.woff2");
+            public static readonly string IRANSansWeb_UltraLight_woff = Url("IRANSansWeb_UltraLight.woff");
+            public static readonly string IRANSansWeb_UltraLight_woff2 = Url("IRANSansWeb_UltraLight.woff2");
+        }
+    
         public static readonly string jquery_contextMenu_overlay_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.contextMenu-overlay.min.css") ? Url("jquery.contextMenu-overlay.min.css") : Url("jquery.contextMenu-overlay.css");
         public static readonly string jquery_contextMenu_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.contextMenu.min.css") ? Url("jquery.contextMenu.min.css") : Url("jquery.contextMenu.css");
         public static readonly string jquery_contextMenu_min_css = Url("jquery.contextMenu.min.css");
@@ -462,6 +495,13 @@ namespace Links
                 }
                 public static class Assets
                 {
+                }
+            }
+            public static partial class IranSans 
+            {
+                public static class Assets
+                {
+                    public const string IranSans_css = "~/Content/IranSans/IranSans.css";
                 }
             }
             public static partial class MdBootstrapPersianDateTimePicker 

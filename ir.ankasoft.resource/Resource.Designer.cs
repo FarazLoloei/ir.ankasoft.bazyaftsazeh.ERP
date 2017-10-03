@@ -178,7 +178,7 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to مجتمع انبارهای تقی زاده.
+        ///   Looks up a localized string similar to شرکت بازیافت سازه.
         /// </summary>
         public static string ApplicationTitle {
             get {

@@ -195,6 +195,16 @@
     <Content Include="Dynamic Expressions.html" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\IranSans\IranSans.css" />
+    <Content Include="fonts\web\fonts.css" />
+    <Content Include="fonts\web\WebMitra.svg" />
+    <Content Include="fonts\web\WebMitraBold.svg" />
+    <Content Include="fonts\web\WebRoya.svg" />
+    <Content Include="fonts\web\WebTabassom.svg" />
+    <Content Include="fonts\web\WebTitr.svg" />
+    <Content Include="fonts\web\WebTitrTGE.svg" />
+    <Content Include="fonts\web\WebTraffic.svg" />
+    <Content Include="fonts\web\WebYekan.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -245,6 +255,57 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Content Include="fonts\web\WebMitra.eot" />
+    <Content Include="fonts\web\WebMitra.ttf" />
+    <Content Include="fonts\web\WebMitra.woff" />
+    <Content Include="fonts\web\WebMitraBold.eot" />
+    <Content Include="fonts\web\WebMitraBold.ttf" />
+    <Content Include="fonts\web\WebMitraBold.woff" />
+    <Content Include="fonts\web\WebNasim.eot" />
+    <Content Include="fonts\web\WebNasim.ttf" />
+    <Content Include="fonts\web\WebNasim.woff" />
+    <Content Include="fonts\web\WebRoya.eot" />
+    <Content Include="fonts\web\WebRoya.ttf" />
+    <Content Include="fonts\web\WebRoya.woff" />
+    <Content Include="fonts\web\WebTabassom.eot" />
+    <Content Include="fonts\web\WebTabassom.ttf" />
+    <Content Include="fonts\web\WebTabassom.woff" />
+    <Content Include="fonts\web\WebTitr.eot" />
+    <Content Include="fonts\web\WebTitr.ttf" />
+    <Content Include="fonts\web\WebTitr.woff" />
+    <Content Include="fonts\web\WebTitrTGE.eot" />
+    <Content Include="fonts\web\WebTitrTGE.ttf" />
+    <Content Include="fonts\web\WebTitrTGE.woff" />
+    <Content Include="fonts\web\WebTraffic.eot" />
+    <Content Include="fonts\web\WebTraffic.ttf" />
+    <Content Include="fonts\web\WebTraffic.woff" />
+    <Content Include="fonts\web\WebYekan.eot" />
+    <Content Include="fonts\web\WebYekan.ttf" />
+    <Content Include="fonts\web\WebYekan.woff" />
+    <Content Include="Content\IranSans\IRANSans-Bold-web.eot" />
+    <Content Include="Content\IranSans\IRANSans-Bold-web.ttf" />
+    <Content Include="Content\IranSans\IRANSans-Bold-web.woff" />
+    <Content Include="Content\IranSans\IRANSans-Bold-web.woff2" />
+    <Content Include="Content\IranSans\IRANSans-Medium-web.eot" />
+    <Content Include="Content\IranSans\IRANSans-Medium-web.ttf" />
+    <Content Include="Content\IranSans\IRANSans-Medium-web.woff" />
+    <Content Include="Content\IranSans\IRANSans-Medium-web.woff2" />
+    <Content Include="Content\IranSans\IRANSans-web.eot" />
+    <Content Include="Content\IranSans\IRANSans-web.ttf" />
+    <Content Include="Content\IranSans\IRANSans-web.woff" />
+    <Content Include="Content\IranSans\IRANSans-web.woff2" />
+    <Content Include="Content\IranSans\IRANSansWeb.eot" />
+    <Content Include="Content\IranSans\IRANSansWeb.woff" />
+    <Content Include="Content\IranSans\IRANSansWeb.woff2" />
+    <Content Include="Content\IranSans\IRANSansWeb_Bold.woff" />
+    <Content Include="Content\IranSans\IRANSansWeb_Bold.woff2" />
+    <Content Include="Content\IranSans\IRANSansWeb_Light.woff" />
+    <Content Include="Content\IranSans\IRANSansWeb_Light.woff2" />
+    <Content Include="Content\IranSans\IRANSansWeb_Medium.eot" />
+    <Content Include="Content\IranSans\IRANSansWeb_Medium.woff" />
+    <Content Include="Content\IranSans\IRANSansWeb_Medium.woff2" />
+    <Content Include="Content\IranSans\IRANSansWeb_UltraLight.woff" />
+    <Content Include="Content\IranSans\IRANSansWeb_UltraLight.woff2" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />
@@ -377,9 +438,13 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolesAdminController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Startup.cs" />
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

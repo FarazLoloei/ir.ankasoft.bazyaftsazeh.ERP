@@ -1,18 +1,18 @@
-﻿html { font-family: BBCNassim, Tahoma; font-size: 16px; }
+﻿html { font-family: 'IranSans', Tahoma; font-size: 14px; }
 
 code,
 kbd,
 pre,
-samp { font-family: BBCNassim, Tahoma; }
+samp { font-family: 'IranSans', Tahoma; }
 
-body { font-family: BBCNassim, Tahoma; font-size: 16px; }
+body { font-family: 'IranSans', Tahoma; font-size:12px; }
 
-.tooltip { font-family: BBCNassim, Tahoma; }
+.tooltip { font-family: 'IranSans', Tahoma; }
 
-.popover { font-family: BBCNassim, Tahoma; }
+.popover { font-family: 'IranSans', Tahoma; }
 
 .carousel-control .icon-prev,
-.carousel-control .icon-next { font-family: BBCNassim, Tahoma; }
+.carousel-control .icon-next { font-family: 'IranSans', Tahoma; }
 
 .radio label, .checkbox label { padding-left: 0; padding-right: 20px; }
 
@@ -24,12 +24,12 @@ body { font-family: BBCNassim, Tahoma; font-size: 16px; }
 
 .English_Regular { font-family: RobotoRegular; font-size: 12px; }
 
-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */ font-family: BBCNassim, Tahoma; font-size: 14px; }
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */ font-family: 'IranSans', Tahoma; font-size: 12px; }
 
-input::-moz-placeholder { /* Firefox 19+ */ font-family: BBCNassim, Tahoma; font-size: 14px; }
+input::-moz-placeholder { /* Firefox 19+ */ font-family: 'IranSans', Tahoma; font-size: 12px; }
 
-input:-ms-input-placeholder { /* IE 10+ */ font-family: BBCNassim, Tahoma; font-size: 14px; }
+input:-ms-input-placeholder { /* IE 10+ */ font-family: 'IranSans', Tahoma; font-size: 12px; }
 
-input:-moz-placeholder { /* Firefox 18- */ font-family: BBCNassim, Tahoma; font-size: 14px; }
+input:-moz-placeholder { /* Firefox 18- */ font-family: 'IranSans', Tahoma; font-size: 12px; }
 
 .anka_dataTable { margin-top: 6px; border-top: 0px; }

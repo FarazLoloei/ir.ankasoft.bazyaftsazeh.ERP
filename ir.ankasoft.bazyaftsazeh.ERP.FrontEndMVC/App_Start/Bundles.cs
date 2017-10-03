@@ -27,6 +27,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
         {
             public static readonly string bootstrap_RTL = "~/Content/bootstrapCss";
             public static readonly string bbcNassim = "~/bundles/bbcnassim";
+            public static readonly string iranSans = "~/Content/IranSans";
             public static readonly string roboto = "~/bundles/roboto";
             public static readonly string contextMenuCss = "~/bundles/contextMenuCss";
             public static readonly string sweetAlertCss = "~/bundles/SweetAlertCss";

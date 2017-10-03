@@ -1,0 +1,54 @@
+﻿
+@font-face {
+    font-family: "WMitra";
+    font-style: normal;
+    font-weight: normal;
+    src: url("WebMitra.eot?#iefix") format("embedded-opentype"), url("WebMitra.woff") format("woff"), url("WebMitra.ttf") format("truetype"), url("WebMitra.svg#WebMitra") format("svg");
+}
+@font-face {
+    font-family: "WMitraBold";
+    font-style: normal;
+    font-weight: bold;
+    src: url("WebMitraBold.eot?#iefix") format("embedded-opentype"), url("WebMitraBold.woff") format("woff"), url("WebMitraBold.ttf") format("truetype"), url("WebMitraBold.svg#WebMitraBold") format("svg");
+}
+@font-face {
+    font-family: "WRoya";
+    font-style: normal;
+    font-weight: normal;
+    src: url("WebRoya.eot?#iefix") format("embedded-opentype"), url("WebRoya.woff") format("woff"), url("WebRoya.ttf") format("truetype"), url("WebRoya.svg#WebRoya") format("svg");
+}
+@font-face {
+    font-family: "WTabassom";
+    font-style: normal;
+    font-weight: normal;
+    src: url("WebTabassom.eot?#iefix") format("embedded-opentype"), url("WebTabassom.woff") format("woff"), url("WebTabassom.ttf") format("truetype"), url("WebTabassom.svg#WebTabassom") format("svg");
+}
+@font-face {
+    font-family: "WTitr";
+    font-style: normal;
+    font-weight: bold;
+    src: url("WebTitr.eot?#iefix") format("embedded-opentype"), url("WebTitr.woff") format("woff"), url("WebTitr.ttf") format("truetype"), url("WebTitr.svg#WebTitr") format("svg");
+}
+@font-face {
+    font-family: "WTitrTGE";
+    font-style: normal;
+    font-weight: bold;
+    src: url("WebTitrTGE.eot?#iefix") format("embedded-opentype"), url("WebTitrTGE.woff") format("woff"), url("WebTitrTGE.ttf") format("truetype"), url("WebTitrTGE.svg#WebTitrTGEBold") format("svg");
+}
+@font-face {
+    font-family: "WYekan";
+    font-style: normal;
+    font-weight: normal;
+    src: url("WebYekan.eot?#iefix") format("embedded-opentype"), url("WebYekan.woff") format("woff"), url("WebYekan.ttf") format("truetype"), url("WebYekan.svg#WebYekan") format("svg");
+}
+@font-face {
+    font-family: "WTraffic";
+    font-style: normal;
+    font-weight: normal;
+    src: url("WebTraffic.eot?#iefix") format("embedded-opentype"), url("WebTraffic.woff") format("woff"), url("WebTraffic.ttf") format("truetype"), url("WebTraffic.svg#WebTraffic") format("svg");
+}
+@font-face {
+    font-family: "WNasim";
+    font-style: normal;
+    font-weight: bold;
+    src: url("WebNasim.eot?#iefix") format("embedded-opentype"), url("WebNasim.woff") format("woff"), url("WebNasim.ttf") format("truetype"), url("WebNasim.svg#WebNasim") format("svg");

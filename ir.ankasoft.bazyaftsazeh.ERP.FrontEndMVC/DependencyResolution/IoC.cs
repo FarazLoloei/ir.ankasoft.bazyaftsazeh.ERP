@@ -25,6 +25,8 @@ using Microsoft.Owin;
 using StructureMap;
 using System.Data.Entity;
 using System.Web;
+using ir.ankasoft.entities.Repositories;
+using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
 {
@@ -52,8 +54,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
                 //x.For<Entities.Repositories.IVehicleTypeRepository>().Use<Repositories.VehicleTypeRepository>();
                 //x.For<Entities.Repositories.IVehicleInfoRepository>().Use<Repositories.VehicleInfoRepository>();
                 //x.For<Entities.Repositories.IInvoiceRepository>().Use<Repositories.InvoiceRepository>();
-                //x.For<Entities.Repositories.INotificationRepository>().Use<Repositories.NotificationRepository>();
-                //x.For<Entities.Repositories.INotificationTypeRepository>().Use<Repositories.NotificationTypeRepository>();
+                x.For<INotificationRepository>().Use<NotificationRepository>();
+                x.For<INotificationTypeRepository>().Use<NotificationTypeRepository>();
                 //x.For<Entities.Repositories.ITransferRepository>().Use<Repositories.TransferRepository>();
                 //x.For<Entities.Repositories.ISalesTypeRepository>().Use<Repositories.SalesTypeRepository>();
                 //x.For<Entities.Repositories.ISalesStatusRepository>().Use<Repositories.SalesStatusRepository>();

@@ -92,6 +92,9 @@
     <Compile Include="Repositories\ApplicationRoleManagerRepository.cs" />
     <Compile Include="Repositories\ApplicationSignInManagerRepository.cs" />
     <Compile Include="Repositories\ApplicationUserManagerRepository.cs" />
+    <Compile Include="Repositories\NotificationRepository.cs" />
+    <Compile Include="Repositories\NotificationTypeRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

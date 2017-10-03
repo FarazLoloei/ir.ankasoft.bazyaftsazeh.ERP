@@ -29,6 +29,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             bundles.Add(new StyleBundle(Bundles.Styles.bbcNassim).Include(
                 "~/Vendor/bbcnassim/css/font-bbcnassim.min.css", new CssRewriteUrlTransform()
+
+            ));
+
+            bundles.Add(new StyleBundle(Bundles.Styles.iranSans).Include(
+                "~/Content/IranSans/IranSans.css", new CssRewriteUrlTransform()
+            //Links.Content.IranSans.IranSans_css, new CssRewriteUrlTransform()
+            //"~/Vendor/bbcnassim/css/font-bbcnassim.min.css", new CssRewriteUrlTransform()
             ));
 
             bundles.Add(new StyleBundle(Bundles.Styles.roboto).Include(
@@ -76,7 +83,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             bundles.Add(new ScriptBundle(Bundles.Scripts.Anka).Include(
                // App init
-               Links.Bundles.Scripts.app.Assets.app_init_js,
+               //Links.Bundles.Scripts.app.Assets.app_init_js,
 
                // Modules
                Links.Bundles.Scripts.app.modules.Assets.bootstrap_start_js,
@@ -89,7 +96,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                Links.Bundles.Scripts.app.modules.Assets.play_animation_js,
                Links.Bundles.Scripts.app.modules.Assets.sidebar_js,
                Links.Bundles.Scripts.app.modules.Assets.slimscroll_js,
-               Links.Bundles.Scripts.app.modules.Assets.toggle_state_js,
+               //Links.Bundles.Scripts.app.modules.Assets.toggle_state_js,
                Links.Bundles.Scripts.app.modules.Assets.utils_js//,
                                                                 //Links.Bundles.scripts.app.modules.Assets.select2_js
            ));
