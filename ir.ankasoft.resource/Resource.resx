@@ -214,7 +214,7 @@
     <value>خوش آمدید</value>
   </data>
   <data name="WelcomeMessage" xml:space="preserve">
-    <value>به نرم افزار انبارداری {0} خوش آمدید</value>
+    <value>به نرم افزار {0} خوش آمدید</value>
   </data>
   <data name="Address" xml:space="preserve">
     <value>آدرس</value>

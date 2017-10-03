@@ -78,6 +78,7 @@
     <Compile Include="Communication.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="Enums\CommunicationType.cs" />
+    <Compile Include="Enums\NotificationType.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="NotificationType.cs" />
     <Compile Include="PostalAddress.cs" />

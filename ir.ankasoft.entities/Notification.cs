@@ -47,10 +47,12 @@ namespace ir.ankasoft.entities
             }
         }
 
-        public long NotificationTypeRefRecId { get; set; }
+        //public long NotificationTypeRefRecId { get; set; }
 
-        [ForeignKey(nameof(NotificationTypeRefRecId))]
-        public NotificationType Type { get; set; }
+        //[ForeignKey(nameof(NotificationTypeRefRecId))]
+        //public NotificationType Type { get; set; }
+
+        public Enums.NotificationType Type { get; set; }
 
         public DateTime createdDateTime { get; set; }
         public DateTime? modifiedDateTime { get; set; }

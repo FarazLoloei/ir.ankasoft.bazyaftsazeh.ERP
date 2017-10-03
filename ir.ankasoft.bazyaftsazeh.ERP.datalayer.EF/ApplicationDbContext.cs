@@ -54,6 +54,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         public DbSet<Person> People { get; set; }
         public DbSet<PostalAddress> PostalAddresses { get; set; }
         public DbSet<Province> Provinces { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         public override int SaveChanges()
         {

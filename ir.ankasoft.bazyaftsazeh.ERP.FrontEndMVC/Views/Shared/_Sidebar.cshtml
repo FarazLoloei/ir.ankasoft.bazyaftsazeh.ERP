@@ -36,12 +36,12 @@
                     <span data-localize="sidebar.nav.DASHBOARD">@Resource.Dashboard</span>
                 </a>
             </li>
-            <li class="">
+            @*<li class="">
                 <a href="#warehouse" title="Warehouse" data-toggle="collapse">
                     <em class="fa fa-building"></em>
                     <span data-localize="sidebar.nav.warehouse">@Resource.Warehouse</span>
                 </a>
-                @*<ul id="warehouse" class="nav sidebar-subnav collapse">
+                <ul id="warehouse" class="nav sidebar-subnav collapse">
                     <li class="@Html.isActive(controller: "InventSite")">
                         <a href="@Url.Action(MVC.InventSite.Index())" title="@Resource.InventSite">
                             <span data-localize="sidebar.nav.warehouse.InventSite">@Resource.InventSite</span>
@@ -52,8 +52,8 @@
                             <span data-localize="sidebar.nav.warehouse.InventLocation">@Resource.InventLocation</span>
                         </a>
                     </li>
-                </ul>*@
-            </li>
+                </ul>
+            </li>*@
 
             <li class="">
                 <a href="#initialize" title="initialize" data-toggle="collapse">

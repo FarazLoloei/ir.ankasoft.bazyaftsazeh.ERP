@@ -28,10 +28,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         // GET: Dashboard
         public virtual ActionResult Index()
         {
-            var model = new ViewModelDashboard();
-            //{
-            //    LatestActivities = Mapper.Map<List<ViewModelDisplayNotification>>(_notificationRepository.GetLatestActivities())
-            //};
+            var model = new ViewModelDashboard
+            {
+                LatestActivities = Mapper.Map<List<ViewModelDisplayNotification>>(_notificationRepository.GetLatestActivities())
+            };
 
             return View(model);
         }

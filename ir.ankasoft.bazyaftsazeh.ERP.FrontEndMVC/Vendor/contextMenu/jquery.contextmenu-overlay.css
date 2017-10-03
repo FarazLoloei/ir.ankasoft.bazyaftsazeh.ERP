@@ -1,0 +1,12 @@
+﻿.context-menu-theme-default .context-menu-item { font-family: BBCNassim,Tahoma; }
+.context-menu-theme-xp .context-menu-item { font-family: BBCNassim,Tahoma; }
+.context-menu-theme-vista .context-menu-item { color: #ffffff; font-family: BBCNassim,Tahoma; font-size: 15px; }
+/*.context-menu-theme-vista .context-menu-separator { margin: 0; border-top: 1px solid #232323; border-bottom: 1px solid #232323; }*/
+.context-menu-theme-vista .context-menu-separator { margin: 0; border-top: 1px solid #999999; border-bottom: 0px solid #fafbfc; }
+.context-menu-theme-vista .context-menu-item-hover { border: 1px solid #0866C6; }
+.context-menu-theme-vista .context-menu-item .context-menu-item-inner { padding: 4px 16px 4px 35px; }
+.context-menu-theme-vista .context-menu-item-hover .context-menu-item-inner { padding: 3px 15px 3px 35px; margin-left: 0px; }
+
+.context-menu-theme-osx .context-menu-item { font-family: BBCNassim,Tahoma; font-size: inherit; }
+.context-menu-theme-human .context-menu-item { font-family: BBCNassim,Tahoma; font-size: inherit; }
+.context-menu-theme-gloss .context-menu-item { font-family: BBCNassim,Tahoma; font-size: inherit; }

@@ -2068,7 +2068,7 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to به نرم افزار انبارداری {0} خوش آمدید.
+        ///   Looks up a localized string similar to به نرم افزار {0} خوش آمدید.
         /// </summary>
         public static string WelcomeMessage {
             get {
