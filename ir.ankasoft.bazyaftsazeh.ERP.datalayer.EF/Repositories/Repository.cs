@@ -119,7 +119,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
             }
         }
 
-        public virtual IEnumerable<T> LoadByFilter(string keyword, string sort, string sortDir, out int totalRecords)
+        public virtual IEnumerable<T> LoadByFilter(string keyword,
+                                        int currentPage,
+                                        int pageSize,
+                                        string sort,
+                                        string sortDir,
+                                        out int totalRecords)
         {
             totalRecords = 0;
             return new List<T>().AsEnumerable();

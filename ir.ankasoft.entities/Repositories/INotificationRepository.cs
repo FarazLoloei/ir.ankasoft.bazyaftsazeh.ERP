@@ -10,9 +10,11 @@ namespace ir.ankasoft.entities.Repositories
     public interface INotificationRepository : IRepository<Notification, long>
     {
         new IEnumerable<Notification> LoadByFilter(string keyword,
-                                                   string sort,
-                                                   string sortDir,
-                                                   out int totalRecords);
+                                        int currentPage,
+                                        int pageSize,
+                                        string sort,
+                                        string sortDir,
+                                        out int totalRecords);
 
         IEnumerable<Notification> GetLatestActivities(int count = 5);
     }

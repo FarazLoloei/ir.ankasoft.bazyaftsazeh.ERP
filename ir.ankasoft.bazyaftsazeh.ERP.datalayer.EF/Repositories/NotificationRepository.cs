@@ -10,9 +10,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
     public class NotificationRepository : Repository<Notification>, INotificationRepository
     {
         public override IEnumerable<Notification> LoadByFilter(string keyword,
-                                               string sort,
-                                               string sortDir,
-                                               out int totalRecords)
+                                        int currentPage,
+                                        int pageSize,
+                                        string sort,
+                                        string sortDir,
+                                        out int totalRecords)
         {
             throw new NotImplementedException();
         }

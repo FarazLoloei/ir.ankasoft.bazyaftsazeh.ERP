@@ -12,7 +12,7 @@ using System.Web.Mvc;
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
     [Authorize(Roles = "Developer")]
-    public partial class ManageController : Controller
+    public partial class ManageController : BaseController
     {
         public ManageController()
         {

@@ -15,7 +15,7 @@ using System.Web.Mvc;
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
     [Authorize(Roles = "Developer")]
-    public partial class AccountController : Controller
+    public partial class AccountController : BaseController
     {
         public AccountController()
         {

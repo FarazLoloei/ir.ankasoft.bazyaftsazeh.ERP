@@ -12,7 +12,7 @@ using System.Web.Mvc;
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
     [Authorize]
-    public partial class DashboardController : Controller
+    public partial class DashboardController : BaseController
     {
         private readonly INotificationRepository _notificationRepository;
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;

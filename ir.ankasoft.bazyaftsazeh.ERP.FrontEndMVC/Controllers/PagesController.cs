@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
     [Authorize(Roles = "Admin, Developer")]
-    public partial class PagesController : Controller
+    public partial class PagesController : BaseController
     {
         // GET: Admin/Pages
         //public ActionResult Index()

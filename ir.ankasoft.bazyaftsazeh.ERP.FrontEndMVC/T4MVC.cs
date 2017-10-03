@@ -28,9 +28,11 @@ using T4MVC;
 public static partial class MVC
 {
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.AccountController Account = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_AccountController();
+    public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.BaseController Base = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_BaseController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DashboardController Dashboard = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_DashboardController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.ManageController Manage = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_ManageController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PagesController Pages = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PagesController();
+    public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PartyController Party = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PartyController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.RolesAdminController RolesAdmin = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_RolesAdminController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
@@ -323,6 +325,7 @@ namespace Links
             public static readonly string jquery_Bootstrap_PersianDateTimePicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.Bootstrap-PersianDateTimePicker.min.css") ? Url("jquery.Bootstrap-PersianDateTimePicker.min.css") : Url("jquery.Bootstrap-PersianDateTimePicker.css");
         }
     
+        public static readonly string PagedList_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/PagedList.min.css") ? Url("PagedList.min.css") : Url("PagedList.css");
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
     }
 
@@ -530,6 +533,7 @@ namespace Links
                 public const string jquery_contextMenu_overlay_css = "~/Content/jquery.contextMenu-overlay.css";
                 public const string jquery_contextMenu_css = "~/Content/jquery.contextMenu.css";
                 public const string jquery_contextMenu_min_css = "~/Content/jquery.contextMenu.min.css";
+                public const string PagedList_css = "~/Content/PagedList.css";
                 public const string Site_css = "~/Content/Site.css";
             }
         }

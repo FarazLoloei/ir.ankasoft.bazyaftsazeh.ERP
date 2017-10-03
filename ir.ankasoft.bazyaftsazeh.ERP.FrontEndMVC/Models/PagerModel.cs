@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models
+namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 {
     public class PagerModel<T> where T : class
     {

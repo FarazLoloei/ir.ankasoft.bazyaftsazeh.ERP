@@ -1,0 +1,27 @@
+﻿@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.PartyDisplayViewModel>
+
+<table class="table anka_dataTable table-striped table-bordered">
+    @{
+        var modelHeader = Model.Data.FirstOrDefault();
+        <thead>
+            <tr class="context-menu">
+                <th>@Html.LabelFor(modelItem => modelHeader.Title)</th>
+                <th></th>
+            </tr>
+        </thead>
+        if (Model.Data.Any())
+        {
+            <tbody>
+                @foreach (var item in Model.Data)
+                {
+                    <tr data-itemid='@item.Id' class="context-menu">
+                        <td class="col-md-2">@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td class="col-md-10"></td>
+                    </tr>
+                }
+            </tbody>
+        }
+    }
+</table>
+
+@Html.Partial(MVC.Shared.Views._Pager, Model.PageData)

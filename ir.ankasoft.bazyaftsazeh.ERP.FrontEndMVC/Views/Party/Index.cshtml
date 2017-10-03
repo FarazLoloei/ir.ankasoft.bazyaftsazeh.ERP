@@ -1,0 +1,158 @@
+﻿@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.PartyDisplayViewModel>
+
+<div class="content-heading">@Resource.List @Resource.CounterParty </div>
+@using (Html.BeginForm(MVC.Party.Index(), FormMethod.Get, new { id = "dataTable" }))
+{
+    @Html.Partial(MVC.Shared.Views._ListFilter, Model.PageData);
+}
+<div class="table-responsive b0" id="anka-DataSection">
+    <div id="datatable1_wrapper" class="dataTables_wrapper form-inline no-footer">
+        @Html.Partial(MVC.Party.Views._List, Model)
+    </div>
+</div>
+
+@*@using (Html.BeginForm(MVC.Category.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { }
+@using (Html.BeginForm(MVC.Category.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" }))
+            { <input type="hidden" name="id" value="" id="RecID" /> }
+@using (Html.BeginForm(MVC.Category.ExportToExcel(), FormMethod.Get, new { @class = "invisible", id = "ExportToExcel" }))
+            { <input type="hidden" name="keyword" value="" id="keyword" /> }*@
+@section Styles {
+    @Styles.Render(Bundles.Styles.sweetAlertCss)
+}
+
+@section scripts{
+    @Scripts.Render(Bundles.Scripts.sweetAlert)
+    @Scripts.Render(Bundles.Scripts.AnkaTools)
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('select[name=PageSize]').val('@Model.PageData.PageSize');
+
+            $('#dataTable').submit(function (e) {
+                e.preventDefault();
+                var serializedValues = $('#dataTable').serialize();
+                UpdateQueryString(serializedValues);
+                $.ajax({
+                    url: '@Url.Action(MVC.Party.Index())',
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    data: serializedValues,
+                    success: function (result) {
+                        $('#anka-DataSection').html(result);
+                        InitContextMenu();
+                    },
+                    error: function (xhr, status) {
+                        swal("@Resource.Cancelled ", status, "error");
+                    }
+                })
+            });
+
+            InitContextMenu();
+
+        });
+
+        function InitContextMenu() {
+            @*var contextMenu =
+           [{ '<i class="fa fa-file-o"></i> @Resource.New ': function (menuItem, menu) { $('#Create').submit(); } },
+            { '<i class="fa fa-pencil"></i> @Resource.Edit ': function (menuItem, menu) { $('#RecID').val($(menu.target).data('itemid')); $('#Modify').submit(); } },
+            {
+                '<i class="fa fa-trash-o"></i> @Resource.Delete ': function (menuItem, menu) {
+
+                    swal({
+                        title: "@Resource.AreYouSure ",
+                        text: "@Resource.YouWillNotBeAbleToRecoverThisRecord ",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "@Resource.Yes ",
+                        cancelButtonText: "@Resource.No ",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function (isConfirm) {
+                        if (isConfirm) { Delete(menu); } else { swal("@Resource.Cancelled ", "@Resource.YourFileIsSafe ", "error"); }
+                    });
+                }
+            }
+           ];
+
+            $('.anka_dataTable tr').contextMenu(contextMenu, { theme: 'vista' });*@
+            $.contextMenu({
+                selector: '.context-menu',
+                callback: function (key, options) {
+                    switch (key) {
+                        case 'New':
+                            $('#Create').submit();
+                            break;
+                        case 'Edit':
+                            $('#RecID').val($(options.$trigger).data('itemid'));
+                            $('#Modify').submit();
+                            break;
+                        case 'Delete':
+                            swal({
+                                title: "@Resource.AreYouSure ",
+                                text: "@Resource.YouWillNotBeAbleToRecoverThisRecord ",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "@Resource.Yes ",
+                                cancelButtonText: "@Resource.No ",
+                                closeOnConfirm: false,
+                                closeOnCancel: false
+                            }, function (isConfirm) {
+                                if (isConfirm) { Delete(menu); } else { swal("@Resource.Cancelled ", "@Resource.YourFileIsSafe ", "error"); }
+                            });
+                            break;
+                        case 'ExportToExcel':
+                            $('#ExportToExcel').submit();
+                            break;
+                    }
+                },
+                items: {
+                    "New": { name: '@Resource.New', icon: 'fa-file-o' },
+                    "Edit": { name: '@Resource.Edit', icon: 'fa-pencil' },
+                    "Delete": { name: '@Resource.Delete', icon: 'fa-trash-o' },
+                    "sep1": "---------",
+                    "ExportToExcel": { name: '@Resource.ExportToExcel', icon: 'fa-file-excel-o'/*, disabled: true*/ },
+                }
+            });
+        }
+
+        function Delete(menu) {
+            @*var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.Remove())/{itemId}';
+            $.ajax({
+                type: "POST",
+                url: myUrl.replace("{itemId}", $(menu.target).data('itemid')),
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    $('#dataTable').submit();
+                    swal("@Resource.Deleted ", "@Resource.YourFileHasBeenDeleted ", "success");
+                },
+                error: function (Error) {
+                    swal("@Resource.Cancelled ", "@Resource.YourFileIsSafe ", "error");
+                }
+            });*@
+        }
+
+        function managePagination(_currentPage) {
+            var CurrentPage = $('input[name=CurrentPage]');
+            var CurrentPageVal = CurrentPage.val();
+            switch (_currentPage) {
+                case '+':
+                    CurrentPageVal++;
+                    break;
+                case '-':
+                    CurrentPageVal--;
+                    break;
+                case '>>':
+                    CurrentPageVal = 1;
+                    break;
+                default:
+                    CurrentPageVal = _currentPage;
+            }
+            CurrentPage.val(CurrentPageVal);
+            $('#dataTable').submit();
+        };
+    </script>
+}

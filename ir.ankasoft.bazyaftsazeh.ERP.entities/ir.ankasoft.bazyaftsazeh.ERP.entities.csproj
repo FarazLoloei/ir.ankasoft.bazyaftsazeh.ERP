@@ -59,6 +59,7 @@
     <Compile Include="Plate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplacementsPlan.cs" />
+    <Compile Include="Repositories\IPartyRepository.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleTip.cs" />
   </ItemGroup>

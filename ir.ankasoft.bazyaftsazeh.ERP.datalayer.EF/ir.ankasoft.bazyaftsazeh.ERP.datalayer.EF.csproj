@@ -93,7 +93,7 @@
     <Compile Include="Repositories\ApplicationSignInManagerRepository.cs" />
     <Compile Include="Repositories\ApplicationUserManagerRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
-    <Compile Include="Repositories\NotificationTypeRepository.cs" />
+    <Compile Include="Repositories\PartyRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
