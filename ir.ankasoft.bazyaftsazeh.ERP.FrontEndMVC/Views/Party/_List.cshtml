@@ -5,7 +5,12 @@
         var modelHeader = Model.Data.FirstOrDefault();
         <thead>
             <tr class="context-menu">
+                <th>@Html.ActionLink(< text > Html.LabelFor(modelItem => modelHeader.NationalCode) </ text >, "Index", new { sort = nameof(modelHeader.NationalCode) }) </th>
+                <th>@Html.ActionLink(<text>Html.LabelFor(modelItem=>modelHeader.NationalCode)</text>, "Index", new { sort = nameof(modelHeader.NationalCode) }) </th>
                 <th>@Html.LabelFor(modelItem => modelHeader.Title)</th>
+                <th>نقش ها</th>
+                <th>تلفن</th>
+                <th>موبایل</th>
                 <th></th>
             </tr>
         </thead>
@@ -15,8 +20,12 @@
                 @foreach (var item in Model.Data)
                 {
                     <tr data-itemid='@item.Id' class="context-menu">
+                        <td class="col-md-2">@Html.DisplayFor(modelItem => item.NationalCode)</td>
                         <td class="col-md-2">@Html.DisplayFor(modelItem => item.Title)</td>
-                        <td class="col-md-10"></td>
+                        <td class="col-md-2"></td>
+                        <td class="col-md-1"></td>
+                        <td class="col-md-1"></td>
+                        <td class="col-md-4"></td>
                     </tr>
                 }
             </tbody>
