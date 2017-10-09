@@ -25,7 +25,6 @@ namespace ir.ankasoft.infrastructure
         IQueryable<T> FindAll(
             params Expression<Func<T, object>>[] includeProperties);
 
-
         /// <summary>
         /// Returns an IQueryable of items of type T.
         /// </summary>
@@ -54,11 +53,6 @@ namespace ir.ankasoft.infrastructure
         /// <param name="id">The ID of the entity that should be removed.</param>
         void Remove(K id);
 
-        IEnumerable<T> LoadByFilter(string keyword,
-                                    int currentPage,
-                                    int pageSize,
-                                    string sort,
-                                    string sortDir,
-                                    out int totalRecords);
+        IEnumerable<T> LoadByFilter(IFilterDataSource request, out int totalRecords);
     }
 }

@@ -109,6 +109,10 @@
       <Project>{B0533E2E-F751-4609-80F0-A887ABDF7EE8}</Project>
       <Name>ir.ankasoft.entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ir.ankasoft.tools\ir.ankasoft.tools.csproj">
+      <Project>{1BFD9D72-B2AF-4C91-A36B-72B677A09E2B}</Project>
+      <Name>ir.ankasoft.tools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ir.ankastore.infrastructure\ir.ankasoft.infrastructure.csproj">
       <Project>{B5EB1DA8-33B8-43BD-A574-7BC07714F045}</Project>
       <Name>ir.ankasoft.infrastructure</Name>

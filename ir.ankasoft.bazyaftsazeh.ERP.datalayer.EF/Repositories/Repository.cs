@@ -43,7 +43,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
             return items;
         }
 
-
         /// <summary>
         /// Returns an IQueryable of items of type T.
         /// </summary>
@@ -119,15 +118,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
             }
         }
 
-        public virtual IEnumerable<T> LoadByFilter(string keyword,
-                                        int currentPage,
-                                        int pageSize,
-                                        string sort,
-                                        string sortDir,
+        public virtual IEnumerable<T> LoadByFilter(IFilterDataSource request,
                                         out int totalRecords)
         {
             totalRecords = 0;
             return new List<T>().AsEnumerable();
         }
+
+        //public DataSourceResult LoadByFilter(DataSourceRequest request)
+        //{
+        //    var result = DataContextFactory.GetDataContext().Set<T>().ToDataSourceResult(request);
+        //    return result;
+        //}
     }
 }

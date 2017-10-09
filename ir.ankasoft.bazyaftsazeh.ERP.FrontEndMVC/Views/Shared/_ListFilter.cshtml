@@ -1,21 +1,21 @@
-﻿@model PagerData
-<div class="row">
-    <div class="col-md-6 col-sm-4">
-        <label id="datatable1_length" class="dataTables_length">
-            @Resource.RecordsPerPage
-            @Html.DropDownListFor(model => model.PageSize, Model.PageSizeCollection, new { @class = "form-control input-sm", @onchange = "$('#dataTable').submit();", aria_controls = "datatable" })
-        </label>
-    </div>
-    <div class="col-md-3 col-sm-4">
-        <button class="btn btn-labeled btn-primary btn-sm" type="button" onclick="$('#ExportToExcel').submit();">
-            <span class="btn btn-label">
-                <i class="fa fa-file-excel-o" aria-hidden="true" style="font-size:15px;"></i>
-            </span>
-            @Resource.ExportToExcel
-        </button>
-    </div>
-    <div class="col-md-3 col-sm-3 text-center">
-        @Html.EditorFor(model => model.Keyword, new
+﻿@model  ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.FilterDataSource
+    <div class="row">
+        <div class="col-md-6 col-sm-4">
+            <label id="datatable1_length" class="dataTables_length">
+                @Resource.RecordsPerPage
+                @Html.DropDownListFor(model => model.pageSize, Model.PageSizeCollection, new { @class = "form-control input-sm", @onchange = "$('#dataTable').submit();", aria_controls = "datatable" })
+            </label>
+        </div>
+        <div class="col-md-3 col-sm-4">
+            <button class="btn btn-labeled btn-primary btn-sm" type="button" onclick="$('#ExportToExcel').submit();">
+                <span class="btn btn-label">
+                    <i class="fa fa-file-excel-o" aria-hidden="true" style="font-size:15px;"></i>
+                </span>
+                @Resource.ExportToExcel
+            </button>
+        </div>
+        <div class="col-md-3 col-sm-3 text-center">
+            @Html.EditorFor(model => model.keyword, new
    {
        htmlAttributes = new
        {
@@ -23,10 +23,10 @@
            autofocus = "autofocus",
            placeholder = @Resource.Search,
            aria_controls = "datatable",
-           onchange = "$('#keyword').val($(this).val());$('#CurrentPage').val(1)"
+           onchange = "$('#keyword').val($(this).val());$('#page').val(1)"
        }
    })
-    </div>
+        </div>
 
-    @Html.HiddenFor(model => model.CurrentPage)
-</div>
+        @Html.HiddenFor(model => model.page)
+    </div>

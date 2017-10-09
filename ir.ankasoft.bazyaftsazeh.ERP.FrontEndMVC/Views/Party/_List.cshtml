@@ -1,12 +1,17 @@
 ﻿@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.PartyDisplayViewModel>
-
 <table class="table anka_dataTable table-striped table-bordered">
     @{
         var modelHeader = Model.Data.FirstOrDefault();
         <thead>
             <tr class="context-menu">
-                <th>@Html.ActionLink(< text > Html.LabelFor(modelItem => modelHeader.NationalCode) </ text >, "Index", new { sort = nameof(modelHeader.NationalCode) }) </th>
-                <th>@Html.ActionLink(<text>Html.LabelFor(modelItem=>modelHeader.NationalCode)</text>, "Index", new { sort = nameof(modelHeader.NationalCode) }) </th>
+                <th>
+                    @*<a href="@Url.Action(MVC.Party.Index(new ir.ankasoft.tools.PageFilterDataSource() {
+                            keyword = Model.PageData.filterDataSource.keyword,
+                            sort = new KeyValuePair<string, ir.ankasoft.tools.SortType>(nameof( modelHeader.NationalCode),ir.ankasoft.tools.SortType.ASC)
+                        }))">*@
+                        @Html.LabelFor(modelItem => modelHeader.NationalCode)
+                    @*</a>*@
+                </th>
                 <th>@Html.LabelFor(modelItem => modelHeader.Title)</th>
                 <th>نقش ها</th>
                 <th>تلفن</th>
@@ -19,7 +24,7 @@
             <tbody>
                 @foreach (var item in Model.Data)
                 {
-                    <tr data-itemid='@item.Id' class="context-menu">
+                    <tr data-itemid='@item.recId' class="context-menu">
                         <td class="col-md-2">@Html.DisplayFor(modelItem => item.NationalCode)</td>
                         <td class="col-md-2">@Html.DisplayFor(modelItem => item.Title)</td>
                         <td class="col-md-2"></td>
@@ -29,6 +34,17 @@
                     </tr>
                 }
             </tbody>
+            <tfoot>
+                <tr>
+
+                    @*<td class="col-md-2">@Html.Editor(Model.PageData.filterDataSource.Filter)</td>
+                    <td class="col-md-2">@Html.Editor(Model.Filter.Title)</td>
+                    <td class="col-md-2"></td>
+                    <td class="col-md-1"></td>
+                    <td class="col-md-1"></td>
+                    <td class="col-md-4"></td>*@
+                </tr>
+            </tfoot>
         }
     }
 </table>

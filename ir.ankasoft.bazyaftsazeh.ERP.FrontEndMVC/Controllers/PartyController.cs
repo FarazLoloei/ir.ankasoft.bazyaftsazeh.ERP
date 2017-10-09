@@ -4,12 +4,8 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
 using ir.ankasoft.entities;
 using ir.ankasoft.infrastructure;
-using ir.ankasoft.tools;
-using PagedList;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
@@ -29,56 +25,39 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         // GET: Party
-        public virtual ActionResult Index(int? currentPage,
-                                  string keyword = DefaultValues.EmptyString,
-                                  int pageSize = DefaultValues.PageSize,
-                                  string sort = "recId",
-                                  string sortDir = "ASC")
+        public virtual ActionResult Index(FilterDataSource request)
         {
-            int _currentPage = currentPage ?? 1;
-            //if (Request.IsAjaxRequest())
-            //    return PartialView(MVC.Category.Views._List,
-            //                       Load(keyword,
-            //                            _currentPage,
-            //                            pageSize,
-            //                            sort,
-            //                            sortDir));
-            return View(Load(keyword,
-                             _currentPage,
-                             pageSize,
-                             sort,
-                             sortDir));
+            //int _currentPage = currentPage ?? 1;
+            if (Request.IsAjaxRequest())
+                return PartialView(MVC.Party.Views._List,
+                                   Load(request));
+            return View(Load(request));
         }
 
-        private PagerModel<PartyDisplayViewModel> Load(string keyword,
-                                                          int currentPage,
-                                                          int pageSize,
-                                                          string sort,
-                                                          string sortDir)
+        private PagerModel<PartyDisplayViewModel> Load(FilterDataSource request)
         {
+            //if (request.Filter == null) request.Filter = new PartyDisplayViewModel();
+
             var data = new List<PartyDisplayViewModel>();
             int totalRecords;
+            //infrastructure.IFilterDataSource s =
             IQueryable<Party> parties =
                 _partyRepository.LoadByFilter(
-                    keyword,
-                    currentPage,
-                    pageSize,
-                    sort,
-                    sortDir,
-                    out totalRecords)
+                    request, out totalRecords)
                                    .AsQueryable();
 
             data = Mapper.Map<List<PartyDisplayViewModel>>(parties);
+
             var model = new PagerModel<PartyDisplayViewModel>
             {
                 Data = data,
                 PageData = new PagerData
                 {
-                    CurrentPage = currentPage,
-                    PageSize = pageSize,
+                    filterDataSource = request,
                     TotalRows = totalRecords,
-                    PageCount = Paging.ComputePageCount(totalRecords)
-                }
+                },
+
+                //Filter = request.
             };
             return model;
         }

@@ -21,6 +21,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             public static readonly string bootstrapPersianDatePicker = "~/Scripts/MdBootstrapPersianDateTimePicker";
             public static readonly string bootstrapDatePicker = "~/Scripts";
             public static readonly string tagsinput = "~/Scripts/tagsinput";
+            
         }
 
         public class Styles
@@ -37,6 +38,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             public static readonly string bootstrapPersianDatePickerCss = "~/Content/MdBootstrapPersianDateTimePicker";
             public static readonly string bootstrapDatePickerCss = "~/Content";
             public static readonly string tagsinputCss = "~/Content/tagsinput";
+            
         }
     }
 }

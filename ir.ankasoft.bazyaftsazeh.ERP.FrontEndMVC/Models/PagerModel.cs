@@ -1,8 +1,6 @@
-﻿using ir.ankasoft.resource;
+﻿using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.tools;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 {
@@ -14,18 +12,24 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
     public class PagerData
     {
-        public PagerData()
+        public FilterDataSource filterDataSource { get; set; }
+
+        //public List<SelectListItem> PageSizeCollection { get; set; } = DefaultValues.PageSizeCollection;
+        //public int PageSize { get; set; }
+        //public int CurrentPage { get; set; }
+        public int TotalRows { get; set; }
+
+        public int PageCount
         {
-            PageSizeCollection = DefaultValues.PageSizeCollection;
+            get
+            {
+                return Paging.ComputePageCount(TotalRows);
+            }
         }
 
-        public List<SelectListItem> PageSizeCollection { get; set; }
-        public int PageSize { get; set; }
-        public int CurrentPage { get; set; }
-        public int TotalRows { get; set; }
-        public int PageCount { get; set; }
+        //public KeyValuePair<string, SortType> Sort { get; set; } = new KeyValuePair<string, SortType>("Id", SortType.ASC);
 
-        [Display(Name = nameof(Resource.Search), ResourceType = typeof(Resource))]
-        public string Keyword { get; set; }
+        //[Display(Name = nameof(Resource.Search), ResourceType = typeof(Resource))]
+        //public string Keyword { get; set; }
     }
 }

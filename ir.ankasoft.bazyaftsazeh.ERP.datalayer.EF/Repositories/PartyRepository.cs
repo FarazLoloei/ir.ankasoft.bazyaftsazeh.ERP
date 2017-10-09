@@ -1,39 +1,30 @@
 ﻿using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 using ir.ankasoft.entities;
-using System;
+using ir.ankasoft.infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
-
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 {
     public class PartyRepository : Repository<Party>, IPartyRepository
     {
-
         public new void Add(Party entity)
         {
-
             DataContextFactory.GetDataContext().Set<Party>().Add(entity);
         }
 
-        public IEnumerable<Party> LoadByFilter(string keyword,
-                                           int currentPage,
-                                           int pageSize,
-                                           string sort,
-                                           string sortDir,
+        public IEnumerable<Party> LoadByFilter(IFilterDataSource request,
                                            out int totalRecords)
         {
             long partyNumber = 0;
-            long.TryParse(keyword, out partyNumber);
+            long.TryParse(request.keyword, out partyNumber);
 
-            IQueryable<Party> parties = FindAll(x => x.Title.Contains(keyword) ||
-                                                               x.NationalCode.Contains(keyword))
+            IQueryable<Party> parties = FindAll(x => x.Title.Contains(request.keyword) ||
+                                                               x.NationalCode.Contains(request.keyword))
                                                          .AsQueryable();
             totalRecords = parties.Count();
-            return parties.OrderBy(BuildOrderBy(sort, sortDir)).Skip((currentPage * pageSize) - pageSize).Take(pageSize);
+            return parties.OrderBy(BuildOrderBy(request.sort.Key, request.sort.Value.ToString())).Skip((request.page * request.pageSize) - request.pageSize).Take(request.pageSize);
         }
 
         private string BuildOrderBy(string sortOn, string sortDirection)

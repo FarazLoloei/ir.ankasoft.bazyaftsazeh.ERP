@@ -6,8 +6,8 @@ namespace ir.ankasoft.tools
 {
     public class DefaultValues
     {
-        public const int PageSize = 5;
-        public const int CurrentPage = 1;
+        public const int pageSize = 5;
+        public const int page = 1;
         public const string EmptyString = "";
 
         private static List<int> _pageSizeCollection = new List<int> { 5, 10, 25, 50, 100 };
@@ -23,5 +23,11 @@ namespace ir.ankasoft.tools
                                   }).ToList();
             }
         }
+    }
+
+    public enum SortType
+    {
+        ASC = 1, 
+        DESC
     }
 }

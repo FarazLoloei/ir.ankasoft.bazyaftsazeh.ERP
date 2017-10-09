@@ -85,9 +85,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())
                 .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
                 .ForMember(p => p.CommunicationCollection, t => t.Ignore())
-                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.Id));
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
             _.CreateMap<Party, PartyDisplayViewModel>()
-                .ForMember(p => p.Id, opt => opt.MapFrom(dest => dest.recId));
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
 
             //_.CreateMap<PartyDisplayViewModel, Party>()
             //    .ForMember(p => p.PersonalTitle, t => t.Ignore())

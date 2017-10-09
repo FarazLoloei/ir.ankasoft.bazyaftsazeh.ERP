@@ -3,13 +3,13 @@
 <div class="content-heading">@Resource.List @Resource.CounterParty </div>
 @using (Html.BeginForm(MVC.Party.Index(), FormMethod.Get, new { id = "dataTable" }))
 {
-    @Html.Partial(MVC.Shared.Views._ListFilter, Model.PageData);
-}
+    @Html.Partial(MVC.Shared.Views._ListFilter, Model.PageData.filterDataSource);
 <div class="table-responsive b0" id="anka-DataSection">
     <div id="datatable1_wrapper" class="dataTables_wrapper form-inline no-footer">
         @Html.Partial(MVC.Party.Views._List, Model)
     </div>
 </div>
+}
 
 @*@using (Html.BeginForm(MVC.Category.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { }
 @using (Html.BeginForm(MVC.Category.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" }))
@@ -17,16 +17,19 @@
 @using (Html.BeginForm(MVC.Category.ExportToExcel(), FormMethod.Get, new { @class = "invisible", id = "ExportToExcel" }))
             { <input type="hidden" name="keyword" value="" id="keyword" /> }*@
 @section Styles {
+    @Styles.Render(Bundles.Styles.kendoCss)
     @Styles.Render(Bundles.Styles.sweetAlertCss)
 }
 
 @section scripts{
     @Scripts.Render(Bundles.Scripts.sweetAlert)
     @Scripts.Render(Bundles.Scripts.AnkaTools)
-    <script type="text/javascript">
+    
+
+<script type="text/javascript">
 
         $(document).ready(function () {
-            $('select[name=PageSize]').val('@Model.PageData.PageSize');
+            $('select[name=PageSize]').val('@Model.PageData.filterDataSource.pageSize');
 
             $('#dataTable').submit(function (e) {
                 e.preventDefault();
@@ -154,5 +157,5 @@
             CurrentPage.val(CurrentPageVal);
             $('#dataTable').submit();
         };
-    </script>
+</script>
 }

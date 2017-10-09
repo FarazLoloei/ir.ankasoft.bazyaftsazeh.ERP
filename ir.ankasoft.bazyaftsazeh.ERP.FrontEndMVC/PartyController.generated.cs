@@ -94,11 +94,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Index
         {
-            public readonly string currentPage = "currentPage";
-            public readonly string keyword = "keyword";
-            public readonly string pageSize = "pageSize";
-            public readonly string sort = "sort";
-            public readonly string sortDir = "sortDir";
+            public readonly string request = "request";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -124,18 +120,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public T4MVC_PartyController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int? currentPage, string keyword, int pageSize, string sort, string sortDir);
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.FilterDataSource request);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Index(int? currentPage, string keyword, int pageSize, string sort, string sortDir)
+        public override System.Web.Mvc.ActionResult Index(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.FilterDataSource request)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "currentPage", currentPage);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "keyword", keyword);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "pageSize", pageSize);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "sort", sort);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "sortDir", sortDir);
-            IndexOverride(callInfo, currentPage, keyword, pageSize, sort, sortDir);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            IndexOverride(callInfo, request);
             return callInfo;
         }
 

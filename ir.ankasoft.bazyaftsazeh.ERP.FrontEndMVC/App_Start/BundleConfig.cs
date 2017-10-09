@@ -177,7 +177,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 Links.Bundles.Scripts.Assets.moment_min_js,
                 Links.Bundles.Scripts.Assets.bootstrap_datetimepicker_min_js
             ));
-
         }
     }
 }

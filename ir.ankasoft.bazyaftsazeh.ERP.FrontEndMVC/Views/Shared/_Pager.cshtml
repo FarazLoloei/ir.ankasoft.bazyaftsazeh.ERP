@@ -3,10 +3,10 @@
     <div class="col-xs-6">
         <div id="anka_dataTable_info" class="dataTables_info" role="status" aria-live="polite">
             @{
-                var minItem = (Model.CurrentPage - 1) * Model.PageSize;
+                var minItem = (Model.filterDataSource.page - 1) * Model.filterDataSource.pageSize;
                 minItem = minItem < 1 ? 1 : minItem;
-                var MaxItem = (Model.CurrentPage * Model.PageSize);
-                MaxItem = MaxItem > Model.CurrentPage ? Convert.ToInt32(Model.TotalRows) : MaxItem;
+                var MaxItem = (Model.filterDataSource.page * Model.filterDataSource.pageSize);
+                MaxItem = MaxItem > Model.filterDataSource.page ? Convert.ToInt32(Model.TotalRows) : MaxItem;
             }
 
             @Resource.Showing @minItem @Resource.to @MaxItem @Resource.of @Model.TotalRows @Resource.entries
@@ -16,13 +16,13 @@
         <div id="anka_dataTable_paginate" class="dataTables_paginate paging_simple_numbers">
             <ul class="pagination">
                 @{ string isDisabled;
-                    isDisabled = Model.CurrentPage == 1 ? "disabled" : "";}
+                    isDisabled = Model.filterDataSource.page == 1 ? "disabled" : "";}
                 <li id="anka_dataTable_previous" class="paginate_button previous @isDisabled" aria-controls="anka_dataTable" tabindex="0">
                     <a href="#" onclick="managePagination('-');return false;">@Resource.Previous</a>
                 </li>
                 @{
                     int SP = 0, EP = 0;
-                    SP = Model.CurrentPage - 3; EP = Model.CurrentPage + 3;
+                    SP = Model.filterDataSource.page - 3; EP = Model.filterDataSource.page + 3;
                     if (Model.PageCount < 7) { SP = 1; EP = Model.PageCount; }
                     else
                     {
@@ -31,7 +31,7 @@
                     }
                     for (long i = SP; i <= EP; i++)
                     {
-                        if (i == Model.CurrentPage)
+                        if (i == Model.filterDataSource.page)
                         {
                             <li class="paginate_button active" aria-controls="anka_dataTable" tabindex="0">
                                 <a href="#">@i</a>
@@ -45,7 +45,7 @@
                         }
                     }
                 }
-                @{ isDisabled = Model.CurrentPage == Model.PageCount ? "disabled" : "";}
+                @{ isDisabled = Model.filterDataSource.page == Model.PageCount ? "disabled" : "";}
                 <li id="anka_dataTable_next" class="paginate_button next @isDisabled" aria-controls="anka_dataTable" tabindex="0">
                     <a href="#" onclick="managePagination('+'); return false;">@Resource.Next</a>
                 </li>
