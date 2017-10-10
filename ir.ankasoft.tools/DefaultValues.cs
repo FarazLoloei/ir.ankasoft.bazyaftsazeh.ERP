@@ -6,11 +6,11 @@ namespace ir.ankasoft.tools
 {
     public class DefaultValues
     {
-        public const int pageSize = 5;
+        public const int pageSize = 2;
         public const int page = 1;
         public const string EmptyString = "";
 
-        private static List<int> _pageSizeCollection = new List<int> { 5, 10, 25, 50, 100 };
+        private static List<int> _pageSizeCollection = new List<int> {2, 5, 10, 25, 50, 100 };
 
         public static List<SelectListItem> PageSizeCollection
         {

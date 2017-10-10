@@ -25,6 +25,12 @@ namespace ir.ankasoft.entities
 
         public string Description { get; set; }
 
+        
+        public virtual long? PartyRefRecId { get; set; }
+        public virtual long? PersonRefRecId { get; set; }
+        public virtual long? ImporterRefRecId { get; set; }
+        public virtual long? OrganizationRefRecId { get; set; }
+
         #region IDateTracking
 
         public DateTime createdDateTime { get; set; }

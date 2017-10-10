@@ -810,4 +810,7 @@
   <data name="NationalCode" xml:space="preserve">
     <value>کد ملی</value>
   </data>
+  <data name="Roles" xml:space="preserve">
+    <value>نقش ها</value>
+  </data>
 </root>

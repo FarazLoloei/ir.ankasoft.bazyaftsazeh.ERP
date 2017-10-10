@@ -177,6 +177,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 Links.Bundles.Scripts.Assets.moment_min_js,
                 Links.Bundles.Scripts.Assets.bootstrap_datetimepicker_min_js
             ));
+
+            bundles.Add(new ScriptBundle(Bundles.Scripts.ankaDataTable).Include(
+                "~/Vendor/Anka/ankasoft.datatable.js"
+                //Links.Vendor.Anka.ankasoft_datatable_js
+            ));
         }
     }
 }

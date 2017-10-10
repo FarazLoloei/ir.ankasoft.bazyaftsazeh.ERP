@@ -87,6 +87,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.CommunicationCollection, t => t.Ignore())
                 .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
             _.CreateMap<Party, PartyDisplayViewModel>()
+                .ForMember(p => p.Roles, t => t.Ignore())
+                .ForMember(p => p.Telephone, opt => 
+                        opt.MapFrom(desc => 
+                                desc.CommunicationCollection.Where(x => x.IsPrimary == true && 
+                                                                   x.CommunicationType == ankasoft.entities.Enums.CommunicationType.Telephone)
+                                                            .FirstOrDefault().Value))
+                .ForMember(p => p.Mobile, opt =>
+                        opt.MapFrom(desc =>
+                                desc.CommunicationCollection.Where(x => x.IsPrimary == true &&
+                                                                   x.CommunicationType == ankasoft.entities.Enums.CommunicationType.Mobile)
+                                                            .FirstOrDefault().Value))
                 .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
 
             //_.CreateMap<PartyDisplayViewModel, Party>()

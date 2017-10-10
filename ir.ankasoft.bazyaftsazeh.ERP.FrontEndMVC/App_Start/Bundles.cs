@@ -20,6 +20,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             public static readonly string treeView = "~/bundles/treeView";
             public static readonly string bootstrapPersianDatePicker = "~/Scripts/MdBootstrapPersianDateTimePicker";
             public static readonly string bootstrapDatePicker = "~/Scripts";
+            public static readonly string ankaDataTable = "~/Vendor/anka";
             public static readonly string tagsinput = "~/Scripts/tagsinput";
             
         }

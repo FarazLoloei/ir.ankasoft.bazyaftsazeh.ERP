@@ -60,28 +60,28 @@
                     <em class="fa fa-pinterest-square"></em>
                     <span data-localize="sidebar.nav.initialize">تعاریف اولیه</span>
                 </a>
-                @*<ul id="initialize" class="nav sidebar-subnav collapse">
-                    <li class="@Html.isActive(controller: "Category")">
-                        <a href="@Url.Action(MVC.Category.Index())" title="@Resource.Category">
-                            <span data-localize="sidebar.nav.initialize.Category">@Resource.Category</span>
+                <ul id="initialize" class="nav sidebar-subnav collapse">
+                    <li class="@Html.isActive(controller: "Party")">
+                        <a href="@Url.Action(MVC.Party.Index())" title="@Resource.CounterParty">
+                            <span data-localize="sidebar.nav.initialize.CounterParty">@Resource.CounterParty</span>
                         </a>
                     </li>
-                    <li class="@Html.isActive(controller: "UnitOfMeasure")">
-                        <a href="@Url.Action(MVC.UnitOfMeasure.Index())" title="@Resource.UnitOfMeasure">
-                            <span data-localize="sidebar.nav.initialize.UnitOfMeasure">@Resource.UnitOfMeasure</span>
-                        </a>
-                    </li>
-                    <li class="@Html.isActive(controller: "UnitConvertor")">
-                        <a href="@Url.Action(MVC.UnitConvertor.Index())" title="@Resource.UnitConvertor">
-                            <span data-localize="sidebar.nav.initialize.UnitConvertor">@Resource.UnitConvertor</span>
-                        </a>
-                    </li>
-                    <li class="@Html.isActive(controller: "Invent")">
-                        <a href="@Url.Action(MVC.Invent.Index())" title="@Resource.Invent">
-                            <span data-localize="sidebar.nav.initialize.Invent">@Resource.Invent</span>
-                        </a>
-                    </li>
-                </ul>*@
+                    @*<li class="@Html.isActive(controller: "UnitOfMeasure")">
+        <a href="@Url.Action(MVC.UnitOfMeasure.Index())" title="@Resource.UnitOfMeasure">
+            <span data-localize="sidebar.nav.initialize.UnitOfMeasure">@Resource.UnitOfMeasure</span>
+        </a>
+    </li>
+    <li class="@Html.isActive(controller: "UnitConvertor")">
+        <a href="@Url.Action(MVC.UnitConvertor.Index())" title="@Resource.UnitConvertor">
+            <span data-localize="sidebar.nav.initialize.UnitConvertor">@Resource.UnitConvertor</span>
+        </a>
+    </li>
+    <li class="@Html.isActive(controller: "Invent")">
+        <a href="@Url.Action(MVC.Invent.Index())" title="@Resource.Invent">
+            <span data-localize="sidebar.nav.initialize.Invent">@Resource.Invent</span>
+        </a>
+    </li>*@
+    </ul>
             </li>
             
             @*<li class="@Html.isActive(controller: "InventOnHandPerCounterPartyAndInventLocation")">

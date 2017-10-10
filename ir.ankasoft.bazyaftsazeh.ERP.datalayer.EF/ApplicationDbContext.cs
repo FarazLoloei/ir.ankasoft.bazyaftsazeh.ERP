@@ -18,7 +18,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
     {
         public ApplicationDbContext()
             //: base("DefaultConnectionString")
-            :base("Data Source=.;Initial Catalog=ir.ankasoft.bazyaftsazeh.ERP;Persist Security Info=True;User ID=bazyaftsazeh;Password=@BazyafSazeh!2#;MultipleActiveResultSets=True")
+            : base("Data Source=.;Initial Catalog=ir.ankasoft.bazyaftsazeh.ERP;Persist Security Info=True;User ID=bazyaftsazeh;Password=@BazyafSazeh!2#;MultipleActiveResultSets=True")
         //: base("Data Source=87.247.179.160,1833;Initial Catalog=ir.anka.Storage;Persist Security Info=True;User ID=Anka;Password=AnkAt@123;MultipleActiveResultSets=True")
         {
             //Configuration.LazyLoadingEnabled = false;
@@ -122,7 +122,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                     //        lastRequestId = Convert.ToInt64(entity.Property("PurchId").CurrentValue);
                     //        //base.SaveChanges();
                     //    }
-                        
+
                     //}
                     //long lastSalesId = 0;
                     //foreach (var entity in ChangeTracker.Entries<SalesOrder>())
@@ -331,6 +331,26 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                 .HasRequired(x => x.Party)
                 .WithMany()
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Party>()
+                .HasMany(x => x.CommunicationCollection)
+                .WithOptional()
+                .HasForeignKey(c => c.PartyRefRecId);
+
+            modelBuilder.Entity<Person>()
+               .HasMany(x => x.CommunicationCollection)
+               .WithOptional()
+               .HasForeignKey(c => c.PersonRefRecId);
+
+            modelBuilder.Entity<entities.Importer>()
+               .HasMany(x => x.CommunicationCollection)
+               .WithOptional()
+               .HasForeignKey(c => c.ImporterRefRecId);
+
+            modelBuilder.Entity<entities.Organization>()
+               .HasMany(x => x.CommunicationCollection)
+               .WithOptional()
+               .HasForeignKey(c => c.OrganizationRefRecId);
         }
     }
 }

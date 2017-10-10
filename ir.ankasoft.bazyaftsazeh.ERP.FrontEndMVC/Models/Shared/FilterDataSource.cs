@@ -10,7 +10,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models
     public class FilterDataSource : IFilterDataSource
     {
         [Display(Name = nameof(Resource.Search), ResourceType = typeof(Resource))]
-        public string keyword { get; set; } = DefaultValues.EmptyString;
+        private string _keyword = DefaultValues.EmptyString;
+        public string keyword { get { return _keyword ?? DefaultValues.EmptyString; } set { _keyword = value; } }
 
         public int page { get; set; } = DefaultValues.page;
         public int pageSize { get; set; } = DefaultValues.pageSize;

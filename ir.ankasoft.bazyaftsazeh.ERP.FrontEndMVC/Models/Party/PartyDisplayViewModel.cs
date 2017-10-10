@@ -17,5 +17,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
 
         [Display(Name = nameof(Description), ResourceType = typeof(Resource))]
         public string Description { get; set; }
+
+        [Display(Name = nameof(Roles), ResourceType = typeof(Resource))]
+        public string Roles { get; set; }
+
+        [Display(Name = nameof(Telephone), ResourceType = typeof(Resource))]
+        public string Telephone { get; set; }
+
+        [Display(Name = nameof(Mobile), ResourceType = typeof(Resource))]
+        public string Mobile { get; set; }
     }
 }

@@ -17,12 +17,12 @@
 @using (Html.BeginForm(MVC.Category.ExportToExcel(), FormMethod.Get, new { @class = "invisible", id = "ExportToExcel" }))
             { <input type="hidden" name="keyword" value="" id="keyword" /> }*@
 @section Styles {
-    @Styles.Render(Bundles.Styles.kendoCss)
     @Styles.Render(Bundles.Styles.sweetAlertCss)
 }
 
 @section scripts{
     @Scripts.Render(Bundles.Scripts.sweetAlert)
+@Scripts.Render(Bundles.Scripts.ankaDataTable)
     @Scripts.Render(Bundles.Scripts.AnkaTools)
     
 
@@ -37,7 +37,7 @@
                 UpdateQueryString(serializedValues);
                 $.ajax({
                     url: '@Url.Action(MVC.Party.Index())',
-                    contentType: 'application/html; charset=utf-8',
+                    contentType: 'application/json; charset=utf-8',
                     type: 'GET',
                     dataType: 'html',
                     data: serializedValues,
@@ -138,24 +138,6 @@
             });*@
         }
 
-        function managePagination(_currentPage) {
-            var CurrentPage = $('input[name=CurrentPage]');
-            var CurrentPageVal = CurrentPage.val();
-            switch (_currentPage) {
-                case '+':
-                    CurrentPageVal++;
-                    break;
-                case '-':
-                    CurrentPageVal--;
-                    break;
-                case '>>':
-                    CurrentPageVal = 1;
-                    break;
-                default:
-                    CurrentPageVal = _currentPage;
-            }
-            CurrentPage.val(CurrentPageVal);
-            $('#dataTable').submit();
-        };
+        
 </script>
 }
