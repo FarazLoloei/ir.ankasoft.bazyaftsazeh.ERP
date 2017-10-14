@@ -28,6 +28,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public virtual ActionResult Index(FilterDataSource request)
         {
             //int _currentPage = currentPage ?? 1;
+            request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType) request.sortType);
             if (Request.IsAjaxRequest())
                 return PartialView(MVC.Party.Views._List,
                                    Load(request));
@@ -54,9 +55,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 PageData = new PagerData
                 {
                     filterDataSource = request,
-                    TotalRows = totalRecords,
+                    TotalRows = totalRecords, 
+                   
                 },
-
+                
                 //Filter = request.
             };
             return model;

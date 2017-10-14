@@ -25,11 +25,22 @@ function managePagination(_currentPage) {
     $('#dataTable').submit();
 };
 
-function toggleSortIcon(icon) {
-    var i = $(icon).parent().find('i');
+function toggleSortIcon(header) {
+    var $header = $(header);
+    var i = $header.parent().find('i');
     if (i.hasClass('fa-sort')) {
         i.removeClass('fa-sort');
         i.addClass('fa-sort-amount-desc');
     }
     i.toggleClass('fa-sort-amount-desc fa-sort-amount-asc');
+
+    var thead = $('table.anka_dataTable').find('thead');
+    console.info(thead);
+    $('#sortBy').val($header.data('column'));
+    var sortType = 1;
+    if (i.hasClass('fa-sort-amount-desc'))
+        sortType = 2;
+    $('#sortType').val(sortType);
+
+    $('#dataTable').submit();
 }
