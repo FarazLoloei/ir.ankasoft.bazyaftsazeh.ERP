@@ -351,6 +351,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                .HasMany(x => x.CommunicationCollection)
                .WithOptional()
                .HasForeignKey(c => c.OrganizationRefRecId);
+
+            //modelBuilder.Entity<ContextMenu>()
+            //    .HasMany(x => x.ItemCollection)
+            //    .WithRequired()
+            //    .HasForeignKey(c => c.ParentRefRecId);
+
+            modelBuilder.Entity<ContextMenuItem>()
+                .HasRequired(x => x.Parent)
+                .WithMany()
+                .WillCascadeOnDelete(false);
         }
     }
 }

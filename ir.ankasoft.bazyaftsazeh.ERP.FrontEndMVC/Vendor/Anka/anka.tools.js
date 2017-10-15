@@ -43,3 +43,6 @@ function UpdateQueryString(serializedValues) {
     } catch (e) {
     }
 }
+$(document).ready(function () {
+    //document.addEventListener('contextmenu', event => event.preventDefault());
+});
