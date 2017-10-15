@@ -56,6 +56,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Notification> Notifications { get; set; }
 
+        public DbSet<ContextMenu> ContextMenus { get; set; }
+        public DbSet<ContextMenuItem> ContextMenuItems { get; set; }
+
         public override int SaveChanges()
         {
             // Need to manually delete all "owned objects" that have been removed from their owner, otherwise they'll be orphaned.
