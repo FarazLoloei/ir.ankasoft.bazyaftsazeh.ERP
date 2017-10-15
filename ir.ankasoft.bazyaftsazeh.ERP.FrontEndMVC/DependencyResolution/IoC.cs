@@ -16,18 +16,16 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF;
+using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
 using ir.ankasoft.entities;
+using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using Microsoft.Owin;
 using StructureMap;
 using System.Data.Entity;
 using System.Web;
-using ir.ankasoft.entities.Repositories;
-using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
-using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
 {

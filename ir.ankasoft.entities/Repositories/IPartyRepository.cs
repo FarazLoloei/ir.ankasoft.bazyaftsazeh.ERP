@@ -2,7 +2,7 @@
 using ir.ankasoft.infrastructure;
 using System.Collections.Generic;
 
-namespace ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories
+namespace ir.ankasoft.entities.Repositories
 {
     public interface IPartyRepository : IRepository<Party, long>
     {

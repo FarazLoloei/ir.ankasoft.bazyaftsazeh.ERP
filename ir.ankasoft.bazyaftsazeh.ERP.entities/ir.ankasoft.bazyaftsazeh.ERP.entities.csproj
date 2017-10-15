@@ -60,7 +60,6 @@
     <Compile Include="Plate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplacementsPlan.cs" />
-    <Compile Include="Repositories\IPartyRepository.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleTip.cs" />
   </ItemGroup>
@@ -81,6 +80,9 @@
       <Project>{b5eb1da8-33b8-43bd-a574-7bc07714f045}</Project>
       <Name>ir.ankasoft.infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

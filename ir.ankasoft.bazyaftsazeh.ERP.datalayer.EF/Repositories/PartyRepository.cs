@@ -1,5 +1,5 @@
-﻿using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
-using ir.ankasoft.entities;
+﻿using ir.ankasoft.entities;
+using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +42,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 
             //           }
             //      }
-
 
             totalRecords = parties.Count();
             return parties.OrderBy(BuildOrderBy(request.sort.Key, request.sort.Value.ToString())).Skip((request.page * request.pageSize) - request.pageSize).Take(request.pageSize);

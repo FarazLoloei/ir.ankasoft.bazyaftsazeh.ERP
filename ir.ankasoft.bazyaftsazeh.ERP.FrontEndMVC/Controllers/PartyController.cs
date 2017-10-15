@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
 using ir.ankasoft.entities;
+using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +28,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public virtual ActionResult Index(FilterDataSource request)
         {
             //int _currentPage = currentPage ?? 1;
-            request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType) request.sortType);
+            request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
             if (Request.IsAjaxRequest())
                 return PartialView(MVC.Party.Views._List,
                                    Load(request));
@@ -55,10 +55,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 PageData = new PagerData
                 {
                     filterDataSource = request,
-                    TotalRows = totalRecords, 
-                   
+                    TotalRows = totalRecords,
                 },
-                
+
                 //Filter = request.
             };
             return model;

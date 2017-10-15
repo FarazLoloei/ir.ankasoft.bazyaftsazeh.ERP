@@ -19,12 +19,12 @@ namespace ir.ankasoft.entities
         public long ParentRefRecId { get; set; }
 
         [ForeignKey(nameof(ParentRefRecId))]
-        public ContextMenu Parent { get; set; }
+        public virtual ContextMenu Parent { get; set; }
 
         public long RoleRefRecId { get; set; }
 
         [ForeignKey(nameof(RoleRefRecId))]
-        public ApplicationRole Role { get; set; }
+        public virtual ApplicationRole Role { get; set; }
 
         public bool ShowOnHeader { get; set; } = true;
 
@@ -33,6 +33,13 @@ namespace ir.ankasoft.entities
         public bool ShowOnRow { get; set; } = true;
 
         public bool DisableOnRow { get; set; } = false;
+
+        [Required]
+        [MaxLength(100)]
+        public string Icon { get; set; }
+
+        public int GroupCode { get; set; }
+        public int Priority { get; set; }
 
         #region IDateTracking
 
@@ -63,6 +70,10 @@ namespace ir.ankasoft.entities
             if (string.IsNullOrEmpty(Title))
             {
                 yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Title)), new[] { nameof(Title) });
+            }
+            if (string.IsNullOrEmpty(Icon))
+            {
+                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Icon)), new[] { nameof(Icon) });
             }
         }
 
