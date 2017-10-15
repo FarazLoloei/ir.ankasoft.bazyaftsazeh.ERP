@@ -3,6 +3,7 @@
 <table class="table anka_dataTable table-striped table-bordered">
     @{
         var modelHeader = Model.Data.FirstOrDefault();
+        var defaultClass = "";
         <thead>
             @Html.Hidden("sortBy", Model.PageData.filterDataSource.sortBy)
             @Html.Hidden("sortType", Model.PageData.filterDataSource.sortType)
@@ -13,7 +14,7 @@
                 </a>
                 <span class="pull-right">
                     @{
-                        var defaultClass = "fa-sort";
+                        defaultClass = "fa-sort";
                         if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.NationalCode))
                         {
                             defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
@@ -27,7 +28,14 @@
                     @Html.LabelFor(modelItem => modelHeader.Title)
                 </a>
                 <span class="pull-right">
-                    <i class="fa fa-sort" aria-hidden="true"></i>
+                    @{
+                        defaultClass = "fa-sort";
+                        if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.Title))
+                        {
+                            defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                        }
+                    }
+                    <i class="fa @defaultClass" aria-hidden="true"></i>
                 </span>
             </th>
             <th>
@@ -35,7 +43,14 @@
                     @Html.LabelFor(modelItem => modelHeader.Roles)
                 </a>
                 <span class="pull-right">
-                    <i class="fa fa-sort" aria-hidden="true"></i>
+                    @{
+                        defaultClass = "fa-sort";
+                        if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.Roles))
+                        {
+                            defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                        }
+                    }
+                    <i class="fa @defaultClass" aria-hidden="true"></i>
                 </span>
             </th>
             <th>
@@ -43,7 +58,14 @@
                     @Html.LabelFor(modelItem => modelHeader.Telephone)
                 </a>
                 <span class="pull-right">
-                    <i class="fa fa-sort" aria-hidden="true"></i>
+                    @{
+                        defaultClass = "fa-sort";
+                        if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.Telephone))
+                        {
+                            defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                        }
+                    }
+                    <i class="fa @defaultClass" aria-hidden="true"></i>
                 </span>
             </th>
             <th>
@@ -51,7 +73,14 @@
                     @Html.LabelFor(modelItem => modelHeader.Mobile)
                 </a>
                 <span class="pull-right">
-                    <i class="fa fa-sort" aria-hidden="true"></i>
+                    @{
+                        defaultClass = "fa-sort";
+                        if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.Mobile))
+                        {
+                            defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                        }
+                    }
+                    <i class="fa @defaultClass" aria-hidden="true"></i>
                 </span>
             </th>
             <th></th>
