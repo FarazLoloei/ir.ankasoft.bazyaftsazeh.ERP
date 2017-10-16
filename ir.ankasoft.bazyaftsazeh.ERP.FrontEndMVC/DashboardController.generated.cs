@@ -74,6 +74,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string Index = "Index";
             public readonly string DateTime = "DateTime";
+            public readonly string ClearCache = "ClearCache";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -81,9 +82,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public const string Index = "Index";
             public const string DateTime = "DateTime";
+            public const string ClearCache = "ClearCache";
         }
 
 
+        static readonly ActionParamsClass_ClearCache s_params_ClearCache = new ActionParamsClass_ClearCache();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ClearCache ClearCacheParams { get { return s_params_ClearCache; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ClearCache
+        {
+            public readonly string returnUrl = "returnUrl";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -126,6 +136,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DateTime);
             DateTimeOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ClearCacheOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string returnUrl);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ClearCache(string returnUrl)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ClearCache);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
+            ClearCacheOverride(callInfo, returnUrl);
             return callInfo;
         }
 

@@ -25,7 +25,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             _contextMenuItemRepository = contextMenuItemRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
-            
+
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
         }
 
@@ -33,8 +33,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public virtual ActionResult Index(FilterDataSource request)
         {
             string controllerTitle = nameof(PartyController).Replace("Controller", "");
-            Session[$"ContextMenu_{controllerTitle}"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, false, true));
-            Session[$"ContextMenu_{controllerTitle}_Header"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, true, false));
+            if (Session[$"ContextMenu_{controllerTitle}"] == null)
+                Session[$"ContextMenu_{controllerTitle}"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, false, true));
+            if (Session[$"ContextMenu_{controllerTitle}_Header"] == null)
+                Session[$"ContextMenu_{controllerTitle}_Header"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, true, false));
 
             request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
             if (Request.IsAjaxRequest())
@@ -62,6 +64,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 },
             };
             return model;
+        }
+
+        [HttpGet]
+        public virtual ActionResult Create()
+        {
+            return View(new ViewModelCreateAndEditCounterParty() );
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult Create(ViewModelCreateAndEditCounterParty request)
+        {
+            return View();
         }
     }
 }

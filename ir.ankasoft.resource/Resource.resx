@@ -138,9 +138,6 @@
   <data name="Create" xml:space="preserve">
     <value>ایجاد کن</value>
   </data>
-  <data name="CreateNewCurrency" xml:space="preserve">
-    <value>ایجاد واحد پولی</value>
-  </data>
   <data name="Currency" xml:space="preserve">
     <value>واحد پول</value>
   </data>
@@ -222,12 +219,6 @@
   <data name="Code" xml:space="preserve">
     <value>کد</value>
   </data>
-  <data name="CreateNewMeasuringUnit" xml:space="preserve">
-    <value>ایجاد واحد اندازه گیری</value>
-  </data>
-  <data name="CreateNewStore" xml:space="preserve">
-    <value>ایجاد فروشگاه جدید</value>
-  </data>
   <data name="Description" xml:space="preserve">
     <value>توضیحات</value>
   </data>
@@ -245,12 +236,6 @@
   </data>
   <data name="Telephone" xml:space="preserve">
     <value>تلفن</value>
-  </data>
-  <data name="CreateNewGuild" xml:space="preserve">
-    <value>ایجاد واحد صنفی جدید</value>
-  </data>
-  <data name="CreateNewLanguage" xml:space="preserve">
-    <value>ایجاد زبان جدید</value>
   </data>
   <data name="Guild" xml:space="preserve">
     <value>واحد صنفی</value>
@@ -275,27 +260,6 @@
   </data>
   <data name="Countries" xml:space="preserve">
     <value>کشورها</value>
-  </data>
-  <data name="CreateNewCategory" xml:space="preserve">
-    <value>ایجاد دسته بندی جدید</value>
-  </data>
-  <data name="CreateNewColor" xml:space="preserve">
-    <value>ایجاد رنگ جدید</value>
-  </data>
-  <data name="CreateNewCompany" xml:space="preserve">
-    <value>ایجاد شرکت جدید</value>
-  </data>
-  <data name="CreateNewCountries" xml:space="preserve">
-    <value>ایجاد کشور جدید</value>
-  </data>
-  <data name="CreateNewGroupCode" xml:space="preserve">
-    <value>ایجاد کد گروه جدید</value>
-  </data>
-  <data name="CreateNewMenuItem" xml:space="preserve">
-    <value>ایجاد منو جدید</value>
-  </data>
-  <data name="CreateNewSection" xml:space="preserve">
-    <value>ایجاد بخش جدید</value>
   </data>
   <data name="GroupCode" xml:space="preserve">
     <value>کد گروه</value>
@@ -738,9 +702,6 @@
   <data name="VehicleType" xml:space="preserve">
     <value>نوع وسیله حمل و نقل</value>
   </data>
-  <data name="CreateVehicleInfo" xml:space="preserve">
-    <value>ایجاد اطلاعات خودرویی جدید</value>
-  </data>
   <data name="Completed" xml:space="preserve">
     <value>تکمیل شده</value>
   </data>
@@ -821,5 +782,14 @@
   </data>
   <data name="Disable" xml:space="preserve">
     <value>غیرفعال</value>
+  </data>
+  <data name="Creation" xml:space="preserve">
+    <value>ایجاد</value>
+  </data>
+  <data name="ClearCache" xml:space="preserve">
+    <value>پاکسازی حافظه کش</value>
+  </data>
+  <data name="AsPerson" xml:space="preserve">
+    <value>تعریف به عنوان شخص</value>
   </data>
 </root>

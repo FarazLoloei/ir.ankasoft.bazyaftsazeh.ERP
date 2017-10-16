@@ -1,5 +1,4 @@
-﻿
-<!-- START Top Navbar-->
+﻿<!-- START Top Navbar-->
 <nav class="navbar topnavbar">
     <!-- START navbar header-->
     <div class="navbar-header">
@@ -37,17 +36,17 @@
             <!-- END User avatar toggle-->
             <!-- START lock screen-->
             <li>
-                    <a href="@Url.Action(MVC.Pages.Lock())" title="Lock screen">
-                        <em class="icon-lock"></em>
-                    </a>
-</li>
+                <a href="@Url.Action(MVC.Pages.Lock())" title="Lock screen">
+                    <em class="icon-lock"></em>
+                </a>
+            </li>
             <!-- END lock screen-->
             <li>
                 @using (Html.BeginForm(MVC.Account.LogOff(), FormMethod.Post, new { @class = "invisible", id = "logoutForm" }))
                 {@Html.AntiForgeryToken() }
-                    <a href="javascript:document.getElementById('logoutForm').submit()" title="Sign Out">
-                        <em class="icon-logout"></em>
-                    </a>
+                <a href="javascript:document.getElementById('logoutForm').submit()" title="Sign Out">
+                    <em class="icon-logout"></em>
+                </a>
             </li>
         </ul>
         <!-- END Left navbar-->
@@ -137,6 +136,78 @@
                 </a>
             </li>
             <!-- END Contacts menu-->
+            <!-- START Alert menu-->
+            <li class="dropdown dropdown-list">
+                <a href="#" data-toggle="dropdown">
+                    <i class="fa fa-cogs"></i>
+                    @*<div class="label label-danger">11</div>*@
+                </a>
+                <!-- START Dropdown menu-->
+                <ul class="dropdown-menu animated flipInX">
+                    <li>
+                        <!-- START list group-->
+                        <div class="list-group">
+                            <!-- list item-->
+                            @using (Html.BeginForm(MVC.Dashboard.ClearCache(), FormMethod.Post, new { @class = "list-group-item", id = "FormClearCache" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.Hidden("returnurl", HttpContext.Current.Request.RawUrl)
+                                <div class="media-box">
+                                    <div class="pull-left">
+                                        <em class="fa fa-recycle fa-2x text-info"></em>
+                                    </div>
+                                    <div class="media-box-body clearfix">
+                                        <p class="m0">
+                                            <a href="javascript:{}" onclick="$('#FormClearCache').submit()">
+                                                @Resource.ClearCache
+                                            </a>
+                                        </p>
+                                        @*<p class="m0 text-muted">
+                                                <small>1 new follower</small>
+                                            </p>*@
+                                    </div>
+                                </div>
+                            }
+                            <!-- list item-->
+                            @*<a href="#" class="list-group-item">
+                                    <div class="media-box">
+                                        <div class="pull-left">
+                                            <em class="fa fa-envelope fa-2x text-warning"></em>
+                                        </div>
+                                        <div class="media-box-body clearfix">
+                                            <p class="m0">New e-mails</p>
+                                            <p class="m0 text-muted">
+                                                <small>You have 10 new emails</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>*@
+                            <!-- list item-->
+                            @*<a href="#" class="list-group-item">
+                                    <div class="media-box">
+                                        <div class="pull-left">
+                                            <em class="fa fa-tasks fa-2x text-success"></em>
+                                        </div>
+                                        <div class="media-box-body clearfix">
+                                            <p class="m0">Pending Tasks</p>
+                                            <p class="m0 text-muted">
+                                                <small>11 pending task</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>*@
+                            <!-- last list item -->
+                            @*<a href="#" class="list-group-item">
+                                    <small>More notifications</small>
+                                    <span class="label label-danger pull-right">14</span>
+                                </a>*@
+                        </div>
+                        <!-- END list group-->
+                    </li>
+                </ul>
+                <!-- END Dropdown menu-->
+            </li>
+            <!-- END Alert menu-->
         </ul>
         <!-- END Right Navbar-->
     </div>

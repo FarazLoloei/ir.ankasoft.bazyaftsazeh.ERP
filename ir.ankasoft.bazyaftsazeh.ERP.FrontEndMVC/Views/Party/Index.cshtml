@@ -20,8 +20,8 @@
     </div>
 }
 
-@*@using (Html.BeginForm(MVC.Category.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { }
-    @using (Html.BeginForm(MVC.Category.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" }))
+@using (Html.BeginForm(MVC.Party.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { }
+@*    @using (Html.BeginForm(MVC.Category.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" }))
                 { <input type="hidden" name="id" value="" id="RecID" /> }
     @using (Html.BeginForm(MVC.Category.ExportToExcel(), FormMethod.Get, new { @class = "invisible", id = "ExportToExcel" }))
                 { <input type="hidden" name="keyword" value="" id="keyword" /> }*@
@@ -83,11 +83,14 @@
                             }
                             else
                             {
-                                <text> "sep1": "---------",</text>
+                               var sep = $"sep{item.GroupCode}";
+                                <text> @sep: "---------",
+                                 "@item.Title": { name: '@resourceManager.GetString(item.Title, System.Threading.Thread.CurrentThread.CurrentCulture)', icon: '@item.Icon', disabled: @item.Disable.ToString().ToLower()},</text>
+                                group = item.GroupCode;
                             }
                         }
-                        lastMenu = contextMenuHeader.Last();
-                        <text>"@lastMenu.Title":{name: '@resourceManager.GetString(lastMenu.Title, System.Threading.Thread.CurrentThread.CurrentCulture)',icon: '@lastMenu.Icon', disabled: @lastMenu.Disable.ToString().ToLower()},</text>
+                        @*lastMenu = contextMenuHeader.Last();
+                        <text>"@lastMenu.Title":{name: '@resourceManager.GetString(lastMenu.Title, System.Threading.Thread.CurrentThread.CurrentCulture)',icon: '@lastMenu.Icon', disabled: @lastMenu.Disable.ToString().ToLower()},</text>*@
                     }
                 }
             });
@@ -109,11 +112,14 @@
                             }
                             else
                             {
-                                <text> "sep1": "---------",</text>
+                                var sep = $"sep{item.GroupCode}";
+                                <text> @sep: "---------",
+                                 "@item.Title": { name: '@resourceManager.GetString(item.Title, System.Threading.Thread.CurrentThread.CurrentCulture)', icon: '@item.Icon', disabled: @item.Disable.ToString().ToLower()},</text>
+                                group = item.GroupCode;
                             }
                         }
-                        lastMenu = contextMenuHeader.Last();
-                        <text>"@lastMenu.Title":{name: '@resourceManager.GetString(lastMenu.Title, System.Threading.Thread.CurrentThread.CurrentCulture)',icon: '@lastMenu.Icon', disabled: @lastMenu.Disable.ToString().ToLower()},</text>
+                        @*lastMenu = contextMenuHeader.Last();
+                        <text>"@lastMenu.Title":{name: '@resourceManager.GetString(lastMenu.Title, System.Threading.Thread.CurrentThread.CurrentCulture)',icon: '@lastMenu.Icon', disabled: @lastMenu.Disable.ToString().ToLower()},</text>*@
                     }
                 }
             });
@@ -122,31 +128,31 @@
         {
             switch (key) {
                 case 'New':
-                            $('#Create').submit();
-                            break;
-                        case 'Edit':
-                            $('#RecID').val($(options.$trigger).data('itemid'));
-                            $('#Modify').submit();
-                            break;
-                        case 'Delete':
-                            swal({
-                                title: "@Resource.AreYouSure ",
-                                text: "@Resource.YouWillNotBeAbleToRecoverThisRecord ",
-                                type: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "@Resource.Yes ",
-                                cancelButtonText: "@Resource.No ",
-                                closeOnConfirm: false,
-                                closeOnCancel: false
-                            }, function (isConfirm) {
-                                if (isConfirm) { Delete(menu); } else { swal("@Resource.Cancelled ", "@Resource.YourFileIsSafe ", "error"); }
-                            });
-                            break;
-                        case 'ExportToExcel':
-                            $('#ExportToExcel').submit();
-                            break;
-                    }
+                    $('#Create').submit();
+                    break;
+                case 'Edit':
+                    $('#RecID').val($(options.$trigger).data('itemid'));
+                    $('#Modify').submit();
+                    break;
+                case 'Delete':
+                    swal({
+                        title: "@Resource.AreYouSure ",
+                        text: "@Resource.YouWillNotBeAbleToRecoverThisRecord ",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "@Resource.Yes ",
+                        cancelButtonText: "@Resource.No ",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function (isConfirm) {
+                        if (isConfirm) { Delete(menu); } else { swal("@Resource.Cancelled ", "@Resource.YourFileIsSafe ", "error"); }
+                    });
+                    break;
+                case 'ExportToExcel':
+                    $('#ExportToExcel').submit();
+                    break;
+            }
         }
         function Delete(menu) {
             @*var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.Remove())/{itemId}';

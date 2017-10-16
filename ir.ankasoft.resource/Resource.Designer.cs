@@ -196,6 +196,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to تعریف به عنوان شخص.
+        /// </summary>
+        public static string AsPerson {
+            get {
+                return ResourceManager.GetString("AsPerson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to آذر.
         /// </summary>
         public static string Azar {
@@ -246,6 +255,15 @@ namespace ir.ankasoft.resource {
         public static string Category {
             get {
                 return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to پاکسازی حافظه کش.
+        /// </summary>
+        public static string ClearCache {
+            get {
+                return ResourceManager.GetString("ClearCache", resourceCulture);
             }
         }
         
@@ -358,119 +376,11 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ایجاد دسته بندی جدید.
+        ///   Looks up a localized string similar to ایجاد.
         /// </summary>
-        public static string CreateNewCategory {
+        public static string Creation {
             get {
-                return ResourceManager.GetString("CreateNewCategory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد رنگ جدید.
-        /// </summary>
-        public static string CreateNewColor {
-            get {
-                return ResourceManager.GetString("CreateNewColor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد شرکت جدید.
-        /// </summary>
-        public static string CreateNewCompany {
-            get {
-                return ResourceManager.GetString("CreateNewCompany", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد کشور جدید.
-        /// </summary>
-        public static string CreateNewCountries {
-            get {
-                return ResourceManager.GetString("CreateNewCountries", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد واحد پولی.
-        /// </summary>
-        public static string CreateNewCurrency {
-            get {
-                return ResourceManager.GetString("CreateNewCurrency", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد کد گروه جدید.
-        /// </summary>
-        public static string CreateNewGroupCode {
-            get {
-                return ResourceManager.GetString("CreateNewGroupCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد واحد صنفی جدید.
-        /// </summary>
-        public static string CreateNewGuild {
-            get {
-                return ResourceManager.GetString("CreateNewGuild", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد زبان جدید.
-        /// </summary>
-        public static string CreateNewLanguage {
-            get {
-                return ResourceManager.GetString("CreateNewLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد واحد اندازه گیری.
-        /// </summary>
-        public static string CreateNewMeasuringUnit {
-            get {
-                return ResourceManager.GetString("CreateNewMeasuringUnit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد منو جدید.
-        /// </summary>
-        public static string CreateNewMenuItem {
-            get {
-                return ResourceManager.GetString("CreateNewMenuItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد بخش جدید.
-        /// </summary>
-        public static string CreateNewSection {
-            get {
-                return ResourceManager.GetString("CreateNewSection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد فروشگاه جدید.
-        /// </summary>
-        public static string CreateNewStore {
-            get {
-                return ResourceManager.GetString("CreateNewStore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ایجاد اطلاعات خودرویی جدید.
-        /// </summary>
-        public static string CreateVehicleInfo {
-            get {
-                return ResourceManager.GetString("CreateVehicleInfo", resourceCulture);
+                return ResourceManager.GetString("Creation", resourceCulture);
             }
         }
         

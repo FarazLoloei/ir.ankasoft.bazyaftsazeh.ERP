@@ -40,5 +40,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             return PartialView(MVC.Dashboard.Views._DateTime);
         }
+
+        public virtual ActionResult ClearCache(string returnUrl = "")
+        {
+            if(Session != null)
+            Session.Abandon();
+            if (String.IsNullOrEmpty(returnUrl))
+                return RedirectToAction(MVC.Dashboard.Index());
+            //prevent open redirection attack
+            //if (!Url.IsLocalUrl(returnUrl))
+            //    return RedirectToAction("Index", "Home", new { area = "Admin" });
+            return Redirect(returnUrl);
+
+        }
     }
 }

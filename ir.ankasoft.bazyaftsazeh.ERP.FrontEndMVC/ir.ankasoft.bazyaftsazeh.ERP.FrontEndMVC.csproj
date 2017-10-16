@@ -489,6 +489,7 @@
     <Compile Include="Models\Manage\SetPasswordViewModel.cs" />
     <Compile Include="Models\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Models\Notification\ViewModelDisplayNotification.cs" />
+    <Compile Include="Models\Party\ViewModelCreateAndEditCounterParty.cs" />
     <Compile Include="Models\Shared\ViewModelContextMenu.cs" />
     <Compile Include="Models\Shared\PagerModel.cs" />
     <Compile Include="Models\Party\PartyDisplayViewModel.cs" />
@@ -622,6 +623,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Party\Index.cshtml" />
     <Content Include="Views\Party\_List.cshtml" />
+    <Content Include="Views\Party\Create.cshtml" />
+    <Content Include="Views\Party\_Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
