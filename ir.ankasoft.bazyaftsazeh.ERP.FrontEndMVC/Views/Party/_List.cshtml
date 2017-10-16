@@ -7,7 +7,7 @@
         <thead>
             @Html.Hidden("sortBy", Model.PageData.filterDataSource.sortBy)
             @Html.Hidden("sortType", Model.PageData.filterDataSource.sortType)
-            <tr class="context-menu">
+            <tr class="context-menu-header">
                 <th>
                     <a href="#" data-column="@nameof(modelHeader.NationalCode)">
                     @Html.LabelFor(modelItem => modelHeader.NationalCode)

@@ -4,17 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ir.ankasoft.entities
 {
-    public class ContextMenu : DomainEntity<long>, IDateTracking, IUserTracking
+    public class Objective : DomainEntity<long>, IDateTracking, IUserTracking
     {
         [Required]
         [MaxLength(100)]
-        public string Controller { get; set; }
+        public string Title { get; set; }
+
+        public Enums.ObjectiveType Type { get; set; }
 
         public virtual ICollection<ContextMenuItem> ItemCollection { get; set; }
 
@@ -44,9 +43,9 @@ namespace ir.ankasoft.entities
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrEmpty(Controller))
+            if (string.IsNullOrEmpty(Title))
             {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Controller)), new[] { nameof(Controller) });
+                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Title)), new[] { nameof(Title) });
             }
         }
 

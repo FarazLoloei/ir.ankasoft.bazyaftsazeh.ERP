@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.AutoMapperCustomMap;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Notification;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
 using ir.ankasoft.entities;
@@ -68,6 +69,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 ///*Shared */
                 //ConfigShared(_);
+
+                ConfigContextMenu(_);
             });
 
             MapperConfiguration.AssertConfigurationIsValid();
@@ -88,9 +91,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
             _.CreateMap<Party, PartyDisplayViewModel>()
                 .ForMember(p => p.Roles, t => t.Ignore())
-                .ForMember(p => p.Telephone, opt => 
-                        opt.MapFrom(desc => 
-                                desc.CommunicationCollection.Where(x => x.IsPrimary == true && 
+                .ForMember(p => p.Telephone, opt =>
+                        opt.MapFrom(desc =>
+                                desc.CommunicationCollection.Where(x => x.IsPrimary == true &&
                                                                    x.CommunicationType == ankasoft.entities.Enums.CommunicationType.Telephone)
                                                             .FirstOrDefault().Value))
                 .ForMember(p => p.Mobile, opt =>
@@ -131,9 +134,27 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
             _.CreateMap<Notification, ViewModelDisplayNotification>()
-                //.ForMember(p => p.Type, opt => opt.MapFrom(dest => dest.Type.Title))
                 .ForMember(p => p.Type, opt => opt.MapFrom(dest => dest.Type.ToString()))
                 .ForMember(p => p.Age, opt => opt.MapFrom(dest => dest.PublishDateAge));
+        }
+
+        private static void ConfigContextMenu(IMapperConfigurationExpression _)
+        {
+            _.CreateMap<ContextMenuItem, ViewModelContextMenu>();
+                //.ForMember(p => p.ObjectiveRefRecId, t => t.Ignore())
+                //.ForMember(p => p.Objective, t => t.Ignore())
+                //.ForMember(p => p.RoleRefRecId, t => t.Ignore())
+                //.ForMember(p => p.Role, t => t.Ignore())
+                //.ForMember(p => p.ShowOnHeader, t => t.Ignore())
+                //.ForMember(p => p.DisableOnHeader, t => t.Ignore())
+                //.ForMember(p => p.ShowOnRow, t => t.Ignore())
+                //.ForMember(p => p.DisableOnRow, t => t.Ignore())
+                //.ForMember(p => p.createdDateTime, t => t.Ignore())
+                //.ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                //.ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                //.ForMember(p => p.creatorUser, t => t.Ignore())
+                //.ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                //.ForMember(p => p.modifierUser, t => t.Ignore());
         }
     }
 }

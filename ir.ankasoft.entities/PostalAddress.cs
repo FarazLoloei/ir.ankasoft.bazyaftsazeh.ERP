@@ -22,6 +22,11 @@ namespace ir.ankasoft.entities
         [StringLength(10)]
         public string PostalCode { get; set; }
 
+        public virtual long? PartyRefRecId { get; set; }
+        public virtual long? PersonRefRecId { get; set; }
+        public virtual long? ImporterRefRecId { get; set; }
+        public virtual long? OrganizationRefRecId { get; set; }
+
         #region IDateTracking
 
         public DateTime createdDateTime { get; set; }

@@ -14,20 +14,28 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IPartyRepository _partyRepository;
+        private readonly IContextMenuItemRepository _contextMenuItemRepository;
         private IMapper Mapper;
 
         public PartyController(IPartyRepository partyRepository,
+                               IContextMenuItemRepository contextMenuItemRepository,
                                IUnitOfWorkFactory unitOfWorkFactory)
         {
             _partyRepository = partyRepository;
+            _contextMenuItemRepository = contextMenuItemRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
+
+            
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
         }
 
         // GET: Party
         public virtual ActionResult Index(FilterDataSource request)
         {
-            //int _currentPage = currentPage ?? 1;
+            string controllerTitle = nameof(PartyController).Replace("Controller", "");
+            Session[$"ContextMenu_{controllerTitle}"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, false, true));
+            Session[$"ContextMenu_{controllerTitle}_Header"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, true, false));
+
             request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
             if (Request.IsAjaxRequest())
                 return PartialView(MVC.Party.Views._List,
@@ -37,18 +45,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         private PagerModel<PartyDisplayViewModel> Load(FilterDataSource request)
         {
-            //if (request.Filter == null) request.Filter = new PartyDisplayViewModel();
-
             var data = new List<PartyDisplayViewModel>();
             int totalRecords;
-            //infrastructure.IFilterDataSource s =
             IQueryable<Party> parties =
                 _partyRepository.LoadByFilter(
                     request, out totalRecords)
                                    .AsQueryable();
-
             data = Mapper.Map<List<PartyDisplayViewModel>>(parties);
-
             var model = new PagerModel<PartyDisplayViewModel>
             {
                 Data = data,
@@ -57,8 +60,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     filterDataSource = request,
                     TotalRows = totalRecords,
                 },
-
-                //Filter = request.
             };
             return model;
         }

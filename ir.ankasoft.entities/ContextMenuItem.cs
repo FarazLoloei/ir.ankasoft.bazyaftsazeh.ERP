@@ -16,10 +16,10 @@ namespace ir.ankasoft.entities
         [MaxLength(100)]
         public string Title { get; set; }
 
-        public long ParentRefRecId { get; set; }
+        public long ObjectiveRefRecId { get; set; }
 
-        [ForeignKey(nameof(ParentRefRecId))]
-        public virtual ContextMenu Parent { get; set; }
+        [ForeignKey(nameof(ObjectiveRefRecId))]
+        public virtual Objective Objective { get; set; }
 
         public long RoleRefRecId { get; set; }
 
@@ -33,6 +33,9 @@ namespace ir.ankasoft.entities
         public bool ShowOnRow { get; set; } = true;
 
         public bool DisableOnRow { get; set; } = false;
+
+        [NotMapped]
+        public bool Disable { get; set; }
 
         [Required]
         [MaxLength(100)]

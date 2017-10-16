@@ -489,12 +489,13 @@
     <Compile Include="Models\Manage\SetPasswordViewModel.cs" />
     <Compile Include="Models\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Models\Notification\ViewModelDisplayNotification.cs" />
-    <Compile Include="Models\PagerModel.cs" />
+    <Compile Include="Models\Shared\ViewModelContextMenu.cs" />
+    <Compile Include="Models\Shared\PagerModel.cs" />
     <Compile Include="Models\Party\PartyDisplayViewModel.cs" />
     <Compile Include="Models\RolesAdmin\ApplicationRoleViewModel.cs" />
     <Compile Include="Models\Shared\FilterDataSource.cs" />
-    <Compile Include="Models\ViewModelSelect2List.cs" />
-    <Compile Include="Models\ViewModelWithSelectList.cs" />
+    <Compile Include="Models\Shared\ViewModelSelect2List.cs" />
+    <Compile Include="Models\Shared\ViewModelWithSelectList.cs" />
     <Compile Include="PagesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>

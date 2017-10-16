@@ -813,4 +813,13 @@
   <data name="Roles" xml:space="preserve">
     <value>نقش ها</value>
   </data>
+  <data name="Icon" xml:space="preserve">
+    <value>آیکن</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>اولویت</value>
+  </data>
+  <data name="Disable" xml:space="preserve">
+    <value>غیرفعال</value>
+  </data>
 </root>

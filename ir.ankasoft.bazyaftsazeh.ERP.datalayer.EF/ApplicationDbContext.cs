@@ -47,7 +47,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         public DbSet<entities.ReplacementsPlan> ReplacementsPlan { get; set; }
         public DbSet<entities.Vehicle> Vehicles { get; set; }
         public DbSet<entities.VehicleTip> VehicleTips { get; set; }
-
         public DbSet<City> Cities { get; set; }
         public DbSet<Communication> Communications { get; set; }
         public DbSet<Party> Parties { get; set; }
@@ -55,8 +54,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         public DbSet<PostalAddress> PostalAddresses { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-
-        public DbSet<ContextMenu> ContextMenus { get; set; }
+        public DbSet<Objective> Objectives { get; set; }
         public DbSet<ContextMenuItem> ContextMenuItems { get; set; }
 
         public override int SaveChanges()
@@ -355,7 +353,27 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                .WithOptional()
                .HasForeignKey(c => c.OrganizationRefRecId);
 
-            modelBuilder.Entity<ContextMenu>()
+            modelBuilder.Entity<Party>()
+                .HasMany(x => x.PostalAddressCollection)
+                .WithOptional()
+                .HasForeignKey(c => c.PartyRefRecId);
+
+            modelBuilder.Entity<Person>()
+               .HasMany(x => x.PostalAddressCollection)
+               .WithOptional()
+               .HasForeignKey(c => c.PersonRefRecId);
+
+            modelBuilder.Entity<entities.Importer>()
+               .HasMany(x => x.PostalAddressCollection)
+               .WithOptional()
+               .HasForeignKey(c => c.ImporterRefRecId);
+
+            modelBuilder.Entity<entities.Organization>()
+               .HasMany(x => x.PostalAddressCollection)
+               .WithOptional()
+               .HasForeignKey(c => c.OrganizationRefRecId);
+
+            modelBuilder.Entity<Objective>()
                 .HasRequired(x => x.creatorUser)
                 .WithMany()
                 .WillCascadeOnDelete(false);
