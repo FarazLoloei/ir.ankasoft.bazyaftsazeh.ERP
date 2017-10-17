@@ -1,14 +1,10 @@
 ﻿using ir.ankasoft.resource;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
 {
-    public class ViewModelCreateAndEditCounterParty
+    public class ViewModelPartyDisplay
     {
         [HiddenInput(DisplayValue = false)]
         public long recId { get; set; }
@@ -22,13 +18,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
         [Display(Name = nameof(Description), ResourceType = typeof(Resource))]
         public string Description { get; set; }
 
-        //[Display(Name = nameof(Roles), ResourceType = typeof(Resource))]
-        //public string Roles { get; set; }
+        [Display(Name = nameof(Roles), ResourceType = typeof(Resource))]
+        public string Roles { get; set; }
 
-        //[Display(Name = nameof(Telephone), ResourceType = typeof(Resource))]
-        //public string Telephone { get; set; }
+        [Display(Name = nameof(Telephone), ResourceType = typeof(Resource))]
+        public string Telephone { get; set; }
 
-        //[Display(Name = nameof(Mobile), ResourceType = typeof(Resource))]
-        //public string Mobile { get; set; }
+        [Display(Name = nameof(Mobile), ResourceType = typeof(Resource))]
+        public string Mobile { get; set; }
     }
 }

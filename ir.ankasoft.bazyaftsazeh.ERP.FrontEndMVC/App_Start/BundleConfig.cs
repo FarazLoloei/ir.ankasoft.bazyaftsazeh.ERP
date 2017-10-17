@@ -64,6 +64,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             bundles.Add(new StyleBundle(Bundles.Styles.Select2Css).Include(
                 "~/Content/css/select2.css",
+                "~/Vendor/select2-bootstrap-theme/dist/select2-bootstrap.css",
                 "~/Content/css/select2-overlay.css"
             ));
 

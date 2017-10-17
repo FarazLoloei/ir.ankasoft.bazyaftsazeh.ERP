@@ -792,4 +792,10 @@
   <data name="AsPerson" xml:space="preserve">
     <value>تعریف به عنوان شخص</value>
   </data>
+  <data name="Mr" xml:space="preserve">
+    <value>آقا</value>
+  </data>
+  <data name="Mrs" xml:space="preserve">
+    <value>خانم</value>
+  </data>
 </root>

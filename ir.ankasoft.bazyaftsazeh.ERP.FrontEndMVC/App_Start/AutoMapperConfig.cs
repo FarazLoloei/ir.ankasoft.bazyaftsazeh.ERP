@@ -78,7 +78,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
         private static void ConfigParty(IMapperConfigurationExpression _)
         {
-            _.CreateMap<PartyDisplayViewModel, Party>()
+            _.CreateMap<ViewModelPartyDisplay, Party>()
                 .ForMember(p => p.PersonalTitle, t => t.Ignore())
                 .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.creatorUser, t => t.Ignore())
@@ -89,7 +89,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
                 .ForMember(p => p.CommunicationCollection, t => t.Ignore())
                 .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
-            _.CreateMap<Party, PartyDisplayViewModel>()
+            _.CreateMap<Party, ViewModelPartyDisplay>()
                 .ForMember(p => p.Roles, t => t.Ignore())
                 .ForMember(p => p.Telephone, opt =>
                         opt.MapFrom(desc =>
@@ -102,6 +102,21 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                                                                    x.CommunicationType == ankasoft.entities.Enums.CommunicationType.Mobile)
                                                             .FirstOrDefault().Value))
                 .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
+
+            _.CreateMap<ViewModelCreateAndEditParty, Party>()
+                .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+                .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Party, ViewModelCreateAndEditParty>();
+
+
+
 
             //_.CreateMap<PartyDisplayViewModel, Party>()
             //    .ForMember(p => p.PersonalTitle, t => t.Ignore())

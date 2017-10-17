@@ -446,6 +446,21 @@ namespace Links
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class select2_bootstrap_theme {
+            public const string UrlPath = "~/Vendor/select2-bootstrap-theme";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class dist {
+                public const string UrlPath = "~/Vendor/select2-bootstrap-theme/dist";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string select2_bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2-bootstrap.min.css") ? Url("select2-bootstrap.min.css") : Url("select2-bootstrap.css");
+            }
+        
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class simple_line_icons {
             public const string UrlPath = "~/Vendor/simple-line-icons";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
@@ -570,6 +585,7 @@ namespace Links
             public const string UrlPath = "~/Content/css";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string select2_bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2-bootstrap.min.css") ? Url("select2-bootstrap.min.css") : Url("select2-bootstrap.css");
             public static readonly string select2_overlay_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2-overlay.min.css") ? Url("select2-overlay.min.css") : Url("select2-overlay.css");
             public static readonly string select2_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2.min.css") ? Url("select2.min.css") : Url("select2.css");
             public static readonly string select2_min_css = Url("select2.min.css");
@@ -911,6 +927,19 @@ namespace Links
                 {
                 }
             }
+            public static partial class select2_bootstrap_theme 
+            {
+                public static partial class dist 
+                {
+                    public static class Assets
+                    {
+                        public const string select2_bootstrap_css = "~/Vendor/select2-bootstrap-theme/dist/select2-bootstrap.css";
+                    }
+                }
+                public static class Assets
+                {
+                }
+            }
             public static partial class simple_line_icons 
             {
                 public static partial class css 
@@ -1001,6 +1030,7 @@ namespace Links
             {
                 public static class Assets
                 {
+                    public const string select2_bootstrap_css = "~/Content/css/select2-bootstrap.css";
                     public const string select2_overlay_css = "~/Content/css/select2-overlay.css";
                     public const string select2_css = "~/Content/css/select2.css";
                     public const string select2_min_css = "~/Content/css/select2.min.css";

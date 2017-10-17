@@ -10,5 +10,7 @@ namespace ir.ankasoft.entities.Repositories
                                         out int totalRecords);
 
         new void Add(Party entity);
+
+        bool CheckExistingNationalCode(string nationalCode);
     }
 }

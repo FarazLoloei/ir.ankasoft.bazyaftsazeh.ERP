@@ -62,6 +62,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult CheckExistingNationalCode()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CheckExistingNationalCode);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public PartyController Actions { get { return MVC.Party; } }
@@ -80,6 +86,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Create = "Create";
+            public readonly string CheckExistingNationalCode = "CheckExistingNationalCode";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -87,6 +94,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public const string Index = "Index";
             public const string Create = "Create";
+            public const string CheckExistingNationalCode = "CheckExistingNationalCode";
         }
 
 
@@ -105,6 +113,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionParamsClass_Create
         {
             public readonly string request = "request";
+        }
+        static readonly ActionParamsClass_CheckExistingNationalCode s_params_CheckExistingNationalCode = new ActionParamsClass_CheckExistingNationalCode();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CheckExistingNationalCode CheckExistingNationalCodeParams { get { return s_params_CheckExistingNationalCode; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CheckExistingNationalCode
+        {
+            public readonly string nationalCode = "nationalCode";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -157,14 +173,26 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateAndEditCounterParty request);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateAndEditParty request);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateAndEditCounterParty request)
+        public override System.Web.Mvc.ActionResult Create(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateAndEditParty request)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
             CreateOverride(callInfo, request);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CheckExistingNationalCodeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string nationalCode);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult CheckExistingNationalCode(string nationalCode)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CheckExistingNationalCode);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "nationalCode", nationalCode);
+            CheckExistingNationalCodeOverride(callInfo, nationalCode);
             return callInfo;
         }
 

@@ -189,6 +189,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\select2-bootstrap.css" />
     <Content Include="Content\css\select2-overlay.css" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
@@ -423,6 +424,7 @@
     <Content Include="Vendor\roboto\fonts\Roboto-Thin-webfont.svg" />
     <Content Include="Vendor\roboto\fonts\Roboto-ThinItalic-webfont.svg" />
     <Content Include="Vendor\screenfull\dist\screenfull.js" />
+    <Content Include="Vendor\select2-bootstrap-theme\dist\select2-bootstrap.css" />
     <Content Include="Vendor\simple-line-icons\css\simple-line-icons.css" />
     <Content Include="Vendor\simple-line-icons\fonts\Simple-Line-Icons.svg" />
     <Content Include="Vendor\slimScroll\jquery.slimscroll.min.js" />
@@ -489,10 +491,10 @@
     <Compile Include="Models\Manage\SetPasswordViewModel.cs" />
     <Compile Include="Models\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Models\Notification\ViewModelDisplayNotification.cs" />
-    <Compile Include="Models\Party\ViewModelCreateAndEditCounterParty.cs" />
+    <Compile Include="Models\Party\ViewModelCreateAndEditParty.cs" />
     <Compile Include="Models\Shared\ViewModelContextMenu.cs" />
     <Compile Include="Models\Shared\PagerModel.cs" />
-    <Compile Include="Models\Party\PartyDisplayViewModel.cs" />
+    <Compile Include="Models\Party\ViewModelPartyDisplay.cs" />
     <Compile Include="Models\RolesAdmin\ApplicationRoleViewModel.cs" />
     <Compile Include="Models\Shared\FilterDataSource.cs" />
     <Compile Include="Models\Shared\ViewModelSelect2List.cs" />

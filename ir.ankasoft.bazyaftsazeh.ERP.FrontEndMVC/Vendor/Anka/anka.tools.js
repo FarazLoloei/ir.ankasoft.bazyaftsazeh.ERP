@@ -45,4 +45,7 @@ function UpdateQueryString(serializedValues) {
 }
 $(document).ready(function () {
     //document.addEventListener('contextmenu', event => event.preventDefault());
+    $('.select2').select2({
+        dir: "rtl"
+    });
 });

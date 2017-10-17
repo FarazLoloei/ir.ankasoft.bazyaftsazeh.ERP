@@ -1,11 +1,10 @@
-﻿@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.PartyDisplayViewModel>
+﻿@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelPartyDisplay>
 
 @{
     var controllerTitle = this.ViewContext.RouteData.Values["controller"].ToString();
     var contextMenu = Session[$"ContextMenu_{controllerTitle}"] as IEnumerable<ViewModelContextMenu>;
     var contextMenuHeader = Session[$"ContextMenu_{controllerTitle}_Header"] as IEnumerable<ViewModelContextMenu>;
     System.Resources.ResourceManager resourceManager = new System.Resources.ResourceManager(typeof(Resource));
-    ViewModelContextMenu lastMenu;
     int group;
 }
 
@@ -89,8 +88,6 @@
                                 group = item.GroupCode;
                             }
                         }
-                        @*lastMenu = contextMenuHeader.Last();
-                        <text>"@lastMenu.Title":{name: '@resourceManager.GetString(lastMenu.Title, System.Threading.Thread.CurrentThread.CurrentCulture)',icon: '@lastMenu.Icon', disabled: @lastMenu.Disable.ToString().ToLower()},</text>*@
                     }
                 }
             });
@@ -118,8 +115,6 @@
                                 group = item.GroupCode;
                             }
                         }
-                        @*lastMenu = contextMenuHeader.Last();
-                        <text>"@lastMenu.Title":{name: '@resourceManager.GetString(lastMenu.Title, System.Threading.Thread.CurrentThread.CurrentCulture)',icon: '@lastMenu.Icon', disabled: @lastMenu.Disable.ToString().ToLower()},</text>*@
                     }
                 }
             });

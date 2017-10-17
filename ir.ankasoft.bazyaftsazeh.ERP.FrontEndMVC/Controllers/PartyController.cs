@@ -45,16 +45,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View(Load(request));
         }
 
-        private PagerModel<PartyDisplayViewModel> Load(FilterDataSource request)
+        private PagerModel<ViewModelPartyDisplay> Load(FilterDataSource request)
         {
-            var data = new List<PartyDisplayViewModel>();
+            var data = new List<ViewModelPartyDisplay>();
             int totalRecords;
             IQueryable<Party> parties =
                 _partyRepository.LoadByFilter(
                     request, out totalRecords)
                                    .AsQueryable();
-            data = Mapper.Map<List<PartyDisplayViewModel>>(parties);
-            var model = new PagerModel<PartyDisplayViewModel>
+            data = Mapper.Map<List<ViewModelPartyDisplay>>(parties);
+            var model = new PagerModel<ViewModelPartyDisplay>
             {
                 Data = data,
                 PageData = new PagerData
@@ -69,13 +69,53 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult Create()
         {
-            return View(new ViewModelCreateAndEditCounterParty() );
+            return View(new ViewModelCreateAndEditParty());
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Create(ViewModelCreateAndEditCounterParty request)
+        public virtual ActionResult Create(ViewModelCreateAndEditParty request)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (_unitOfWorkFactory.Create())
+                    {
+                        var _party = Mapper.Map<Party>(request);
+                        _partyRepository.Add(_party);
+                        return RedirectToAction(MVC.Party.Index());
+                        //var invent = Mapper.Map<Invent>(request);
+                        //_inventRepository.Add(invent);
+                        //return RedirectToAction(MVC.Invent.Index());
+                    }
+                }
+                catch (ModelValidationException modelValidationException)
+                {
+                    foreach (var error in modelValidationException.ValidationErrors)
+                    {
+                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
+                    }
+                }
+            }
+
+            //request.CategoryList = FillCategorySelectList();
+            //request.UnitOfMeasureList = FillUnitOfMeasureSelectList();
+            return View(request);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public virtual ActionResult CheckExistingNationalCode(string nationalCode)
+        {
+            try
+            {
+                return Json(!_partyRepository.CheckExistingNationalCode(nationalCode), JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

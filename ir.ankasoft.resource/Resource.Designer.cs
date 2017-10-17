@@ -1141,6 +1141,24 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to آقا.
+        /// </summary>
+        public static string Mr {
+            get {
+                return ResourceManager.GetString("Mr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خانم.
+        /// </summary>
+        public static string Mrs {
+            get {
+                return ResourceManager.GetString("Mrs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to کد ملی.
         /// </summary>
         public static string NationalCode {

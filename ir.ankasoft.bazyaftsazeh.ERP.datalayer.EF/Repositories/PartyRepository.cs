@@ -22,27 +22,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 
             IQueryable<Party> parties = FindAll(x => x.Title.Contains(request.keyword) ||
                                                      x.NationalCode.Contains(request.keyword)
-                                                     ).AsQueryable()
-                                                     //.Select()
-                                                     ;
-            //IQueryable<Party> party = DataContextFactory.GetDataContext().Set<Party>();
-            //IQueryable<Communication> communication = DataContextFactory.GetDataContext().Set<Communication>();
-
-            //var s = from p in party
-            //        join c in communication on p.recId equals c.PartyRefRecId
-            //        select new Party() {
-            //            recId = p.recId,
-            //            Title = p.Title,
-            //            NationalCode = p.NationalCode,
-            //            Description = p.Description,
-            //            PersonalTitle =p.PersonalTitle,
-            //           CommunicationCollection = new Communication()
-            //           {
-            //               CommunicationType = c.CommunicationType,
-
-            //           }
-            //      }
-
+                                                     ).AsQueryable();
             totalRecords = parties.Count();
             return parties.OrderBy(BuildOrderBy(request.sort.Key, request.sort.Value.ToString())).Skip((request.page * request.pageSize) - request.pageSize).Take(request.pageSize);
         }
@@ -50,6 +30,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
         private string BuildOrderBy(string sortOn, string sortDirection)
         {
             return string.Format("{0} {1}", sortOn, sortDirection);
+        }
+
+        public bool CheckExistingNationalCode(string nationalCode)
+        {
+            return FindAll(_ => _.NationalCode == nationalCode).Count() > 0 ? true : false;
         }
     }
 }

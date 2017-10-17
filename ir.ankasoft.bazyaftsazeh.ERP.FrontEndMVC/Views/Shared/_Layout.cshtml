@@ -15,6 +15,7 @@
     @Styles.Render("~/bundles/whirl")
     @Styles.Render("~/bundles/contextMenuCss")
     @Styles.Render(Bundles.Styles.siteCss)
+    @Styles.Render(Bundles.Styles.Select2Css)
     <!-- =============== PAGE VENDOR STYLES =============== -->
     @if (IsSectionDefined("Styles"))
     {@RenderSection("Styles", required: false)}
@@ -24,6 +25,7 @@
     <!-- =============== APP STYLES ===============-->
     <link href="@Styles.Url("~/Content/app/css/app-rtl.css")" rel="stylesheet" type="text/css" id="maincss" />
     <link href="@Styles.Url("~/Content/app/Typography/app-overlay.css")" rel="stylesheet" type="text/css" />
+
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
@@ -71,11 +73,13 @@
     @Scripts.Render("~/bundles/screenfull")
     @Scripts.Render("~/bundles/localize")
     @Scripts.Render(Bundles.Scripts.contextMenu)
+    @Scripts.Render(Bundles.Scripts.Select2)
     <!-- =============== PAGE VENDOR SCRIPTS ===============-->
     @RenderSection("scripts", required: false)
     <!-- =============== APP SCRIPTS ===============-->
     @*@Scripts.Render("~/bundles/Angle")*@
     @Scripts.Render(Bundles.Scripts.Anka)
+    @Scripts.Render(Bundles.Scripts.AnkaTools)
 }
 </body>
 </html>
