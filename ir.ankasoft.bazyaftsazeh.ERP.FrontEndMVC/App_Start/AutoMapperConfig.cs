@@ -103,7 +103,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                                                             .FirstOrDefault().Value))
                 .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
 
-            _.CreateMap<ViewModelCreateAndEditParty, Party>()
+            _.CreateMap<ViewModelCreateParty, Party>()
                 .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
                 .ForMember(p => p.CommunicationCollection, t => t.Ignore())
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
@@ -113,7 +113,19 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
 
-            _.CreateMap<Party, ViewModelCreateAndEditParty>();
+            _.CreateMap<Party, ViewModelCreateParty>();
+
+            _.CreateMap<ViewModelModifyParty, Party>()
+               .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+               .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+               .ForMember(p => p.createdDateTime, t => t.Ignore())
+               .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+               .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.creatorUser, t => t.Ignore())
+               .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Party, ViewModelModifyParty>();
 
 
 

@@ -69,12 +69,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult Create()
         {
-            return View(new ViewModelCreateAndEditParty());
+            return View(new ViewModelCreateParty());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Create(ViewModelCreateAndEditParty request)
+        public virtual ActionResult Create(ViewModelCreateParty request)
         {
             if (ModelState.IsValid)
             {
@@ -85,9 +85,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                         var _party = Mapper.Map<Party>(request);
                         _partyRepository.Add(_party);
                         return RedirectToAction(MVC.Party.Index());
-                        //var invent = Mapper.Map<Invent>(request);
-                        //_inventRepository.Add(invent);
-                        //return RedirectToAction(MVC.Invent.Index());
                     }
                 }
                 catch (ModelValidationException modelValidationException)
@@ -99,8 +96,42 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 }
             }
 
-            //request.CategoryList = FillCategorySelectList();
-            //request.UnitOfMeasureList = FillUnitOfMeasureSelectList();
+            return View(request);
+        }
+
+        public virtual ActionResult Modify(long id)
+        {
+            Party _party = _partyRepository.FindById(id);
+            if (_party == null)
+            {
+                return HttpNotFound();
+            }
+            var data = Mapper.Map<ViewModelModifyParty>(_party);
+            return View(data);
+        }
+
+        [HttpPost]
+        public virtual ActionResult Modify(ViewModelModifyParty request)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (_unitOfWorkFactory.Create())
+                    {
+                        Party _party = _partyRepository.FindById(request.recId);
+                        Mapper.Map(request, _party, typeof(ViewModelModifyParty), typeof(Party));
+                        return RedirectToAction(MVC.Party.Index());
+                    }
+                }
+                catch (ModelValidationException modelValidationException)
+                {
+                    foreach (var error in modelValidationException.ValidationErrors)
+                    {
+                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
+                    }
+                }
+            }
             return View(request);
         }
 

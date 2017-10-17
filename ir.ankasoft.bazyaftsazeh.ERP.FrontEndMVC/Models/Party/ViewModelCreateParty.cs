@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
 {
-    public class ViewModelCreateAndEditParty
+    public class ViewModelCreateParty
     {
         [HiddenInput(DisplayValue = false)]
         public long recId { get; set; }

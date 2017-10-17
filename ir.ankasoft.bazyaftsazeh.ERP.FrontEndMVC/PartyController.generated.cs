@@ -64,6 +64,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Modify()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult CheckExistingNationalCode()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CheckExistingNationalCode);
@@ -86,6 +92,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Create = "Create";
+            public readonly string Modify = "Modify";
             public readonly string CheckExistingNationalCode = "CheckExistingNationalCode";
         }
 
@@ -94,6 +101,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public const string Index = "Index";
             public const string Create = "Create";
+            public const string Modify = "Modify";
             public const string CheckExistingNationalCode = "CheckExistingNationalCode";
         }
 
@@ -113,6 +121,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionParamsClass_Create
         {
             public readonly string request = "request";
+        }
+        static readonly ActionParamsClass_Modify s_params_Modify = new ActionParamsClass_Modify();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Modify ModifyParams { get { return s_params_Modify; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Modify
+        {
+            public readonly string id = "id";
         }
         static readonly ActionParamsClass_CheckExistingNationalCode s_params_CheckExistingNationalCode = new ActionParamsClass_CheckExistingNationalCode();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -136,11 +152,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 public readonly string _List = "_List";
                 public readonly string Create = "Create";
                 public readonly string Index = "Index";
+                public readonly string Modify = "Modify";
             }
             public readonly string _Detail = "~/Views/Party/_Detail.cshtml";
             public readonly string _List = "~/Views/Party/_List.cshtml";
             public readonly string Create = "~/Views/Party/Create.cshtml";
             public readonly string Index = "~/Views/Party/Index.cshtml";
+            public readonly string Modify = "~/Views/Party/Modify.cshtml";
         }
     }
 
@@ -173,14 +191,26 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateAndEditParty request);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateParty request);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateAndEditParty request)
+        public override System.Web.Mvc.ActionResult Create(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateParty request)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
             CreateOverride(callInfo, request);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Modify(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ModifyOverride(callInfo, id);
             return callInfo;
         }
 
