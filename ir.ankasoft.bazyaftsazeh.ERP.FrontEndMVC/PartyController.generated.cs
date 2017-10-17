@@ -70,6 +70,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Remove()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Remove);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult CheckExistingNationalCode()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CheckExistingNationalCode);
@@ -93,6 +99,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string Index = "Index";
             public readonly string Create = "Create";
             public readonly string Modify = "Modify";
+            public readonly string Remove = "Remove";
             public readonly string CheckExistingNationalCode = "CheckExistingNationalCode";
         }
 
@@ -102,6 +109,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public const string Index = "Index";
             public const string Create = "Create";
             public const string Modify = "Modify";
+            public const string Remove = "Remove";
             public const string CheckExistingNationalCode = "CheckExistingNationalCode";
         }
 
@@ -127,6 +135,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public ActionParamsClass_Modify ModifyParams { get { return s_params_Modify; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Modify
+        {
+            public readonly string id = "id";
+            public readonly string request = "request";
+        }
+        static readonly ActionParamsClass_Remove s_params_Remove = new ActionParamsClass_Remove();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Remove RemoveParams { get { return s_params_Remove; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Remove
         {
             public readonly string id = "id";
         }
@@ -211,6 +228,30 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             ModifyOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelModifyParty request);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Modify(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelModifyParty request)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            ModifyOverride(callInfo, request);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void RemoveOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Remove(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Remove);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            RemoveOverride(callInfo, id);
             return callInfo;
         }
 

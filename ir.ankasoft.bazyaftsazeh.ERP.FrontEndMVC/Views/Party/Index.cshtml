@@ -121,12 +121,13 @@
         }
         function ContextMenuOperation(key, options)
         {
+            var _itemId = $(options.$trigger).data('itemid');
             switch (key) {
                 case 'New':
                     $('#Create').submit();
                     break;
                 case 'Edit':
-                    $('#RecID').val($(options.$trigger).data('itemid'));
+                    $('#RecID').val(_itemId);
                     $('#Modify').submit();
                     break;
                 case 'Delete':
@@ -141,7 +142,7 @@
                         closeOnConfirm: false,
                         closeOnCancel: false
                     }, function (isConfirm) {
-                        if (isConfirm) { Delete(menu); } else { swal("@Resource.Cancelled ", "@Resource.YourFileIsSafe ", "error"); }
+                        if (isConfirm) { Delete(_itemId); } else { swal("@Resource.Cancelled ", "@Resource.YourFileIsSafe ", "error"); }
                     });
                     break;
                 case 'ExportToExcel':
@@ -149,11 +150,12 @@
                     break;
             }
         }
-        function Delete(menu) {
-            @*var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.Remove())/{itemId}';
+        function Delete(itemId) {
+            var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.Remove())/{itemId}';
+            alert(itemId);
             $.ajax({
                 type: "POST",
-                url: myUrl.replace("{itemId}", $(menu.target).data('itemid')),
+                url: myUrl.replace("{itemId}", itemId),
                 processData: false,
                 contentType: false,
                 success: function (result) {
@@ -163,7 +165,7 @@
                 error: function (Error) {
                     swal("@Resource.Cancelled ", "@Resource.YourFileIsSafe ", "error");
                 }
-            });*@
+            });
         }
 
 

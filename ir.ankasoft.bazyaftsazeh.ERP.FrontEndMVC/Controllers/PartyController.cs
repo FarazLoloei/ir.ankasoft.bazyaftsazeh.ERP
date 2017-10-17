@@ -111,6 +111,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public virtual ActionResult Modify(ViewModelModifyParty request)
         {
             if (ModelState.IsValid)
@@ -133,6 +134,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 }
             }
             return View(request);
+        }
+
+
+        public virtual ActionResult Remove(long id)
+        {
+            using (_unitOfWorkFactory.Create())
+            {
+                _partyRepository.Remove(id);
+            }
+            return RedirectToAction(MVC.Party.Index());
         }
 
         [AllowAnonymous]
