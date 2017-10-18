@@ -74,6 +74,7 @@
                             </div>
                         </div>
                         <div class="communications">
+                            <table class="table anka_dataTable table-striped table-bordered"></table>
                         </div>
                     </div>
                     <div id="postal" role="tabpanel" class="tab-pane">
@@ -108,7 +109,7 @@
                     dataType: 'html',
                     data: serializedValues,
                     success: function (result) {
-                        communication.html(result);
+                        communication.find('table').html(result);
                         recreateSelect2();
                         verifyBorderButton($('#communication .row'));
                     },
