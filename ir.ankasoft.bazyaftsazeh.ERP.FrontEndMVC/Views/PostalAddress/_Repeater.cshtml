@@ -1,8 +1,7 @@
 ﻿@model ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateParty
-                                                                    @*Communication*@
+
 @foreach (var item in Model.CommunicationCollection.Select((value, i) => new { i, value }))
 {
-    
     <div class="rowContainer">
         @Html.HiddenFor(model => item.value.recId)
         <fieldset>

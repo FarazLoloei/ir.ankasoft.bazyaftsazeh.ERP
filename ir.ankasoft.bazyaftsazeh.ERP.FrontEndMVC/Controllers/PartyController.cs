@@ -2,6 +2,7 @@
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress;
 using ir.ankasoft.entities;
 using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
@@ -166,6 +167,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             request.CommunicationCollection = request.CommunicationCollection ?? new List<ViewModelCommunication>();
             request.CommunicationCollection.Add(new ViewModelCommunication());
+            return PartialView(MVC.Communication.Views._Repeater, request);
+        }
+
+        public virtual ActionResult PostalAddressDetail(ViewModelCreateParty request)
+        {
+            request.PostalAddressCollection = request.PostalAddressCollection ?? new List<ViewModelPostalAddress>();
+            request.PostalAddressCollection.Add(new ViewModelPostalAddress());
             return PartialView(MVC.Communication.Views._Repeater, request);
         }
     }

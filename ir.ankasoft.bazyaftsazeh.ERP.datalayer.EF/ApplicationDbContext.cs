@@ -298,6 +298,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                 .WithMany()
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<PostalAddress>()
+                .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PostalAddress>()
+                .HasRequired(x => x.Province)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<entities.Document>()
                 .HasRequired(x => x.Investor)
                 .WithMany()

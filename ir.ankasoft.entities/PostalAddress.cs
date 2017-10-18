@@ -12,10 +12,11 @@ namespace ir.ankasoft.entities
         public bool IsPrimary { get; set; } = false;
         public Enums.PostalAddressType Type { get; set; } = Enums.PostalAddressType.Bussiness;
         public long ProvinceRefRecId { get; set; }
-
         [ForeignKey(nameof(ProvinceRefRecId))]
         public Province Province { get; set; }
 
+        public long CityRefRecId { get; set; }
+        [ForeignKey(nameof(CityRefRecId))]
         public City City { get; set; }
         public string Value { get; set; }
 

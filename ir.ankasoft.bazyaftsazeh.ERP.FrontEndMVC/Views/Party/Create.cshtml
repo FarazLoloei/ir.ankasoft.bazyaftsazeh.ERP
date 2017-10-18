@@ -108,7 +108,7 @@
                     dataType: 'html',
                     data: serializedValues,
                     success: function (result) {
-                        communicationhtml(result);
+                        communication.html(result);
                         recreateSelect2();
                         verifyBorderButton($('#communication .row'));
                     },
@@ -116,7 +116,6 @@
                         swal("@Resource.Cancelled ", status, "error");
                     }
                 })
-
             });
 
             $('.buttonRemove').click(function () {

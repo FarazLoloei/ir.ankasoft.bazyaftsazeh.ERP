@@ -4,58 +4,139 @@
 
 <div class="row">
     <div class="col-lg-9">
-        @using (Html.BeginForm(MVC.Party.Modify(), FormMethod.Post))
+        @using (Html.BeginForm(MVC.Party.Modify(), FormMethod.Post, new { @class = "panel" }))
         {
             @Html.AntiForgeryToken()
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="panel-title">@Resource.Edit</div>
-                </div>
-                <div class="panel-body">
-                    <div class="form-horizontal">
-                        @Html.HiddenFor(model => model.recId)
-                        @Html.HiddenFor(model => model.NationalCode)
+            <div role="tabpanel">
+                <ul class="nav nav-tabs nav-justified">
+                    <li role="presentation">
+                        <a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">@Resource.Information @Resource.CounterParty</a>
+                    </li>
+                    <li role="presentation" class="active">
+                        <a href="#communication" aria-controls="communication" role="tab" data-toggle="tab">@Resource.Information @Resource.Communication</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#postal" aria-controls="postal" role="tab" data-toggle="tab">@Resource.Information @Resource.PostalAddress</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="edit" role="tabpanel" class="tab-pane ">
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PersonalTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EnumDropDownListFor(model => model.PersonalTitle, new { @class = "form-control select2" })
+                                </div>
+                            </div>
+                        </fieldset>
 
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NationalCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.NationalCode, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NationalCode, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div id="communication" role="tabpanel" class="tab-pane active">
                         <div class="form-group">
-                            @Html.LabelFor(model => model.PersonalTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EnumDropDownListFor(model => model.PersonalTitle, new { @class = "form-control select2" })
+                            <div class="text-right">
+                                <button type="button" class="btn btn-labeled btn-success buttonAdd">
+                                    <span class="btn btn-label">
+                                        <i class="fa fa-plus"></i>
+                                    </span>@Resource.Add
+                                </button>
+
+                                <button type="button" class="btn btn-labeled btn-danger buttonRemove">
+                                    <span class="btn btn-label">
+                                        <i class="fa fa-minus"></i>
+                                    </span>@Resource.Remove
+                                </button>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.NationalCode, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                <p class="form-control-static">@Html.DisplayFor(model => model.NationalCode)</p>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
-                            </div>
+                        <div class="communications">
                         </div>
                     </div>
-                </div>
-
-                <div class="panel-footer">
-                    <div class="clearfix">
-                        <div class="pull-right">
-                            <button class="btn btn-primary" type="submit">@Resource.Edit</button>
-                            @Html.ActionLink(Resource.Cancel, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-warning" })
-                        </div>
+                    <div id="postal" role="tabpanel" class="tab-pane">
+                        postal
                     </div>
                 </div>
+            </div>
+
+            <div class="text-right mt-lg">
+                <button class="btn btn-primary" type="submit">@Resource.Create</button>
+                @Html.ActionLink(Resource.Cancel, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-warning" })
             </div>
         }
     </div>
 </div>
+
+@section scripts{
+    @Scripts.Render(Bundles.Scripts.sweetAlert)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.buttonAdd').click(function () {
+                var communication = $('#communication .communications');
+                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.CommunicationDetail())';
+                var Url = '@Url.Action(MVC.Party.CommunicationDetail())';
+                var serializedValues = communication.find('input, select').serializeArray();
+                if (communication.find('input').length < 1)
+                    Url = myUrl;
+                $.ajax({
+                    url: Url,
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    data: serializedValues,
+                    success: function (result) {
+                        communicationhtml(result);
+                        recreateSelect2();
+                        verifyBorderButton($('#communication .row'));
+                    },
+                    error: function (xhr, status) {
+                        swal("@Resource.Cancelled ", status, "error");
+                    }
+                })
+
+            });
+
+            $('.buttonRemove').click(function () {
+                var communication = $('#communication .communications');
+                communication.find('.rowContainer').last().remove();
+                verifyBorderButton($('#communication .row'));
+            });
+
+            function verifyBorderButton($Rows) {
+                $Rows.removeClass('bb');
+                $Rows.addClass('bb');
+
+                $Rows.first().removeClass('bb');
+                $Rows.last().removeClass('bb');
+            }
+
+            function recreateSelect2() {
+                var selects = $('#communication .communications');
+                selects.find('select').select2({ dir: "rtl" }); //.css('width', '100%')
+            }
+        });
+    </script>
+}

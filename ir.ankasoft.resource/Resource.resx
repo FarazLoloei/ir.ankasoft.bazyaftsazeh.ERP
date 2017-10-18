@@ -822,4 +822,16 @@
   <data name="IsPrimary" xml:space="preserve">
     <value>اولیه</value>
   </data>
+  <data name="City" xml:space="preserve">
+    <value>شهر</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>کد پستی</value>
+  </data>
+  <data name="Province" xml:space="preserve">
+    <value>استان</value>
+  </data>
+  <data name="Abbrevation" xml:space="preserve">
+    <value>اختصار</value>
+  </data>
 </root>
