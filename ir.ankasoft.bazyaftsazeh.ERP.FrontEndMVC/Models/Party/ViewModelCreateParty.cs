@@ -1,4 +1,5 @@
-﻿using ir.ankasoft.entities.Enums;
+﻿using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
+using ir.ankasoft.entities.Enums;
 using ir.ankasoft.resource;
 using System;
 using System.Collections.Generic;
@@ -34,5 +35,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
 
         [Display(Name = nameof(Description), ResourceType = typeof(Resource))]
         public string Description { get; set; }
+
+        public List<ViewModelCommunication> CommunicationCollection { get; set; }
     }
 }

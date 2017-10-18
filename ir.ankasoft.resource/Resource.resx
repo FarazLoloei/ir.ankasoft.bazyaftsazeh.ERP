@@ -801,10 +801,25 @@
   <data name="Communication" xml:space="preserve">
     <value>ارتباطی</value>
   </data>
+  <data name="Fax" xml:space="preserve">
+    <value>فکس</value>
+  </data>
   <data name="Information" xml:space="preserve">
     <value>اطلاعات</value>
   </data>
   <data name="PostalAddress" xml:space="preserve">
     <value>پستی</value>
+  </data>
+  <data name="Telex" xml:space="preserve">
+    <value>تلکس</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>وب سایت</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>نوع</value>
+  </data>
+  <data name="IsPrimary" xml:space="preserve">
+    <value>اولیه</value>
   </data>
 </root>

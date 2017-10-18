@@ -383,6 +383,8 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\select2.full.js" />
+    <Content Include="Scripts\select2.full.min.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
     <None Include="T4MVC.tt">
@@ -449,6 +451,9 @@
     <Compile Include="BaseController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="CommunicationController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -481,6 +486,7 @@
     <Compile Include="Models\Account\VerifyCodeViewModel.cs" />
     <Compile Include="Models\Admin\EditUserViewModel.cs" />
     <Compile Include="Models\Admin\RoleViewModel.cs" />
+    <Compile Include="Models\Communication\ViewModelCommunication.cs" />
     <Compile Include="Models\Dashboard\ViewModelDashboard.cs" />
     <Compile Include="Models\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\Manage\ChangePasswordViewModel.cs" />
@@ -629,6 +635,7 @@
     <Content Include="Views\Party\Create.cshtml" />
     <Content Include="Views\Party\_Detail.cshtml" />
     <Content Include="Views\Party\Modify.cshtml" />
+    <Content Include="Views\Communication\_Repeater.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

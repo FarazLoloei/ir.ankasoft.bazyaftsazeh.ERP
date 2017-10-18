@@ -34,6 +34,7 @@ public static partial class MVC
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PagesController Pages = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PagesController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PartyController Party = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PartyController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.RolesAdminController RolesAdmin = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_RolesAdminController();
+    public static T4MVC.CommunicationController Communication = new T4MVC.CommunicationController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -199,6 +200,8 @@ namespace Links
         public static readonly string moment_with_locales_min_js = Url("moment-with-locales.min.js");
         public static readonly string moment_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/moment.min.js") ? Url("moment.min.js") : Url("moment.js");
         public static readonly string moment_min_js = Url("moment.min.js");
+        public static readonly string select2_full_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2.full.min.js") ? Url("select2.full.min.js") : Url("select2.full.js");
+        public static readonly string select2_full_min_js = Url("select2.full.min.js");
         public static readonly string select2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2.min.js") ? Url("select2.min.js") : Url("select2.js");
         public static readonly string select2_min_js = Url("select2.min.js");
     }
@@ -778,6 +781,8 @@ namespace Links
                 public const string moment_with_locales_min_js = "~/Scripts/moment-with-locales.min.js"; 
                 public const string moment_js = "~/Scripts/moment.js"; 
                 public const string moment_min_js = "~/Scripts/moment.min.js"; 
+                public const string select2_full_js = "~/Scripts/select2.full.js"; 
+                public const string select2_full_min_js = "~/Scripts/select2.full.min.js"; 
                 public const string select2_js = "~/Scripts/select2.js"; 
                 public const string select2_min_js = "~/Scripts/select2.min.js"; 
             }

@@ -80,6 +80,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CheckExistingNationalCode);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult CommunicationDetail()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CommunicationDetail);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public PartyController Actions { get { return MVC.Party; } }
@@ -101,6 +107,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string Modify = "Modify";
             public readonly string Remove = "Remove";
             public readonly string CheckExistingNationalCode = "CheckExistingNationalCode";
+            public readonly string CommunicationDetail = "CommunicationDetail";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -111,6 +118,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public const string Modify = "Modify";
             public const string Remove = "Remove";
             public const string CheckExistingNationalCode = "CheckExistingNationalCode";
+            public const string CommunicationDetail = "CommunicationDetail";
         }
 
 
@@ -154,6 +162,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionParamsClass_CheckExistingNationalCode
         {
             public readonly string nationalCode = "nationalCode";
+        }
+        static readonly ActionParamsClass_CommunicationDetail s_params_CommunicationDetail = new ActionParamsClass_CommunicationDetail();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CommunicationDetail CommunicationDetailParams { get { return s_params_CommunicationDetail; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CommunicationDetail
+        {
+            public readonly string request = "request";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -264,6 +280,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CheckExistingNationalCode);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "nationalCode", nationalCode);
             CheckExistingNationalCodeOverride(callInfo, nationalCode);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CommunicationDetailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateParty request);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult CommunicationDetail(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateParty request)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CommunicationDetail);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            CommunicationDetailOverride(callInfo, request);
             return callInfo;
         }
 

@@ -601,6 +601,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to فکس.
+        /// </summary>
+        public static string Fax {
+            get {
+                return ResourceManager.GetString("Fax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to نام.
         /// </summary>
         public static string FirstName {
@@ -867,6 +876,15 @@ namespace ir.ankasoft.resource {
         public static string ISO3 {
             get {
                 return ResourceManager.GetString("ISO3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اولیه.
+        /// </summary>
+        public static string IsPrimary {
+            get {
+                return ResourceManager.GetString("IsPrimary", resourceCulture);
             }
         }
         
@@ -1744,6 +1762,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to تلکس.
+        /// </summary>
+        public static string Telex {
+            get {
+                return ResourceManager.GetString("Telex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to از اینکه پست الکترونیکی خود را تایید کردید متشکریم. لطفا از این لینک برای ورود به سیستم استفاده نمایید..
         /// </summary>
         public static string ThankYouForConfirmingYourEmailPleaseClickToLogin {
@@ -1866,6 +1893,15 @@ namespace ir.ankasoft.resource {
         public static string Tuesday {
             get {
                 return ResourceManager.GetString("Tuesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نوع.
+        /// </summary>
+        public static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
             }
         }
         
@@ -2037,6 +2073,15 @@ namespace ir.ankasoft.resource {
         public static string Warning {
             get {
                 return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to وب سایت.
+        /// </summary>
+        public static string Website {
+            get {
+                return ResourceManager.GetString("Website", resourceCulture);
             }
         }
         

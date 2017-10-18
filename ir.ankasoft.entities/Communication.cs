@@ -12,13 +12,8 @@ namespace ir.ankasoft.entities
 {
     public class Communication : DomainEntity<long>, IDateTracking, IUserTracking
     {
-        public Communication()
-        {
-            IsPrimary = false;
-        }
-
         public Enums.CommunicationType CommunicationType { get; set; }
-        public bool IsPrimary { get; set; }
+        public bool IsPrimary { get; set; } = false;
 
         [Required]
         public string Value { get; set; }

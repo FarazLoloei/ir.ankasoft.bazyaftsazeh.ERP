@@ -161,8 +161,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             ));
 
             bundles.Add(new ScriptBundle(Bundles.Scripts.Select2).Include(
-                //Links.Bundles.Scripts.Assets.select2_full_min_js
-                Links.Bundles.Scripts.Assets.select2_min_js
+                Links.Bundles.Scripts.Assets.select2_full_min_js
+                //Links.Bundles.Scripts.Assets.select2_min_js
             ));
 
             bundles.Add(new ScriptBundle(Bundles.Scripts.bootstrapPersianDatePicker).Include(

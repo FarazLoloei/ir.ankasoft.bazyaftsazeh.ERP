@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
 using ir.ankasoft.entities;
 using ir.ankasoft.entities.Repositories;
@@ -159,6 +160,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        public virtual ActionResult CommunicationDetail(ViewModelCreateParty request)
+        {
+            request.CommunicationCollection = request.CommunicationCollection ?? new List<ViewModelCommunication>();
+            request.CommunicationCollection.Add(new ViewModelCommunication());
+            return PartialView(MVC.Communication.Views._Repeater, request);
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿.select2-container--default .select2-selection--single {
-    border: 1px solid #dde6e9;
-}
-.select2-dropdown{
-    border:1px solid #dde6e9;
-}
+﻿.select2-container--default .select2-selection--single { border: 1px solid #dde6e9; }
+.select2-dropdown { border: 1px solid #dde6e9; }
 
-.select2-container--default .select2-search--dropdown .select2-search__field {
-    border: 1px solid #dde6e9;
-}
+.select2-container--default .select2-search--dropdown .select2-search__field { border: 1px solid #dde6e9; }
