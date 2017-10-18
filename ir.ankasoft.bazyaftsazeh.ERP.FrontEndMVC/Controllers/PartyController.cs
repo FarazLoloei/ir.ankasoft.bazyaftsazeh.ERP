@@ -138,6 +138,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
 
         public virtual ActionResult Remove(long id)
+
         {
             using (_unitOfWorkFactory.Create())
             {

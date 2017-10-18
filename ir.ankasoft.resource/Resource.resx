@@ -798,4 +798,13 @@
   <data name="Mrs" xml:space="preserve">
     <value>خانم</value>
   </data>
+  <data name="Communication" xml:space="preserve">
+    <value>ارتباطی</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>اطلاعات</value>
+  </data>
+  <data name="PostalAddress" xml:space="preserve">
+    <value>پستی</value>
+  </data>
 </root>

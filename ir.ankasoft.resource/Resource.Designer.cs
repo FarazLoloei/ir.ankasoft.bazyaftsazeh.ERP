@@ -304,6 +304,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ارتباطی.
+        /// </summary>
+        public static string Communication {
+            get {
+                return ResourceManager.GetString("Communication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to شرکت.
         /// </summary>
         public static string Company {
@@ -687,6 +696,15 @@ namespace ir.ankasoft.resource {
         public static string Icon {
             get {
                 return ResourceManager.GetString("Icon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اطلاعات.
+        /// </summary>
+        public static string Information {
+            get {
+                return ResourceManager.GetString("Information", resourceCulture);
             }
         }
         
@@ -1308,6 +1326,15 @@ namespace ir.ankasoft.resource {
         public static string PM {
             get {
                 return ResourceManager.GetString("PM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to پستی.
+        /// </summary>
+        public static string PostalAddress {
+            get {
+                return ResourceManager.GetString("PostalAddress", resourceCulture);
             }
         }
         
