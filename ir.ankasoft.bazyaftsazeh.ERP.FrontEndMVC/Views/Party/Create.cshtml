@@ -9,10 +9,10 @@
             @Html.AntiForgeryToken()
             <div role="tabpanel">
                 <ul class="nav nav-tabs nav-justified">
-                    <li role="presentation">
+                    <li role="presentation" class="active">
                         <a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">@Resource.Information @Resource.CounterParty</a>
                     </li>
-                    <li role="presentation" class="active">
+                    <li role="presentation">
                         <a href="#communication" aria-controls="communication" role="tab" data-toggle="tab">@Resource.Information @Resource.Communication</a>
                     </li>
                     <li role="presentation">
@@ -20,7 +20,7 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div id="edit" role="tabpanel" class="tab-pane ">
+                    <div id="edit" role="tabpanel" class="tab-pane active">
                         <fieldset>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.PersonalTitle, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.NationalCode, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.NationalCode, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.NationalCode, new { htmlAttributes = new { @class = "form-control text-right" } })
                                     @Html.ValidationMessageFor(model => model.NationalCode, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -57,16 +57,16 @@
                             </div>
                         </fieldset>
                     </div>
-                    <div id="communication" role="tabpanel" class="tab-pane active">
+                    <div id="communication" role="tabpanel" class="tab-pane ">
                         <div class="form-group">
                             <div class="text-right">
-                                <button type="button" class="btn btn-labeled btn-success buttonAdd">
+                                <button type="button" class="btn btn-labeled btn-success buttonAddCommunication">
                                     <span class="btn btn-label">
                                         <i class="fa fa-plus"></i>
                                     </span>@Resource.Add
                                 </button>
 
-                                <button type="button" class="btn btn-labeled btn-danger buttonRemove">
+                                <button type="button" class="btn btn-labeled btn-danger buttonRemoveCommunication">
                                     <span class="btn btn-label">
                                         <i class="fa fa-minus"></i>
                                     </span>@Resource.Remove
@@ -78,7 +78,24 @@
                         </div>
                     </div>
                     <div id="postal" role="tabpanel" class="tab-pane">
-                        postal
+                        <div class="form-group">
+                            <div class="text-right">
+                                <button type="button" class="btn btn-labeled btn-success buttonAddPostalAddress">
+                                    <span class="btn btn-label">
+                                        <i class="fa fa-plus"></i>
+                                    </span>@Resource.Add
+                                </button>
+
+                                <button type="button" class="btn btn-labeled btn-danger buttonRemovePostalAddress">
+                                    <span class="btn btn-label">
+                                        <i class="fa fa-minus"></i>
+                                    </span>@Resource.Remove
+                                </button>
+                            </div>
+                        </div>
+                        <div class="postalAddresses">
+                            <table class="table anka_dataTable table-striped table-bordered"></table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,15 +109,50 @@
 </div>
 
 @section scripts{
-@Scripts.Render(Bundles.Scripts.sweetAlert)
+    @Scripts.Render(Bundles.Scripts.sweetAlert)
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.buttonAdd').click(function () {
+            /*Communication*/
+            $('.buttonAddCommunication').click(function () {
                 var communication = $('#communication .communications');
                 var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.CommunicationDetail())';
                 var Url = '@Url.Action(MVC.Party.CommunicationDetail())';
                 var serializedValues = communication.find('input, select').serializeArray();
+                var req1 = {
+                }
+
+
                 if (communication.find('input').length < 1)
+                    Url = myUrl;
+                $.ajax({
+                    url: Url,
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    data: JSON.stringify({ 'req1': serializedValues, 'req2': serializedValues}),
+                    success: function (result) {
+                        communication.find('table').html(result);
+                        recreateSelect2(communication);
+                        //verifyBorderButton($('#communication .row'));
+                    },
+                    error: function (xhr, status) {
+                        swal("@Resource.Cancelled ", status, "error");
+                    }
+                })
+            });
+
+            $('.buttonRemoveCommunication').click(function () {
+                var communication = $('#communication .communications');
+                communication.find('.rowContainer').last().remove();
+                //verifyBorderButton($('#communication .row'));
+            });
+            /*PostalAddress*/
+            $('.buttonAddPostalAddress').click(function () {
+                var postal = $('#postal .postalAddresses');
+                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.PostalAddressDetail())';
+                var Url = '@Url.Action(MVC.Party.PostalAddressDetail())';
+                var serializedValues = postal.find('input, select').serializeArray();
+                if (postal.find('input').length < 1)
                     Url = myUrl;
                 $.ajax({
                     url: Url,
@@ -109,9 +161,9 @@
                     dataType: 'html',
                     data: serializedValues,
                     success: function (result) {
-                        communication.find('table').html(result);
-                        recreateSelect2();
-                        verifyBorderButton($('#communication .row'));
+                        postal.find('table').html(result);
+                        recreateSelect2(postal);
+                        //verifyBorderButton($('#postal .row'));
                     },
                     error: function (xhr, status) {
                         swal("@Resource.Cancelled ", status, "error");
@@ -119,23 +171,23 @@
                 })
             });
 
-            $('.buttonRemove').click(function () {
-                var communication = $('#communication .communications');
+            $('.buttonRemovePostalAddress').click(function () {
+                var communication = $('#postal .postalAddresses');
                 communication.find('.rowContainer').last().remove();
-                verifyBorderButton($('#communication .row'));
+                //verifyBorderButton($('#communication .row'));
             });
 
-            function verifyBorderButton($Rows) {
-                $Rows.removeClass('bb');
-                $Rows.addClass('bb');
+            //function verifyBorderButton($Rows) {
+            //    $Rows.removeClass('bb');
+            //    $Rows.addClass('bb');
 
-                $Rows.first().removeClass('bb');
-                $Rows.last().removeClass('bb');
-            }
+            //    $Rows.first().removeClass('bb');
+            //    $Rows.last().removeClass('bb');
+            //}
 
-            function recreateSelect2() {
-                var selects = $('#communication .communications');
-                selects.find('select').select2({ dir: "rtl" }); //.css('width', '100%')
+            function recreateSelect2(selector) {
+                //var selects = $(selector);
+                selector.find('select').select2({ dir: "rtl" }); //.css('width', '100%')
             }
         });
     </script>

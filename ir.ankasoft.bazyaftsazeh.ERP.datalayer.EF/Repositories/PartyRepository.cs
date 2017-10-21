@@ -14,7 +14,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
             DataContextFactory.GetDataContext().Set<Party>().Add(entity);
         }
 
-        public IEnumerable<Party> LoadByFilter(IFilterDataSource request,
+        public override IEnumerable<Party> LoadByFilter(IFilterDataSource request,
                                            out int totalRecords)
         {
             long partyNumber = 0;
@@ -35,6 +35,20 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
         public bool CheckExistingNationalCode(string nationalCode)
         {
             return FindAll(_ => _.NationalCode == nationalCode).Count() > 0 ? true : false;
+        }
+
+        public override void Remove(long id)
+        {
+            Party _party = FindById(id);
+            foreach (var item in _party.CommunicationCollection)
+            {
+                new CommunicationRepository().Remove(item);
+            }
+            foreach (var item in _party.PostalAddressCollection)
+            {
+                new PostalAddressRepository().Remove(item);
+            }
+            base.Remove(id);
         }
     }
 }

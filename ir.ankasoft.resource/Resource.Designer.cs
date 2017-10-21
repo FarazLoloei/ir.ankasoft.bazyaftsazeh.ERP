@@ -718,6 +718,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to منزل.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to آیکن.
         /// </summary>
         public static string Icon {
@@ -1096,6 +1105,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to حداقل تعداد حروف یا اعداد باید 10 باشد.
+        /// </summary>
+        public static string MinLenght10 {
+            get {
+                return ResourceManager.GetString("MinLenght10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to حداقل تعداد ارقام 11 رقم.
         /// </summary>
         public static string MinLenght11 {
@@ -1209,6 +1227,15 @@ namespace ir.ankasoft.resource {
         public static string Mrs {
             get {
                 return ResourceManager.GetString("Mrs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to باید عدد وارد گردد.
+        /// </summary>
+        public static string MustInsertInNumerical {
+            get {
+                return ResourceManager.GetString("MustInsertInNumerical", resourceCulture);
             }
         }
         
@@ -2154,6 +2181,15 @@ namespace ir.ankasoft.resource {
         public static string WelcomeMessage {
             get {
                 return ResourceManager.GetString("WelcomeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to محل کار.
+        /// </summary>
+        public static string WorkPlace {
+            get {
+                return ResourceManager.GetString("WorkPlace", resourceCulture);
             }
         }
         

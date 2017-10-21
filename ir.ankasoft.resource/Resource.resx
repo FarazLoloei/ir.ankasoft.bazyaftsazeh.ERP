@@ -834,4 +834,16 @@
   <data name="Abbrevation" xml:space="preserve">
     <value>اختصار</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>منزل</value>
+  </data>
+  <data name="WorkPlace" xml:space="preserve">
+    <value>محل کار</value>
+  </data>
+  <data name="MinLenght10" xml:space="preserve">
+    <value>حداقل تعداد حروف یا اعداد باید 10 باشد</value>
+  </data>
+  <data name="MustInsertInNumerical" xml:space="preserve">
+    <value>باید عدد وارد گردد</value>
+  </data>
 </root>

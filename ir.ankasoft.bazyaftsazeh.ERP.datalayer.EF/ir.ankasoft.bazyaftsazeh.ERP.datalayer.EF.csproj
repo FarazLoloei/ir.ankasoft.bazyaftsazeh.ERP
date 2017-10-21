@@ -92,10 +92,14 @@
     <Compile Include="Repositories\ApplicationRoleManagerRepository.cs" />
     <Compile Include="Repositories\ApplicationSignInManagerRepository.cs" />
     <Compile Include="Repositories\ApplicationUserManagerRepository.cs" />
+    <Compile Include="Repositories\CityRepository.cs" />
+    <Compile Include="Repositories\CommunicationRepository.cs" />
     <Compile Include="Repositories\ContextMenuItemRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\ObjectiveRepository.cs" />
     <Compile Include="Repositories\PartyRepository.cs" />
+    <Compile Include="Repositories\PostalAddressRepository.cs" />
+    <Compile Include="Repositories\ProvinceRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
   <ItemGroup>

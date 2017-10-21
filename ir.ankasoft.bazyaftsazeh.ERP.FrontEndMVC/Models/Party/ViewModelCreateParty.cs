@@ -29,6 +29,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
             HttpMethod = "POST",
             ErrorMessageResourceName = "AlreadyExists",
             ErrorMessageResourceType = typeof(Resource))]
+        [RegularExpression("^[0-9]*$", ErrorMessageResourceName = "MustInsertInNumerical", ErrorMessageResourceType = typeof(Resource))]
         public string NationalCode { get; set; }
 
         [Display(Name = nameof(Description), ResourceType = typeof(Resource))]

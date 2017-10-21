@@ -6,6 +6,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress;
 using ir.ankasoft.entities;
 using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -16,17 +17,19 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IPartyRepository _partyRepository;
+        private readonly ICityRepository _cityRepository;
         private readonly IContextMenuItemRepository _contextMenuItemRepository;
         private IMapper Mapper;
 
         public PartyController(IPartyRepository partyRepository,
                                IContextMenuItemRepository contextMenuItemRepository,
+                               ICityRepository cityRepository,
                                IUnitOfWorkFactory unitOfWorkFactory)
         {
             _partyRepository = partyRepository;
             _contextMenuItemRepository = contextMenuItemRepository;
+            _cityRepository = cityRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
-
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
         }
@@ -76,8 +79,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Create(ViewModelCreateParty request)
+        public virtual ActionResult Create(ViewModelCreateParty request,
+            List<ViewModelCommunication> communicationCollection,
+            List<ViewModelPostalAddress> postalAddressCollection)
         {
+            request.CommunicationCollection = communicationCollection.Where(_ => !string.IsNullOrEmpty(_.Value)).ToList();
+            request.PostalAddressCollection = postalAddressCollection.Where(_ => !string.IsNullOrEmpty(_.Postal_Value)).ToList();
+            request.PostalAddressCollection = request.PostalAddressCollection.Count() > 0 ? request.PostalAddressCollection : null;
+            if (request.PostalAddressCollection == null) { ModelState.Remove("[0].Postal_Value"); }
             if (ModelState.IsValid)
             {
                 try
@@ -103,7 +112,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         public virtual ActionResult Modify(long id)
         {
-            Party _party = _partyRepository.FindById(id);
+            Party _party = _partyRepository.FindById(id, y => y.CommunicationCollection, y => y.PostalAddressCollection,
+                                                                                         y => y.PostalAddressCollection.Select(x => x.Province),
+                                                                                         y => y.PostalAddressCollection.Select(x => x.City));
             if (_party == null)
             {
                 return HttpNotFound();
@@ -114,8 +125,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Modify(ViewModelModifyParty request)
+        public virtual ActionResult Modify(ViewModelModifyParty request,
+            List<ViewModelCommunication> communicationCollection,
+            List<ViewModelPostalAddress> postalAddressCollection)
         {
+            
+            request.CommunicationCollection = communicationCollection.Where(_ => !string.IsNullOrEmpty(_.Value)).ToList();
+            request.PostalAddressCollection = postalAddressCollection.Where(_ => !string.IsNullOrEmpty(_.Postal_Value)).ToList();
+            request.PostalAddressCollection = request.PostalAddressCollection.Count() > 0 ? request.PostalAddressCollection : null;
+            if (request.PostalAddressCollection == null) { ModelState.Remove("[0].Postal_Value"); }
             if (ModelState.IsValid)
             {
                 try
@@ -163,18 +181,26 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             }
         }
 
-        public virtual ActionResult CommunicationDetail(ViewModelCreateParty request)
+        public virtual ActionResult CommunicationDetail(List<ViewModelCommunication> request)
         {
-            request.CommunicationCollection = request.CommunicationCollection ?? new List<ViewModelCommunication>();
-            request.CommunicationCollection.Add(new ViewModelCommunication());
+            request = request ?? new List<ViewModelCommunication>();
+            request.Add(new ViewModelCommunication());
             return PartialView(MVC.Communication.Views._Repeater, request);
         }
 
-        public virtual ActionResult PostalAddressDetail(ViewModelCreateParty request)
+        public virtual ActionResult PostalAddressDetail(List<ViewModelPostalAddress> request)
         {
-            request.PostalAddressCollection = request.PostalAddressCollection ?? new List<ViewModelPostalAddress>();
-            request.PostalAddressCollection.Add(new ViewModelPostalAddress());
-            return PartialView(MVC.Communication.Views._Repeater, request);
+            List<SelectListItem> _cityProvinceList = _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
+            {
+                return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
+            }).ToList();
+
+            request = request ?? new List<ViewModelPostalAddress>();
+            request.Add(new ViewModelPostalAddress()
+            {
+                ProvinceCityList = _cityProvinceList
+            });
+            return PartialView(MVC.PostalAddress.Views._Repeater, request);
         }
     }
 }

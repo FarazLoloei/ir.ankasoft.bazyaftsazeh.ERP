@@ -167,6 +167,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             _.CreateMap<ViewModelPostalAddress, PostalAddress>()
                 .ForMember(p => p.Province, t => t.Ignore())
                 .ForMember(p => p.City, t => t.Ignore())
+
+
+                .ForMember(p => p.IsPrimary, opt => opt.MapFrom(dest => dest.Postal_IsPrimary))
+                .ForMember(p => p.Type, opt => opt.MapFrom(dest => dest.Postal_Type))
+                .ForMember(p => p.Value, opt => opt.MapFrom(dest => dest.Postal_Value))
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.Postal_recId))
+
                 .ForMember(p => p.PartyRefRecId, t => t.Ignore())
                 .ForMember(p => p.PersonRefRecId, t => t.Ignore())
                 .ForMember(p => p.ImporterRefRecId, t => t.Ignore())
@@ -178,9 +185,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
             _.CreateMap<PostalAddress, ViewModelPostalAddress>()
+                .ForMember(p => p.Postal_recId, opt => opt.MapFrom(dest => dest.recId))
+                .ForMember(p => p.Postal_IsPrimary, opt => opt.MapFrom(dest => dest.IsPrimary))
+                .ForMember(p => p.Postal_Type, opt => opt.MapFrom(dest => dest.Type))
+                .ForMember(p => p.Postal_Value, opt => opt.MapFrom(dest => dest.Value))
+                .ForMember(p => p.ProvinceCity, opt => opt.MapFrom(dest => $"{dest.CityRefRecId},{dest.ProvinceRefRecId}"))
                 .ForMember(p => p.Province, opt => opt.MapFrom(dest => dest.Province.Title))
-                .ForMember(p => p.ProvinceList, t => t.Ignore())
-                .ForMember(p => p.CityList, t => t.Ignore());
+                .ForMember(p => p.City, opt => opt.MapFrom(dest => dest.City.Title))
+                .ForMember(p => p.ProvinceCityList, t => t.Ignore());
         }
 
 

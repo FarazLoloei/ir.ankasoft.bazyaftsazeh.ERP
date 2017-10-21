@@ -152,7 +152,6 @@
         }
         function Delete(itemId) {
             var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.Remove())/{itemId}';
-            alert(itemId);
             $.ajax({
                 type: "POST",
                 url: myUrl.replace("{itemId}", itemId),

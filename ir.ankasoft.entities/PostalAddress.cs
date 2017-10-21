@@ -10,7 +10,7 @@ namespace ir.ankasoft.entities
     public class PostalAddress : DomainEntity<long>, IDateTracking, IUserTracking
     {
         public bool IsPrimary { get; set; } = false;
-        public Enums.PostalAddressType Type { get; set; } = Enums.PostalAddressType.Bussiness;
+        public Enums.PostalAddressType Type { get; set; } = Enums.PostalAddressType.Home;
         public long ProvinceRefRecId { get; set; }
         [ForeignKey(nameof(ProvinceRefRecId))]
         public Province Province { get; set; }

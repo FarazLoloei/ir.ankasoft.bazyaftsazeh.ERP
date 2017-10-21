@@ -1,8 +1,13 @@
-﻿namespace ir.ankasoft.entities.Enums
+﻿using ir.ankasoft.resource;
+using System.ComponentModel.DataAnnotations;
+
+namespace ir.ankasoft.entities.Enums
 {
     public enum PostalAddressType
     {
-        Bussiness = 1,
+        [Display(Name = nameof(WorkPlace), ResourceType = typeof(Resource))]
+        WorkPlace = 1,
+        [Display(Name = nameof(Home), ResourceType = typeof(Resource))]
         Home
     }
 }

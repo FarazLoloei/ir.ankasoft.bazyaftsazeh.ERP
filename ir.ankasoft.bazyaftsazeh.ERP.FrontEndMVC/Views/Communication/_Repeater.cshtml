@@ -1,10 +1,69 @@
-﻿@model ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelCreateParty
+﻿@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
+@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
+@using System.Linq;
+@*@model dynamic*@
 @*Communication*@
+@*@{
+        dynamic newModel;
+        if (Model is ViewModelCreateParty)
+        { newModel = (ViewModelCreateParty)Model; }
+        else
+        { newModel = (ViewModelModifyParty)Model; }
+
+        ViewModelCommunication schema = (newModel.CommunicationCollection as List<ViewModelCommunication>).FirstOrDefault();
+    }
+    @{
+        if ((newModel.CommunicationCollection as List<ViewModelCommunication>).Any<ViewModelCommunication>())
+        {
+            <thead>
+                <tr>
+                    <td class="hidden"></td>
+                    <td class="col-md-1">@Html.LabelFor(model => schema.Type)</td>
+                    <td class="col-md-1">@Html.LabelFor(model => schema.IsPrimary)</td>
+                    <td class="col-md-2">@Html.LabelFor(model => schema.Value)</td>
+                    <td class="col-md-8">@Html.LabelFor(model => schema.Description)</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (newModel is ViewModelCreateParty)
+                    {
+                        var innerModel = (ViewModelCreateParty)newModel;
+                        foreach (var item in innerModel.CommunicationCollection.Select((value, i) => new { i, value }))
+                        {
+                        <tr>
+                            <td class="hidden">@Html.HiddenFor(model => innerModel.CommunicationCollection[@item.i].recId)</td>
+                            <td class="col-md-1">@Html.EnumDropDownListFor(model => innerModel.CommunicationCollection[@item.i].Type, new { @class = "select2" })</td>
+                            <td class="col-md-1">@Html.EditorFor(model => innerModel.CommunicationCollection[@item.i].IsPrimary, new { htmlAttributes = new { @class = "form-control" } })</td>
+                            <td class="col-md-2">@Html.EditorFor(model => innerModel.CommunicationCollection[@item.i].Value, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
+                            <td class="col-md-8">@Html.EditorFor(model => innerModel.CommunicationCollection[@item.i].Description, new { htmlAttributes = new { @class = "form-control" } })</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    var innerModel = (ViewModelModifyParty)newModel;
+                    foreach (var item in innerModel.CommunicationCollection.Select((value, i) => new { i, value }))
+                    {
+                        <tr>
+                            <td class="hidden">@Html.HiddenFor(model => innerModel.CommunicationCollection[@item.i].recId)</td>
+                            <td class="col-md-1">@Html.EnumDropDownListFor(model => innerModel.CommunicationCollection[@item.i].Type, new { @class = "select2" })</td>
+                            <td class="col-md-1">@Html.EditorFor(model => innerModel.CommunicationCollection[@item.i].IsPrimary, new { htmlAttributes = new { @class = "form-control" } })</td>
+                            <td class="col-md-2">@Html.EditorFor(model => innerModel.CommunicationCollection[@item.i].Value, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
+                            <td class="col-md-8">@Html.EditorFor(model => innerModel.CommunicationCollection[@item.i].Description, new { htmlAttributes = new { @class = "form-control" } })</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        }
+    }*@
+
+@model List<ViewModelCommunication>
 @{
-    ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCommunication schema = Model.CommunicationCollection.FirstOrDefault();
+    ViewModelCommunication schema = Model.FirstOrDefault();
 }
+
 @{
-    if (Model.CommunicationCollection.Any())
+    if (Model.Any())
     {
         <thead>
             <tr>
@@ -16,14 +75,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.CommunicationCollection.Select((value, i) => new { i, value }))
-            {
+            @foreach (var item in Model.Select((value, i) => new { i, value }))
+                {
                 <tr>
-                    <td class="hidden">@Html.HiddenFor(model => Model.CommunicationCollection[@item.i].recId)</td>
-                    <td class="col-md-1">@Html.EnumDropDownListFor(model => Model.CommunicationCollection[@item.i].Type, new { @class = "select2" })</td>
-                    <td class="col-md-1">@Html.EditorFor(model => Model.CommunicationCollection[@item.i].IsPrimary, new { htmlAttributes = new { @class = "form-control" } })</td>
-                    <td class="col-md-2">@Html.EditorFor(model => Model.CommunicationCollection[@item.i].Value, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
-                    <td class="col-md-8">@Html.EditorFor(model => Model.CommunicationCollection[@item.i].Description, new { htmlAttributes = new { @class = "form-control" } })</td>
+                    <td class="hidden">@Html.HiddenFor(model => Model[item.i].recId)</td>
+                    <td class="col-md-1">@Html.EnumDropDownListFor(model => Model[item.i].Type, new { @class = "select2" })</td>
+                    <td class="col-md-1">@Html.EditorFor(model => Model[item.i].IsPrimary, new { htmlAttributes = new { @class = "form-control" } })</td>
+                    <td class="col-md-2">@Html.EditorFor(model => Model[item.i].Value, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
+                    <td class="col-md-8">@Html.EditorFor(model => Model[item.i].Description, new { htmlAttributes = new { @class = "form-control" } })</td>
                 </tr>
             }
         </tbody>

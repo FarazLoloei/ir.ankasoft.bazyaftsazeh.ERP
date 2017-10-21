@@ -24,8 +24,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
         [Display(Name = nameof(Title), ResourceType = typeof(Resource))]
         public string Title { get; set; }
 
+        [RegularExpression("^[0-9]*$", ErrorMessageResourceName = "MustInsertInNumerical", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = nameof(NationalCode), ResourceType = typeof(Resource))]
-        
         public string NationalCode { get; set; }
 
         [Display(Name = nameof(Description), ResourceType = typeof(Resource))]

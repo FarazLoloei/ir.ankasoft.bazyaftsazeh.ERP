@@ -56,6 +56,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
                 x.For<INotificationRepository>().Use<NotificationRepository>();
                 x.For<IPartyRepository>().Use<PartyRepository>();
                 x.For<IContextMenuItemRepository>().Use<ContextMenuItemRepository>();
+                x.For<IProvinceRepository>().Use<ProvinceRepository>();
+                x.For<ICityRepository>().Use<CityRepository>();
                 //x.For<Entities.Repositories.ITransferRepository>().Use<Repositories.TransferRepository>();
                 //x.For<Entities.Repositories.ISalesTypeRepository>().Use<Repositories.SalesTypeRepository>();
                 //x.For<Entities.Repositories.ISalesStatusRepository>().Use<Repositories.SalesStatusRepository>();

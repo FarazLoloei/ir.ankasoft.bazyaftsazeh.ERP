@@ -9,10 +9,10 @@
             @Html.AntiForgeryToken()
             <div role="tabpanel">
                 <ul class="nav nav-tabs nav-justified">
-                    <li role="presentation">
+                    <li role="presentation" class="active">
                         <a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">@Resource.Information @Resource.CounterParty</a>
                     </li>
-                    <li role="presentation" class="active">
+                    <li role="presentation">
                         <a href="#communication" aria-controls="communication" role="tab" data-toggle="tab">@Resource.Information @Resource.Communication</a>
                     </li>
                     <li role="presentation">
@@ -20,7 +20,8 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div id="edit" role="tabpanel" class="tab-pane ">
+                    <div id="edit" role="tabpanel" class="tab-pane active">
+                        @Html.HiddenFor(model => model.recId)
                         <fieldset>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.PersonalTitle, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -34,8 +35,8 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.NationalCode, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.NationalCode, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.NationalCode, "", new { @class = "text-danger" })
+                                    @Html.DisplayFor(model => model.NationalCode, new { htmlAttributes = new { @class = "form-control text-right" } })
+                                    @*@Html.ValidationMessageFor(model => model.NationalCode, "", new { @class = "text-danger" })*@
                                 </div>
                             </div>
                         </fieldset>
@@ -57,16 +58,16 @@
                             </div>
                         </fieldset>
                     </div>
-                    <div id="communication" role="tabpanel" class="tab-pane active">
+                    <div id="communication" role="tabpanel" class="tab-pane ">
                         <div class="form-group">
                             <div class="text-right">
-                                <button type="button" class="btn btn-labeled btn-success buttonAdd">
+                                <button type="button" class="btn btn-labeled btn-success buttonAddCommunication">
                                     <span class="btn btn-label">
                                         <i class="fa fa-plus"></i>
                                     </span>@Resource.Add
                                 </button>
 
-                                <button type="button" class="btn btn-labeled btn-danger buttonRemove">
+                                <button type="button" class="btn btn-labeled btn-danger buttonRemoveCommunication">
                                     <span class="btn btn-label">
                                         <i class="fa fa-minus"></i>
                                     </span>@Resource.Remove
@@ -74,16 +75,38 @@
                             </div>
                         </div>
                         <div class="communications">
+                            <table class="table anka_dataTable table-striped table-bordered">
+                                @Html.Partial(MVC.Communication.Views._Repeater, Model.CommunicationCollection)
+                            </table>
                         </div>
                     </div>
                     <div id="postal" role="tabpanel" class="tab-pane">
-                        postal
+                        <div class="form-group">
+                            <div class="text-right">
+                                <button type="button" class="btn btn-labeled btn-success buttonAddPostalAddress">
+                                    <span class="btn btn-label">
+                                        <i class="fa fa-plus"></i>
+                                    </span>@Resource.Add
+                                </button>
+
+                                <button type="button" class="btn btn-labeled btn-danger buttonRemovePostalAddress">
+                                    <span class="btn btn-label">
+                                        <i class="fa fa-minus"></i>
+                                    </span>@Resource.Remove
+                                </button>
+                            </div>
+                        </div>
+                        <div class="postalAddresses">
+                            <table class="table anka_dataTable table-striped table-bordered">
+                                @Html.Partial(MVC.PostalAddress.Views._Repeater, Model.PostalAddressCollection)
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="text-right mt-lg">
-                <button class="btn btn-primary" type="submit">@Resource.Create</button>
+                <button class="btn btn-primary" type="submit">@Resource.Modify</button>
                 @Html.ActionLink(Resource.Cancel, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-warning" })
             </div>
         }
@@ -94,7 +117,8 @@
     @Scripts.Render(Bundles.Scripts.sweetAlert)
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.buttonAdd').click(function () {
+            /*Communication*/
+            $('.buttonAddCommunication').click(function () {
                 var communication = $('#communication .communications');
                 var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.CommunicationDetail())';
                 var Url = '@Url.Action(MVC.Party.CommunicationDetail())';
@@ -108,34 +132,63 @@
                     dataType: 'html',
                     data: serializedValues,
                     success: function (result) {
-                        communicationhtml(result);
-                        recreateSelect2();
-                        verifyBorderButton($('#communication .row'));
+                        communication.find('table').html(result);
+                        recreateSelect2(communication);
+                        //verifyBorderButton($('#communication .row'));
                     },
                     error: function (xhr, status) {
                         swal("@Resource.Cancelled ", status, "error");
                     }
                 })
-
             });
 
-            $('.buttonRemove').click(function () {
+            $('.buttonRemoveCommunication').click(function () {
                 var communication = $('#communication .communications');
                 communication.find('.rowContainer').last().remove();
-                verifyBorderButton($('#communication .row'));
+                //verifyBorderButton($('#communication .row'));
+            });
+            /*PostalAddress*/
+            $('.buttonAddPostalAddress').click(function () {
+                var postal = $('#postal .postalAddresses');
+                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.PostalAddressDetail())';
+                var Url = '@Url.Action(MVC.Party.PostalAddressDetail())';
+                var serializedValues = postal.find('input, select').serializeArray();
+                if (postal.find('input').length < 1)
+                    Url = myUrl;
+                $.ajax({
+                    url: Url,
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    data: serializedValues,
+                    success: function (result) {
+                        postal.find('table').html(result);
+                        recreateSelect2(postal);
+                        //verifyBorderButton($('#postal .row'));
+                    },
+                    error: function (xhr, status) {
+                        swal("@Resource.Cancelled ", status, "error");
+                    }
+                })
             });
 
-            function verifyBorderButton($Rows) {
-                $Rows.removeClass('bb');
-                $Rows.addClass('bb');
+            $('.buttonRemovePostalAddress').click(function () {
+                var communication = $('#postal .postalAddresses');
+                communication.find('.rowContainer').last().remove();
+                //verifyBorderButton($('#communication .row'));
+            });
 
-                $Rows.first().removeClass('bb');
-                $Rows.last().removeClass('bb');
-            }
+            //function verifyBorderButton($Rows) {
+            //    $Rows.removeClass('bb');
+            //    $Rows.addClass('bb');
 
-            function recreateSelect2() {
-                var selects = $('#communication .communications');
-                selects.find('select').select2({ dir: "rtl" }); //.css('width', '100%')
+            //    $Rows.first().removeClass('bb');
+            //    $Rows.last().removeClass('bb');
+            //}
+
+            function recreateSelect2(selector) {
+                //var selects = $(selector);
+                selector.find('select').select2({ dir: "rtl" }); //.css('width', '100%')
             }
         });
     </script>
