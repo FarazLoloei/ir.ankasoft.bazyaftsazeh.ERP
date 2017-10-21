@@ -22,6 +22,7 @@
                 <div class="tab-content">
                     <div id="edit" role="tabpanel" class="tab-pane active">
                         @Html.HiddenFor(model => model.recId)
+                        @Html.HiddenFor(model => model.NationalCode)
                         <fieldset>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.PersonalTitle, htmlAttributes: new { @class = "control-label col-md-2" })

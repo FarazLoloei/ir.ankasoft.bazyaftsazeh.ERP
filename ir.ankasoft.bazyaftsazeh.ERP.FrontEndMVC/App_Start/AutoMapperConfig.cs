@@ -134,6 +134,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             //Modify
             _.CreateMap<ViewModelModifyParty, Party>()
+               //.ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+               //.ForMember(p => p.CommunicationCollection, t => t.Ignore())
                .ForMember(p => p.createdDateTime, t => t.Ignore())
                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())

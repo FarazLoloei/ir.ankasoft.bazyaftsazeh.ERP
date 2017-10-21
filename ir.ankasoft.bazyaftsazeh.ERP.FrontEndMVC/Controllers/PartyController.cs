@@ -133,7 +133,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             request.CommunicationCollection = communicationCollection.Where(_ => !string.IsNullOrEmpty(_.Value)).ToList();
             request.PostalAddressCollection = postalAddressCollection.Where(_ => !string.IsNullOrEmpty(_.Postal_Value)).ToList();
             request.PostalAddressCollection = request.PostalAddressCollection.Count() > 0 ? request.PostalAddressCollection : null;
-            if (request.PostalAddressCollection == null) { ModelState.Remove("[0].Postal_Value"); }
+            //if (request.PostalAddressCollection == null) { ModelState.Remove("[0].Postal_Value"); }
             if (ModelState.IsValid)
             {
                 try
