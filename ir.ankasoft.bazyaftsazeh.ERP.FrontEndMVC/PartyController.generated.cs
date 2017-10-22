@@ -70,6 +70,30 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Communication()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Communication);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult AddNewCommunication()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddNewCommunication);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ModifyCommunication()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ModifyCommunication);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DeleteCommunication()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteCommunication);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Remove()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Remove);
@@ -111,6 +135,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string Index = "Index";
             public readonly string Create = "Create";
             public readonly string Modify = "Modify";
+            public readonly string Communication = "Communication";
+            public readonly string AddNewCommunication = "AddNewCommunication";
+            public readonly string ModifyCommunication = "ModifyCommunication";
+            public readonly string DeleteCommunication = "DeleteCommunication";
             public readonly string Remove = "Remove";
             public readonly string CheckExistingNationalCode = "CheckExistingNationalCode";
             public readonly string CommunicationDetail = "CommunicationDetail";
@@ -123,6 +151,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public const string Index = "Index";
             public const string Create = "Create";
             public const string Modify = "Modify";
+            public const string Communication = "Communication";
+            public const string AddNewCommunication = "AddNewCommunication";
+            public const string ModifyCommunication = "ModifyCommunication";
+            public const string DeleteCommunication = "DeleteCommunication";
             public const string Remove = "Remove";
             public const string CheckExistingNationalCode = "CheckExistingNationalCode";
             public const string CommunicationDetail = "CommunicationDetail";
@@ -156,8 +188,38 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string id = "id";
             public readonly string request = "request";
-            public readonly string communicationCollection = "communicationCollection";
-            public readonly string postalAddressCollection = "postalAddressCollection";
+        }
+        static readonly ActionParamsClass_Communication s_params_Communication = new ActionParamsClass_Communication();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Communication CommunicationParams { get { return s_params_Communication; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Communication
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_AddNewCommunication s_params_AddNewCommunication = new ActionParamsClass_AddNewCommunication();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AddNewCommunication AddNewCommunicationParams { get { return s_params_AddNewCommunication; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AddNewCommunication
+        {
+            public readonly string request = "request";
+        }
+        static readonly ActionParamsClass_ModifyCommunication s_params_ModifyCommunication = new ActionParamsClass_ModifyCommunication();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ModifyCommunication ModifyCommunicationParams { get { return s_params_ModifyCommunication; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ModifyCommunication
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_DeleteCommunication s_params_DeleteCommunication = new ActionParamsClass_DeleteCommunication();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DeleteCommunication DeleteCommunicationParams { get { return s_params_DeleteCommunication; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DeleteCommunication
+        {
+            public readonly string id = "id";
         }
         static readonly ActionParamsClass_Remove s_params_Remove = new ActionParamsClass_Remove();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -203,12 +265,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             {
                 public readonly string _Detail = "_Detail";
                 public readonly string _List = "_List";
+                public readonly string Communication = "Communication";
                 public readonly string Create = "Create";
                 public readonly string Index = "Index";
                 public readonly string Modify = "Modify";
             }
             public readonly string _Detail = "~/Views/Party/_Detail.cshtml";
             public readonly string _List = "~/Views/Party/_List.cshtml";
+            public readonly string Communication = "~/Views/Party/Communication.cshtml";
             public readonly string Create = "~/Views/Party/Create.cshtml";
             public readonly string Index = "~/Views/Party/Index.cshtml";
             public readonly string Modify = "~/Views/Party/Modify.cshtml";
@@ -270,16 +334,62 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelModifyParty request, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCommunication> communicationCollection, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelPostalAddress> postalAddressCollection);
+        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelModifyParty request);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Modify(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelModifyParty request, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCommunication> communicationCollection, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelPostalAddress> postalAddressCollection)
+        public override System.Web.Mvc.ActionResult Modify(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party.ViewModelModifyParty request)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "communicationCollection", communicationCollection);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "postalAddressCollection", postalAddressCollection);
-            ModifyOverride(callInfo, request, communicationCollection, postalAddressCollection);
+            ModifyOverride(callInfo, request);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CommunicationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Communication(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Communication);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            CommunicationOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddNewCommunicationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCommunication> request);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddNewCommunication(System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCommunication> request)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddNewCommunication);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            AddNewCommunicationOverride(callInfo, request);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ModifyCommunicationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ModifyCommunication(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ModifyCommunication);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ModifyCommunicationOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteCommunicationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DeleteCommunication(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteCommunication);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteCommunicationOverride(callInfo, id);
             return callInfo;
         }
 

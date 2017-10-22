@@ -49,3 +49,7 @@ $(document).ready(function () {
         dir: "rtl",
     });
 });
+
+function recreateSelect2(selector) {
+    selector.find('select').select2({ dir: "rtl" });
+}

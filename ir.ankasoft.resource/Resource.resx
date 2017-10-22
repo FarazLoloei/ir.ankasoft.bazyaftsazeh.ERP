@@ -661,7 +661,7 @@
     <value>وزن</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>برداشتن</value>
+    <value>حذف</value>
   </data>
   <data name="Add" xml:space="preserve">
     <value>افزودن</value>
@@ -789,8 +789,8 @@
   <data name="ClearCache" xml:space="preserve">
     <value>پاکسازی حافظه کش</value>
   </data>
-  <data name="AsPerson" xml:space="preserve">
-    <value>تعریف به عنوان شخص</value>
+  <data name="DefineAsPerosn" xml:space="preserve">
+    <value>تعریف به عنوان شخص حقیقی</value>
   </data>
   <data name="Mr" xml:space="preserve">
     <value>آقا</value>
@@ -845,5 +845,17 @@
   </data>
   <data name="MustInsertInNumerical" xml:space="preserve">
     <value>باید عدد وارد گردد</value>
+  </data>
+  <data name="EditCommunication" xml:space="preserve">
+    <value>ویرایش اطلاعات تماس</value>
+  </data>
+  <data name="EditPostalAddress" xml:space="preserve">
+    <value>ویرایش اطلاعات پستی</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>ذخیره</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>برگشت</value>
   </data>
 </root>

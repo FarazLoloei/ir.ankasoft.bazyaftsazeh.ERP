@@ -18,17 +18,20 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IPartyRepository _partyRepository;
         private readonly ICityRepository _cityRepository;
+        private readonly ICommunicationRepository _communicationRpository;
         private readonly IContextMenuItemRepository _contextMenuItemRepository;
         private IMapper Mapper;
 
         public PartyController(IPartyRepository partyRepository,
                                IContextMenuItemRepository contextMenuItemRepository,
                                ICityRepository cityRepository,
+                               ICommunicationRepository communicationRpository,
                                IUnitOfWorkFactory unitOfWorkFactory)
         {
             _partyRepository = partyRepository;
             _contextMenuItemRepository = contextMenuItemRepository;
             _cityRepository = cityRepository;
+            _communicationRpository = communicationRpository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
@@ -112,9 +115,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         public virtual ActionResult Modify(long id)
         {
-            Party _party = _partyRepository.FindById(id, y => y.CommunicationCollection, y => y.PostalAddressCollection,
-                                                                                         y => y.PostalAddressCollection.Select(x => x.Province),
-                                                                                         y => y.PostalAddressCollection.Select(x => x.City));
+            Party _party = _partyRepository.FindById(id);
             if (_party == null)
             {
                 return HttpNotFound();
@@ -125,15 +126,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Modify(ViewModelModifyParty request,
-            List<ViewModelCommunication> communicationCollection,
-            List<ViewModelPostalAddress> postalAddressCollection)
+        public virtual ActionResult Modify(ViewModelModifyParty request)//,
+                                                                        //List<ViewModelCommunication> communicationCollection,
+                                                                        //List<ViewModelPostalAddress> postalAddressCollection)
         {
-            
-            request.CommunicationCollection = communicationCollection.Where(_ => !string.IsNullOrEmpty(_.Value)).ToList();
-            request.PostalAddressCollection = postalAddressCollection.Where(_ => !string.IsNullOrEmpty(_.Postal_Value)).ToList();
-            request.PostalAddressCollection = request.PostalAddressCollection.Count() > 0 ? request.PostalAddressCollection : null;
-            //if (request.PostalAddressCollection == null) { ModelState.Remove("[0].Postal_Value"); }
+            //request.CommunicationCollection = communicationCollection.Where(_ => !string.IsNullOrEmpty(_.Value)).ToList();
+            //request.PostalAddressCollection = postalAddressCollection.Where(_ => !string.IsNullOrEmpty(_.Postal_Value)).ToList();
+            //request.PostalAddressCollection = request.PostalAddressCollection.Count() > 0 ? request.PostalAddressCollection : null;
             if (ModelState.IsValid)
             {
                 try
@@ -156,6 +155,66 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View(request);
         }
 
+        [HttpGet]
+        public virtual ActionResult Communication(long id)
+        {
+            return View(loadCommunication(id));
+        }
+
+        private ViewModelPartyCommunication loadCommunication(long id)
+        {
+            Party _party = _partyRepository.FindById(id);
+            if (_party == null)
+            {
+                throw new Exception("ObjectNotFound");
+            }
+            return Mapper.Map<ViewModelPartyCommunication>(_party);
+        }
+
+        [HttpGet]
+        public virtual ActionResult AddNewCommunication(List<ViewModelCommunication> request)
+        {
+            var newItems = request.Where(_ => _.recId == 0);
+            if (newItems.Count() < 1) return PartialView(MVC.Communication.Views._Repeater, request);
+            ViewModelCommunication newItem = newItems.First();
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    long parentRefRecId = Convert.ToInt64(System.Web.HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["id"]);
+                    using (_unitOfWorkFactory.Create())
+                    {
+                        var _communication = Mapper.Map<Communication>(newItem);
+                        _communication.PartyRefRecId = parentRefRecId;
+                        _communicationRpository.Add(_communication);
+                    }
+                    request = loadCommunication(parentRefRecId).CommunicationCollection;
+                    return PartialView(MVC.Communication.Views._Repeater, request.OrderBy(_ => _.recId));
+                }
+                catch (ModelValidationException modelValidationException)
+                {
+                    foreach (var error in modelValidationException.ValidationErrors)
+                    {
+                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
+                    }
+                }
+            }
+            return PartialView(MVC.Communication.Views._Repeater, request);
+        }
+
+        [HttpPost]
+        public virtual ActionResult ModifyCommunication(long id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public virtual ActionResult DeleteCommunication(long id)
+        {
+            _communicationRpository.Remove(id);
+            return View();
+        }
 
         public virtual ActionResult Remove(long id)
 

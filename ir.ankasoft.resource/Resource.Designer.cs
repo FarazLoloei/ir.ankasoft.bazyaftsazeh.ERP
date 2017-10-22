@@ -205,15 +205,6 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تعریف به عنوان شخص.
-        /// </summary>
-        public static string AsPerson {
-            get {
-                return ResourceManager.GetString("AsPerson", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to آذر.
         /// </summary>
         public static string Azar {
@@ -448,6 +439,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to تعریف به عنوان شخص حقیقی.
+        /// </summary>
+        public static string DefineAsPerosn {
+            get {
+                return ResourceManager.GetString("DefineAsPerosn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to حذف کردن.
         /// </summary>
         public static string Delete {
@@ -534,6 +534,24 @@ namespace ir.ankasoft.resource {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ویرایش اطلاعات تماس.
+        /// </summary>
+        public static string EditCommunication {
+            get {
+                return ResourceManager.GetString("EditCommunication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ویرایش اطلاعات پستی.
+        /// </summary>
+        public static string EditPostalAddress {
+            get {
+                return ResourceManager.GetString("EditPostalAddress", resourceCulture);
             }
         }
         
@@ -1564,7 +1582,7 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to برداشتن.
+        ///   Looks up a localized string similar to حذف.
         /// </summary>
         public static string Remove {
             get {
@@ -1627,6 +1645,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to برگشت.
+        /// </summary>
+        public static string Return {
+            get {
+                return ResourceManager.GetString("Return", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to نقش ها.
         /// </summary>
         public static string Roles {
@@ -1650,6 +1677,15 @@ namespace ir.ankasoft.resource {
         public static string Saterday {
             get {
                 return ResourceManager.GetString("Saterday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ذخیره.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

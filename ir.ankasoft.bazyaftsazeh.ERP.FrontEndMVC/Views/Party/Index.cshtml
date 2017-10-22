@@ -19,11 +19,13 @@
     </div>
 }
 
-@using (Html.BeginForm(MVC.Party.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { }
+@using (Html.BeginForm(MVC.Party.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { } 
 @using (Html.BeginForm(MVC.Party.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
+@using (Html.BeginForm(MVC.Party.Communication(), FormMethod.Get, new { @class = "invisible", id = "EditCommunication" }))
+{ <input type="hidden" name="id" value="" id="RecID" /> }
 @*@using (Html.BeginForm(MVC.Party.ExportToExcel(), FormMethod.Get, new { @class = "invisible", id = "ExportToExcel" }))
-{ <input type="hidden" name="keyword" value="" id="keyword" /> }*@
+    { <input type="hidden" name="keyword" value="" id="keyword" /> }*@
 @section Styles {
     @Styles.Render(Bundles.Styles.sweetAlertCss)
 }
@@ -32,7 +34,6 @@
     @Scripts.Render(Bundles.Scripts.sweetAlert)
     @Scripts.Render(Bundles.Scripts.ankaDataTable)
     @Scripts.Render(Bundles.Scripts.AnkaTools)
-
 
     <script type="text/javascript">
 
@@ -127,7 +128,7 @@
                     $('#Create').submit();
                     break;
                 case 'Edit':
-                    $('#RecID').val(_itemId);
+                    $('#Modify #RecID').val(_itemId);
                     $('#Modify').submit();
                     break;
                 case 'Delete':
@@ -148,6 +149,13 @@
                 case 'ExportToExcel':
                     $('#ExportToExcel').submit();
                     break;
+                case 'EditCommunication':
+                    $('#EditCommunication #RecID').val(_itemId);
+                    $('#EditCommunication').submit();
+                    break;
+                case 'EditPostalAddress':
+                    alert(key);
+                    break;
             }
         }
         function Delete(itemId) {
@@ -166,7 +174,5 @@
                 }
             });
         }
-
-
     </script>
 }

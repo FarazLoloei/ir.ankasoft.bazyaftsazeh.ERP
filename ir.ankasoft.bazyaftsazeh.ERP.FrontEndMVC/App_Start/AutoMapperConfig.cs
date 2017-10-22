@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.AutoMapperCustomMap;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
@@ -8,11 +7,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Province;
 using ir.ankasoft.entities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 {
@@ -134,8 +129,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             //Modify
             _.CreateMap<ViewModelModifyParty, Party>()
-               //.ForMember(p => p.PostalAddressCollection, t => t.Ignore())
-               //.ForMember(p => p.CommunicationCollection, t => t.Ignore())
+               .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+               .ForMember(p => p.CommunicationCollection, t => t.Ignore())
                .ForMember(p => p.createdDateTime, t => t.Ignore())
                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
@@ -144,6 +139,19 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                .ForMember(p => p.modifierUser, t => t.Ignore());
 
             _.CreateMap<Party, ViewModelModifyParty>();
+
+            _.CreateMap<ViewModelPartyCommunication, Party>()
+               .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+               .ForMember(p => p.Description, t => t.Ignore())
+               .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+               .ForMember(p => p.createdDateTime, t => t.Ignore())
+               .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+               .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.creatorUser, t => t.Ignore())
+               .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Party, ViewModelPartyCommunication>();
         }
 
         private static void ConfigCommunication(IMapperConfigurationExpression _)
@@ -170,7 +178,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.Province, t => t.Ignore())
                 .ForMember(p => p.City, t => t.Ignore())
 
-
                 .ForMember(p => p.IsPrimary, opt => opt.MapFrom(dest => dest.Postal_IsPrimary))
                 .ForMember(p => p.Type, opt => opt.MapFrom(dest => dest.Postal_Type))
                 .ForMember(p => p.Value, opt => opt.MapFrom(dest => dest.Postal_Value))
@@ -196,7 +203,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.City, opt => opt.MapFrom(dest => dest.City.Title))
                 .ForMember(p => p.ProvinceCityList, t => t.Ignore());
         }
-
 
         private static void ConfigProvince(IMapperConfigurationExpression _)
         {
