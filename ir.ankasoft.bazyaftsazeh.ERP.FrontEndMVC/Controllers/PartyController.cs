@@ -203,6 +203,36 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return PartialView(MVC.Communication.Views._Repeater, request);
         }
 
+        [HttpGet]
+        public virtual ActionResult EditCommunication(ViewModelCommunication request)
+        {
+            List<ViewModelCommunication> _requestList = new List<ViewModelCommunication>() ;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    long parentRefRecId = Convert.ToInt64(System.Web.HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["id"]);
+                    using (_unitOfWorkFactory.Create())
+                    {
+                        Communication _communication = _communicationRpository.FindById(request.recId);
+                        Mapper.Map(request, _communication, typeof(ViewModelCommunication), typeof(Communication));
+                        
+                    }
+                    _requestList = loadCommunication(parentRefRecId).CommunicationCollection;
+                    return PartialView(MVC.Communication.Views._Repeater, _requestList.OrderBy(_ => _.recId).ToList());
+                }
+                catch (ModelValidationException modelValidationException)
+                {
+                    foreach (var error in modelValidationException.ValidationErrors)
+                    {
+                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
+                    }
+                }
+            }
+
+            return PartialView(MVC.Communication.Views._Repeater, _requestList);
+        }
+
         [HttpPost]
         public virtual ActionResult ModifyCommunication(long id)
         {

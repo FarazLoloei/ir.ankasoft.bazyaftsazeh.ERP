@@ -30,10 +30,10 @@
                                 </button>
 
                                 @*<button type="button" class="btn btn-labeled btn-danger buttonRemoveCommunication">
-                                    <span class="btn btn-label">
-                                        <i class="fa fa-minus"></i>
-                                    </span>@Resource.Remove
-                                </button>*@
+                                        <span class="btn btn-label">
+                                            <i class="fa fa-minus"></i>
+                                        </span>@Resource.Remove
+                                    </button>*@
                             </div>
                         </div>
                         <div class="communications">
@@ -62,14 +62,36 @@
     <script type="text/javascript">
         $(document).ready(function () {
         });
+        function Operation($this, url) {
 
-        function addNew($this, url) {
             var communication = $('.communications');
-            @*var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.CommunicationDetail())';
-            var Url = '@Url.Action(MVC.Party.CommunicationDetail())';*@
+            var selector = $this.closest('tr.master');
+            if ($this == null)
+                selector = communication;//$('.communications');
+            var serializedValues = selector.find('input, select').serializeArray();
+            $.ajax({
+                url: url,
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                data: serializedValues,
+                success: function (result) {
+                    console.info(result);
+
+                    communication.find('table').html(result);
+                    recreateSelect2(communication);
+                },
+                error: function (xhr, status) {
+                    swal("@Resource.Cancelled ", status, "error");
+                }
+            });
+        }
+
+        @*function EditCommunication($this, url, index) {
+            var selector = 
+            var communication = $this.closest('tr.master');//$('.communications');
             var serializedValues = communication.find('input, select').serializeArray();
-            //if (communication.find('input').length < 1)
-            //    Url = myUrl;
+            //alert(serializedValues);
             $.ajax({
                 url: url,
                 contentType: 'application/html; charset=utf-8',
@@ -84,7 +106,9 @@
                     swal("@Resource.Cancelled ", status, "error");
                 }
             });
-        }
+        }*@
+
+
 
         function Add(){
             var communication = $('.communications');
