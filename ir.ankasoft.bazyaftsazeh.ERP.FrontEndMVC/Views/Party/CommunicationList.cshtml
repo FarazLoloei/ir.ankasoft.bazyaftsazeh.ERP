@@ -1,0 +1,270 @@
+﻿@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
+@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication
+@model ViewModelPartyCommunication
+
+
+<div class="content-heading">
+    @Resource.CounterParty
+    <small>
+        @Html.AnkaResource(model => model.PersonalTitle) @Model.Title - @Model.NationalCode#
+    </small>
+</div>
+
+<div class="row">
+    <div class="col-lg-9">
+        @*@using (Html.BeginForm(MVC.Party.Communication(), FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()*@
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">@Resource.EditCommunication</div>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    @Html.HiddenFor(model => model.recId)
+                    <div class="clearfix">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-labeled btn-success" onclick="AddButton();" id="AddButton">
+                                <span class="btn btn-label">
+                                    <i class="fa fa-plus"></i>
+                                </span>@Resource.Add
+                            </button>
+                        </div>
+                    </div>
+                    <div class="communications">
+                        @Html.HiddenFor(model => Model.recId)
+                        <table class="table anka_dataTable table-striped table-bordered">
+                            @if (Model.CommunicationCollection.Any())
+                            {
+                                ViewModelCommunication schema = Model.CommunicationCollection.FirstOrDefault();
+                                <thead>
+                                    <tr>
+                                        <td class="hidden"></td>
+                                        <td class="col-md-1">@Html.LabelFor(model => schema.Type)</td>
+                                        <td class="col-md-1">@Html.LabelFor(model => schema.IsPrimary)</td>
+                                        <td class="col-md-2">@Html.LabelFor(model => schema.Value)</td>
+                                        <td class="col-md-7">@Html.LabelFor(model => schema.Description)</td>
+                                        <td class="col-md-1"></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.CommunicationCollection)
+                                    {
+                                        <tr class="master display_@item.recId" data-itemid="@item.recId">
+                                            <td class="hidden">
+                                                @Html.HiddenFor(model => item.recId)
+                                                @Html.HiddenFor(model => item.ParentId)
+                                                @Html.HiddenFor(model => item.Type)
+                                                @Html.HiddenFor(model => item.IsPrimary)
+                                                @Html.HiddenFor(model => item.Value)
+                                                @Html.HiddenFor(model => item.Description)
+                                            </td>
+                                            <td class="col-md-1">@Html.AnkaResource(model => item.Type)</td>
+                                            <td class="col-md-1">@Html.DisplayFor(model => item.IsPrimary, new { htmlAttributes = new { @class = "form-control-static" } })</td>
+                                            <td class="col-md-2">@Html.DisplayFor(model => item.Value, new { htmlAttributes = new { @class = "form-control-static text-right" } })</td>
+                                            <td class="col-md-7">@Html.DisplayFor(model => item.Description, new { htmlAttributes = new { @class = "form-control-static" } })</td>
+                                            <td class="col-md-1 ">
+                                                <div class="btn-group mb-sm">
+                                                    <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                    </button>
+                                                    <ul role="menu" class="dropdown-menu">
+                                                        <li>
+                                                            <a href="@Url.Action(MVC.Party.ModifyCommunication(item.ParentId, item.recId))" @*onclick="showInlineEditor($(this));"*@><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" onclick="Remove($(this));"><i class="fa fa-remove" aria-hidden="true"></i> @Resource.Remove</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        @*if (item.recId == 0)
+                                        {
+                                            <tr class="master" data-itemid="@item.recId">
+                                                <td class="hidden">@Html.HiddenFor(model => item.recId) @Html.HiddenFor(model => item.ParentId)</td>
+                                                <td class="col-md-1">@Html.EnumDropDownListFor(model => item.Type, new { @class = "select2" })</td>
+                                                <td class="col-md-1">@Html.EditorFor(model => item.IsPrimary, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                                <td class="col-md-2">@Html.EditorFor(model => item.Value, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
+                                                <td class="col-md-7">@Html.EditorFor(model => item.Description, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                                <td class="col-md-1 ">
+                                                    <div class="btn-group mb-sm">
+                                                        <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
+                                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        </button>
+                                                        <ul role="menu" class="dropdown-menu">
+                                                            <li><a href="#" onclick="Operation(Null, '@Url.Action(MVC.Party.AddNewCommunication())'); return false;"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Save</a></li>
+                                                            <li><a href="#" onclick="removeOnTheFly($(this));"><i class="fa fa-undo" aria-hidden="true"></i> @Resource.Cancel</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr class="master display_@item.recId" data-itemid="@item.recId">
+                                                <td class="hidden">
+                                                    @Html.HiddenFor(model => item.recId)
+                                                    @Html.HiddenFor(model => item.ParentId)
+                                                    @Html.HiddenFor(model => item.Type)
+                                                    @Html.HiddenFor(model => item.IsPrimary)
+                                                    @Html.HiddenFor(model => item.Value)
+                                                    @Html.HiddenFor(model => item.Description)
+                                                </td>
+                                                <td class="col-md-1">@Html.AnkaResource(model => item.Type)</td>
+                                                <td class="col-md-1">@Html.DisplayFor(model => item.IsPrimary, new { htmlAttributes = new { @class = "form-control-static" } })</td>
+                                                <td class="col-md-2">@Html.DisplayFor(model => item.Value, new { htmlAttributes = new { @class = "form-control-static text-right" } })</td>
+                                                <td class="col-md-7">@Html.DisplayFor(model => item.Description, new { htmlAttributes = new { @class = "form-control-static" } })</td>
+                                                <td class="col-md-1 ">
+                                                    <div class="btn-group mb-sm">
+                                                        <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
+                                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        </button>
+                                                        <ul role="menu" class="dropdown-menu">
+                                                            <li>
+                                                                <a href="#" onclick="showInlineEditor($(this));"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
+
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" onclick="Remove($(this));"><i class="fa fa-remove" aria-hidden="true"></i> @Resource.Remove</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            var request = item;
+                                            <tr class="master editor_@request.recId hidden" data-itemid="@request.recId">
+                                                <td class="hidden">@Html.HiddenFor(model => request.recId) @Html.HiddenFor(model => request.ParentId)</td>
+                                                <td class="col-md-1">@Html.EnumDropDownListFor(model => request.Type, new { @class = "select2" })</td>
+                                                <td class="col-md-1">@Html.EditorFor(model => request.IsPrimary, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                                <td class="col-md-2">@Html.EditorFor(model => request.Value, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
+                                                <td class="col-md-7">@Html.EditorFor(model => request.Description, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                                <td class="col-md-1 ">
+                                                    <div class="btn-group mb-sm">
+                                                        <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
+                                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        </button>
+                                                        <ul role="menu" class="dropdown-menu">
+                                                            <li><a href="#" onclick="Operation($(this), '@Url.Action(MVC.Party.EditCommunication())');"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Save</a></li>
+                                                            <li><a href="#" onclick="undoInlineEditor($(this));"><i class="fa fa-undo" aria-hidden="true"></i> @Resource.Cancel</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        }*@
+                                    }
+                                </tbody>
+                            }
+                            @*@Html.Partial(MVC.Communication.Views._InlineEditor, Model.CommunicationCollection)*@
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <div class="clearfix">
+                    <div class="pull-right">
+                        @Html.ActionLink(Resource.Return, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-warning" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*}*@
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render(Bundles.Scripts.sweetAlert)
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+        function Operation($this, url) {
+            var communication = $('.communications');
+            var selector = $this.closest('tr.master');
+            if ($this == null)
+                selector = communication;//$('.communications');
+            var serializedValues = selector.find('input, select').serializeArray();
+            $.ajax({
+                url: url,
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                data: serializedValues,
+                success: function (result) {
+                    communication.find('table').html(result);
+                    recreateSelect2(communication);
+                },
+                error: function (xhr, status) {
+                    swal("@Resource.Cancelled ", status, "error");
+                }
+            });
+        }
+
+        @*function EditCommunication($this, url, index) {
+            var selector =
+            var communication = $this.closest('tr.master');//$('.communications');
+            var serializedValues = communication.find('input, select').serializeArray();
+            //alert(serializedValues);
+            $.ajax({
+                url: url,
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                data: serializedValues,
+                success: function (result) {
+                    communication.find('table').html(result);
+                    recreateSelect2(communication);
+                },
+                error: function (xhr, status) {
+                    swal("@Resource.Cancelled ", status, "error");
+                }
+            });
+        }*@
+
+
+
+        @*function AddButton() {
+            alert(12);
+            var communication = $('.communications');
+            
+            $.ajax({
+                url: '@Url.Action(MVC.Party.CommunicationDetailInline())',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                data: { 'parentId': $('#recId').val() }, //serializedValues,
+                success: function (result) {
+                    communication.find('table').append(result);
+                    recreateSelect2(communication);
+                },
+                error: function (xhr, status) {
+                    swal("@Resource.Cancelled ", status, "error");
+                }
+            });
+        }*@
+        function Remove($this) {
+            var tr = $this.closest('tr.master');
+            tr.remove();
+        }
+
+        function showInlineEditor($this) {
+            var tr = $this.closest('tr.master');
+            tr.addClass('hidden');
+            $('tr.editor_' + tr.attr('data-itemid')).removeClass('hidden');
+        }
+        function undoInlineEditor($this) {
+            var tr = $this.closest('tr.master');
+            tr.addClass('hidden');
+            $('tr.display_' + tr.attr('data-itemid')).removeClass('hidden');
+        }
+
+        function removeOnTheFly($this) {
+            var tr = $this.closest('tr.master');
+            tr.remove();
+        }
+    </script>
+}

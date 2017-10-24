@@ -1,0 +1,125 @@
+﻿@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
+@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
+@using System.Linq;
+@*Communication*@
+
+@model List<ViewModelCommunication>
+@{
+    ViewModelCommunication schema = Model.FirstOrDefault();
+}
+
+@{
+    if (Model.Any())
+    {
+        <thead>
+            <tr>
+                <td class="hidden"></td>
+                <td class="col-md-1">@Html.LabelFor(model => schema.Type)</td>
+                <td class="col-md-1">@Html.LabelFor(model => schema.IsPrimary)</td>
+                <td class="col-md-2">@Html.LabelFor(model => schema.Value)</td>
+                <td class="col-md-7">@Html.LabelFor(model => schema.Description)</td>
+                <td class="col-md-1"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @*<tr class="master" data-itemid="@item.recId">
+                    <td class="hidden">@Html.HiddenFor(model => item.recId) @Html.HiddenFor(model => item.ParentId)</td>
+                    <td class="col-md-1">@Html.EnumDropDownListFor(model => item.Type, new { @class = "select2" })</td>
+                    <td class="col-md-1">@Html.EditorFor(model => item.IsPrimary, new { htmlAttributes = new { @class = "form-control" } })</td>
+                    <td class="col-md-2">@Html.EditorFor(model => item.Value, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
+                    <td class="col-md-7">@Html.EditorFor(model => item.Description, new { htmlAttributes = new { @class = "form-control" } })</td>
+                    <td class="col-md-1 ">
+                        <div class="btn-group mb-sm">
+                            <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
+                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                            </button>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="#" onclick="Operation(Null, '@Url.Action(MVC.Party.AddNewCommunication())'); return false;"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Save</a></li>
+                                <li><a href="#" onclick="removeOnTheFly($(this));"><i class="fa fa-undo" aria-hidden="true"></i> @Resource.Cancel</a></li>
+                            </ul>
+                        </div>
+                    </td>
+
+                </tr>*@
+
+                if (item.recId == 0)
+                {
+                    <tr class="master" data-itemid="@item.recId">
+                        <td class="hidden">@Html.HiddenFor(model => item.recId) @Html.HiddenFor(model => item.ParentId)</td>
+                        <td class="col-md-1">@Html.EnumDropDownListFor(model => item.Type, new { @class = "select2" })</td>
+                        <td class="col-md-1">@Html.EditorFor(model => item.IsPrimary, new { htmlAttributes = new { @class = "form-control" } })</td>
+                        <td class="col-md-2">@Html.EditorFor(model => item.Value, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
+                        <td class="col-md-7">@Html.EditorFor(model => item.Description, new { htmlAttributes = new { @class = "form-control" } })</td>
+                        <td class="col-md-1 ">
+                            <div class="btn-group mb-sm">
+                                <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
+                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                </button>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li><a href="#" onclick="Operation(Null, '@Url.Action(MVC.Party.AddNewCommunication())'); return false;"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Save</a></li>
+                                    <li><a href="#" onclick="removeOnTheFly($(this));"><i class="fa fa-undo" aria-hidden="true"></i> @Resource.Cancel</a></li>
+                                </ul>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+                else
+                {
+                    <tr class="master display_@item.recId" data-itemid="@item.recId">
+                        <td class="hidden">
+                            @Html.HiddenFor(model => item.recId)
+                            @Html.HiddenFor(model => item.ParentId)
+                            @Html.HiddenFor(model => item.Type)
+                            @Html.HiddenFor(model => item.IsPrimary)
+                            @Html.HiddenFor(model => item.Value)
+                            @Html.HiddenFor(model => item.Description)
+                        </td>
+                        <td class="col-md-1">@Html.AnkaResource(model => item.Type)</td>
+                        <td class="col-md-1">@Html.DisplayFor(model => item.IsPrimary, new { htmlAttributes = new { @class = "form-control-static" } })</td>
+                        <td class="col-md-2">@Html.DisplayFor(model => item.Value, new { htmlAttributes = new { @class = "form-control-static text-right" } })</td>
+                        <td class="col-md-7">@Html.DisplayFor(model => item.Description, new { htmlAttributes = new { @class = "form-control-static" } })</td>
+                        <td class="col-md-1 ">
+                            <div class="btn-group mb-sm">
+                                <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
+                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                </button>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li>
+                                        <a href="#" onclick="showInlineEditor($(this));"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a href="#" onclick="Remove($(this));"><i class="fa fa-remove" aria-hidden="true"></i> @Resource.Remove</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    var request = item;
+                    <tr class="master editor_@request.recId hidden" data-itemid="@request.recId">
+                        <td class="hidden">@Html.HiddenFor(model => request.recId) @Html.HiddenFor(model => request.ParentId)</td>
+                        <td class="col-md-1">@Html.EnumDropDownListFor(model => request.Type, new { @class = "select2" })</td>
+                        <td class="col-md-1">@Html.EditorFor(model => request.IsPrimary, new { htmlAttributes = new { @class = "form-control" } })</td>
+                        <td class="col-md-2">@Html.EditorFor(model => request.Value, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
+                        <td class="col-md-7">@Html.EditorFor(model => request.Description, new { htmlAttributes = new { @class = "form-control" } })</td>
+                        <td class="col-md-1 ">
+                            <div class="btn-group mb-sm">
+                                <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
+                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                </button>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li><a href="#" onclick="Operation($(this), '@Url.Action(MVC.Party.EditCommunication())');"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Save</a></li>
+                                    <li><a href="#" onclick="undoInlineEditor($(this));"><i class="fa fa-undo" aria-hidden="true"></i> @Resource.Cancel</a></li>
+                                </ul>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    }
+}

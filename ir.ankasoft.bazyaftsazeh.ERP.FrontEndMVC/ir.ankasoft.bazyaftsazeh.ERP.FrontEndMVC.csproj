@@ -488,6 +488,7 @@
     <Compile Include="Models\Admin\RoleViewModel.cs" />
     <Compile Include="Models\Cities\ViewModelDisplayCity.cs" />
     <Compile Include="Models\Communication\ViewModelCommunication.cs" />
+    <Compile Include="Models\Communication\ViewModelModifyCommunication.cs" />
     <Compile Include="Models\Dashboard\ViewModelDashboard.cs" />
     <Compile Include="Models\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\Manage\ChangePasswordViewModel.cs" />
@@ -644,7 +645,8 @@
     <Content Include="Views\Party\Modify.cshtml" />
     <Content Include="Views\Communication\_Repeater.cshtml" />
     <Content Include="Views\PostalAddress\_Repeater.cshtml" />
-    <Content Include="Views\Party\Communication.cshtml" />
+    <Content Include="Views\Party\CommunicationList.cshtml" />
+    <Content Include="Views\Party\ModifyCommunication.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

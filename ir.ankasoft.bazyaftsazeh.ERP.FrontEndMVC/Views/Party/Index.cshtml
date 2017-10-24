@@ -22,7 +22,7 @@
 @using (Html.BeginForm(MVC.Party.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { } 
 @using (Html.BeginForm(MVC.Party.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
-@using (Html.BeginForm(MVC.Party.Communication(), FormMethod.Get, new { @class = "invisible", id = "EditCommunication" }))
+@using (Html.BeginForm(MVC.Party.CommunicationList(), FormMethod.Get, new { @class = "invisible", id = "EditCommunication" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
 @*@using (Html.BeginForm(MVC.Party.ExportToExcel(), FormMethod.Get, new { @class = "invisible", id = "ExportToExcel" }))
     { <input type="hidden" name="keyword" value="" id="keyword" /> }*@

@@ -129,7 +129,7 @@
                     contentType: 'application/html; charset=utf-8',
                     type: 'GET',
                     dataType: 'html',
-                    data: JSON.stringify({ 'req1': serializedValues, 'req2': serializedValues}),
+                    data: serializedValues,
                     success: function (result) {
                         communication.find('table').html(result);
                         recreateSelect2(communication);

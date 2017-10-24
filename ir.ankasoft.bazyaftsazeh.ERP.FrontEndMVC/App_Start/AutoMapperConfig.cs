@@ -169,7 +169,28 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
             _.CreateMap<Communication, ViewModelCommunication>()
+                .ForMember(p => p.ParentId, opt => opt.MapFrom(dest => dest.PartyRefRecId))
                 .ForMember(p => p.Type, opt => opt.MapFrom(dest => dest.CommunicationType));
+
+            _.CreateMap<ViewModelModifyCommunication, Communication>()
+                .ForMember(p => p.CommunicationType, t => t.Ignore())
+                .ForMember(p => p.PartyRefRecId, t => t.Ignore())
+                .ForMember(p => p.PersonRefRecId, t => t.Ignore())
+                .ForMember(p => p.ImporterRefRecId, t => t.Ignore())
+                .ForMember(p => p.OrganizationRefRecId, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+            _.CreateMap<Communication, ViewModelModifyCommunication>()
+                .ForMember(p => p.ParentId, t => t.Ignore())
+                .ForMember(p => p.PersonalTitle, t => t.Ignore())
+                .ForMember(p => p.Title, t => t.Ignore())
+                .ForMember(p => p.NationalCode, t => t.Ignore())
+                .ForMember(p => p.Type, opt => opt.MapFrom(dest => dest.CommunicationType));
+
         }
 
         private static void ConfigPostalAddress(IMapperConfigurationExpression _)
