@@ -647,6 +647,8 @@
     <Content Include="Views\PostalAddress\_Repeater.cshtml" />
     <Content Include="Views\Party\CommunicationList.cshtml" />
     <Content Include="Views\Party\ModifyCommunication.cshtml" />
+    <Content Include="Views\Communication\_Detail.cshtml" />
+    <Content Include="Views\Party\NewCommunication.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

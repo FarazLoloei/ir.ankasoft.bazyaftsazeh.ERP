@@ -164,6 +164,41 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpGet]
+        public virtual ActionResult NewCommunication(long parentId)
+        {
+
+            return View(new ViewModelCreateModifyCommunication() { ParentId = parentId });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult NewCommunication(ViewModelCreateModifyCommunication request)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (_unitOfWorkFactory.Create())
+                    {
+                        var _communication = Mapper.Map<Communication>(request);
+                        _communication.PartyRefRecId = request.ParentId;
+                        _communicationRpository.Add(_communication);
+                        return RedirectToAction(MVC.Party.CommunicationList(request.ParentId));
+                    }
+                }
+                catch (ModelValidationException modelValidationException)
+                {
+                    foreach (var error in modelValidationException.ValidationErrors)
+                    {
+                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
+                    }
+                }
+            }
+
+            return View(request);
+        }
+
+        [HttpGet]
         public virtual ActionResult ModifyCommunication(long parentId, long communicationId)
         {
             Party _party = _partyRepository.FindById(parentId);
@@ -172,7 +207,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             {
                 return HttpNotFound();
             }
-            var data = Mapper.Map<ViewModelModifyCommunication>(_model);
+            var data = Mapper.Map<ViewModelCreateModifyCommunication>(_model);
             data.ParentId = parentId;
             data.PersonalTitle = _party.PersonalTitle;
             data.Title = _party.Title;
@@ -181,7 +216,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult ModifyCommunication(ViewModelModifyCommunication request)
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult ModifyCommunication(ViewModelCreateModifyCommunication request)
         {
             if (ModelState.IsValid)
             {
@@ -190,7 +226,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     using (_unitOfWorkFactory.Create())
                     {
                         Communication _communication = _communicationRpository.FindById(request.recId);
-                        Mapper.Map(request, _communication, typeof(ViewModelModifyCommunication), typeof(Communication));
+                        Mapper.Map(request, _communication, typeof(ViewModelCreateModifyCommunication), typeof(Communication));
                         return RedirectToAction(MVC.Party.CommunicationList(request.ParentId));
                     }
                 }
@@ -203,88 +239,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 }
             }
             return View(request);
-
-            //Communication _model = _communicationRpository.FindById(communicationId);
-            //if (_model == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //var data = Mapper.Map<ViewModelCommunication>(_model);
-            return View();
         }
-        //[HttpGet]
-        //public virtual ActionResult AddNewCommunication(List<ViewModelCommunication> request)
-        //{
-        //    var newItems = request.Where(_ => _.recId == 0);
-        //    if (newItems.Count() < 1) return PartialView(MVC.Communication.Views._Repeater, request);
-        //    ViewModelCommunication newItem = newItems.First();
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            long parentRefRecId = Convert.ToInt64(System.Web.HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["id"]);
-        //            using (_unitOfWorkFactory.Create())
-        //            {
-        //                var _communication = Mapper.Map<Communication>(newItem);
-        //                _communication.PartyRefRecId = parentRefRecId;
-        //                _communicationRpository.Add(_communication);
-        //            }
-        //            //request = loadCommunication(parentRefRecId).CommunicationCollection;
-        //            return PartialView(MVC.Communication.Views._Repeater, request.OrderBy(_ => _.recId));
-        //        }
-        //        catch (ModelValidationException modelValidationException)
-        //        {
-        //            foreach (var error in modelValidationException.ValidationErrors)
-        //            {
-        //                ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
-        //            }
-        //        }
-        //    }
-        //    return PartialView(MVC.Communication.Views._Repeater, request);
-        //}
-
-        //[HttpGet]
-        //public virtual ActionResult EditCommunication(ViewModelCommunication request)
-        //{
-        //    List<ViewModelCommunication> _requestList = new List<ViewModelCommunication>();
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            long parentRefRecId = request.ParentId;//Convert.ToInt64(System.Web.HttpUtility.ParseQueryString(Request.UrlReferrer.PathAndQuery)["id"]);
-        //            using (_unitOfWorkFactory.Create())
-        //            {
-        //                Communication _communication = _communicationRpository.FindById(request.recId);
-        //                Mapper.Map(request, _communication, typeof(ViewModelCommunication), typeof(Communication));
-        //            }
-        //            _requestList = loadCommunication(parentRefRecId).CommunicationCollection;
-        //            return PartialView(MVC.Communication.Views._InlineEditor, _requestList.OrderBy(_ => _.recId).ToList());
-        //        }
-        //        catch (ModelValidationException modelValidationException)
-        //        {
-        //            foreach (var error in modelValidationException.ValidationErrors)
-        //            {
-        //                ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
-        //            }
-        //        }
-        //    }
-
-        //    return PartialView(MVC.Communication.Views._InlineEditor, _requestList);
-        //}
-
-        //[HttpPost]
-        //public virtual ActionResult ModifyCommunication(long id)
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public virtual ActionResult DeleteCommunication(long id)
-        //{
-        //    _communicationRpository.Remove(id);
-        //    return View();
-        //}
+//        [HttpPost]
+        public virtual ActionResult changePrimary(long id, long parentId, bool status)
+        {
+            _communicationRpository.changePrimary(id, ankasoft.entities.Enums.PartyObjective.Party, status);
+            return RedirectToAction(MVC.Party.CommunicationList(parentId));
+        }
 
         public virtual ActionResult Remove(long id)
 
@@ -316,11 +278,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             request.Add(new ViewModelCommunication());
             return PartialView(MVC.Communication.Views._Repeater, request);
         }
-
-        //public virtual ActionResult CommunicationDetailInline(long parentId)
-        //{
-        //    return PartialView(MVC.Communication.Views._InlineEditor, new ViewModelCommunication() { ParentId = parentId });
-        //}
 
         public virtual ActionResult PostalAddressDetail(List<ViewModelPostalAddress> request)
         {

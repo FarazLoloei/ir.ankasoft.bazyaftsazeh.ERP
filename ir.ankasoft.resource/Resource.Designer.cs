@@ -1744,6 +1744,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to علامت گزاری به عنوان اولیه.
+        /// </summary>
+        public static string SetAsPrimary {
+            get {
+                return ResourceManager.GetString("SetAsPrimary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to شهریور.
         /// </summary>
         public static string Shahrivar {
@@ -2046,6 +2055,15 @@ namespace ir.ankasoft.resource {
         public static string UnitOfMeasureCategory {
             get {
                 return ResourceManager.GetString("UnitOfMeasureCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خروج از اولیه.
+        /// </summary>
+        public static string UnSetPrimary {
+            get {
+                return ResourceManager.GetString("UnSetPrimary", resourceCulture);
             }
         }
         

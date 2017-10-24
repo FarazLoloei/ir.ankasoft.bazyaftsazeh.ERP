@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication
 {
-    public class ViewModelModifyCommunication
+    public class ViewModelCreateModifyCommunication
     {
         [HiddenInput(DisplayValue = false)]
         public long ParentId { get; set; }

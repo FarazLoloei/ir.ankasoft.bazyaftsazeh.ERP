@@ -858,4 +858,10 @@
   <data name="Return" xml:space="preserve">
     <value>برگشت</value>
   </data>
+  <data name="SetAsPrimary" xml:space="preserve">
+    <value>علامت گزاری به عنوان اولیه</value>
+  </data>
+  <data name="UnSetPrimary" xml:space="preserve">
+    <value>خروج از اولیه</value>
+  </data>
 </root>
