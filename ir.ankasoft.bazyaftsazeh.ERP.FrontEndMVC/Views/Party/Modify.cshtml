@@ -52,7 +52,7 @@
                         <div class="pull-right">
                             <button class="btn btn-primary" type="submit">@Resource.Edit</button>
                             @Html.ActionLink(Resource.EditCommunication, MVC.Party.CommunicationList(Model.recId), new { @class = "btn btn-green" })
-                            @*@Html.ActionLink(Resource.EditCommunication, MVC.Party.Communication(Model.recId), new { @class = "btn btn-green" })*@
+                            @Html.ActionLink(Resource.EditPostalAddress, MVC.Party.PostalAddressList(Model.recId), new { @class = "btn btn-green" })
                             @Html.ActionLink(Resource.Cancel, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-warning" })
                         </div>
                     </div>

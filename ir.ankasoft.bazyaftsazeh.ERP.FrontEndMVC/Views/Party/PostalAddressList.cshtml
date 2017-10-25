@@ -1,5 +1,5 @@
 ﻿@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
-@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication
+@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress
 @model ViewModelPartyCommunication
 
 
@@ -11,17 +11,17 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-9">
+    <div class="">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <div class="panel-title">@Resource.EditCommunication</div>
+                <div class="panel-title">@Resource.EditPostalAddress</div>
             </div>
             <div class="panel-body">
                 <div class="form-horizontal">
                     @Html.HiddenFor(model => model.recId)
                     <div class="clearfix">
                         <div class="pull-right">
-                            <a class="btn btn-labeled btn-success" href="@Url.Action(MVC.Party.CreateCommunication(Model.recId))">
+                            <a class="btn btn-labeled btn-success" href="@Url.Action(MVC.Party.CreatePostalAddress(Model.recId))">
                                 <span class="btn btn-label">
                                     <i class="fa fa-plus"></i>
                                 </span>@Resource.Add
@@ -31,53 +31,51 @@
                     <div class="communications">
                         @Html.HiddenFor(model => Model.recId)
                         <table class="table anka_dataTable table-striped table-bordered">
-                            @if (Model.CommunicationCollection.Any())
+                            @if (Model.PostalAddressCollection.Any())
                             {
-                                ViewModelCommunication schema = Model.CommunicationCollection.FirstOrDefault();
+                                ViewModelPostalAddress schema = Model.PostalAddressCollection.FirstOrDefault();
                                 <thead>
                                     <tr>
                                         <td class="hidden"></td>
-                                        <td class="col-md-1">@Html.LabelFor(model => schema.Type)</td>
-                                        <td class="col-md-1">@Html.LabelFor(model => schema.IsPrimary)</td>
-                                        <td class="col-md-2">@Html.LabelFor(model => schema.Value)</td>
-                                        <td class="col-md-7">@Html.LabelFor(model => schema.Description)</td>
+                                        <td class="col-md-2">@Html.LabelFor(model => schema.Postal_Type)</td>
+                                        <td class="col-md-1">@Html.LabelFor(model => schema.Postal_IsPrimary)</td>
+                                        <td class="col-md-3">@Html.LabelFor(model => schema.ProvinceCity)</td>
+                                        <td class="col-md-4">@Html.LabelFor(model => schema.Postal_Value)</td>
+                                        <td class="col-md-1">@Html.LabelFor(model => schema.PostalCode)</td>
                                         <td class="col-md-1"></td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model.CommunicationCollection)
+                                    @foreach (var item in Model.PostalAddressCollection)
                                     {
-                                        <tr class="master display_@item.recId" data-itemid="@item.recId">
+                                        <tr>
                                             <td class="hidden">
-                                                @Html.HiddenFor(model => item.recId)
+                                                @Html.HiddenFor(model => item.Postal_recId)
                                                 @Html.HiddenFor(model => item.ParentId)
-                                                @Html.HiddenFor(model => item.Type)
-                                                @Html.HiddenFor(model => item.IsPrimary)
-                                                @Html.HiddenFor(model => item.Value)
-                                                @Html.HiddenFor(model => item.Description)
                                             </td>
-                                            <td class="col-md-1">@Html.AnkaResource(model => item.Type)</td>
-                                            <td class="col-md-1">@Html.DisplayFor(model => item.IsPrimary, new { htmlAttributes = new { @class = "form-control-static" } })</td>
-                                            <td class="col-md-2">@Html.DisplayFor(model => item.Value, new { htmlAttributes = new { @class = "form-control-static text-right" } })</td>
-                                            <td class="col-md-7">@Html.DisplayFor(model => item.Description, new { htmlAttributes = new { @class = "form-control-static" } })</td>
-                                            <td class="col-md-1 ">
+                                            <td class="col-md-2">@Html.AnkaResource(model => item.Postal_Type)</td>
+                                            <td class="col-md-1">@Html.DisplayFor(model => item.Postal_IsPrimary)</td>
+                                            <td class="col-md-3">@Html.DisplayFor(model=>item.ProvinceCity)</td>
+                                            <td class="col-md-4">@Html.DisplayFor(model => item.Postal_Value, new { htmlAttributes = new { @class = "text-right" } })</td>
+                                            <td class="col-md-1">@Html.DisplayFor(model => item.PostalCode, new { htmlAttributes = new { @class = "text-right" } })</td>
+                                            <td class="col-md-1 text-center">
                                                 <div class="btn-group mb-sm">
                                                     <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
                                                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                     </button>
-                                                    <ul role="menu" class="dropdown-menu">
+                                                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
                                                         <li>
-                                                            <a href="@Url.Action(MVC.Party.ModifyCommunication(item.ParentId, item.recId))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
+                                                            <a href="@Url.Action(MVC.Party.ModifyPostalAddress(item.ParentId, item.Postal_recId))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
                                                         </li>
                                                         <li>
-                                                            <a href="@Url.Action(MVC.Communication.ChangePrimary(item.recId, item.ParentId, !item.IsPrimary))">
-                                                                <i @*class="fa fa-edit"*@ aria-hidden="true"></i>@(item.IsPrimary? @Resource.UnSetPrimary : @Resource.SetAsPrimary)
+                                                            <a href="@Url.Action(MVC.PostalAddress.ChangePrimary(item.Postal_recId, item.ParentId, !item.Postal_IsPrimary))">
+                                                                <i class="fa @(item.Postal_IsPrimary ? "fa-square-o" : "fa-check-square-o")" aria-hidden="true"></i> @(item.Postal_IsPrimary ? @Resource.UnSetPrimary : @Resource.SetAsPrimary)
                                                             </a>
                                                         </li>
                                                         <li>
                                                             @*<a href="@Url.Action(MVC.Party.RemoveCommunication(item.recId, item.ParentId))" >
-                                                                <i class="fa fa-remove" aria-hidden="true"></i> @Resource.Remove
-                                                            </a>*@
+                                                                    <i class="fa fa-remove" aria-hidden="true"></i> @Resource.Remove
+                                                                </a>*@
                                                         </li>
                                                     </ul>
                                                 </div>

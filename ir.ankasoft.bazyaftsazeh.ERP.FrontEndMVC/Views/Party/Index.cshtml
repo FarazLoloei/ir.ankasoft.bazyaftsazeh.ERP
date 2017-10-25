@@ -20,9 +20,11 @@
 }
 
 @using (Html.BeginForm(MVC.Party.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { } 
-@using (Html.BeginForm(MVC.Party.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" }))
+@using (Html.BeginForm(MVC.Party.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" })) 
 { <input type="hidden" name="id" value="" id="RecID" /> }
 @using (Html.BeginForm(MVC.Party.CommunicationList(), FormMethod.Get, new { @class = "invisible", id = "EditCommunication" }))
+{ <input type="hidden" name="id" value="" id="RecID" /> }
+@using (Html.BeginForm(MVC.Party.PostalAddressList(), FormMethod.Get, new { @class = "invisible", id = "EditPostalAddress" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
 @*@using (Html.BeginForm(MVC.Party.ExportToExcel(), FormMethod.Get, new { @class = "invisible", id = "ExportToExcel" }))
     { <input type="hidden" name="keyword" value="" id="keyword" /> }*@
@@ -154,7 +156,8 @@
                     $('#EditCommunication').submit();
                     break;
                 case 'EditPostalAddress':
-                    alert(key);
+                    $('#EditPostalAddress #RecID').val(_itemId);
+                    $('#EditPostalAddress').submit();
                     break;
             }
         }

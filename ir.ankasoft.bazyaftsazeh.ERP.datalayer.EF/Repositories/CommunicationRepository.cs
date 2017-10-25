@@ -12,7 +12,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
         {
             using (new EFUnitOfWorkFactory().Create())
             {
-
                 var _communication = FindById(id);
                 IEnumerable<Communication> list = new List<Communication>();
                 switch (ObjectiveType)
@@ -45,8 +44,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
                 }
                 else
                     _communication.IsPrimary = status;
-
-                //_communication = FindById(id);
             }
 
         }

@@ -19,6 +19,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly IPartyRepository _partyRepository;
         private readonly ICityRepository _cityRepository;
         private readonly ICommunicationRepository _communicationRpository;
+        private readonly IPostalAddressRepository _postalAddressRpository;
         private readonly IContextMenuItemRepository _contextMenuItemRepository;
         private IMapper Mapper;
 
@@ -26,12 +27,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                IContextMenuItemRepository contextMenuItemRepository,
                                ICityRepository cityRepository,
                                ICommunicationRepository communicationRpository,
+                               IPostalAddressRepository postalAddressRpository,
                                IUnitOfWorkFactory unitOfWorkFactory)
         {
             _partyRepository = partyRepository;
             _contextMenuItemRepository = contextMenuItemRepository;
             _cityRepository = cityRepository;
             _communicationRpository = communicationRpository;
+            _postalAddressRpository = postalAddressRpository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
@@ -150,6 +153,19 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View(request);
         }
 
+        public virtual ActionResult Remove(long id)
+
+        {
+            using (_unitOfWorkFactory.Create())
+            {
+                _partyRepository.Remove(id);
+            }
+            return RedirectToAction(MVC.Party.Index());
+        }
+
+        /*Communication*/
+
+        #region Communication
         [HttpGet]
         public virtual ActionResult CommunicationList(long id)
         {
@@ -164,15 +180,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult NewCommunication(long parentId)
+        public virtual ActionResult CreateCommunication(long parentId)
         {
-
             return View(new ViewModelCreateModifyCommunication() { ParentId = parentId });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult NewCommunication(ViewModelCreateModifyCommunication request)
+        public virtual ActionResult CreateCommunication(ViewModelCreateModifyCommunication request)
         {
             if (ModelState.IsValid)
             {
@@ -241,22 +256,125 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View(request);
         }
 
-//        [HttpPost]
-        public virtual ActionResult changePrimary(long id, long parentId, bool status)
-        {
-            _communicationRpository.changePrimary(id, ankasoft.entities.Enums.PartyObjective.Party, status);
-            return RedirectToAction(MVC.Party.CommunicationList(parentId));
-        }
+        //public virtual ActionResult RemoveCommunication(long id, long parentId)
+        //{
+        //    _communicationRpository.Remove(id);
+        //    return RedirectToAction(MVC.Party.CommunicationList(parentId));
+        //} 
+        #endregion
 
-        public virtual ActionResult Remove(long id)
+        #region PostalAddress
 
+        [HttpGet]
+        public virtual ActionResult PostalAddressList(long id)
         {
-            using (_unitOfWorkFactory.Create())
+            Party _party = _partyRepository.FindById(id, _ => _.PostalAddressCollection.Select(y => y.Province),
+                _ => _.PostalAddressCollection.Select(y => y.City));
+            if (_party == null)
             {
-                _partyRepository.Remove(id);
+                throw new Exception("ObjectNotFound");
             }
-            return RedirectToAction(MVC.Party.Index());
+            ViewModelPartyCommunication model = Mapper.Map<ViewModelPartyCommunication>(_party);
+            model.PostalAddressCollection = model.PostalAddressCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
+            return View(model);
         }
+
+        [HttpGet]
+        public virtual ActionResult CreatePostalAddress(long parentId)
+        {
+            Party _party = _partyRepository.FindById(parentId);
+
+            var model = new ViewModelCreateModifyPostalAddress()
+            {
+
+                ParentId = parentId,
+                PersonalTitle = _party.PersonalTitle,
+                Title = _party.Title,
+                NationalCode = _party.NationalCode,
+                ProvinceCityList = _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
+                {
+                    return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
+                }).ToList()};
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult CreatePostalAddress(ViewModelCreateModifyPostalAddress request)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (_unitOfWorkFactory.Create())
+                    {
+                        var _postalAddress = Mapper.Map<PostalAddress>(request);
+                        _postalAddress.PartyRefRecId = request.ParentId;
+                        _postalAddressRpository.Add(_postalAddress);
+                        return RedirectToAction(MVC.Party.PostalAddressList(request.ParentId));
+                    }
+                }
+                catch (ModelValidationException modelValidationException)
+                {
+                    foreach (var error in modelValidationException.ValidationErrors)
+                    {
+                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
+                    }
+                }
+            }
+
+            return View(request);
+        }
+
+        [HttpGet]
+        public virtual ActionResult ModifyPostalAddress(long parentId, long communicationId)
+        {
+            Party _party = _partyRepository.FindById(parentId);
+            PostalAddress _model = _postalAddressRpository.FindById(communicationId, _ => _.Province, _ => _.City);
+            if (_model == null)
+            {
+                return HttpNotFound();
+            }
+            var data = Mapper.Map<ViewModelCreateModifyPostalAddress>(_model);
+            data.ParentId = parentId;
+            data.PersonalTitle = _party.PersonalTitle;
+            data.Title = _party.Title;
+            data.NationalCode = _party.NationalCode;
+            data.ProvinceCityList = _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
+           {
+               return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
+           }).ToList();
+            return View(data);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult ModifyPostalAddress(ViewModelCreateModifyPostalAddress request)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (_unitOfWorkFactory.Create())
+                    {
+                        PostalAddress _postalAddress = _postalAddressRpository.FindById(request.recId);
+                        Mapper.Map(request, _postalAddress, typeof(ViewModelCreateModifyPostalAddress), typeof(PostalAddress));
+                        return RedirectToAction(MVC.Party.PostalAddressList(request.ParentId));
+                    }
+                }
+                catch (ModelValidationException modelValidationException)
+                {
+                    foreach (var error in modelValidationException.ValidationErrors)
+                    {
+                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
+                    }
+                }
+            }
+            return View(request);
+        }
+
+        #endregion
 
         [AllowAnonymous]
         [HttpPost]
