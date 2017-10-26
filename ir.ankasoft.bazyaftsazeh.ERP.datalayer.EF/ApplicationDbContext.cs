@@ -333,6 +333,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                 .WithMany()
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Person>()
+                .HasRequired(x => x.Party)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<entities.Organization>()
                 .HasRequired(x => x.Party)
                 .WithMany()

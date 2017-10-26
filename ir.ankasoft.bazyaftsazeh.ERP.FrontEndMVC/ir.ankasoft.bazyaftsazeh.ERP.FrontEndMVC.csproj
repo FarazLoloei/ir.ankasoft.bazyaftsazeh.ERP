@@ -461,6 +461,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Controllers\PartyController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\PostalAddressController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="DashboardController.generated.cs">
@@ -504,6 +505,7 @@
     <Compile Include="Models\Party\ViewModelPartyCommunication.cs" />
     <Compile Include="Models\Party\ViewModelModifyParty.cs" />
     <Compile Include="Models\Party\ViewModelCreateParty.cs" />
+    <Compile Include="Models\Person\ViewModelPersonDisplay.cs" />
     <Compile Include="Models\PostalAddress\ViewModelCreateModifyPostalAddress.cs" />
     <Compile Include="Models\PostalAddress\ViewModelPostalAddress.cs" />
     <Compile Include="Models\Province\ViewModelDisplayProvince.cs" />
@@ -666,6 +668,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
+    <Folder Include="Views\Person\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
