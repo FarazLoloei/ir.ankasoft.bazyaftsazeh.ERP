@@ -1,5 +1,4 @@
-﻿using ir.ankasoft.entities;
-using ir.ankasoft.infrastructure;
+﻿using ir.ankasoft.infrastructure;
 using System.Collections.Generic;
 
 namespace ir.ankasoft.entities.Repositories

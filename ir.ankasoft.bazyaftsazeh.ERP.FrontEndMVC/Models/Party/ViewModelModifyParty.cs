@@ -30,9 +30,5 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
 
         [Display(Name = nameof(Description), ResourceType = typeof(Resource))]
         public string Description { get; set; }
-
-        //public List<ViewModelCommunication> CommunicationCollection { get; set; }
-
-        //public List<ViewModelPostalAddress> PostalAddressCollection { get; set; }
     }
 }

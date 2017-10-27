@@ -332,6 +332,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                 .HasRequired(x => x.ReplacementsVehicle)
                 .WithMany()
                 .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Person>()
+                .HasRequired(x => x.Party)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<entities.Organization>()
                 .HasRequired(x => x.Party)

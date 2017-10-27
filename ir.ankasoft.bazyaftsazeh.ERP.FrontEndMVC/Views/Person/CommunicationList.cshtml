@@ -1,0 +1,108 @@
+﻿@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Person
+@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication
+@using ir.ankasoft.entities.Enums
+@model ViewModelPersonCommunication
+
+
+<div class="content-heading">
+    @Resource.CounterParty
+    <small>
+        @Html.AnkaResource(model => model.PersonalTitle) @Model.Title - @Model.NationalCode#
+    </small>
+</div>
+
+<div class="row">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">@Resource.EditCommunication</div>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    @Html.HiddenFor(model => model.recId)
+                    <div class="clearfix">
+                        <div class="pull-right">
+                            <a class="btn btn-labeled btn-success" href="@Url.Action(MVC.Communication.CreateCommunication(Model.recId, PartyObjective.Party))">
+                            <span class="btn btn-label">
+                            <i class="fa fa-plus"></i>
+                            </span>@Resource.Add
+                            </a>
+                        </div>
+                    </div>
+                    <div class="communications">
+                        @Html.HiddenFor(model => Model.recId)
+                        <table class="table anka_dataTable table-striped table-bordered">
+                            @if (Model.CommunicationCollection.Any())
+                            {
+                                ViewModelCommunication schema = Model.CommunicationCollection.FirstOrDefault();
+                                <thead>
+                                    <tr>
+                                        <td class="hidden"></td>
+                                        <td class="col-md-1">@Html.LabelFor(model => schema.Type)</td>
+                                        <td class="col-md-1">@Html.LabelFor(model => schema.IsPrimary)</td>
+                                        <td class="col-md-2">@Html.LabelFor(model => schema.Value)</td>
+                                        <td class="col-md-7">@Html.LabelFor(model => schema.Description)</td>
+                                        <td class="col-md-1"></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.CommunicationCollection)
+                                    {
+                                        <tr class="master display_@item.recId" data-itemid="@item.recId">
+                                            <td class="hidden">
+                                                @Html.HiddenFor(model => item.recId)
+                                                @Html.HiddenFor(model => item.ParentId)
+                                                @Html.HiddenFor(model => item.Type)
+                                                @Html.HiddenFor(model => item.IsPrimary)
+                                                @Html.HiddenFor(model => item.Value)
+                                                @Html.HiddenFor(model => item.Description)
+                                            </td>
+                                            <td class="col-md-1">@Html.AnkaResource(model => item.Type)</td>
+                                            <td class="col-md-1">@Html.DisplayFor(model => item.IsPrimary, new { htmlAttributes = new { @class = "form-control-static" } })</td>
+                                            <td class="col-md-2">@Html.DisplayFor(model => item.Value, new { htmlAttributes = new { @class = "form-control-static text-right" } })</td>
+                                            <td class="col-md-7">@Html.DisplayFor(model => item.Description, new { htmlAttributes = new { @class = "form-control-static" } })</td>
+                                            <td class="col-md-1 ">
+                                                <div class="btn-group mb-sm">
+                                                    <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                    </button>
+                                                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                                                        <li>
+                                                            <a href="@Url.Action(MVC.Person.ModifyCommunication(item.ParentId, item.recId))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="@Url.Action(MVC.Communication.ChangePrimary(item.recId, item.ParentId, !item.IsPrimary))">
+                                                                <i class="fa @(item.IsPrimary ? "fa-square-o" : "fa-check-square-o")" aria-hidden="true"></i> @(item.IsPrimary ? @Resource.UnSetPrimary : @Resource.SetAsPrimary)
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            @*<a href="@Url.Action(MVC.Party.RemoveCommunication(item.recId, item.ParentId))" >
+                                                                    <i class="fa fa-remove" aria-hidden="true"></i> @Resource.Remove
+                                                                </a>*@
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <div class="clearfix">
+                    <div class="pull-right">
+                        @Html.ActionLink(Resource.Return, null, null, null, new { href = Url.Action(MVC.Person.Index()), @class = "btn btn-warning" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render(Bundles.Scripts.sweetAlert)
+}

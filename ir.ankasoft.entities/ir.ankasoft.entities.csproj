@@ -108,6 +108,7 @@
     <Compile Include="Repositories\IObjectiveRepository.cs" />
     <Compile Include="Repositories\INotificationRepository.cs" />
     <Compile Include="Repositories\IPartyRepository.cs" />
+    <Compile Include="Repositories\IPersonRepository.cs" />
     <Compile Include="Repositories\IPostalAddressRepository.cs" />
     <Compile Include="Repositories\IProvinceRepository.cs" />
     <Compile Include="SmsService.cs" />

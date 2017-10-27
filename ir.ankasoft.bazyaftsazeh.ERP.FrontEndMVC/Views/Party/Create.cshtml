@@ -115,13 +115,9 @@
             /*Communication*/
             $('.buttonAddCommunication').click(function () {
                 var communication = $('#communication .communications');
-                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.CommunicationDetail())';
-                var Url = '@Url.Action(MVC.Party.CommunicationDetail())';
+                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Communication.CommunicationDetail())';
+                var Url = '@Url.Action(MVC.Communication.CommunicationDetail())';
                 var serializedValues = communication.find('input, select').serializeArray();
-                var req1 = {
-                }
-
-
                 if (communication.find('input').length < 1)
                     Url = myUrl;
                 $.ajax({
@@ -133,7 +129,6 @@
                     success: function (result) {
                         communication.find('table').html(result);
                         recreateSelect2(communication);
-                        //verifyBorderButton($('#communication .row'));
                     },
                     error: function (xhr, status) {
                         swal("@Resource.Cancelled ", status, "error");
@@ -144,13 +139,12 @@
             $('.buttonRemoveCommunication').click(function () {
                 var communication = $('#communication .communications');
                 communication.find('.rowContainer').last().remove();
-                //verifyBorderButton($('#communication .row'));
             });
             /*PostalAddress*/
             $('.buttonAddPostalAddress').click(function () {
                 var postal = $('#postal .postalAddresses');
-                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Party.PostalAddressDetail())';
-                var Url = '@Url.Action(MVC.Party.PostalAddressDetail())';
+                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.PostalAddress.PostalAddressDetail())';
+                var Url = '@Url.Action(MVC.PostalAddress.PostalAddressDetail())';
                 var serializedValues = postal.find('input, select').serializeArray();
                 if (postal.find('input').length < 1)
                     Url = myUrl;
@@ -163,7 +157,6 @@
                     success: function (result) {
                         postal.find('table').html(result);
                         recreateSelect2(postal);
-                        //verifyBorderButton($('#postal .row'));
                     },
                     error: function (xhr, status) {
                         swal("@Resource.Cancelled ", status, "error");
@@ -174,19 +167,9 @@
             $('.buttonRemovePostalAddress').click(function () {
                 var communication = $('#postal .postalAddresses');
                 communication.find('.rowContainer').last().remove();
-                //verifyBorderButton($('#communication .row'));
             });
 
-            //function verifyBorderButton($Rows) {
-            //    $Rows.removeClass('bb');
-            //    $Rows.addClass('bb');
-
-            //    $Rows.first().removeClass('bb');
-            //    $Rows.last().removeClass('bb');
-            //}
-
             function recreateSelect2(selector) {
-                //var selects = $(selector);
                 selector.find('select').select2({ dir: "rtl" }); //.css('width', '100%')
             }
         });

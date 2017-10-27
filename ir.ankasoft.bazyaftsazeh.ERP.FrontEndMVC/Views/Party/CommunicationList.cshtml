@@ -1,5 +1,6 @@
 ﻿@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
 @using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication
+@using ir.ankasoft.entities.Enums
 @model ViewModelPartyCommunication
 
 
@@ -11,7 +12,7 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-9">
+    <div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="panel-title">@Resource.EditCommunication</div>
@@ -21,7 +22,7 @@
                     @Html.HiddenFor(model => model.recId)
                     <div class="clearfix">
                         <div class="pull-right">
-                            <a class="btn btn-labeled btn-success" href="@Url.Action(MVC.Party.CreateCommunication(Model.recId))">
+                            <a class="btn btn-labeled btn-success" href="@Url.Action(MVC.Communication.CreateCommunication(Model.recId, PartyObjective.Party))">
                                 <span class="btn btn-label">
                                     <i class="fa fa-plus"></i>
                                 </span>@Resource.Add
@@ -65,13 +66,13 @@
                                                     <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
                                                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                     </button>
-                                                    <ul role="menu" class="dropdown-menu">
+                                                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
                                                         <li>
-                                                            <a href="@Url.Action(MVC.Party.ModifyCommunication(item.ParentId, item.recId))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
+                                                            <a href="@Url.Action(MVC.Communication.ModifyCommunication(item.ParentId, item.recId))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
                                                         </li>
                                                         <li>
                                                             <a href="@Url.Action(MVC.Communication.ChangePrimary(item.recId, item.ParentId, !item.IsPrimary))">
-                                                                <i @*class="fa fa-edit"*@ aria-hidden="true"></i>@(item.IsPrimary? @Resource.UnSetPrimary : @Resource.SetAsPrimary)
+                                                                <i class="fa @(item.IsPrimary ? "fa-square-o" : "fa-check-square-o")" aria-hidden="true"></i> @(item.IsPrimary ? @Resource.UnSetPrimary : @Resource.SetAsPrimary)
                                                             </a>
                                                         </li>
                                                         <li>

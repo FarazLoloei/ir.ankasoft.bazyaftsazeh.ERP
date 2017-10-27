@@ -36,23 +36,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
             var container = new Container(x =>
             {
                 x.For<IUnitOfWorkFactory>().Use<EFUnitOfWorkFactory>();
-                //x.For<Entities.Repositories.ICategoryRepository>().Use<Repositories.CategoryRepository>();
-                //x.For<Entities.Repositories.IInventSiteRepository>().Use<Repositories.InventSiteRepository>();
-                //x.For<Entities.Repositories.IUnitOfMeasureRepository>().Use<Repositories.UnitOfMeasureRepository>();
-                //x.For<Entities.Repositories.IUnitOfMeasureCategoryRepository>().Use<Repositories.UnitOfMeasureCategoryRepository>();
-                //x.For<Entities.Repositories.IPersonalTitleRepository>().Use<Repositories.PersonalTitleRepository>();
-                //x.For<Entities.Repositories.ICounterPartyRepository>().Use<Repositories.CounterPartyRepository>();
-                //x.For<Entities.Repositories.IUnitConvertorRepository>().Use<Repositories.UnitConvertorRepository>();
-                //x.For<Entities.Repositories.IInventLocationTypeRepository>().Use<Repositories.InventLocationTypeRepository>();
-                //x.For<Entities.Repositories.IInventLocationRepository>().Use<Repositories.InventLocationRepository>();
-                //x.For<Entities.Repositories.IInventRepository>().Use<Repositories.InventRepository>();
-                //x.For<Entities.Repositories.IPurchTypeRepository>().Use<Repositories.PurchTypeRepository>();
-                //x.For<Entities.Repositories.IPurchStatusRepository>().Use<Repositories.PurchStatusRepository>();
-                //x.For<Entities.Repositories.IPurchOrderRepository>().Use<Repositories.PurchOrderRepository>();
-                //x.For<Entities.Repositories.IInventTransRepository>().Use<Repositories.InventTransRepository>();
-                //x.For<Entities.Repositories.IVehicleTypeRepository>().Use<Repositories.VehicleTypeRepository>();
-                //x.For<Entities.Repositories.IVehicleInfoRepository>().Use<Repositories.VehicleInfoRepository>();
-                //x.For<Entities.Repositories.IInvoiceRepository>().Use<Repositories.InvoiceRepository>();
                 x.For<INotificationRepository>().Use<NotificationRepository>();
                 x.For<IPartyRepository>().Use<PartyRepository>();
                 x.For<IContextMenuItemRepository>().Use<ContextMenuItemRepository>();
@@ -60,11 +43,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
                 x.For<ICityRepository>().Use<CityRepository>();
                 x.For<ICommunicationRepository>().Use<CommunicationRepository>();
                 x.For<IPostalAddressRepository>().Use<PostalAddressRepository>();
-                //x.For<Entities.Repositories.ITransferRepository>().Use<Repositories.TransferRepository>();
-                //x.For<Entities.Repositories.ISalesTypeRepository>().Use<Repositories.SalesTypeRepository>();
-                //x.For<Entities.Repositories.ISalesStatusRepository>().Use<Repositories.SalesStatusRepository>();
-                //x.For<Entities.Repositories.ISalesOrderRepository>().Use<Repositories.SalesOrderRepository>();
-                //x.For<Entities.Repositories.IWarehoseEgressionRepository>().Use<Repositories.WarehoseEgressionRepository>();
+                x.For<IPersonRepository>().Use<PersonRepository>();
 
                 x.For<IUserStore<ApplicationUser, long>>().Use<UserStore<ApplicationUser, ApplicationRole, long,
                                                                          ApplicationUserLogin, ApplicationUserRole,

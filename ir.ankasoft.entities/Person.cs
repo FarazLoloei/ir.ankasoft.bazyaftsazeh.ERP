@@ -17,6 +17,19 @@ namespace ir.ankasoft.entities
         [StringLength(100)]
         public string Family { get; set; }
 
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return $"{Name}, {Family}";
+            }
+        }
+
+        public long PartyRefRecId { get; set; }
+        [ForeignKey(nameof(PartyRefRecId))]
+        public Party Party { get; set; }
+
         public virtual ICollection<PostalAddress> PostalAddressCollection { get; set; }
 
         public virtual ICollection<Communication> CommunicationCollection { get; set; }

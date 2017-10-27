@@ -864,4 +864,7 @@
   <data name="UnSetPrimary" xml:space="preserve">
     <value>خروج از اولیه</value>
   </data>
+  <data name="Person" xml:space="preserve">
+    <value>شخص حقیقی</value>
+  </data>
 </root>
