@@ -18,16 +18,19 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly IPostalAddressRepository _postalAddressRpository;
         private readonly IPartyRepository _partyRepository;
         private readonly ICityRepository _cityRepository;
+        private readonly IPersonRepository _personRepository;
         private IMapper Mapper;
 
         public PostalAddressController(IPostalAddressRepository postalAddressRpository,
                                        IPartyRepository partyRepository,
                                        ICityRepository cityRepository,
+                                       IPersonRepository personRepository,
                                        IUnitOfWorkFactory unitOfWorkFactory)
         {
             _postalAddressRpository = postalAddressRpository;
             _partyRepository = partyRepository;
             _cityRepository = cityRepository;
+            _personRepository = personRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
@@ -41,7 +44,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult CreatePostalAddress(long parentId, PartyObjective type)
+        public virtual ActionResult CreatePostalAddress(long parentId, PartyObjective objectiveType)
         {
             Party _party = _partyRepository.FindById(parentId);
 
@@ -52,10 +55,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 PersonalTitle = _party.PersonalTitle,
                 Title = _party.Title,
                 NationalCode = _party.NationalCode,
-                ProvinceCityList = _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
-                {
-                    return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
-                }).ToList()
+                ProvinceCityList = Common.sessionManager.getProvinceCities()
             };
 
             return View(model);
@@ -63,7 +63,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult CreatePostalAddress(ViewModelCreateModifyPostalAddress request, PartyObjective type)
+        public virtual ActionResult CreatePostalAddress(ViewModelCreateModifyPostalAddress request, PartyObjective objectiveType = PartyObjective.Party)
         {
             if (ModelState.IsValid)
             {
@@ -72,11 +72,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     using (_unitOfWorkFactory.Create())
                     {
                         var _postalAddress = Mapper.Map<PostalAddress>(request);
-                        switch (type)
+                        switch (objectiveType)
                         {
-                            case PartyObjective.Party:
-                                _postalAddress.PartyRefRecId = request.ParentId;
-                                break;
                             case PartyObjective.Person:
                                 _postalAddress.PersonRefRecId = request.ParentId;
                                 break;
@@ -85,6 +82,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                 break;
                             case PartyObjective.Organization:
                                 _postalAddress.OrganizationRefRecId = request.ParentId;
+                                break;
+                            default:
+                                _postalAddress.PartyRefRecId = request.ParentId;
                                 break;
                         }
                         _postalAddressRpository.Add(_postalAddress);
@@ -99,13 +99,34 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     }
                 }
             }
+            request.ProvinceCityList = Common.sessionManager.getProvinceCities();
             return View(request);
         }
 
         [HttpGet]
-        public virtual ActionResult ModifyPostalAddress(long parentId, long communicationId)
+        public virtual ActionResult ModifyPostalAddress(long parentId, long communicationId, PartyObjective objectiveType)
         {
-            Party _party = _partyRepository.FindById(parentId);
+            Party _party = null;
+            string title = string.Empty;
+            switch (objectiveType)
+            {
+                case PartyObjective.Person:
+                    var _person = _personRepository.FindById(parentId, y => y.Party);
+                    _party = _person.Party;
+                    title = _person.FullName;
+                    break;
+                case PartyObjective.Importer:
+                    //_postalAddress.ImporterRefRecId = request.ParentId;
+                    break;
+                case PartyObjective.Organization:
+                    //_postalAddress.OrganizationRefRecId = request.ParentId;
+                    break;
+                default:
+                    _party = _partyRepository.FindById(parentId);
+                    title = _party.Title;
+                    break;
+            }
+
             PostalAddress _model = _postalAddressRpository.FindById(communicationId, _ => _.Province, _ => _.City);
             if (_model == null)
             {
@@ -114,12 +135,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var data = Mapper.Map<ViewModelCreateModifyPostalAddress>(_model);
             data.ParentId = parentId;
             data.PersonalTitle = _party.PersonalTitle;
-            data.Title = _party.Title;
+            data.Title = title;
             data.NationalCode = _party.NationalCode;
-            data.ProvinceCityList = _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
-            {
-                return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
-            }).ToList();
+            data.ProvinceCityList = Common.sessionManager.getProvinceCities();
+            data.ObjectiveType = objectiveType;
             return View(data);
         }
 
@@ -135,7 +154,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     {
                         PostalAddress _postalAddress = _postalAddressRpository.FindById(request.recId);
                         Mapper.Map(request, _postalAddress, typeof(ViewModelCreateModifyPostalAddress), typeof(PostalAddress));
-                        return RedirectToAction(MVC.Party.PostalAddressList(request.ParentId));
+                        switch (request.ObjectiveType)
+                        {
+                            case PartyObjective.Party:
+                                return RedirectToAction(MVC.Party.PostalAddressList(request.ParentId));
+                            case PartyObjective.Person:
+                                return RedirectToAction(MVC.Person.PostalAddressList(request.ParentId));
+                            case PartyObjective.Importer:
+                                break;
+                            case PartyObjective.Organization:
+                                break;
+                        }
                     }
                 }
                 catch (ModelValidationException modelValidationException)
@@ -152,21 +181,22 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public virtual ActionResult ChangePrimary(long id, long parentId, bool status)
         {
             _postalAddressRpository.changePrimary(id, ankasoft.entities.Enums.PartyObjective.Party, status);
-            return RedirectToAction("PostalAddressList", "Party", new { id = parentId });
-            //return RedirectToAction(MVC.Party.CommunicationList(parentId));
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         public virtual ActionResult PostalAddressDetail(List<ViewModelPostalAddress> request)
         {
-            List<SelectListItem> _cityProvinceList = _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
-            {
-                return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
-            }).ToList();
-
             request = request ?? new List<ViewModelPostalAddress>();
+            request = request.Select(_ =>
+            {
+                Tuple<string, string> tuple = Common.getProvinceAndCityTitleById(_.ProvinceCity);
+                _.Province = tuple.Item1;
+                _.City = tuple.Item2;
+                return _;
+            }).ToList();
             request.Add(new ViewModelPostalAddress()
             {
-                ProvinceCityList = _cityProvinceList
+                ProvinceCityList = Common.sessionManager.getProvinceCities()
             });
             return PartialView(MVC.PostalAddress.Views._Repeater, request);
         }

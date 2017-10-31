@@ -4,6 +4,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Notification;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Person;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Province;
 using ir.ankasoft.entities;
@@ -30,6 +31,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 /*CounterParty*/
                 ConfigParty(_);
+
+                /*Person*/
+                ConfigPerson(_);
 
                 /*Communication*/
                 ConfigCommunication(_);
@@ -154,6 +158,87 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             _.CreateMap<Party, ViewModelPartyCommunication>();
         }
 
+        private static void ConfigPerson(IMapperConfigurationExpression _)
+        {
+            //Display
+            _.CreateMap<ViewModelPersonDisplay, Person>()
+                .ForMember(p => p.PartyRefRecId, t => t.Ignore())
+                .ForMember(p => p.Party, t => t.Ignore())
+                //.ForMember(p => p.PersonalTitle, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+                .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
+
+            _.CreateMap<Person, ViewModelPersonDisplay>()
+                .ForMember(p => p.Telephone, opt =>
+                        opt.MapFrom(desc =>
+                                desc.CommunicationCollection.Where(x => x.IsPrimary == true &&
+                                                                   x.CommunicationType == ankasoft.entities.Enums.CommunicationType.Telephone)
+                                                            .FirstOrDefault().Value))
+                .ForMember(p => p.Mobile, opt =>
+                        opt.MapFrom(desc =>
+                                desc.CommunicationCollection.Where(x => x.IsPrimary == true &&
+                                                                   x.CommunicationType == ankasoft.entities.Enums.CommunicationType.Mobile)
+                                                            .FirstOrDefault().Value))
+                .ForMember(p => p.NationalCode, opt => opt.MapFrom(dest => dest.Party.NationalCode))
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
+
+            //Create
+            _.CreateMap<ViewModelCreatePerson, Person>()
+                .ForMember(p => p.PartyRefRecId, opt => opt.MapFrom(dest => dest.parentId))
+                .ForMember(p => p.Party, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+
+
+            _.CreateMap<Person, ViewModelCreatePerson>()
+                .ForMember(p => p.parentId, t => t.Ignore());
+
+            //Modify
+            _.CreateMap<ViewModelModifyPerson, Person>()
+               .ForMember(p => p.PartyRefRecId, t => t.Ignore())
+               .ForMember(p => p.Party, t => t.Ignore())
+               .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+               .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+               .ForMember(p => p.createdDateTime, t => t.Ignore())
+               .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+               .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.creatorUser, t => t.Ignore())
+               .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Person, ViewModelModifyPerson>();
+
+            _.CreateMap<ViewModelPersonCommunication, Person>()
+               .ForMember(p => p.Name, t => t.Ignore())
+               .ForMember(p => p.Family, t => t.Ignore())
+               .ForMember(p => p.PartyRefRecId, t => t.Ignore())
+               .ForMember(p => p.Party, t => t.Ignore())
+               .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+               .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+               .ForMember(p => p.createdDateTime, t => t.Ignore())
+               .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+               .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.creatorUser, t => t.Ignore())
+               .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Person, ViewModelPersonCommunication>()
+                .ForMember(p => p.PersonalTitle, t => t.Ignore())
+                .ForMember(p => p.Title, t => t.Ignore())
+                .ForMember(p => p.NationalCode, t => t.Ignore());
+        }
+
         private static void ConfigCommunication(IMapperConfigurationExpression _)
         {
             _.CreateMap<ViewModelCommunication, Communication>()
@@ -185,6 +270,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
             _.CreateMap<Communication, ViewModelCreateModifyCommunication>()
+                .ForMember(p => p.ObjectiveType, t => t.Ignore())
                 .ForMember(p => p.ParentId, t => t.Ignore())
                 .ForMember(p => p.PersonalTitle, t => t.Ignore())
                 .ForMember(p => p.Title, t => t.Ignore())
@@ -203,7 +289,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.Type, opt => opt.MapFrom(dest => dest.Postal_Type))
                 .ForMember(p => p.Value, opt => opt.MapFrom(dest => dest.Postal_Value))
                 .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.Postal_recId))
-                
+
                 .ForMember(p => p.PartyRefRecId, t => t.Ignore())
                 .ForMember(p => p.PersonRefRecId, t => t.Ignore())
                 .ForMember(p => p.ImporterRefRecId, t => t.Ignore())
@@ -215,7 +301,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
             _.CreateMap<PostalAddress, ViewModelPostalAddress>()
-                .ForMember(p => p.ParentId, t => t.Ignore())
+                .ForMember(p => p.Postal_ParentId, t => t.Ignore())
                 .ForMember(p => p.Postal_recId, opt => opt.MapFrom(dest => dest.recId))
                 .ForMember(p => p.Postal_IsPrimary, opt => opt.MapFrom(dest => dest.IsPrimary))
                 .ForMember(p => p.Postal_Type, opt => opt.MapFrom(dest => dest.Type))
@@ -244,6 +330,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.Province, opt => opt.MapFrom(dest => dest.Province.Title))
                 .ForMember(p => p.City, opt => opt.MapFrom(dest => dest.City.Title))
                 .ForMember(p => p.ParentId, t => t.Ignore())
+                .ForMember(p => p.ObjectiveType, t => t.Ignore())
                 .ForMember(p => p.PersonalTitle, t => t.Ignore())
                 .ForMember(p => p.Title, t => t.Ignore())
                 .ForMember(p => p.NationalCode, t => t.Ignore())

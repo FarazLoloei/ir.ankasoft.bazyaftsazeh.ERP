@@ -10,7 +10,7 @@
 
 <div class="row">
     <div class="col-lg-9">
-        @using (Html.BeginForm(MVC.Party.ModifyPostalAddress(), FormMethod.Post))
+        @using (Html.BeginForm(MVC.PostalAddress.ModifyPostalAddress(), FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             <div class="panel panel-default">
@@ -19,6 +19,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-horizontal">
+                        @Html.HiddenFor(model => model.ObjectiveType)
                         @Html.Partial(MVC.PostalAddress.Views._Detail, Model)
                     </div>
                 </div>

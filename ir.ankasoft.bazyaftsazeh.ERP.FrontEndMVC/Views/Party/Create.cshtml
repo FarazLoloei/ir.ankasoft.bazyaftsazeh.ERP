@@ -138,7 +138,7 @@
 
             $('.buttonRemoveCommunication').click(function () {
                 var communication = $('#communication .communications');
-                communication.find('.rowContainer').last().remove();
+                communication.find('tbody tr').last().remove();
             });
             /*PostalAddress*/
             $('.buttonAddPostalAddress').click(function () {
@@ -165,8 +165,8 @@
             });
 
             $('.buttonRemovePostalAddress').click(function () {
-                var communication = $('#postal .postalAddresses');
-                communication.find('.rowContainer').last().remove();
+                var postal = $('#postal .postalAddresses');
+                postal.find('tbody tr').last().remove();
             });
 
             function recreateSelect2(selector) {

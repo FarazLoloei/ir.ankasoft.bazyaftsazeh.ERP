@@ -121,7 +121,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionParamsClass_CreatePostalAddress
         {
             public readonly string parentId = "parentId";
-            public readonly string type = "type";
+            public readonly string objectiveType = "objectiveType";
             public readonly string request = "request";
         }
         static readonly ActionParamsClass_ModifyPostalAddress s_params_ModifyPostalAddress = new ActionParamsClass_ModifyPostalAddress();
@@ -132,6 +132,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string parentId = "parentId";
             public readonly string communicationId = "communicationId";
+            public readonly string objectiveType = "objectiveType";
             public readonly string request = "request";
         }
         static readonly ActionParamsClass_ChangePrimary s_params_ChangePrimary = new ActionParamsClass_ChangePrimary();
@@ -191,41 +192,42 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void CreatePostalAddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long parentId, ir.ankasoft.entities.Enums.PartyObjective type);
+        partial void CreatePostalAddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long parentId, ir.ankasoft.entities.Enums.PartyObjective objectiveType);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult CreatePostalAddress(long parentId, ir.ankasoft.entities.Enums.PartyObjective type)
+        public override System.Web.Mvc.ActionResult CreatePostalAddress(long parentId, ir.ankasoft.entities.Enums.PartyObjective objectiveType)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreatePostalAddress);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "parentId", parentId);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "type", type);
-            CreatePostalAddressOverride(callInfo, parentId, type);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "objectiveType", objectiveType);
+            CreatePostalAddressOverride(callInfo, parentId, objectiveType);
             return callInfo;
         }
 
         [NonAction]
-        partial void CreatePostalAddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelCreateModifyPostalAddress request, ir.ankasoft.entities.Enums.PartyObjective type);
+        partial void CreatePostalAddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelCreateModifyPostalAddress request, ir.ankasoft.entities.Enums.PartyObjective objectiveType);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult CreatePostalAddress(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelCreateModifyPostalAddress request, ir.ankasoft.entities.Enums.PartyObjective type)
+        public override System.Web.Mvc.ActionResult CreatePostalAddress(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelCreateModifyPostalAddress request, ir.ankasoft.entities.Enums.PartyObjective objectiveType)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreatePostalAddress);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "type", type);
-            CreatePostalAddressOverride(callInfo, request, type);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "objectiveType", objectiveType);
+            CreatePostalAddressOverride(callInfo, request, objectiveType);
             return callInfo;
         }
 
         [NonAction]
-        partial void ModifyPostalAddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long parentId, long communicationId);
+        partial void ModifyPostalAddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long parentId, long communicationId, ir.ankasoft.entities.Enums.PartyObjective objectiveType);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult ModifyPostalAddress(long parentId, long communicationId)
+        public override System.Web.Mvc.ActionResult ModifyPostalAddress(long parentId, long communicationId, ir.ankasoft.entities.Enums.PartyObjective objectiveType)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ModifyPostalAddress);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "parentId", parentId);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "communicationId", communicationId);
-            ModifyPostalAddressOverride(callInfo, parentId, communicationId);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "objectiveType", objectiveType);
+            ModifyPostalAddressOverride(callInfo, parentId, communicationId, objectiveType);
             return callInfo;
         }
 

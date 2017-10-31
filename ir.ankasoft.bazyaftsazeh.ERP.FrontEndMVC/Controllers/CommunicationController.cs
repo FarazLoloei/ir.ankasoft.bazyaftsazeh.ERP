@@ -17,15 +17,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly ICommunicationRepository _communicationRpository;
         private readonly IPartyRepository _partyRepository;
-        
+        private readonly IPersonRepository _personRepository;
+
         private IMapper Mapper;
 
         public CommunicationController(ICommunicationRepository communicationRpository,
                                        IPartyRepository partyRepository,
+                                       IPersonRepository personRepository,
                                        IUnitOfWorkFactory unitOfWorkFactory)
         {
             _communicationRpository = communicationRpository;
             _partyRepository = partyRepository;
+            _personRepository = personRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
@@ -38,14 +41,42 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult CreateCommunication(long parentId, PartyObjective type)
+        public virtual ActionResult CreateCommunication(long parentId, PartyObjective partyObjective)
         {
-            return View(new ViewModelCreateModifyCommunication() { ParentId = parentId });
+            Party _party = null;
+            string title = string.Empty;
+            switch (partyObjective)
+            {
+                
+                case PartyObjective.Person:
+                    var _person = _personRepository.FindById(parentId, y => y.Party);
+                    title = _person.FullName;
+                    _party = _person.Party;
+                    break;
+                case PartyObjective.Importer:
+                    break;
+                case PartyObjective.Organization:
+                    break;
+                default:
+                    _party = _partyRepository.FindById(parentId);
+                    title = _party.Title;
+                    break;
+            }
+            var model = new ViewModelCreateModifyCommunication()
+            {
+
+                ParentId = parentId,
+                PersonalTitle = _party.PersonalTitle,
+                Title = title,
+                NationalCode = _party.NationalCode,
+                ObjectiveType = partyObjective
+            };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult CreateCommunication(ViewModelCreateModifyCommunication request, PartyObjective type)
+        public virtual ActionResult CreateCommunication(ViewModelCreateModifyCommunication request)
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +85,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     using (_unitOfWorkFactory.Create())
                     {
                         var _communication = Mapper.Map<Communication>(request);
-                        switch (type)
+                        switch (request.ObjectiveType)
                         {
                             case PartyObjective.Party:
                                 _communication.PartyRefRecId = request.ParentId;
@@ -69,8 +100,20 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                 _communication.OrganizationRefRecId = request.ParentId;
                                 break;
                         }
-                        _communicationRpository.Add(_communication);
-                        return RedirectToAction(MVC.Party.CommunicationList(request.ParentId));
+                        _communicationRpository.Add(_communication); switch (request.ObjectiveType)
+                        {
+                            case PartyObjective.Party:
+                                return RedirectToAction(MVC.Party.CommunicationList(request.ParentId));
+                            case PartyObjective.Person:
+                                return RedirectToAction(MVC.Person.CommunicationList(request.ParentId));
+                            case PartyObjective.Importer:
+                                //_communication.ImporterRefRecId = request.ParentId;
+                                break;
+                            case PartyObjective.Organization:
+                                //_communication.OrganizationRefRecId = request.ParentId;
+                                break;
+                        }
+                        
                     }
                 }
                 catch (ModelValidationException modelValidationException)
@@ -86,9 +129,22 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult ModifyCommunication(long parentId, long communicationId)
+        public virtual ActionResult ModifyCommunication(long parentId, long communicationId, PartyObjective objectiveType = PartyObjective.Party)
         {
-            Party _party = _partyRepository.FindById(parentId);
+            Party _party = new Party();
+            switch (objectiveType)
+            {
+                case PartyObjective.Person:
+                    _party = _personRepository.FindById(parentId, y => y.Party).Party;
+                    break;
+                case PartyObjective.Importer:
+                    break;
+                case PartyObjective.Organization:
+                    break;
+                default:
+                    _party = _partyRepository.FindById(parentId);
+                    break;
+            }
             Communication _model = _communicationRpository.FindById(communicationId);
             if (_model == null)
             {
@@ -99,6 +155,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             data.PersonalTitle = _party.PersonalTitle;
             data.Title = _party.Title;
             data.NationalCode = _party.NationalCode;
+            data.ObjectiveType = objectiveType;
             return View(data);
         }
 
@@ -114,7 +171,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     {
                         Communication _communication = _communicationRpository.FindById(request.recId);
                         Mapper.Map(request, _communication, typeof(ViewModelCreateModifyCommunication), typeof(Communication));
-                        return RedirectToAction(MVC.Party.CommunicationList(request.ParentId));
+                        switch (request.ObjectiveType)
+                        {
+                            case PartyObjective.Party:
+                                return RedirectToAction(MVC.Party.CommunicationList(request.ParentId));
+                            case PartyObjective.Person:
+                                return RedirectToAction(MVC.Person.CommunicationList(request.ParentId));
+                            case PartyObjective.Importer:
+                                break;
+                            case PartyObjective.Organization:
+                                break;
+                        }
                     }
                 }
                 catch (ModelValidationException modelValidationException)
@@ -131,8 +198,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public virtual ActionResult ChangePrimary(long id, long parentId, bool status)
         {
             _communicationRpository.changePrimary(id, ankasoft.entities.Enums.PartyObjective.Party, status);
-            return RedirectToAction("CommunicationList", "Party", new { id = parentId });
-            //return RedirectToAction(MVC.Party.CommunicationList(parentId));
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         public virtual ActionResult RemoveCommunication(long id, long parentId)

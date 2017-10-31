@@ -15,6 +15,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using AutoMapper;
 using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF;
 using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
 using ir.ankasoft.entities;
@@ -44,6 +45,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
                 x.For<ICommunicationRepository>().Use<CommunicationRepository>();
                 x.For<IPostalAddressRepository>().Use<PostalAddressRepository>();
                 x.For<IPersonRepository>().Use<PersonRepository>();
+                //x.For<IMapper>().Use("", y => { return AutoMapperConfig.MapperConfiguration.CreateMapper(); });
+                //x.For<IMapper>().Use(AutoMapperConfig.MapperConfiguration.CreateMapper());
 
                 x.For<IUserStore<ApplicationUser, long>>().Use<UserStore<ApplicationUser, ApplicationRole, long,
                                                                          ApplicationUserLogin, ApplicationUserRole,

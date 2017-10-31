@@ -19,8 +19,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication
         [Display(Name = nameof(IsPrimary), ResourceType = typeof(Resource))]
         public bool IsPrimary { get; set; } = false;
 
-        [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
-        [MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
+        //[MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = nameof(Value), ResourceType = typeof(Resource))]
         public string Value { get; set; }
 

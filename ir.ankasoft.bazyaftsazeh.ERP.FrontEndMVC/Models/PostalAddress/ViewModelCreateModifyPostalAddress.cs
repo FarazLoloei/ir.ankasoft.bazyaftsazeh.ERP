@@ -13,6 +13,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress
         [HiddenInput(DisplayValue = false)]
         public long ParentId { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
+        public PartyObjective ObjectiveType { get; set; }
+
         [Display(Name = nameof(PersonalTitle), ResourceType = typeof(Resource))]
         public PersonalTitle PersonalTitle { get; set; }
 

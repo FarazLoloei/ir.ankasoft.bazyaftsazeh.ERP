@@ -13,7 +13,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress
     public class ViewModelPostalAddress
     {
         [HiddenInput(DisplayValue = false)]
-        public long ParentId { get; set; }
+        public long Postal_ParentId { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public long Postal_recId { get; set; }
@@ -37,34 +37,35 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress
         {
             get
             {
-                return $"{City} - {Province}";
+                //return $"{City} - {Province}";
+                return $"{CityRefRecId},{ProvinceRefRecId}";
             }
             set
             {
-                if (value.Contains('-'))
-                {
-                    var _value = value.Split('-');
-                    Province = _value[1].Trim();
-                    City = _value[0].Trim();
-                }
-                else
-                {
+                //if (value.Contains('-'))
+                //{
+                //    var _value = value.Split('-');
+                //    Province = _value[1].Trim();
+                //    City = _value[0].Trim();
+                //}
+                //else
+                //{
                     var _value = value.Split(',');
                     ProvinceRefRecId = Convert.ToInt64(_value[1]);
                     CityRefRecId = Convert.ToInt64(_value[0]);
-                }
+                //}
             }
         }
 
         //[ValidationMode(ValidationModes.ClientSide)]
         //[Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
-        [MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
+        //[MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "Value", ResourceType = typeof(Resource))]
         public string Postal_Value { get; set; }
 
-        [StringLength(10)]
+        //[StringLength(10)]
         [Display(Name = nameof(PostalCode), ResourceType = typeof(Resource))]
-        [RegularExpression("^[0-9]*$", ErrorMessageResourceName = "MustInsertInNumerical", ErrorMessageResourceType = typeof(Resource))]
+        //[RegularExpression("^[0-9]*$", ErrorMessageResourceName = "MustInsertInNumerical", ErrorMessageResourceType = typeof(Resource))]
         public string PostalCode { get; set; }
 
         public List<SelectListItem> ProvinceCityList { get; set; }

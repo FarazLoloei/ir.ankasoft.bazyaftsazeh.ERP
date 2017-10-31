@@ -82,45 +82,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult CreateCommunication()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateCommunication);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult ModifyCommunication()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ModifyCommunication);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult PostalAddressList()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PostalAddressList);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult CreatePostalAddress()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreatePostalAddress);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult ModifyPostalAddress()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ModifyPostalAddress);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult CommunicationDetail()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CommunicationDetail);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult PostalAddressDetail()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PostalAddressDetail);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -143,13 +107,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string Modify = "Modify";
             public readonly string Remove = "Remove";
             public readonly string CommunicationList = "CommunicationList";
-            public readonly string CreateCommunication = "CreateCommunication";
-            public readonly string ModifyCommunication = "ModifyCommunication";
             public readonly string PostalAddressList = "PostalAddressList";
-            public readonly string CreatePostalAddress = "CreatePostalAddress";
-            public readonly string ModifyPostalAddress = "ModifyPostalAddress";
-            public readonly string CommunicationDetail = "CommunicationDetail";
-            public readonly string PostalAddressDetail = "PostalAddressDetail";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -160,13 +118,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public const string Modify = "Modify";
             public const string Remove = "Remove";
             public const string CommunicationList = "CommunicationList";
-            public const string CreateCommunication = "CreateCommunication";
-            public const string ModifyCommunication = "ModifyCommunication";
             public const string PostalAddressList = "PostalAddressList";
-            public const string CreatePostalAddress = "CreatePostalAddress";
-            public const string ModifyPostalAddress = "ModifyPostalAddress";
-            public const string CommunicationDetail = "CommunicationDetail";
-            public const string PostalAddressDetail = "PostalAddressDetail";
         }
 
 
@@ -184,6 +136,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
+            public readonly string partyId = "partyId";
             public readonly string request = "request";
             public readonly string communicationCollection = "communicationCollection";
             public readonly string postalAddressCollection = "postalAddressCollection";
@@ -213,24 +166,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string id = "id";
         }
-        static readonly ActionParamsClass_CreateCommunication s_params_CreateCommunication = new ActionParamsClass_CreateCommunication();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_CreateCommunication CreateCommunicationParams { get { return s_params_CreateCommunication; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_CreateCommunication
-        {
-            public readonly string request = "request";
-        }
-        static readonly ActionParamsClass_ModifyCommunication s_params_ModifyCommunication = new ActionParamsClass_ModifyCommunication();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_ModifyCommunication ModifyCommunicationParams { get { return s_params_ModifyCommunication; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_ModifyCommunication
-        {
-            public readonly string parentId = "parentId";
-            public readonly string communicationId = "communicationId";
-            public readonly string request = "request";
-        }
         static readonly ActionParamsClass_PostalAddressList s_params_PostalAddressList = new ActionParamsClass_PostalAddressList();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_PostalAddressList PostalAddressListParams { get { return s_params_PostalAddressList; } }
@@ -238,41 +173,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionParamsClass_PostalAddressList
         {
             public readonly string id = "id";
-        }
-        static readonly ActionParamsClass_CreatePostalAddress s_params_CreatePostalAddress = new ActionParamsClass_CreatePostalAddress();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_CreatePostalAddress CreatePostalAddressParams { get { return s_params_CreatePostalAddress; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_CreatePostalAddress
-        {
-            public readonly string parentId = "parentId";
-            public readonly string request = "request";
-        }
-        static readonly ActionParamsClass_ModifyPostalAddress s_params_ModifyPostalAddress = new ActionParamsClass_ModifyPostalAddress();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_ModifyPostalAddress ModifyPostalAddressParams { get { return s_params_ModifyPostalAddress; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_ModifyPostalAddress
-        {
-            public readonly string parentId = "parentId";
-            public readonly string communicationId = "communicationId";
-            public readonly string request = "request";
-        }
-        static readonly ActionParamsClass_CommunicationDetail s_params_CommunicationDetail = new ActionParamsClass_CommunicationDetail();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_CommunicationDetail CommunicationDetailParams { get { return s_params_CommunicationDetail; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_CommunicationDetail
-        {
-            public readonly string request = "request";
-        }
-        static readonly ActionParamsClass_PostalAddressDetail s_params_PostalAddressDetail = new ActionParamsClass_PostalAddressDetail();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_PostalAddressDetail PostalAddressDetailParams { get { return s_params_PostalAddressDetail; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_PostalAddressDetail
-        {
-            public readonly string request = "request";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -320,13 +220,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long partyId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create()
+        public override System.Web.Mvc.ActionResult Create(long partyId)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            CreateOverride(callInfo);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "partyId", partyId);
+            CreateOverride(callInfo, partyId);
             return callInfo;
         }
 
@@ -393,43 +294,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void CreateCommunicationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCreateModifyCommunication request);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult CreateCommunication(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCreateModifyCommunication request)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateCommunication);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            CreateCommunicationOverride(callInfo, request);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void ModifyCommunicationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long parentId, long communicationId);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult ModifyCommunication(long parentId, long communicationId)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ModifyCommunication);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "parentId", parentId);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "communicationId", communicationId);
-            ModifyCommunicationOverride(callInfo, parentId, communicationId);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void ModifyCommunicationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCreateModifyCommunication request);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult ModifyCommunication(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCreateModifyCommunication request)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ModifyCommunication);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            ModifyCommunicationOverride(callInfo, request);
-            return callInfo;
-        }
-
-        [NonAction]
         partial void PostalAddressListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
 
         [NonAction]
@@ -438,79 +302,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PostalAddressList);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             PostalAddressListOverride(callInfo, id);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void CreatePostalAddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long parentId);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult CreatePostalAddress(long parentId)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreatePostalAddress);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "parentId", parentId);
-            CreatePostalAddressOverride(callInfo, parentId);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void CreatePostalAddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelCreateModifyPostalAddress request);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult CreatePostalAddress(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelCreateModifyPostalAddress request)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreatePostalAddress);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            CreatePostalAddressOverride(callInfo, request);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void ModifyPostalAddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long parentId, long communicationId);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult ModifyPostalAddress(long parentId, long communicationId)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ModifyPostalAddress);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "parentId", parentId);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "communicationId", communicationId);
-            ModifyPostalAddressOverride(callInfo, parentId, communicationId);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void ModifyPostalAddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelCreateModifyPostalAddress request);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult ModifyPostalAddress(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelCreateModifyPostalAddress request)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ModifyPostalAddress);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            ModifyPostalAddressOverride(callInfo, request);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void CommunicationDetailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCommunication> request);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult CommunicationDetail(System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication.ViewModelCommunication> request)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CommunicationDetail);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            CommunicationDetailOverride(callInfo, request);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void PostalAddressDetailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelPostalAddress> request);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult PostalAddressDetail(System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress.ViewModelPostalAddress> request)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PostalAddressDetail);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            PostalAddressDetailOverride(callInfo, request);
             return callInfo;
         }
 

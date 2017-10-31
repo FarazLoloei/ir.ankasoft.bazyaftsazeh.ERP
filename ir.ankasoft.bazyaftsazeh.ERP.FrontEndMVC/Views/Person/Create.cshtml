@@ -6,6 +6,7 @@
     <div class="col-lg-9">
         @using (Html.BeginForm(MVC.Person.Create(), FormMethod.Post, new { @class = "panel" }))
         {
+
             @Html.AntiForgeryToken()
             <div role="tabpanel">
                 <ul class="nav nav-tabs nav-justified">
@@ -21,11 +22,12 @@
                 </ul>
                 <div class="tab-content">
                     <div id="edit" role="tabpanel" class="tab-pane active">
+                        @Html.HiddenFor(model => model.parentId)
                         <fieldset>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control text-right" } })
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -98,9 +100,9 @@
             /*Communication*/
             $('.buttonAddCommunication').click(function () {
                 var communication = $('#communication .communications');
-                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Person.CommunicationDetail())';
-                var Url = '@Url.Action(MVC.Person.CommunicationDetail())';
-                var serializedValues = communication.find('input, select').serializeArray();                
+                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Communication.CommunicationDetail())';
+                var Url = '@Url.Action(MVC.Communication.CommunicationDetail())';
+                var serializedValues = communication.find('input, select').serializeArray();
                 if (communication.find('input').length < 1)
                     Url = myUrl;
                 $.ajax({
@@ -121,13 +123,13 @@
 
             $('.buttonRemoveCommunication').click(function () {
                 var communication = $('#communication .communications');
-                communication.find('.rowContainer').last().remove();
+                communication.find('tbody tr').last().remove();
             });
             /*PostalAddress*/
             $('.buttonAddPostalAddress').click(function () {
                 var postal = $('#postal .postalAddresses');
-                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Person.PostalAddressDetail())';
-                var Url = '@Url.Action(MVC.Person.PostalAddressDetail())';
+                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.PostalAddress.PostalAddressDetail())';
+                var Url = '@Url.Action(MVC.PostalAddress.PostalAddressDetail())';
                 var serializedValues = postal.find('input, select').serializeArray();
                 if (postal.find('input').length < 1)
                     Url = myUrl;
@@ -149,7 +151,7 @@
 
             $('.buttonRemovePostalAddress').click(function () {
                 var communication = $('#postal .postalAddresses');
-                communication.find('.rowContainer').last().remove();
+                communication.find('tbody tr').last().remove();
             });
 
             function recreateSelect2(selector) {

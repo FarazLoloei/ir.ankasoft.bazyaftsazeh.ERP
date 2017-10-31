@@ -92,8 +92,8 @@
                             </td>
                             <td class="col-md-1">@Html.EnumDropDownListFor(model => Model[item.i].Postal_Type, new { @class = "select2" })</td>
                             <td class="col-md-1">@Html.EditorFor(model => Model[item.i].Postal_IsPrimary, new { htmlAttributes = new { @class = "form-control" } })</td>
-                            <td class="col-md-3">@Html.DropDownListFor(model => Model[item.i].ProvinceCity, Model[item.i].ProvinceCityList, new { @class = "form-control select2" })</td>
-                            <td class="col-md-3">@Html.EditorFor(model => Model[item.i].Postal_Value, new { htmlAttributes = new { @class = "form-control" } })</td>
+                            <td class="col-md-4">@Html.DropDownListFor(model => Model[item.i].ProvinceCity, Model[item.i].ProvinceCityList, new { @class = "form-control select2" })</td>
+                            <td class="col-md-4">@Html.EditorFor(model => Model[item.i].Postal_Value, new { htmlAttributes = new { @class = "form-control" } })</td>
                             <td class="col-md-2">@Html.EditorFor(model => Model[item.i].PostalCode, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
                         </tr>
                     }
@@ -110,10 +110,10 @@
                                 @Html.HiddenFor(model => Model[item.i].ProvinceRefRecId)
                                 @Html.HiddenFor(model => Model[item.i].CityRefRecId)
                         </td>
-                        <td class="col-md-1">@Html.DisplayFor(model => Model[item.i].Postal_Type, new { @class = "form-control-static" })</td>
+                        <td class="col-md-1">@Html.AnkaResource(model => Model[item.i].Postal_Type)</td>
                         <td class="col-md-1">@Html.DisplayFor(model => Model[item.i].Postal_IsPrimary, new { htmlAttributes = new { @class = "form-control-static" } })</td>
-                        <td class="col-md-3">@Html.DisplayFor(model => Model[item.i].ProvinceCity, new { @class = "form-control-static" })</td>
-                        <td class="col-md-3">@Html.DisplayFor(model => Model[item.i].Postal_Value, new { htmlAttributes = new { @class = "form-control-static" } })</td>
+                        <td class="col-md-4">@Html.DisplayFor(model => Model[item.i].Province, new { @class = "form-control-static" }) - @Html.DisplayFor(model => Model[item.i].City, new { @class = "form-control-static" })</td>
+                        <td class="col-md-4">@Html.DisplayFor(model => Model[item.i].Postal_Value, new { htmlAttributes = new { @class = "form-control-static" } })</td>
                         <td class="col-md-2">@Html.DisplayFor(model => Model[item.i].PostalCode, new { htmlAttributes = new { @class = "form-control-static text-right" } })</td>
                     </tr>
                     }

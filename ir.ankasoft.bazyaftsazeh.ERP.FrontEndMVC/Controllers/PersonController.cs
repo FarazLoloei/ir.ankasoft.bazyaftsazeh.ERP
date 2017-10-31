@@ -45,11 +45,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         // GET: Person
         public virtual ActionResult Index(FilterDataSource request)
         {
-            string controllerTitle = nameof(PartyController).Replace("Controller", "");
-            if (Session[$"ContextMenu_{controllerTitle}"] == null)
-                Session[$"ContextMenu_{controllerTitle}"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, false, true));
-            if (Session[$"ContextMenu_{controllerTitle}_Header"] == null)
-                Session[$"ContextMenu_{controllerTitle}_Header"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, true, false));
+            //string controllerTitle = nameof(PersonController).Replace("Controller", "");
+            //if (Session[$"ContextMenu_{controllerTitle}"] == null)
+            //    Session[$"ContextMenu_{controllerTitle}"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, false, true));
+            //if (Session[$"ContextMenu_{controllerTitle}_Header"] == null)
+            //    Session[$"ContextMenu_{controllerTitle}_Header"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, true, false));
+            
+            Common.sessionManager.getContextMenu(nameof(PersonController).Replace(nameof(Controller), string.Empty));
 
             request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
             if (Request.IsAjaxRequest())
@@ -80,9 +82,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult Create()
+        public virtual ActionResult Create(long partyId = 0)
         {
-            return View(new ViewModelCreatePerson());
+            if (partyId == 0) return RedirectToAction(MVC.Party.Index());
+            var model = new ViewModelCreatePerson() { parentId = partyId };
+            return View(model);
         }
 
         [HttpPost]
@@ -94,7 +98,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             request.CommunicationCollection = communicationCollection.Where(_ => !string.IsNullOrEmpty(_.Value)).ToList();
             request.PostalAddressCollection = postalAddressCollection.Where(_ => !string.IsNullOrEmpty(_.Postal_Value)).ToList();
             request.PostalAddressCollection = request.PostalAddressCollection.Count() > 0 ? request.PostalAddressCollection : null;
-            //if (request.PostalAddressCollection == null) { ModelState.Remove("[0].Postal_Value"); }
             if (ModelState.IsValid)
             {
                 try
@@ -140,7 +143,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     using (_unitOfWorkFactory.Create())
                     {
                         Person _person = _personRepository.FindById(request.recId);
-                        Mapper.Map(request, _person, typeof(ViewModelModifyPerson), typeof(Party));
+                        Mapper.Map(request, _person, typeof(ViewModelModifyPerson), typeof(Person));
                         return RedirectToAction(MVC.Person.Index());
                     }
                 }
@@ -165,107 +168,21 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return RedirectToAction(MVC.Person.Index());
         }
 
-        /*Communication*/
-
-        #region Communication
         [HttpGet]
         public virtual ActionResult CommunicationList(long id)
         {
-            Person _person = _personRepository.FindById(id);
+            Person _person = _personRepository.FindById(id, y => y.Party);
             if (_person == null)
             {
                 throw new Exception("ObjectNotFound");
             }
             ViewModelPersonCommunication model = Mapper.Map<ViewModelPersonCommunication>(_person);
             model.CommunicationCollection = model.CommunicationCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
+            model.NationalCode = _person.Party.NationalCode;
+            model.PersonalTitle = _person.Party.PersonalTitle;
+            model.Title = _person.FullName;
             return View(model);
         }
-
-        //[HttpGet]
-        //public virtual ActionResult CreateCommunication(long parentId)
-        //{
-        //    return View(new ViewModelCreateModifyCommunication() { ParentId = parentId });
-        //}
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult CreateCommunication(ViewModelCreateModifyCommunication request)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    using (_unitOfWorkFactory.Create())
-                    {
-                        var _communication = Mapper.Map<Communication>(request);
-                        _communication.PersonRefRecId = request.ParentId;
-                        _communicationRpository.Add(_communication);
-                        return RedirectToAction(MVC.Person.CommunicationList(request.ParentId));
-                    }
-                }
-                catch (ModelValidationException modelValidationException)
-                {
-                    foreach (var error in modelValidationException.ValidationErrors)
-                    {
-                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
-                    }
-                }
-            }
-
-            return View(request);
-        }
-
-        [HttpGet]
-        public virtual ActionResult ModifyCommunication(long parentId, long communicationId)
-        {
-            Person _person = _personRepository.FindById(parentId, y => y.Party);
-            Communication _model = _communicationRpository.FindById(communicationId);
-            if (_model == null)
-            {
-                return HttpNotFound();
-            }
-            var data = Mapper.Map<ViewModelCreateModifyCommunication>(_model);
-            data.ParentId = parentId;
-            data.PersonalTitle = _person.Party.PersonalTitle;
-            data.Title = _person.FullName;
-            data.NationalCode = _person.Party.NationalCode;
-            return View(data);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult ModifyCommunication(ViewModelCreateModifyCommunication request)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    using (_unitOfWorkFactory.Create())
-                    {
-                        Communication _communication = _communicationRpository.FindById(request.recId);
-                        Mapper.Map(request, _communication, typeof(ViewModelCreateModifyCommunication), typeof(Communication));
-                        return RedirectToAction(MVC.Person.CommunicationList(request.ParentId));
-                    }
-                }
-                catch (ModelValidationException modelValidationException)
-                {
-                    foreach (var error in modelValidationException.ValidationErrors)
-                    {
-                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
-                    }
-                }
-            }
-            return View(request);
-        }
-
-        //public virtual ActionResult RemoveCommunication(long id, long parentId)
-        //{
-        //    _communicationRpository.Remove(id);
-        //    return RedirectToAction(MVC.Party.CommunicationList(parentId));
-        //} 
-        #endregion
-
-        #region PostalAddress
 
         [HttpGet]
         public virtual ActionResult PostalAddressList(long id)
@@ -277,128 +194,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 throw new Exception("ObjectNotFound");
             }
             ViewModelPersonCommunication model = Mapper.Map<ViewModelPersonCommunication>(_person);
-            model.PostalAddressCollection = model.PostalAddressCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
+            model.PostalAddressCollection = model.PostalAddressCollection.Select(_ => { _.Postal_ParentId = id; return _; }).ToList();
             return View(model);
-        }
-
-        [HttpGet]
-        public virtual ActionResult CreatePostalAddress(long parentId)
-        {
-            Person _person = _personRepository.FindById(parentId, y => y.Party);
-
-            var model = new ViewModelCreateModifyPostalAddress()
-            {
-
-                ParentId = parentId,
-                PersonalTitle = _person.Party.PersonalTitle,
-                Title = _person.FullName,
-                NationalCode = _person.Party.NationalCode,
-                ProvinceCityList = _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
-                {
-                    return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
-                }).ToList()
-            };
-
-            return View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult CreatePostalAddress(ViewModelCreateModifyPostalAddress request)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    using (_unitOfWorkFactory.Create())
-                    {
-                        var _postalAddress = Mapper.Map<PostalAddress>(request);
-                        _postalAddress.PersonRefRecId = request.ParentId;
-                        _postalAddressRpository.Add(_postalAddress);
-                        return RedirectToAction(MVC.Person.PostalAddressList(request.ParentId));
-                    }
-                }
-                catch (ModelValidationException modelValidationException)
-                {
-                    foreach (var error in modelValidationException.ValidationErrors)
-                    {
-                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
-                    }
-                }
-            }
-
-            return View(request);
-        }
-
-        [HttpGet]
-        public virtual ActionResult ModifyPostalAddress(long parentId, long communicationId)
-        {
-            Person _person = _personRepository.FindById(parentId, y => y.Party);
-            PostalAddress _model = _postalAddressRpository.FindById(communicationId, _ => _.Province, _ => _.City);
-            if (_model == null)
-            {
-                return HttpNotFound();
-            }
-            var data = Mapper.Map<ViewModelCreateModifyPostalAddress>(_model);
-            data.ParentId = parentId;
-            data.PersonalTitle = _person.Party.PersonalTitle;
-            data.Title = _person.FullName;
-            data.NationalCode = _person.Party.NationalCode;
-            data.ProvinceCityList = _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
-            {
-                return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
-            }).ToList();
-            return View(data);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult ModifyPostalAddress(ViewModelCreateModifyPostalAddress request)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    using (_unitOfWorkFactory.Create())
-                    {
-                        PostalAddress _postalAddress = _postalAddressRpository.FindById(request.recId);
-                        Mapper.Map(request, _postalAddress, typeof(ViewModelCreateModifyPostalAddress), typeof(PostalAddress));
-                        return RedirectToAction(MVC.Person.PostalAddressList(request.ParentId));
-                    }
-                }
-                catch (ModelValidationException modelValidationException)
-                {
-                    foreach (var error in modelValidationException.ValidationErrors)
-                    {
-                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
-                    }
-                }
-            }
-            return View(request);
-        }
-
-        #endregion
-
-        public virtual ActionResult CommunicationDetail(List<ViewModelCommunication> request)
-        {
-            request = request ?? new List<ViewModelCommunication>();
-            request.Add(new ViewModelCommunication());
-            return PartialView(MVC.Communication.Views._Repeater, request);
-        }
-
-        public virtual ActionResult PostalAddressDetail(List<ViewModelPostalAddress> request)
-        {
-            List<SelectListItem> _cityProvinceList = _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
-            {
-                return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
-            }).ToList();
-
-            request = request ?? new List<ViewModelPostalAddress>();
-            request.Add(new ViewModelPostalAddress()
-            {
-                ProvinceCityList = _cityProvinceList
-            });
-            return PartialView(MVC.PostalAddress.Views._Repeater, request);
         }
     }
 }

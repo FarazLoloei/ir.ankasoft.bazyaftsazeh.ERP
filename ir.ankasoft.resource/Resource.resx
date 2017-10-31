@@ -789,7 +789,7 @@
   <data name="ClearCache" xml:space="preserve">
     <value>پاکسازی حافظه کش</value>
   </data>
-  <data name="DefineAsPerosn" xml:space="preserve">
+  <data name="DefineAsPerson" xml:space="preserve">
     <value>تعریف به عنوان شخص حقیقی</value>
   </data>
   <data name="Mr" xml:space="preserve">
@@ -866,5 +866,11 @@
   </data>
   <data name="Person" xml:space="preserve">
     <value>شخص حقیقی</value>
+  </data>
+  <data name="Family" xml:space="preserve">
+    <value>نام خانوادگی</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>نام</value>
   </data>
 </root>

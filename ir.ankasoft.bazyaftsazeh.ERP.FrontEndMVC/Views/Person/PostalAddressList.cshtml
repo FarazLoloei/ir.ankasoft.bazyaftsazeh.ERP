@@ -21,7 +21,7 @@
                     @Html.HiddenFor(model => model.recId)
                     <div class="clearfix">
                         <div class="pull-right">
-                            <a class="btn btn-labeled btn-success" href="@Url.Action(MVC.Person.CreatePostalAddress(Model.recId))">
+                            <a class="btn btn-labeled btn-success" href="@Url.Action(MVC.PostalAddress.CreatePostalAddress(Model.recId, ir.ankasoft.entities.Enums.PartyObjective.Person))">
                                 <span class="btn btn-label">
                                     <i class="fa fa-plus"></i>
                                 </span>@Resource.Add
@@ -51,11 +51,11 @@
                                         <tr>
                                             <td class="hidden">
                                                 @Html.HiddenFor(model => item.Postal_recId)
-                                                @Html.HiddenFor(model => item.ParentId)
+                                                @Html.HiddenFor(model => item.Postal_ParentId)
                                             </td>
                                             <td class="col-md-2">@Html.AnkaResource(model => item.Postal_Type)</td>
                                             <td class="col-md-1">@Html.DisplayFor(model => item.Postal_IsPrimary)</td>
-                                            <td class="col-md-3">@Html.DisplayFor(model => item.ProvinceCity)</td>
+                                            <td class="col-md-3">@Html.DisplayFor(model => item.Province) - @Html.DisplayFor(model => item.City)</td>
                                             <td class="col-md-4">@Html.DisplayFor(model => item.Postal_Value, new { htmlAttributes = new { @class = "text-right" } })</td>
                                             <td class="col-md-1">@Html.DisplayFor(model => item.PostalCode, new { htmlAttributes = new { @class = "text-right" } })</td>
                                             <td class="col-md-1 text-center">
@@ -65,10 +65,10 @@
                                                     </button>
                                                     <ul role="menu" class="dropdown-menu dropdown-menu-right">
                                                         <li>
-                                                            <a href="@Url.Action(MVC.PostalAddress.ModifyPostalAddress(item.ParentId, item.Postal_recId))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
+                                                            <a href="@Url.Action(MVC.PostalAddress.ModifyPostalAddress(item.Postal_ParentId, item.Postal_recId,ir.ankasoft.entities.Enums.PartyObjective.Person))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
                                                         </li>
                                                         <li>
-                                                            <a href="@Url.Action(MVC.PostalAddress.ChangePrimary(item.Postal_recId, item.ParentId, !item.Postal_IsPrimary))">
+                                                            <a href="@Url.Action(MVC.PostalAddress.ChangePrimary(item.Postal_recId, item.Postal_ParentId, !item.Postal_IsPrimary))">
                                                                 <i class="fa @(item.Postal_IsPrimary ? "fa-square-o" : "fa-check-square-o")" aria-hidden="true"></i> @(item.Postal_IsPrimary ? @Resource.UnSetPrimary : @Resource.SetAsPrimary)
                                                             </a>
                                                         </li>

@@ -13,24 +13,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
             {
                 var _postalAddress = FindById(id);
                 IEnumerable<PostalAddress> list = new List<PostalAddress>();
-                switch (ObjectiveType)
-                {
-                    case PartyObjective.Party:
-                        list = FindAll(_ => _.PartyRefRecId == _postalAddress.PartyRefRecId && _.Type == _postalAddress.Type);
-                        break;
+                if (_postalAddress.PartyRefRecId != null)
+                    list = FindAll(_ => _.PartyRefRecId == _postalAddress.PartyRefRecId && _.Type == _postalAddress.Type);
+                else if (_postalAddress.PersonRefRecId != null)
+                    list = FindAll(_ => _.PersonRefRecId == _postalAddress.PersonRefRecId && _.Type == _postalAddress.Type);
+                else if (_postalAddress.ImporterRefRecId != null)
+                    list = FindAll(_ => _.ImporterRefRecId == _postalAddress.ImporterRefRecId && _.Type == _postalAddress.Type);
+                else
+                    list = FindAll(_ => _.OrganizationRefRecId == _postalAddress.OrganizationRefRecId && _.Type == _postalAddress.Type);
 
-                    case PartyObjective.Person:
-                        list = FindAll(_ => _.PersonRefRecId == _postalAddress.PersonRefRecId && _.Type == _postalAddress.Type);
-                        break;
-
-                    case PartyObjective.Importer:
-                        list = FindAll(_ => _.ImporterRefRecId == _postalAddress.ImporterRefRecId && _.Type == _postalAddress.Type);
-                        break;
-
-                    case PartyObjective.Organization:
-                        list = FindAll(_ => _.OrganizationRefRecId == _postalAddress.OrganizationRefRecId && _.Type == _postalAddress.Type);
-                        break;
-                }
                 if (status)
                 {
                     foreach (var item in list)

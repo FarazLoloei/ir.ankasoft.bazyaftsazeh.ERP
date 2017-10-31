@@ -22,7 +22,7 @@
                     @Html.HiddenFor(model => model.recId)
                     <div class="clearfix">
                         <div class="pull-right">
-                            <a class="btn btn-labeled btn-success" href="@Url.Action(MVC.Communication.CreateCommunication(Model.recId, PartyObjective.Party))">
+                            <a class="btn btn-labeled btn-success" href="@Url.Action(MVC.Communication.CreateCommunication(Model.recId, PartyObjective.Person))">
                             <span class="btn btn-label">
                             <i class="fa fa-plus"></i>
                             </span>@Resource.Add
@@ -68,7 +68,7 @@
                                                     </button>
                                                     <ul role="menu" class="dropdown-menu dropdown-menu-right">
                                                         <li>
-                                                            <a href="@Url.Action(MVC.Person.ModifyCommunication(item.ParentId, item.recId))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
+                                                            <a href="@Url.Action(MVC.Communication.ModifyCommunication(item.ParentId, item.recId, PartyObjective.Person))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
                                                         </li>
                                                         <li>
                                                             <a href="@Url.Action(MVC.Communication.ChangePrimary(item.recId, item.ParentId, !item.IsPrimary))">

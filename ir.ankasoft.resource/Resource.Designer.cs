@@ -19,7 +19,7 @@ namespace ir.ankasoft.resource {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resource {
@@ -441,9 +441,9 @@ namespace ir.ankasoft.resource {
         /// <summary>
         ///   Looks up a localized string similar to تعریف به عنوان شخص حقیقی.
         /// </summary>
-        public static string DefineAsPerosn {
+        public static string DefineAsPerson {
             get {
-                return ResourceManager.GetString("DefineAsPerosn", resourceCulture);
+                return ResourceManager.GetString("DefineAsPerson", resourceCulture);
             }
         }
         
@@ -624,6 +624,15 @@ namespace ir.ankasoft.resource {
         public static string ExportToExcel {
             get {
                 return ResourceManager.GetString("ExportToExcel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام خانوادگی.
+        /// </summary>
+        public static string Family {
+            get {
+                return ResourceManager.GetString("Family", resourceCulture);
             }
         }
         
@@ -1254,6 +1263,15 @@ namespace ir.ankasoft.resource {
         public static string MustInsertInNumerical {
             get {
                 return ResourceManager.GetString("MustInsertInNumerical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         

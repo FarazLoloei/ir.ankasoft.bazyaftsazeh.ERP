@@ -12,6 +12,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Person
         [HiddenInput(DisplayValue = false)]
         public long recId { get; set; }
 
+        public long parentId { get; set; }
+
         [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
         [MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = nameof(Name), ResourceType = typeof(Resource))]

@@ -42,11 +42,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         // GET: Party
         public virtual ActionResult Index(FilterDataSource request)
         {
-            string controllerTitle = nameof(PartyController).Replace("Controller", "");
-            if (Session[$"ContextMenu_{controllerTitle}"] == null)
-                Session[$"ContextMenu_{controllerTitle}"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, false, true));
-            if (Session[$"ContextMenu_{controllerTitle}_Header"] == null)
-                Session[$"ContextMenu_{controllerTitle}_Header"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, true, false));
+            //string controllerTitle = nameof(PartyController).Replace("Controller", "");
+            //if (Session[$"ContextMenu_{controllerTitle}"] == null)
+            //    Session[$"ContextMenu_{controllerTitle}"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, false, true));
+            //if (Session[$"ContextMenu_{controllerTitle}_Header"] == null)
+            //    Session[$"ContextMenu_{controllerTitle}_Header"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, true, false));
+            Common.sessionManager.getContextMenu(nameof(PartyController).Replace(nameof(Controller), string.Empty));
 
             request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
             if (Request.IsAjaxRequest())
@@ -175,12 +176,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View(model);
         }
         
-        //public virtual ActionResult RemoveCommunication(long id, long parentId)
-        //{
-        //    _communicationRpository.Remove(id);
-        //    return RedirectToAction(MVC.Party.CommunicationList(parentId));
-        //} 
-
         [HttpGet]
         public virtual ActionResult PostalAddressList(long id)
         {
@@ -191,7 +186,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 throw new Exception("ObjectNotFound");
             }
             ViewModelPartyCommunication model = Mapper.Map<ViewModelPartyCommunication>(_party);
-            model.PostalAddressCollection = model.PostalAddressCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
+            model.PostalAddressCollection = model.PostalAddressCollection.Select(_ => { _.Postal_ParentId = id; return _; }).ToList();
             return View(model);
         }
 
