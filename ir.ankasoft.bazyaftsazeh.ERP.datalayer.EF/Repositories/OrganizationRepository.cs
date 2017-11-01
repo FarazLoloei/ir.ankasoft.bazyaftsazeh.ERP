@@ -13,8 +13,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
                                            out int totalRecords)
         {
             IQueryable<Organization> objects = FindAll(x => x.Title.Contains(request.keyword) ||
-                                                      x.RegisterationNumber.Contains(request.keyword) ||
-                                                      x.RegisterationPlace.Contains(request.keyword) ||
+                                                      x.RegistrationNumber.Contains(request.keyword) ||
+                                                      x.RegistrationPlace.Contains(request.keyword) ||
                                                       x.CommercialNumber.Contains(request.keyword), y => y.Party
                                                       ).AsQueryable();
             totalRecords = objects.Count();

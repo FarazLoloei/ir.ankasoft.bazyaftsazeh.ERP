@@ -20,9 +20,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         [Required]
         [MaxLength(20)]
-        public string RegisterationNumber { get; set; }
+        public string RegistrationNumber { get; set; }
 
-        public string RegisterationPlace { get; set; }
+        public string RegistrationPlace { get; set; }
 
         [MaxLength(20)]
         public string CommercialNumber { get; set; }
@@ -62,9 +62,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
                 yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Title)), new[] { nameof(Title) });
             }
 
-            if (string.IsNullOrEmpty(RegisterationNumber))
+            if (string.IsNullOrEmpty(RegistrationNumber))
             {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(RegisterationNumber)), new[] { nameof(RegisterationNumber) });
+                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(RegistrationNumber)), new[] { nameof(RegistrationNumber) });
             }
         }
 

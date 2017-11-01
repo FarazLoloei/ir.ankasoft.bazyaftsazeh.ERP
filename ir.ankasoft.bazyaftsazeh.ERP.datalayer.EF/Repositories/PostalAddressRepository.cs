@@ -7,7 +7,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 {
     public class PostalAddressRepository : Repository<PostalAddress>, IPostalAddressRepository
     {
-        public void changePrimary(long id, PartyObjective ObjectiveType, bool status)
+        public void changePrimary(long id, bool status)
         {
             using (new EFUnitOfWorkFactory().Create())
             {

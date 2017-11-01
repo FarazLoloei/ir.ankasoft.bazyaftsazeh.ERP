@@ -20,12 +20,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Organization
 
         [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
         [MaxLength(20, ErrorMessageResourceName = "MaxLenght20", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = nameof(RegisterationNumber), ResourceType = typeof(Resource))]
-        public string RegisterationNumber { get; set; }
+        [Display(Name = nameof(RegistrationNumber), ResourceType = typeof(Resource))]
+        public string RegistrationNumber { get; set; }
 
         [MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = nameof(RegisterationPlace), ResourceType = typeof(Resource))]
-        public string RegisterationPlace { get; set; }
+        [Display(Name = nameof(RegistrationPlace), ResourceType = typeof(Resource))]
+        public string RegistrationPlace { get; set; }
 
         [MaxLength(20, ErrorMessageResourceName = "MaxLenght20", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = nameof(CommercialNumber), ResourceType = typeof(Resource))]

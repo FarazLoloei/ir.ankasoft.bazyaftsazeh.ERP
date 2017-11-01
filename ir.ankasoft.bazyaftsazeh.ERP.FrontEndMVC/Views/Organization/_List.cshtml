@@ -28,13 +28,13 @@
                     </span>
                 </th>
                 <th>
-                    <a href="#" data-column="@nameof(modelHeader.RegisterationNumber)">
-                        @Html.LabelFor(modelItem => modelHeader.RegisterationNumber)
+                    <a href="#" data-column="@nameof(modelHeader.RegistrationNumber)">
+                        @Html.LabelFor(modelItem => modelHeader.RegistrationNumber)
                     </a>
                     <span class="pull-right">
                         @{
                             defaultClass = "fa-sort";
-                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.RegisterationNumber))
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.RegistrationNumber))
                             {
                                 defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
                             }
@@ -43,13 +43,13 @@
                     </span>
                 </th>
                 <th>
-                    <a href="#" data-column="@nameof(modelHeader.RegisterationPlace)">
-                        @Html.LabelFor(modelItem => modelHeader.RegisterationPlace)
+                    <a href="#" data-column="@nameof(modelHeader.RegistrationPlace)">
+                        @Html.LabelFor(modelItem => modelHeader.RegistrationPlace)
                     </a>
                     <span class="pull-right">
                         @{
                             defaultClass = "fa-sort";
-                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.RegisterationPlace))
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.RegistrationPlace))
                             {
                                 defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
                             }
@@ -88,8 +88,8 @@
                                         <tr data-itemid='@item.recId' class="context-menu">
                                             <td class="col-md-2 text-right">@Html.DisplayFor(modelItem => item.NationalCode)</td>
                                             <td class="col-md-2">@Html.DisplayFor(modelItem => item.Title)</td>
-                                            <td class="col-md-2">@Html.DisplayFor(modelItem => item.RegisterationNumber)</td>
-                                            <td class="col-md-2">@Html.DisplayFor(modelItem => item.RegisterationPlace)</td>
+                                            <td class="col-md-2">@Html.DisplayFor(modelItem => item.RegistrationNumber)</td>
+                                            <td class="col-md-2">@Html.DisplayFor(modelItem => item.RegistrationPlace)</td>
                                             <td class="col-md-2">@Html.DisplayFor(modelItem => item.CommercialNumber)</td>
                                             <td class="col-md-1 text-right">@Html.DisplayFor(modelItem => item.Telephone)</td>
                                             <td class="col-md-1 text-right">@Html.DisplayFor(modelItem => item.Mobile)</td>

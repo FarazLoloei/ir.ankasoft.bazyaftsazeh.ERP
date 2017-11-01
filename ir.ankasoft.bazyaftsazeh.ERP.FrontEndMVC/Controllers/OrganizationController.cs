@@ -18,7 +18,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
     public partial class OrganizationController : Controller
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
-        private readonly IOrganizationRepository _personRepository;
+        private readonly IOrganizationRepository _organizationRepository;
         private readonly ICityRepository _cityRepository;
         private readonly ICommunicationRepository _communicationRpository;
         private readonly IPostalAddressRepository _postalAddressRpository;
@@ -33,7 +33,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                 IPostalAddressRepository postalAddressRpository,
                                 IUnitOfWorkFactory unitOfWorkFactory)
         {
-            _personRepository = personRepository;
+            _organizationRepository = personRepository;
             _contextMenuItemRepository = contextMenuItemRepository;
             _cityRepository = cityRepository;
             _communicationRpository = communicationRpository;
@@ -59,7 +59,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var data = new List<ViewModelOrganizationDisplay>();
             int totalRecords;
             IQueryable<Organization> objects =
-                _personRepository.LoadByFilter(
+                _organizationRepository.LoadByFilter(
                     request, out totalRecords)
                                    .AsQueryable();
             data = Mapper.Map<List<ViewModelOrganizationDisplay>>(objects);
@@ -99,7 +99,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     using (_unitOfWorkFactory.Create())
                     {
                         var _person = Mapper.Map<Organization>(request);
-                        _personRepository.Add(_person);
+                        _organizationRepository.Add(_person);
                         return RedirectToAction(MVC.Organization.Index());
                     }
                 }
@@ -117,7 +117,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         public virtual ActionResult Modify(long id)
         {
-            Organization _model = _personRepository.FindById(id);
+            Organization _model = _organizationRepository.FindById(id);
             if (_model == null)
             {
                 return HttpNotFound();
@@ -136,7 +136,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 {
                     using (_unitOfWorkFactory.Create())
                     {
-                        Organization _person = _personRepository.FindById(request.recId);
+                        Organization _person = _organizationRepository.FindById(request.recId);
                         Mapper.Map(request, _person, typeof(ViewModelModifyOrganization), typeof(Organization));
                         return RedirectToAction(MVC.Organization.Index());
                     }
@@ -157,7 +157,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             using (_unitOfWorkFactory.Create())
             {
-                _personRepository.Remove(id);
+                _organizationRepository.Remove(id);
             }
             return RedirectToAction(MVC.Organization.Index());
         }
@@ -165,7 +165,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult CommunicationList(long id)
         {
-            Organization _person = _personRepository.FindById(id, y => y.Party);
+            Organization _person = _organizationRepository.FindById(id, y => y.Party);
             if (_person == null)
             {
                 throw new Exception("ObjectNotFound");
@@ -174,14 +174,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             model.CommunicationCollection = model.CommunicationCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
             model.NationalCode = _person.Party.NationalCode;
             model.PersonalTitle = _person.Party.PersonalTitle;
-            //model.Title = _person.FullName;
+            model.Title = _person.Title;
             return View(model);
         }
 
         [HttpGet]
         public virtual ActionResult PostalAddressList(long id)
         {
-            Organization _person = _personRepository.FindById(id, _ => _.PostalAddressCollection.Select(y => y.Province),
+            Organization _person = _organizationRepository.FindById(id, _ => _.PostalAddressCollection.Select(y => y.Province),
                 _ => _.PostalAddressCollection.Select(y => y.City));
             if (_person == null)
             {
@@ -189,6 +189,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             }
             ViewModelOrganizationCommunication model = Mapper.Map<ViewModelOrganizationCommunication>(_person);
             model.PostalAddressCollection = model.PostalAddressCollection.Select(_ => { _.Postal_ParentId = id; return _; }).ToList();
+            model.CommunicationCollection = model.CommunicationCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
+            model.NationalCode = _person.Party.NationalCode;
+            model.PersonalTitle = _person.Party.PersonalTitle;
+            model.Title = _person.Title;
             return View(model);
         }
     }

@@ -19,7 +19,7 @@ namespace ir.ankasoft.resource {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resource {
@@ -444,6 +444,15 @@ namespace ir.ankasoft.resource {
         public static string DecimalPrecision {
             get {
                 return ResourceManager.GetString("DecimalPrecision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تعریف به عنوان سازمان.
+        /// </summary>
+        public static string DefineAsOrganization {
+            get {
+                return ResourceManager.GetString("DefineAsOrganization", resourceCulture);
             }
         }
         
@@ -1611,18 +1620,18 @@ namespace ir.ankasoft.resource {
         /// <summary>
         ///   Looks up a localized string similar to شماره ثبت.
         /// </summary>
-        public static string RegisterationNumber {
+        public static string RegistrationNumber {
             get {
-                return ResourceManager.GetString("RegisterationNumber", resourceCulture);
+                return ResourceManager.GetString("RegistrationNumber", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to محل ثبت.
         /// </summary>
-        public static string RegisterationPlace {
+        public static string RegistrationPlace {
             get {
-                return ResourceManager.GetString("RegisterationPlace", resourceCulture);
+                return ResourceManager.GetString("RegistrationPlace", resourceCulture);
             }
         }
         

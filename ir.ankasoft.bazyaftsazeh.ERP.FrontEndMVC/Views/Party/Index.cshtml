@@ -28,6 +28,11 @@
 { <input type="hidden" name="id" value="" id="RecID" /> }
 @using (Html.BeginForm(MVC.Person.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsPerson" }))
 { <input type="hidden" name="partyId" value="" id="partyId" /> }
+@using (Html.BeginForm(MVC.Organization.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsOrganization" }))
+{ <input type="hidden" name="partyId" value="" id="partyId" /> }
+@*@using (Html.BeginForm(MVC.Person.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsImporter" }))
+{ <input type="hidden" name="partyId" value="" id="partyId" /> }*@
+
 @*@using (Html.BeginForm(MVC.Party.ExportToExcel(), FormMethod.Get, new { @class = "invisible", id = "ExportToExcel" }))
     { <input type="hidden" name="keyword" value="" id="keyword" /> }*@
 @section Styles {
@@ -164,6 +169,14 @@
                 case 'DefineAsPerson':
                     $('#DefineAsPerson #partyId').val(_itemId);
                     $('#DefineAsPerson').submit();
+                    break;
+                case 'DefineAsOrganization':
+                    $('#DefineAsOrganization #partyId').val(_itemId);
+                    $('#DefineAsOrganization').submit();
+                    break;
+                case 'DefineAsImporter':
+                    $('#DefineAsImporter #partyId').val(_itemId);
+                    $('#DefineAsImporter').submit();
                     break;
             }
         }

@@ -45,11 +45,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult CreateCommunication(long parentId, PartyObjective partyObjective)
+        public virtual ActionResult CreateCommunication(long parentId, PartyObjective objectiveType)
         {
             Party _party = null;
             string title = string.Empty;
-            switch (partyObjective)
+            switch (objectiveType)
             {
                 
                 case PartyObjective.Person:
@@ -76,7 +76,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 PersonalTitle = _party.PersonalTitle,
                 Title = title,
                 NationalCode = _party.NationalCode,
-                ObjectiveType = partyObjective
+                ObjectiveType = objectiveType
             };
             return View(model);
         }

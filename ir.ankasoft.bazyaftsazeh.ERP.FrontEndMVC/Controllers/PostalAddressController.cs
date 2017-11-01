@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress;
 using ir.ankasoft.entities;
 using ir.ankasoft.entities.Enums;
@@ -19,18 +20,21 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly IPartyRepository _partyRepository;
         private readonly ICityRepository _cityRepository;
         private readonly IPersonRepository _personRepository;
+        private readonly IOrganizationRepository _organizationRepository;
         private IMapper Mapper;
 
         public PostalAddressController(IPostalAddressRepository postalAddressRpository,
                                        IPartyRepository partyRepository,
                                        ICityRepository cityRepository,
                                        IPersonRepository personRepository,
+                                       IOrganizationRepository organizationRepository,
                                        IUnitOfWorkFactory unitOfWorkFactory)
         {
             _postalAddressRpository = postalAddressRpository;
             _partyRepository = partyRepository;
             _cityRepository = cityRepository;
             _personRepository = personRepository;
+            _organizationRepository = organizationRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
@@ -46,18 +50,37 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult CreatePostalAddress(long parentId, PartyObjective objectiveType)
         {
-            Party _party = _partyRepository.FindById(parentId);
+            Party _party = null;
+            string title = string.Empty;
+            switch (objectiveType)
+            {
 
+                case PartyObjective.Person:
+                    var _person = _personRepository.FindById(parentId, y => y.Party);
+                    title = _person.FullName;
+                    _party = _person.Party;
+                    break;
+                case PartyObjective.Importer:
+                    break;
+                case PartyObjective.Organization:
+                    var _organization = _organizationRepository.FindById(parentId, y => y.Party);
+                    title = _organization.Title;
+                    _party = _organization.Party;
+                    break;
+                default:
+                    _party = _partyRepository.FindById(parentId);
+                    title = _party.Title;
+                    break;
+            }
             var model = new ViewModelCreateModifyPostalAddress()
             {
 
                 ParentId = parentId,
                 PersonalTitle = _party.PersonalTitle,
-                Title = _party.Title,
+                Title = title,
                 NationalCode = _party.NationalCode,
-                ProvinceCityList = Common.sessionManager.getProvinceCities()
+                ObjectiveType = objectiveType
             };
-
             return View(model);
         }
 
@@ -104,7 +127,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult ModifyPostalAddress(long parentId, long communicationId, PartyObjective objectiveType)
+        public virtual ActionResult ModifyPostalAddress(long parentId, long communicationId, PartyObjective objectiveType = PartyObjective.Party)
         {
             Party _party = null;
             string title = string.Empty;
@@ -119,7 +142,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     //_postalAddress.ImporterRefRecId = request.ParentId;
                     break;
                 case PartyObjective.Organization:
+                    _party = _organizationRepository.FindById(parentId, y => y.Party).Party;
                     //_postalAddress.OrganizationRefRecId = request.ParentId;
+                    //var _organization = _organizationRe
                     break;
                 default:
                     _party = _partyRepository.FindById(parentId);
@@ -163,7 +188,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                             case PartyObjective.Importer:
                                 break;
                             case PartyObjective.Organization:
-                                break;
+                                return RedirectToAction(MVC.Organization.PostalAddressList(request.ParentId));
                         }
                     }
                 }
@@ -180,7 +205,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         public virtual ActionResult ChangePrimary(long id, long parentId, bool status)
         {
-            _postalAddressRpository.changePrimary(id, ankasoft.entities.Enums.PartyObjective.Party, status);
+            _postalAddressRpository.changePrimary(id, status);
             return Redirect(Request.UrlReferrer.ToString());
         }
 

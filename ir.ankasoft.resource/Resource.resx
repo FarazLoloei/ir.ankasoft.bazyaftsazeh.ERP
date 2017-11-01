@@ -876,13 +876,16 @@
   <data name="CommercialNumber" xml:space="preserve">
     <value>شماره بازرگانی</value>
   </data>
-  <data name="RegisterationNumber" xml:space="preserve">
+  <data name="RegistrationNumber" xml:space="preserve">
     <value>شماره ثبت</value>
   </data>
-  <data name="RegisterationPlace" xml:space="preserve">
+  <data name="RegistrationPlace" xml:space="preserve">
     <value>محل ثبت</value>
   </data>
   <data name="Organization" xml:space="preserve">
     <value>سازمان</value>
+  </data>
+  <data name="DefineAsOrganization" xml:space="preserve">
+    <value>تعریف به عنوان سازمان</value>
   </data>
 </root>

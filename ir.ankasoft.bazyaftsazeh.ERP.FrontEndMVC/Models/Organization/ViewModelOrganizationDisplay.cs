@@ -15,11 +15,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Organization
         [Display(Name = nameof(Title), ResourceType = typeof(Resource))]
         public string Title { get; set; }
 
-        [Display(Name = nameof(RegisterationNumber), ResourceType = typeof(Resource))]
-        public string RegisterationNumber { get; set; }
+        [Display(Name = nameof(RegistrationNumber), ResourceType = typeof(Resource))]
+        public string RegistrationNumber { get; set; }
 
-        [Display(Name = nameof(RegisterationPlace), ResourceType = typeof(Resource))]
-        public string RegisterationPlace { get; set; }
+        [Display(Name = nameof(RegistrationPlace), ResourceType = typeof(Resource))]
+        public string RegistrationPlace { get; set; }
 
         [Display(Name = nameof(CommercialNumber), ResourceType = typeof(Resource))]
         public string CommercialNumber { get; set; }

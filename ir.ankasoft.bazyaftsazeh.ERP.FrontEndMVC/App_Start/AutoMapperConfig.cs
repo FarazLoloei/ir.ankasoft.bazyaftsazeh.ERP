@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using ir.ankasoft.bazyaftsazeh.ERP.entities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Notification;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Organization;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Person;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress;
@@ -35,6 +37,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 /*Person*/
                 ConfigPerson(_);
 
+                /*Organization*/
+                ConfigOrganization(_);
+
                 /*Communication*/
                 ConfigCommunication(_);
 
@@ -46,6 +51,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 /*City*/
                 ConfigCity(_);
+
 
                 ///*UnitConvertor*/
                 //ConfigUnitConvertor(_);
@@ -239,6 +245,87 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.NationalCode, t => t.Ignore());
         }
 
+        private static void ConfigOrganization(IMapperConfigurationExpression _)
+        {
+            //Display
+            _.CreateMap<ViewModelOrganizationDisplay, Organization>()
+                .ForMember(p => p.PartyRefRecId, t => t.Ignore())
+                .ForMember(p => p.Party, t => t.Ignore())
+
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+                .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
+
+            _.CreateMap<Organization, ViewModelOrganizationDisplay>()
+                .ForMember(p => p.Telephone, opt =>
+                        opt.MapFrom(desc =>
+                                desc.CommunicationCollection.Where(x => x.IsPrimary == true &&
+                                                                   x.CommunicationType == ankasoft.entities.Enums.CommunicationType.Telephone)
+                                                            .FirstOrDefault().Value))
+                .ForMember(p => p.Mobile, opt =>
+                        opt.MapFrom(desc =>
+                                desc.CommunicationCollection.Where(x => x.IsPrimary == true &&
+                                                                   x.CommunicationType == ankasoft.entities.Enums.CommunicationType.Mobile)
+                                                            .FirstOrDefault().Value))
+                .ForMember(p => p.NationalCode, opt => opt.MapFrom(dest => dest.Party.NationalCode))
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
+
+            //Create
+            _.CreateMap<ViewModelCreateOrganization, Organization>()
+                .ForMember(p => p.PartyRefRecId, opt => opt.MapFrom(dest => dest.parentId))
+                .ForMember(p => p.Party, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+
+
+            _.CreateMap<Organization, ViewModelCreateOrganization>()
+                .ForMember(p => p.parentId, t => t.Ignore());
+
+            //Modify
+            _.CreateMap<ViewModelModifyOrganization, Organization>()
+               .ForMember(p => p.PartyRefRecId, t => t.Ignore())
+               .ForMember(p => p.Party, t => t.Ignore())
+               .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+               .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+               .ForMember(p => p.createdDateTime, t => t.Ignore())
+               .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+               .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.creatorUser, t => t.Ignore())
+               .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Organization, ViewModelModifyOrganization>();
+
+            _.CreateMap<ViewModelOrganizationCommunication, Organization>()
+               .ForMember(p => p.RegistrationNumber, t => t.Ignore())
+               .ForMember(p => p.RegistrationPlace, t => t.Ignore())
+               .ForMember(p => p.CommercialNumber, t => t.Ignore())
+               .ForMember(p => p.PartyRefRecId, t => t.Ignore())
+               .ForMember(p => p.Party, t => t.Ignore())
+               .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+               .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+               .ForMember(p => p.createdDateTime, t => t.Ignore())
+               .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+               .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.creatorUser, t => t.Ignore())
+               .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Organization, ViewModelOrganizationCommunication>()
+                .ForMember(p => p.PersonalTitle, t => t.Ignore())
+                .ForMember(p => p.Title, t => t.Ignore())
+                .ForMember(p => p.NationalCode, t => t.Ignore());
+        }
         private static void ConfigCommunication(IMapperConfigurationExpression _)
         {
             _.CreateMap<ViewModelCommunication, Communication>()

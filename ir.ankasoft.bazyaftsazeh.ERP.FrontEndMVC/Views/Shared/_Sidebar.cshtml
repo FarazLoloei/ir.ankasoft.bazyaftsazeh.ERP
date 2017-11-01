@@ -72,6 +72,12 @@
                             <span data-localize="sidebar.nav.initialize.Person">@Resource.Person</span>
                         </a>
                     </li>
+
+                    <li class="@Html.isActive(controller: "Organization")">
+                        <a href="@Url.Action(MVC.Organization.Index())" title="@Resource.Organization">
+                            <span data-localize="sidebar.nav.initialize.Organization">@Resource.Organization</span>
+                        </a>
+                    </li>
                     @*<li class="@Html.isActive(controller: "UnitOfMeasure")">
         <a href="@Url.Action(MVC.UnitOfMeasure.Index())" title="@Resource.UnitOfMeasure">
             <span data-localize="sidebar.nav.initialize.UnitOfMeasure">@Resource.UnitOfMeasure</span>
