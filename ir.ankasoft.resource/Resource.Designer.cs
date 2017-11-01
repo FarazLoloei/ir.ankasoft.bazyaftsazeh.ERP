@@ -313,6 +313,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to شماره بازرگانی.
+        /// </summary>
+        public static string CommercialNumber {
+            get {
+                return ResourceManager.GetString("CommercialNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ارتباطی.
         /// </summary>
         public static string Communication {
@@ -1366,6 +1375,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to سازمان.
+        /// </summary>
+        public static string Organization {
+            get {
+                return ResourceManager.GetString("Organization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to مبدا.
         /// </summary>
         public static string Origin {
@@ -1587,6 +1605,24 @@ namespace ir.ankasoft.resource {
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شماره ثبت.
+        /// </summary>
+        public static string RegisterationNumber {
+            get {
+                return ResourceManager.GetString("RegisterationNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to محل ثبت.
+        /// </summary>
+        public static string RegisterationPlace {
+            get {
+                return ResourceManager.GetString("RegisterationPlace", resourceCulture);
             }
         }
         

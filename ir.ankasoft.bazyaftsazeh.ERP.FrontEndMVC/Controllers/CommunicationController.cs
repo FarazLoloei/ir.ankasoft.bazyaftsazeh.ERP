@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
 using ir.ankasoft.entities;
 using ir.ankasoft.entities.Enums;
@@ -18,17 +19,20 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly ICommunicationRepository _communicationRpository;
         private readonly IPartyRepository _partyRepository;
         private readonly IPersonRepository _personRepository;
+        private readonly IOrganizationRepository _organizationRepository;
 
         private IMapper Mapper;
 
         public CommunicationController(ICommunicationRepository communicationRpository,
                                        IPartyRepository partyRepository,
                                        IPersonRepository personRepository,
+                                       IOrganizationRepository organizationRepository,
                                        IUnitOfWorkFactory unitOfWorkFactory)
         {
             _communicationRpository = communicationRpository;
             _partyRepository = partyRepository;
             _personRepository = personRepository;
+            _organizationRepository = organizationRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
@@ -56,6 +60,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 case PartyObjective.Importer:
                     break;
                 case PartyObjective.Organization:
+                    var _organization = _organizationRepository.FindById(parentId, y => y.Party);
+                    title = _organization.Title;
+                    _party = _organization.Party;
                     break;
                 default:
                     _party = _partyRepository.FindById(parentId);
@@ -140,6 +147,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 case PartyObjective.Importer:
                     break;
                 case PartyObjective.Organization:
+                    _party = _organizationRepository.FindById(parentId, y => y.Party).Party;
                     break;
                 default:
                     _party = _partyRepository.FindById(parentId);
@@ -180,7 +188,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                             case PartyObjective.Importer:
                                 break;
                             case PartyObjective.Organization:
-                                break;
+                                return RedirectToAction(MVC.Organization.CommunicationList(request.ParentId));
+                                ;
                         }
                     }
                 }
@@ -197,7 +206,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         public virtual ActionResult ChangePrimary(long id, long parentId, bool status)
         {
-            _communicationRpository.changePrimary(id, ankasoft.entities.Enums.PartyObjective.Party, status);
+            _communicationRpository.changePrimary(id, PartyObjective.Party, status);
             return Redirect(Request.UrlReferrer.ToString());
         }
 

@@ -14,24 +14,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
             {
                 var _communication = FindById(id);
                 IEnumerable<Communication> list = new List<Communication>();
-                switch (ObjectiveType)
-                {
-                    case PartyObjective.Party:
-                        list = FindAll(_ => _.PartyRefRecId == _communication.PartyRefRecId && _.CommunicationType == _communication.CommunicationType);
-                        break;
-
-                    case PartyObjective.Person:
-                        list = FindAll(_ => _.PersonRefRecId == _communication.PersonRefRecId && _.CommunicationType == _communication.CommunicationType);
-                        break;
-
-                    case PartyObjective.Importer:
-                        list = FindAll(_ => _.ImporterRefRecId == _communication.ImporterRefRecId && _.CommunicationType == _communication.CommunicationType);
-                        break;
-
-                    case PartyObjective.Organization:
-                        list = FindAll(_ => _.OrganizationRefRecId == _communication.OrganizationRefRecId && _.CommunicationType == _communication.CommunicationType);
-                        break;
-                }
+                if (_communication.PartyRefRecId != null)
+                    list = FindAll(_ => _.PartyRefRecId == _communication.PartyRefRecId && _.CommunicationType == _communication.CommunicationType);
+                else if (_communication.PersonRefRecId != null)
+                    list = FindAll(_ => _.PersonRefRecId == _communication.PersonRefRecId && _.CommunicationType == _communication.CommunicationType);
+                else if (_communication.ImporterRefRecId != null)
+                    list = FindAll(_ => _.ImporterRefRecId == _communication.ImporterRefRecId && _.CommunicationType == _communication.CommunicationType);
+                else
+                    list = FindAll(_ => _.OrganizationRefRecId == _communication.OrganizationRefRecId && _.CommunicationType == _communication.CommunicationType);
                 if (status)
                 {
                     foreach (var item in list)

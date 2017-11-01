@@ -461,6 +461,7 @@
     <Compile Include="Controllers\CommunicationController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Controllers\PartyController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
@@ -504,6 +505,10 @@
     <Compile Include="Models\Manage\SetPasswordViewModel.cs" />
     <Compile Include="Models\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Models\Notification\ViewModelDisplayNotification.cs" />
+    <Compile Include="Models\Organization\ViewModelCreateOrganization.cs" />
+    <Compile Include="Models\Organization\ViewModelModifyOrganization.cs" />
+    <Compile Include="Models\Organization\ViewModelOrganizationCommunication.cs" />
+    <Compile Include="Models\Organization\ViewModelOrganizationDisplay.cs" />
     <Compile Include="Models\Party\ViewModelPartyCommunication.cs" />
     <Compile Include="Models\Party\ViewModelModifyParty.cs" />
     <Compile Include="Models\Party\ViewModelCreateParty.cs" />
@@ -521,6 +526,9 @@
     <Compile Include="Models\Shared\FilterDataSource.cs" />
     <Compile Include="Models\Shared\ViewModelSelect2List.cs" />
     <Compile Include="Models\Shared\ViewModelWithSelectList.cs" />
+    <Compile Include="OrganizationController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="PagesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -673,6 +681,13 @@
     <Content Include="Views\Person\CommunicationList.cshtml" />
     <Content Include="Views\Person\Index.cshtml" />
     <Content Include="Views\Person\PostalAddressList.cshtml" />
+    <Content Include="Views\Organization\Index.cshtml" />
+    <Content Include="Views\Organization\Create.cshtml" />
+    <Content Include="Views\Organization\Modify.cshtml" />
+    <Content Include="Views\Organization\_Detail.cshtml" />
+    <Content Include="Views\Organization\_List.cshtml" />
+    <Content Include="Views\Organization\CommunicationList.cshtml" />
+    <Content Include="Views\Organization\PostalAddressList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

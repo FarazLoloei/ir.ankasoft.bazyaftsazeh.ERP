@@ -32,6 +32,7 @@ public static partial class MVC
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.CommunicationController Communication = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_CommunicationController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DashboardController Dashboard = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_DashboardController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.ManageController Manage = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_ManageController();
+    public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.OrganizationController Organization = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_OrganizationController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PagesController Pages = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PagesController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PartyController Party = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PartyController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PersonController Person = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PersonController();

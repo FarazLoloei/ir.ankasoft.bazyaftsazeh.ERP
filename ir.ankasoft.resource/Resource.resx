@@ -873,4 +873,16 @@
   <data name="Name" xml:space="preserve">
     <value>نام</value>
   </data>
+  <data name="CommercialNumber" xml:space="preserve">
+    <value>شماره بازرگانی</value>
+  </data>
+  <data name="RegisterationNumber" xml:space="preserve">
+    <value>شماره ثبت</value>
+  </data>
+  <data name="RegisterationPlace" xml:space="preserve">
+    <value>محل ثبت</value>
+  </data>
+  <data name="Organization" xml:space="preserve">
+    <value>سازمان</value>
+  </data>
 </root>
