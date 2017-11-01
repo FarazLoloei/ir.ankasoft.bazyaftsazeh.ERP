@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
+    [Authorize]
     public partial class CommunicationController : Controller
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
@@ -20,6 +21,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly IPartyRepository _partyRepository;
         private readonly IPersonRepository _personRepository;
         private readonly IOrganizationRepository _organizationRepository;
+        private readonly IImporterRepository _importerRepository;
 
         private IMapper Mapper;
 
@@ -27,12 +29,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                        IPartyRepository partyRepository,
                                        IPersonRepository personRepository,
                                        IOrganizationRepository organizationRepository,
+                                       IImporterRepository importerRepository,
                                        IUnitOfWorkFactory unitOfWorkFactory)
         {
             _communicationRpository = communicationRpository;
             _partyRepository = partyRepository;
             _personRepository = personRepository;
             _organizationRepository = organizationRepository;
+            _importerRepository = importerRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
@@ -58,6 +62,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     _party = _person.Party;
                     break;
                 case PartyObjective.Importer:
+                    var _importer = _importerRepository.FindById(parentId, y => y.Party);
+                    title = _importer.FullName;
+                    _party = _importer.Party;
                     break;
                 case PartyObjective.Organization:
                     var _organization = _organizationRepository.FindById(parentId, y => y.Party);
@@ -107,18 +114,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                 _communication.OrganizationRefRecId = request.ParentId;
                                 break;
                         }
-                        _communicationRpository.Add(_communication); switch (request.ObjectiveType)
+                        _communicationRpository.Add(_communication);
+                        switch (request.ObjectiveType)
                         {
                             case PartyObjective.Party:
                                 return RedirectToAction(MVC.Party.CommunicationList(request.ParentId));
                             case PartyObjective.Person:
                                 return RedirectToAction(MVC.Person.CommunicationList(request.ParentId));
                             case PartyObjective.Importer:
-                                //_communication.ImporterRefRecId = request.ParentId;
-                                break;
+                                return RedirectToAction(MVC.Importer.CommunicationList(request.ParentId));
                             case PartyObjective.Organization:
-                                //_communication.OrganizationRefRecId = request.ParentId;
-                                break;
+                                return RedirectToAction(MVC.Organization.CommunicationList(request.ParentId));
                         }
                         
                     }
@@ -145,6 +151,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     _party = _personRepository.FindById(parentId, y => y.Party).Party;
                     break;
                 case PartyObjective.Importer:
+                    _party = _importerRepository.FindById(parentId, y => y.Party).Party;
                     break;
                 case PartyObjective.Organization:
                     _party = _organizationRepository.FindById(parentId, y => y.Party).Party;
@@ -186,10 +193,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                             case PartyObjective.Person:
                                 return RedirectToAction(MVC.Person.CommunicationList(request.ParentId));
                             case PartyObjective.Importer:
-                                break;
+                                return RedirectToAction(MVC.Importer.CommunicationList(request.ParentId));
                             case PartyObjective.Organization:
                                 return RedirectToAction(MVC.Organization.CommunicationList(request.ParentId));
-                                ;
+                                
                         }
                     }
                 }
@@ -206,7 +213,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         public virtual ActionResult ChangePrimary(long id, long parentId, bool status)
         {
-            _communicationRpository.changePrimary(id, PartyObjective.Party, status);
+            _communicationRpository.changePrimary(id,  status);
             return Redirect(Request.UrlReferrer.ToString());
         }
 

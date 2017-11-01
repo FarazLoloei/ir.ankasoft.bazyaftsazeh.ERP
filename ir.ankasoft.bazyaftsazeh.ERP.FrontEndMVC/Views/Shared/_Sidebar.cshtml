@@ -78,6 +78,12 @@
                             <span data-localize="sidebar.nav.initialize.Organization">@Resource.Organization</span>
                         </a>
                     </li>
+
+                    <li class="@Html.isActive(controller: "Importer")">
+                        <a href="@Url.Action(MVC.Importer.Index())" title="@Resource.Importer">
+                            <span data-localize="sidebar.nav.initialize.Organization">@Resource.Importer</span>
+                        </a>
+                    </li>
                     @*<li class="@Html.isActive(controller: "UnitOfMeasure")">
         <a href="@Url.Action(MVC.UnitOfMeasure.Index())" title="@Resource.UnitOfMeasure">
             <span data-localize="sidebar.nav.initialize.UnitOfMeasure">@Resource.UnitOfMeasure</span>

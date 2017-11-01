@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
+using ir.ankasoft.bazyaftsazeh.ERP.entities;
+using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
-using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Person;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Importer;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress;
-using ir.ankasoft.entities;
 using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
 using System;
@@ -14,25 +15,26 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
-    public partial class PersonController : Controller
+    [Authorize]
+    public partial class ImporterController : Controller
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
-        private readonly IPersonRepository _personRepository;
+        private readonly IImporterRepository _importerRepository;
         private readonly ICityRepository _cityRepository;
         private readonly ICommunicationRepository _communicationRpository;
         private readonly IPostalAddressRepository _postalAddressRpository;
         private readonly IContextMenuItemRepository _contextMenuItemRepository;
         private IMapper Mapper;
 
-        public PersonController(IPartyRepository partyRepository,
-                                IPersonRepository personRepository,
+        public ImporterController(IPartyRepository partyRepository,
+                                IImporterRepository importerRepository,
                                 IContextMenuItemRepository contextMenuItemRepository,
                                 ICityRepository cityRepository,
                                 ICommunicationRepository communicationRpository,
                                 IPostalAddressRepository postalAddressRpository,
                                 IUnitOfWorkFactory unitOfWorkFactory)
         {
-            _personRepository = personRepository;
+            _importerRepository = importerRepository;
             _contextMenuItemRepository = contextMenuItemRepository;
             _cityRepository = cityRepository;
             _communicationRpository = communicationRpository;
@@ -42,10 +44,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
         }
 
-        // GET: Person
+        // GET: Importer
         public virtual ActionResult Index(FilterDataSource request)
         {
-            Common.sessionManager.getContextMenu(nameof(PersonController).Replace(nameof(Controller), string.Empty));
+            Common.sessionManager.getContextMenu(nameof(ImporterController).Replace(nameof(Controller), string.Empty));
 
             request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
             if (Request.IsAjaxRequest())
@@ -54,16 +56,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View(Load(request));
         }
 
-        private PagerModel<ViewModelPersonDisplay> Load(FilterDataSource request)
+        private PagerModel<ViewModelImporterDisplay> Load(FilterDataSource request)
         {
-            var data = new List<ViewModelPersonDisplay>();
+            var data = new List<ViewModelImporterDisplay>();
             int totalRecords;
-            IQueryable<Person> parties =
-                _personRepository.LoadByFilter(
+            IQueryable<Importer> parties =
+                _importerRepository.LoadByFilter(
                     request, out totalRecords)
                                    .AsQueryable();
-            data = Mapper.Map<List<ViewModelPersonDisplay>>(parties);
-            var model = new PagerModel<ViewModelPersonDisplay>
+            data = Mapper.Map<List<ViewModelImporterDisplay>>(parties);
+            var model = new PagerModel<ViewModelImporterDisplay>
             {
                 Data = data,
                 PageData = new PagerData
@@ -78,14 +80,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult Create(long partyId = 0)
         {
-            if (partyId == 0) return RedirectToAction(MVC.Party.Index());
-            var model = new ViewModelCreatePerson() { parentId = partyId };
+            if (partyId == 0) return RedirectToAction(MVC.Importer.Index());
+            var model = new ViewModelCreateImporter() { parentId = partyId };
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Create(ViewModelCreatePerson request,
+        public virtual ActionResult Create(ViewModelCreateImporter request,
             List<ViewModelCommunication> communicationCollection,
             List<ViewModelPostalAddress> postalAddressCollection)
         {
@@ -98,9 +100,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 {
                     using (_unitOfWorkFactory.Create())
                     {
-                        var _person = Mapper.Map<Person>(request);
-                        _personRepository.Add(_person);
-                        return RedirectToAction(MVC.Person.Index());
+                        var _importer = Mapper.Map<Importer>(request);
+                        _importerRepository.Add(_importer);
+                        return RedirectToAction(MVC.Importer.Index());
                     }
                 }
                 catch (ModelValidationException modelValidationException)
@@ -117,18 +119,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         public virtual ActionResult Modify(long id)
         {
-            Person _model = _personRepository.FindById(id);
+            Importer _model = _importerRepository.FindById(id);
             if (_model == null)
             {
                 return HttpNotFound();
             }
-            var data = Mapper.Map<ViewModelModifyPerson>(_model);
+            var data = Mapper.Map<ViewModelModifyImporter>(_model);
             return View(data);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Modify(ViewModelModifyPerson request)
+        public virtual ActionResult Modify(ViewModelModifyImporter request)
         {
             if (ModelState.IsValid)
             {
@@ -136,9 +138,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 {
                     using (_unitOfWorkFactory.Create())
                     {
-                        Person _person = _personRepository.FindById(request.recId);
-                        Mapper.Map(request, _person, typeof(ViewModelModifyPerson), typeof(Person));
-                        return RedirectToAction(MVC.Person.Index());
+                        Importer _importer = _importerRepository.FindById(request.recId);
+                        Mapper.Map(request, _importer, typeof(ViewModelModifyImporter), typeof(Importer));
+                        return RedirectToAction(MVC.Importer.Index());
                     }
                 }
                 catch (ModelValidationException modelValidationException)
@@ -153,47 +155,46 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         public virtual ActionResult Remove(long id)
-
         {
             using (_unitOfWorkFactory.Create())
             {
-                _personRepository.Remove(id);
+                _importerRepository.Remove(id);
             }
-            return RedirectToAction(MVC.Person.Index());
+            return RedirectToAction(MVC.Importer.Index());
         }
 
         [HttpGet]
         public virtual ActionResult CommunicationList(long id)
         {
-            Person _person = _personRepository.FindById(id, y => y.Party);
-            if (_person == null)
+            Importer _importer = _importerRepository.FindById(id, y => y.Party);
+            if (_importer == null)
             {
                 throw new Exception("ObjectNotFound");
             }
-            ViewModelPersonCommunication model = Mapper.Map<ViewModelPersonCommunication>(_person);
+            ViewModelImporterCommunication model = Mapper.Map<ViewModelImporterCommunication>(_importer);
             model.CommunicationCollection = model.CommunicationCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
-            model.NationalCode = _person.Party.NationalCode;
-            model.PersonalTitle = _person.Party.PersonalTitle;
-            model.Title = _person.FullName;
+            model.NationalCode = _importer.Party.NationalCode;
+            model.PersonalTitle = _importer.Party.PersonalTitle;
+            model.Title = _importer.FullName;
             return View(model);
         }
 
         [HttpGet]
         public virtual ActionResult PostalAddressList(long id)
         {
-            Person _person = _personRepository.FindById(id, _ => _.PostalAddressCollection.Select(y => y.Province),
+            Importer _importer = _importerRepository.FindById(id, _ => _.PostalAddressCollection.Select(y => y.Province),
                 _ => _.PostalAddressCollection.Select(y => y.City),
                 y => y.Party);
-            if (_person == null)
+            if (_importer == null)
             {
                 throw new Exception("ObjectNotFound");
             }
-            ViewModelPersonCommunication model = Mapper.Map<ViewModelPersonCommunication>(_person);
+            ViewModelImporterCommunication model = Mapper.Map<ViewModelImporterCommunication>(_importer);
             model.PostalAddressCollection = model.PostalAddressCollection.Select(_ => { _.Postal_ParentId = id; return _; }).ToList();
             model.CommunicationCollection = model.CommunicationCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
-            model.NationalCode = _person.Party.NationalCode;
-            model.PersonalTitle = _person.Party.PersonalTitle;
-            model.Title = _person.FullName;
+            model.NationalCode = _importer.Party.NationalCode;
+            model.PersonalTitle = _importer.Party.PersonalTitle;
+            model.Title = _importer.FullName;
             return View(model);
         }
     }

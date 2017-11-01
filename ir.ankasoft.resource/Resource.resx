@@ -888,4 +888,13 @@
   <data name="DefineAsOrganization" xml:space="preserve">
     <value>تعریف به عنوان سازمان</value>
   </data>
+  <data name="Importer" xml:space="preserve">
+    <value>وارد کننده</value>
+  </data>
+  <data name="ImporterNumber" xml:space="preserve">
+    <value>شماره وارد کننده</value>
+  </data>
+  <data name="DefineAsImporter" xml:space="preserve">
+    <value>تعریف به عنوان وارد کننده</value>
+  </data>
 </root>

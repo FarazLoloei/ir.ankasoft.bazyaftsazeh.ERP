@@ -10,6 +10,6 @@ namespace ir.ankasoft.entities.Repositories
 {
     public interface ICommunicationRepository : IRepository<Communication, long>
     {
-        void changePrimary(long id, PartyObjective ObjectiveType, bool status);
+        void changePrimary(long id,  bool status);
     }
 }

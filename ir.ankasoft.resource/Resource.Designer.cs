@@ -448,6 +448,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to تعریف به عنوان وارد کننده.
+        /// </summary>
+        public static string DefineAsImporter {
+            get {
+                return ResourceManager.GetString("DefineAsImporter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to تعریف به عنوان سازمان.
         /// </summary>
         public static string DefineAsOrganization {
@@ -777,6 +786,24 @@ namespace ir.ankasoft.resource {
         public static string Icon {
             get {
                 return ResourceManager.GetString("Icon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to وارد کننده.
+        /// </summary>
+        public static string Importer {
+            get {
+                return ResourceManager.GetString("Importer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شماره وارد کننده.
+        /// </summary>
+        public static string ImporterNumber {
+            get {
+                return ResourceManager.GetString("ImporterNumber", resourceCulture);
             }
         }
         

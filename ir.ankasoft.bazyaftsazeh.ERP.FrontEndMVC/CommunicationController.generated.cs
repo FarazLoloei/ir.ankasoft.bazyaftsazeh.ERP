@@ -129,7 +129,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionParamsClass_CreateCommunication
         {
             public readonly string parentId = "parentId";
-            public readonly string partyObjective = "partyObjective";
+            public readonly string objectiveType = "objectiveType";
             public readonly string request = "request";
         }
         static readonly ActionParamsClass_ModifyCommunication s_params_ModifyCommunication = new ActionParamsClass_ModifyCommunication();
@@ -209,15 +209,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void CreateCommunicationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long parentId, ir.ankasoft.entities.Enums.PartyObjective partyObjective);
+        partial void CreateCommunicationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long parentId, ir.ankasoft.entities.Enums.PartyObjective objectiveType);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult CreateCommunication(long parentId, ir.ankasoft.entities.Enums.PartyObjective partyObjective)
+        public override System.Web.Mvc.ActionResult CreateCommunication(long parentId, ir.ankasoft.entities.Enums.PartyObjective objectiveType)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateCommunication);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "parentId", parentId);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "partyObjective", partyObjective);
-            CreateCommunicationOverride(callInfo, parentId, partyObjective);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "objectiveType", objectiveType);
+            CreateCommunicationOverride(callInfo, parentId, objectiveType);
             return callInfo;
         }
 

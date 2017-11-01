@@ -460,6 +460,7 @@
     <Compile Include="Controllers\Common.cs" />
     <Compile Include="Controllers\CommunicationController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ImporterController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\PagesController.cs" />
@@ -478,6 +479,9 @@
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
     <Compile Include="Helpers\AnkasoftResource.cs" />
     <Compile Include="Helpers\HTMLHelperExtensions.cs" />
+    <Compile Include="ImporterController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="ManageController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -496,6 +500,10 @@
     <Compile Include="Models\Communication\ViewModelCommunication.cs" />
     <Compile Include="Models\Communication\ViewModelCreateModifyCommunication.cs" />
     <Compile Include="Models\Dashboard\ViewModelDashboard.cs" />
+    <Compile Include="Models\Importer\ViewModelCreateImporter.cs" />
+    <Compile Include="Models\Importer\ViewModelModifyImporter.cs" />
+    <Compile Include="Models\Importer\ViewModelImporterCommunication.cs" />
+    <Compile Include="Models\Importer\ViewModelImporterDisplay.cs" />
     <Compile Include="Models\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="Models\Manage\ConfigureTwoFactorViewModel.cs" />
@@ -688,6 +696,13 @@
     <Content Include="Views\Organization\_List.cshtml" />
     <Content Include="Views\Organization\CommunicationList.cshtml" />
     <Content Include="Views\Organization\PostalAddressList.cshtml" />
+    <Content Include="Views\Importer\_Detail.cshtml" />
+    <Content Include="Views\Importer\_List.cshtml" />
+    <Content Include="Views\Importer\CommunicationList.cshtml" />
+    <Content Include="Views\Importer\Create.cshtml" />
+    <Content Include="Views\Importer\Modify.cshtml" />
+    <Content Include="Views\Importer\PostalAddressList.cshtml" />
+    <Content Include="Views\Importer\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

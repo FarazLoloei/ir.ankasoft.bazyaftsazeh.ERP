@@ -3,6 +3,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.entities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Importer;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Notification;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Organization;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
@@ -22,15 +23,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
         {
             MapperConfiguration = new MapperConfiguration(_ =>
             {
-                /*Category */
-                //ConfigCategory(_);
-
-                ///*Invent Site*/
-                //ConfigInventSite(_);
-
-                ///*Unit Of Measure*/
-                //ConfigUnitOfMeasure(_);
-
                 /*CounterParty*/
                 ConfigParty(_);
 
@@ -39,6 +31,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 /*Organization*/
                 ConfigOrganization(_);
+
+                /*Importer*/
+                ConfigImporter(_);
 
                 /*Communication*/
                 ConfigCommunication(_);
@@ -52,46 +47,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 /*City*/
                 ConfigCity(_);
 
-
-                ///*UnitConvertor*/
-                //ConfigUnitConvertor(_);
-
-                ///*InventLocation*/
-                //ConfigInventLocation(_);
-
-                ///*Invent*/
-                //ConfigInvent(_);
-
-                ///*PurchOrder*/
-                //ConfigPurchOrder(_);
-
-                ///*Invent Trans*/
-                //ConfigInventTrans(_);
-
-                ///*Invnet Dim*/
-                //ConfigInventDim(_);
-
-                ///*Vehicle Info*/
-                //ConfigVehicleInfo(_);
-
-                ///*Invoice*/
-                //ConfigInvoice(_);
-
-                ///*Dashborad*/
+                //*Dashborad*/
                 ConfigNotification(_);
 
-                ///*InventOnHand*/
-                //ConfigInventOnHand(_);
-
-                ///*InventTransfer*/
-                //ConfigInventTransfer(_);
-
-                ///*SalesOrder*/
-                //ConfigSalesOrder(_);
-
-                ///*Shared */
+                //*Shared */
                 //ConfigShared(_);
 
+                //*ContextMenu*/
                 ConfigContextMenu(_);
             });
 
@@ -245,6 +207,88 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.NationalCode, t => t.Ignore());
         }
 
+        private static void ConfigImporter(IMapperConfigurationExpression _)
+        {
+            //Display
+            _.CreateMap<ViewModelImporterDisplay, Importer>()
+                .ForMember(p => p.PartyRefRecId, t => t.Ignore())
+                .ForMember(p => p.Party, t => t.Ignore())
+                //.ForMember(p => p.PersonalTitle, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+                .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
+
+            _.CreateMap<Importer, ViewModelImporterDisplay>()
+                .ForMember(p => p.Telephone, opt =>
+                        opt.MapFrom(desc =>
+                                desc.CommunicationCollection.Where(x => x.IsPrimary == true &&
+                                                                   x.CommunicationType == ankasoft.entities.Enums.CommunicationType.Telephone)
+                                                            .FirstOrDefault().Value))
+                .ForMember(p => p.Mobile, opt =>
+                        opt.MapFrom(desc =>
+                                desc.CommunicationCollection.Where(x => x.IsPrimary == true &&
+                                                                   x.CommunicationType == ankasoft.entities.Enums.CommunicationType.Mobile)
+                                                            .FirstOrDefault().Value))
+                .ForMember(p => p.NationalCode, opt => opt.MapFrom(dest => dest.Party.NationalCode))
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
+
+            //Create
+            _.CreateMap<ViewModelCreateImporter, Importer>()
+                .ForMember(p => p.PartyRefRecId, opt => opt.MapFrom(dest => dest.parentId))
+                .ForMember(p => p.Party, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+
+
+            _.CreateMap<Importer, ViewModelCreateImporter>()
+                .ForMember(p => p.parentId, t => t.Ignore());
+
+            //Modify
+            _.CreateMap<ViewModelModifyImporter, Importer>()
+               .ForMember(p => p.PartyRefRecId, t => t.Ignore())
+               .ForMember(p => p.Party, t => t.Ignore())
+               .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+               .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+               .ForMember(p => p.createdDateTime, t => t.Ignore())
+               .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+               .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.creatorUser, t => t.Ignore())
+               .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Importer, ViewModelModifyImporter>();
+
+            _.CreateMap<ViewModelImporterCommunication, Importer>()
+               .ForMember(p => p.Name, t => t.Ignore())
+               .ForMember(p => p.Family, t => t.Ignore())
+               .ForMember(p => p.ImporterNumber, t => t.Ignore())
+               .ForMember(p => p.PartyRefRecId, t => t.Ignore())
+               .ForMember(p => p.Party, t => t.Ignore())
+               .ForMember(p => p.CommunicationCollection, t => t.Ignore())
+               .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
+               .ForMember(p => p.createdDateTime, t => t.Ignore())
+               .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+               .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.creatorUser, t => t.Ignore())
+               .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+               .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Importer, ViewModelImporterCommunication>()
+                .ForMember(p => p.PersonalTitle, t => t.Ignore())
+                .ForMember(p => p.Title, t => t.Ignore())
+                .ForMember(p => p.NationalCode, t => t.Ignore());
+        }
+
         private static void ConfigOrganization(IMapperConfigurationExpression _)
         {
             //Display
@@ -326,6 +370,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.Title, t => t.Ignore())
                 .ForMember(p => p.NationalCode, t => t.Ignore());
         }
+
         private static void ConfigCommunication(IMapperConfigurationExpression _)
         {
             _.CreateMap<ViewModelCommunication, Communication>()

@@ -23,6 +23,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [MaxLength(100)]
         public string Family { get; set; }
 
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return $"{Name}, {Family}";
+            }
+        }
+
         [MaxLength(20)]
         public string ImporterNumber { get; set; }
 

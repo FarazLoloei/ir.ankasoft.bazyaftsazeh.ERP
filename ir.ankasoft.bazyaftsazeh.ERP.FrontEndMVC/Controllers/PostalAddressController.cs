@@ -21,6 +21,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly ICityRepository _cityRepository;
         private readonly IPersonRepository _personRepository;
         private readonly IOrganizationRepository _organizationRepository;
+        private readonly IImporterRepository _importerRepository;
         private IMapper Mapper;
 
         public PostalAddressController(IPostalAddressRepository postalAddressRpository,
@@ -28,6 +29,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                        ICityRepository cityRepository,
                                        IPersonRepository personRepository,
                                        IOrganizationRepository organizationRepository,
+                                       IImporterRepository importerRepository,
                                        IUnitOfWorkFactory unitOfWorkFactory)
         {
             _postalAddressRpository = postalAddressRpository;
@@ -35,6 +37,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             _cityRepository = cityRepository;
             _personRepository = personRepository;
             _organizationRepository = organizationRepository;
+            _importerRepository = importerRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
@@ -44,7 +47,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public virtual ActionResult Index()
         {
             throw new NotImplementedException();
-            //return View();
         }
 
         [HttpGet]
@@ -61,6 +63,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     _party = _person.Party;
                     break;
                 case PartyObjective.Importer:
+                    var _importer = _importerRepository.FindById(parentId, y => y.Party);
+                    title = _importer.FullName;
+                    _party = _importer.Party;
                     break;
                 case PartyObjective.Organization:
                     var _organization = _organizationRepository.FindById(parentId, y => y.Party);
@@ -111,7 +116,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                 break;
                         }
                         _postalAddressRpository.Add(_postalAddress);
-                        return RedirectToAction(MVC.Party.PostalAddressList(request.ParentId));
+                        switch (request.ObjectiveType)
+                        {
+                            case PartyObjective.Party:
+                                return RedirectToAction(MVC.Party.PostalAddressList(request.ParentId));
+                            case PartyObjective.Person:
+                                return RedirectToAction(MVC.Person.PostalAddressList(request.ParentId));
+                            case PartyObjective.Importer:
+                                return RedirectToAction(MVC.Importer.PostalAddressList(request.ParentId));
+                            case PartyObjective.Organization:
+                                return RedirectToAction(MVC.Organization.PostalAddressList(request.ParentId));
+                        }
+                        //return RedirectToAction(MVC.Party.PostalAddressList(request.ParentId));
                     }
                 }
                 catch (ModelValidationException modelValidationException)
@@ -139,12 +155,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     title = _person.FullName;
                     break;
                 case PartyObjective.Importer:
-                    //_postalAddress.ImporterRefRecId = request.ParentId;
+                    var _importer = _importerRepository.FindById(parentId, y => y.Party);
+                    _party = _importer.Party;
+                    title = _importer.FullName;
                     break;
                 case PartyObjective.Organization:
                     _party = _organizationRepository.FindById(parentId, y => y.Party).Party;
-                    //_postalAddress.OrganizationRefRecId = request.ParentId;
-                    //var _organization = _organizationRe
                     break;
                 default:
                     _party = _partyRepository.FindById(parentId);
@@ -186,7 +202,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                             case PartyObjective.Person:
                                 return RedirectToAction(MVC.Person.PostalAddressList(request.ParentId));
                             case PartyObjective.Importer:
-                                break;
+                                return RedirectToAction(MVC.Importer.PostalAddressList(request.ParentId));
                             case PartyObjective.Organization:
                                 return RedirectToAction(MVC.Organization.PostalAddressList(request.ParentId));
                         }

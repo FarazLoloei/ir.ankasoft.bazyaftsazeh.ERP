@@ -8,7 +8,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 {
     public class CommunicationRepository : Repository<Communication>, ICommunicationRepository
     {
-        public void changePrimary(long id, PartyObjective ObjectiveType, bool status)
+        public void changePrimary(long id, bool status)
         {
             using (new EFUnitOfWorkFactory().Create())
             {
