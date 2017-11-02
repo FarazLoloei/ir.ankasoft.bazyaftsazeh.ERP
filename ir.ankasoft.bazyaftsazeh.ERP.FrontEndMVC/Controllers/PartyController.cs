@@ -42,11 +42,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         // GET: Party
         public virtual ActionResult Index(FilterDataSource request)
         {
-            //string controllerTitle = nameof(PartyController).Replace("Controller", "");
-            //if (Session[$"ContextMenu_{controllerTitle}"] == null)
-            //    Session[$"ContextMenu_{controllerTitle}"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, false, true));
-            //if (Session[$"ContextMenu_{controllerTitle}_Header"] == null)
-            //    Session[$"ContextMenu_{controllerTitle}_Header"] = Mapper.Map<List<ViewModelContextMenu>>(_contextMenuItemRepository.GetContextMenu(controllerTitle, true, false));
             Common.sessionManager.getContextMenu(nameof(PartyController).Replace(nameof(Controller), string.Empty));
 
             request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
@@ -89,10 +84,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             List<ViewModelCommunication> communicationCollection,
             List<ViewModelPostalAddress> postalAddressCollection)
         {
-            request.CommunicationCollection = communicationCollection.Where(_ => !string.IsNullOrEmpty(_.Value)).ToList();
-            request.PostalAddressCollection = postalAddressCollection.Where(_ => !string.IsNullOrEmpty(_.Postal_Value)).ToList();
-            request.PostalAddressCollection = request.PostalAddressCollection.Count() > 0 ? request.PostalAddressCollection : null;
-            if (request.PostalAddressCollection == null) { ModelState.Remove("[0].Postal_Value"); }
+            if (communicationCollection != null)
+                request.CommunicationCollection = communicationCollection.Where(_ => !string.IsNullOrEmpty(_.Value)).ToList();
+            if (postalAddressCollection != null)
+            {
+                request.PostalAddressCollection = postalAddressCollection.Where(_ => !string.IsNullOrEmpty(_.Postal_Value)).ToList();
+                request.PostalAddressCollection = request.PostalAddressCollection.Count() > 0 ? request.PostalAddressCollection : null;
+            }
             if (ModelState.IsValid)
             {
                 try
