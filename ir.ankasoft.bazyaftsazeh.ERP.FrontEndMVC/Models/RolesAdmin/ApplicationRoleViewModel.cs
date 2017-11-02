@@ -1,9 +1,5 @@
 ﻿using ir.ankasoft.resource;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.RolesAdmin
 {

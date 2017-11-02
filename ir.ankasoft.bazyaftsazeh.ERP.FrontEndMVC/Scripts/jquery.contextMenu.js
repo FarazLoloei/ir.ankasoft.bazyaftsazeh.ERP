@@ -27,7 +27,6 @@
         factory(jQuery);
     }
 })(function ($) {
-
     'use strict';
 
     // TODO: -
@@ -76,7 +75,7 @@
                         }
 
                         // Http://bugs.jquery.com/ticket/8235
-                    } catch (e) {}
+                    } catch (e) { }
                 }
                 orig(elems);
             };
@@ -86,19 +85,19 @@
 
     var // currently active contextMenu trigger
         $currentTrigger = null,
-    // is contextMenu initialized with at least one menu?
+        // is contextMenu initialized with at least one menu?
         initialized = false,
-    // window handle
+        // window handle
         $win = $(window),
-    // number of registered menus
+        // number of registered menus
         counter = 0,
-    // mapping selector to namespace
+        // mapping selector to namespace
         namespaces = {},
-    // mapping namespace to options
+        // mapping namespace to options
         menus = {},
-    // custom command type handlers
+        // custom command type handlers
         types = {},
-    // default values
+        // default values
         defaults = {
             // selector of contextMenu trigger
             selector: null,
@@ -115,8 +114,7 @@
             reposition: true,
 
             // Default classname configuration to be able avoid conflicts in frameworks
-            classNames : {
-
+            classNames: {
                 hover: 'context-menu-hover', // Item hover
                 disabled: 'context-menu-disabled', // Item disabled
                 visible: 'context-menu-visible', // Item visible
@@ -165,7 +163,7 @@
                     offset = opt.$menu.position();
                 } else {
                     // x and y are given (by mouse event)
-                    offset = {top: y, left: x};
+                    offset = { top: y, left: x };
                 }
 
                 // correct offset if viewport demands it
@@ -230,13 +228,13 @@
             // list of contextMenu items
             items: {}
         },
-    // mouse position for hover activation
+        // mouse position for hover activation
         hoveract = {
             timer: null,
             pageX: null,
             pageY: null
         },
-    // determine zIndex
+        // determine zIndex
         zindex = function ($t) {
             var zin = 0,
                 $tt = $t;
@@ -250,7 +248,7 @@
             }
             return zin;
         },
-    // event handlers
+        // event handlers
         handle = {
             // abort anything
             abortevent: function (e) {
@@ -343,7 +341,7 @@
             click: function (e) {
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                $(this).trigger($.Event('contextmenu', {data: e.data, pageX: e.pageX, pageY: e.pageY}));
+                $(this).trigger($.Event('contextmenu', { data: e.data, pageX: e.pageX, pageY: e.pageY }));
             },
             // contextMenu right-click trigger
             mousedown: function (e) {
@@ -368,7 +366,7 @@
                     e.preventDefault();
                     e.stopImmediatePropagation();
                     $currentTrigger = $this;
-                    $this.trigger($.Event('contextmenu', {data: e.data, pageX: e.pageX, pageY: e.pageY}));
+                    $this.trigger($.Event('contextmenu', { data: e.data, pageX: e.pageX, pageY: e.pageY }));
                 }
 
                 $this.removeData('contextMenuActive');
@@ -497,7 +495,6 @@
                 e.stopPropagation();
             },
             key: function (e) {
-
                 var opt = {};
 
                 // Only get the data from $currentTrigger if it exists
@@ -507,19 +504,19 @@
                 // If the trigger happen on a element that are above the contextmenu do this
                 if (opt.zIndex === undefined) {
                     opt.zIndex = 0;
-				}
+                }
                 var targetZIndex = 0;
                 var getZIndexOfTriggerTarget = function (target) {
-					if (target.style.zIndex !== '') {
-						targetZIndex = target.style.zIndex;
-					} else {
-						if (target.offsetParent !== null && target.offsetParent !== undefined) {
-							getZIndexOfTriggerTarget(target.offsetParent);
-						}
-						else if (target.parentElement !== null && target.parentElement !== undefined) {
-							getZIndexOfTriggerTarget(target.parentElement);
-						}
-					}
+                    if (target.style.zIndex !== '') {
+                        targetZIndex = target.style.zIndex;
+                    } else {
+                        if (target.offsetParent !== null && target.offsetParent !== undefined) {
+                            getZIndexOfTriggerTarget(target.offsetParent);
+                        }
+                        else if (target.parentElement !== null && target.parentElement !== undefined) {
+                            getZIndexOfTriggerTarget(target.parentElement);
+                        }
+                    }
                 };
                 getZIndexOfTriggerTarget(e.target);
                 // If targetZIndex is heigher then opt.zIndex dont progress any futher.
@@ -527,7 +524,7 @@
                 // and its above the contextmenu it wont steal keys events
                 if (targetZIndex > opt.zIndex) {
                     return;
-				}
+                }
                 switch (e.keyCode) {
                     case 9:
                     case 38: // up
@@ -536,7 +533,7 @@
                         if (opt.isInput) {
                             if (e.keyCode === 9 && e.shiftKey) {
                                 e.preventDefault();
-                                if(opt.$selected) {
+                                if (opt.$selected) {
                                     opt.$selected.find('input, textarea, select').blur();
                                 }
                                 opt.$menu.trigger('prevcommand');
@@ -558,7 +555,7 @@
                         if (opt.isInput) {
                             if (e.keyCode === 9) {
                                 e.preventDefault();
-                                if(opt.$selected) {
+                                if (opt.$selected) {
                                     opt.$selected.find('input, textarea, select').blur();
                                 }
                                 opt.$menu.trigger('nextcommand');
@@ -910,7 +907,7 @@
                 opt.$selected = null;
             }
         },
-    // operations
+        // operations
         op = {
             show: function (opt, x, y) {
                 var $trigger = $(this),
@@ -936,12 +933,12 @@
 
                 // make sure we're in front
                 if (opt.zIndex) {
-                  var additionalZValue = opt.zIndex;
-                  // If opt.zIndex is a function, call the function to get the right zIndex.
-                  if (typeof opt.zIndex === 'function') {
-                      additionalZValue = opt.zIndex.call($trigger, opt);
-                  }
-                  css.zIndex = zindex($trigger) + additionalZValue;
+                    var additionalZValue = opt.zIndex;
+                    // If opt.zIndex is a function, call the function to get the right zIndex.
+                    if (typeof opt.zIndex === 'function') {
+                        additionalZValue = opt.zIndex.call($trigger, opt);
+                    }
+                    css.zIndex = zindex($trigger) + additionalZValue;
                 }
 
                 // add layer
@@ -1022,7 +1019,7 @@
                 // $(document).off('.contextMenuAutoHide keydown.contextMenu'); // http://bugs.jquery.com/ticket/10705
                 $(document).off('.contextMenuAutoHide').off('keydown.contextMenu');
                 // hide menu
-                if(opt.$menu){
+                if (opt.$menu) {
                     opt.$menu[opt.animation.hide](opt.animation.duration, function () {
                         // tear down dynamically built menu after animation is completed.
                         if (opt.build) {
@@ -1069,7 +1066,7 @@
                     }
                 });
 
-                if(!root.accesskeys){
+                if (!root.accesskeys) {
                     root.accesskeys = {};
                 }
 
@@ -1114,7 +1111,7 @@
                     // akward later.
                     // And normalize 'cm_separator' into 'cm_seperator'.
                     if (typeof item === 'string' || item.type === 'cm_separator') {
-                        item = { type : 'cm_seperator' };
+                        item = { type: 'cm_seperator' };
                     }
 
                     item.$node = $t.data({
@@ -1265,7 +1262,7 @@
                             if ($.isFunction(item.icon)) {
                                 item._icon = item.icon.call(this, this, $t, key, item);
                             } else {
-                                if ( typeof(item.icon) === 'string' && item.icon.substring(0,3) == 'fa-' ) {
+                                if (typeof (item.icon) === 'string' && item.icon.substring(0, 3) == 'fa-') {
                                     // to enable font awesome
                                     item._icon = root.classNames.icon + ' ' + root.classNames.icon + '--fa fa ' + item.icon;
                                 } else {
@@ -1304,7 +1301,7 @@
                 // kinda sucks hard...
 
                 // determine width of absolutely positioned element
-                $menu.css({position: 'absolute', display: 'block'});
+                $menu.css({ position: 'absolute', display: 'block' });
                 // don't apply yet, because that would break nested elements' widths
                 $menu.data('width',
                     (domMenu = $menu.get(0)).getBoundingClientRect ?
@@ -1396,7 +1393,7 @@
                 // add transparent layer for click area
                 // filter and background for Internet Explorer, Issue #23
                 var $layer = opt.$layer = $('<div id="context-menu-layer" style="position:fixed; z-index:' + zIndex + '; top:0; left:0; opacity: 0; filter: alpha(opacity=0); background-color: #000;"></div>')
-                    .css({height: $win.height(), width: $win.width(), display: 'block'})
+                    .css({ height: $win.height(), width: $win.width(), display: 'block' })
                     .data('contextMenuRoot', opt)
                     .insertBefore(this)
                     .on('contextmenu', handle.abortevent)
@@ -1429,7 +1426,7 @@
         return keys;
     }
 
-// handle contextMenu triggers
+    // handle contextMenu triggers
     $.fn.contextMenu = function (operation) {
         var $t = this, $o = operation;
         if (this.length > 0) {  // this is not a build on demand menu
@@ -1439,11 +1436,11 @@
                 this.first().trigger($.Event('contextmenu', { pageX: operation.x, pageY: operation.y, mouseButton: operation.button }));
             } else if (operation === 'hide') {
                 var $menu = this.first().data('contextMenu') ? this.first().data('contextMenu').$menu : null;
-                if($menu){
+                if ($menu) {
                     $menu.trigger('contextmenu:hide');
                 }
             } else if (operation === 'destroy') {
-                $.contextMenu('destroy', {context: this});
+                $.contextMenu('destroy', { context: this });
             } else if ($.isPlainObject(operation)) {
                 operation.context = this;
                 $.contextMenu('create', operation);
@@ -1457,7 +1454,7 @@
                 if (this.selector === $t.selector) {
                     $o.data = this;
 
-                    $.extend($o.data, {trigger: 'demand'});
+                    $.extend($o.data, { trigger: 'demand' });
                 }
             });
 
@@ -1469,14 +1466,13 @@
 
     // manage contextMenu instances
     $.contextMenu = function (operation, options) {
-
         if (typeof operation !== 'string') {
             options = operation;
             operation = 'create';
         }
 
         if (typeof options === 'string') {
-            options = {selector: options};
+            options = { selector: options };
         } else if (options === undefined) {
             options = {};
         }
@@ -1524,14 +1520,14 @@
                 if (!initialized) {
                     var itemClick = o.itemClickEvent === 'click' ? 'click.contextMenu' : 'mouseup.contextMenu';
                     var contextMenuItemObj = {
-                            // 'mouseup.contextMenu': handle.itemClick,
-                            // 'click.contextMenu': handle.itemClick,
-                            'contextmenu:focus.contextMenu': handle.focusItem,
-                            'contextmenu:blur.contextMenu': handle.blurItem,
-                            'contextmenu.contextMenu': handle.abortevent,
-                            'mouseenter.contextMenu': handle.itemMouseenter,
-                            'mouseleave.contextMenu': handle.itemMouseleave
-                        };
+                        // 'mouseup.contextMenu': handle.itemClick,
+                        // 'click.contextMenu': handle.itemClick,
+                        'contextmenu:focus.contextMenu': handle.focusItem,
+                        'contextmenu:blur.contextMenu': handle.blurItem,
+                        'contextmenu.contextMenu': handle.abortevent,
+                        'mouseenter.contextMenu': handle.itemMouseenter,
+                        'mouseleave.contextMenu': handle.itemMouseleave
+                    };
                     contextMenuItemObj[itemClick] = handle.itemClick;
                     // make sure item click is registered first
                     $document
@@ -1592,7 +1588,6 @@
                     // get proper options
                     var context = o.context;
                     $.each(menus, function (ns, o) {
-
                         // Is this menu equest to the context called from
                         if (!$(context).is(o.selector)) {
                             return true;
@@ -1600,7 +1595,7 @@
 
                         $visibleMenu = $('.context-menu-list').filter(':visible');
                         if ($visibleMenu.length && $visibleMenu.data().contextMenuRoot.$trigger.is($(o.context).find(o.selector))) {
-                            $visibleMenu.trigger('contextmenu:hide', {force: true});
+                            $visibleMenu.trigger('contextmenu:hide', { force: true });
                         }
 
                         try {
@@ -1632,7 +1627,7 @@
                 } else if (namespaces[o.selector]) {
                     $visibleMenu = $('.context-menu-list').filter(':visible');
                     if ($visibleMenu.length && $visibleMenu.data().contextMenuRoot.$trigger.is(o.selector)) {
-                        $visibleMenu.trigger('contextmenu:hide', {force: true});
+                        $visibleMenu.trigger('contextmenu:hide', { force: true });
                     }
 
                     try {
@@ -1672,7 +1667,7 @@
         return this;
     };
 
-// import values into <input> commands
+    // import values into <input> commands
     $.contextMenu.setInputValues = function (opt, data) {
         if (data === undefined) {
             data = {};
@@ -1700,7 +1695,7 @@
         });
     };
 
-// export values from <input> commands
+    // export values from <input> commands
     $.contextMenu.getInputValues = function (opt, data) {
         if (data === undefined) {
             data = {};
@@ -1729,12 +1724,12 @@
         return data;
     };
 
-// find <label for="xyz">
+    // find <label for="xyz">
     function inputLabel(node) {
         return (node.id && $('label[for="' + node.id + '"]').val()) || node.name;
     }
 
-// convert <menu> to items object
+    // convert <menu> to items object
     function menuChildren(items, $children, counter) {
         if (!counter) {
             counter = 0;
@@ -1766,7 +1761,7 @@
             switch (nodeName) {
                 // http://www.whatwg.org/specs/web-apps/current-work/multipage/interactive-elements.html#the-menu-element
                 case 'menu':
-                    item = {name: $node.attr('label'), items: {}};
+                    item = { name: $node.attr('label'), items: {} };
                     counter = menuChildren(item.items, $node.children(), counter);
                     break;
 
@@ -1896,7 +1891,7 @@
                     break;
 
                 default:
-                    item = {type: 'html', html: $node.clone(true)};
+                    item = { type: 'html', html: $node.clone(true) };
                     break;
             }
 
@@ -1909,7 +1904,7 @@
         return counter;
     }
 
-// convert html5 menu
+    // convert html5 menu
     $.contextMenu.fromMenu = function (element) {
         var $this = $(element),
             items = {};
@@ -1919,13 +1914,11 @@
         return items;
     };
 
-// make defaults accessible
+    // make defaults accessible
     $.contextMenu.defaults = defaults;
     $.contextMenu.types = types;
-// export internal functions - undocumented, for hacking only!
+    // export internal functions - undocumented, for hacking only!
     $.contextMenu.handle = handle;
     $.contextMenu.op = op;
     $.contextMenu.menus = menus;
-
-
 });

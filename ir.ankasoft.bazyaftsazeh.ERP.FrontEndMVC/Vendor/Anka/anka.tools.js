@@ -7,7 +7,7 @@
     if (re.test(url)) {
         if (typeof value !== 'undefined' && value !== null)
             finalURL = url.replace(re, '$1' + key + "=" + value + '$2$3');
-            //return url.replace(re, '$1' + key + "=" + value + '$2$3');
+        //return url.replace(re, '$1' + key + "=" + value + '$2$3');
         else {
             hash = url.split('#');
             url = hash[0].replace(re, '$1$3').replace(/(&|\?)$/, '');

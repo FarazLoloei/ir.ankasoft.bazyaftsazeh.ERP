@@ -194,9 +194,9 @@
                 if (!$.isArray(a[l - 1])) v = { 'totest': v };
                 for (var i in v) {
                     if (!(
-                      ($.isPlainObject(v[i]) && $.isEmptyObject(v[i])) ||
-                      ($.isArray(v[i]) && !v[i].length) ||
-                      (!v[i])
+                        ($.isPlainObject(v[i]) && $.isEmptyObject(v[i])) ||
+                        ($.isArray(v[i]) && !v[i].length) ||
+                        (!v[i])
                     )) return false;
                 }
                 return true;

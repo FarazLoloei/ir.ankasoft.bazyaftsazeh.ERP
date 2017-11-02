@@ -17,6 +17,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
         protected override void Seed(ApplicationDbContext context)
         {
             #region Identity Core
+
             const string adminName = "FarazLoloei", developerName = "farazloloei@gmail.com";
             const string adminPassword = "Admin?123", developerPassword = "AnkA@Dev96";
             const string adminRoleName = "Admin", developerRoleName = "Developer";
@@ -63,9 +64,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                 var result = manager.Create(user, adminPassword);
                 result = manager.AddToRole(user.Id, adminRoleName);
             }
-            #endregion
 
-            
+            #endregion Identity Core
         }
     }
 }

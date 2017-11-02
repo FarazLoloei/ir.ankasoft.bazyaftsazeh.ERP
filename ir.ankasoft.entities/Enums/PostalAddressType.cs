@@ -7,6 +7,7 @@ namespace ir.ankasoft.entities.Enums
     {
         [Display(Name = nameof(WorkPlace), ResourceType = typeof(Resource))]
         WorkPlace = 1,
+
         [Display(Name = nameof(Home), ResourceType = typeof(Resource))]
         Home
     }

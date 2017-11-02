@@ -9,26 +9,26 @@
         var $searchOpen = $('[data-search-open]');
 
         $searchOpen
-          .on('click', function (e) { e.stopPropagation(); })
-          .on('click', navSearch.toggle);
+            .on('click', function (e) { e.stopPropagation(); })
+            .on('click', navSearch.toggle);
 
         // Close search input
         var $searchDismiss = $('[data-search-dismiss]');
         var inputSelector = '.navbar-form input[type="text"]';
 
         $(inputSelector)
-          .on('click', function (e) { e.stopPropagation(); })
-          .on('keyup', function (e) {
-              if (e.keyCode == 27) // ESC
-                  navSearch.dismiss();
-          });
+            .on('click', function (e) { e.stopPropagation(); })
+            .on('keyup', function (e) {
+                if (e.keyCode == 27) // ESC
+                    navSearch.dismiss();
+            });
 
         // click anywhere closes the search
         $(document).on('click', navSearch.dismiss);
         // dismissable options
         $searchDismiss
-          .on('click', function (e) { e.stopPropagation(); })
-          .on('click', navSearch.dismiss);
+            .on('click', function (e) { e.stopPropagation(); })
+            .on('click', navSearch.dismiss);
     });
 
     var navbarSearchInput = function () {
@@ -46,10 +46,10 @@
 
             dismiss: function () {
                 $(navbarFormSelector)
-                  .removeClass('open')      // Close control
-                  .find('input[type="text"]').blur() // remove focus
-                  .val('')                    // Empty input
-                ;
+                    .removeClass('open')      // Close control
+                    .find('input[type="text"]').blur() // remove focus
+                    .val('')                    // Empty input
+                    ;
             }
         };
     }

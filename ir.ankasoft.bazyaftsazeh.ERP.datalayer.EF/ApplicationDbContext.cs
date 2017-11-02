@@ -1,5 +1,4 @@
-﻿
-using ir.ankasoft.entities;
+﻿using ir.ankasoft.entities;
 using ir.ankasoft.infrastructure;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;

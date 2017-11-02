@@ -19,7 +19,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
             //}
             //var query = (from c in new ApplicationDbContext().Cities
             //            where c.Title.Contains(cityTitle)
-                        
+
             //            select c)
             //            ;
             return cities.Select(_ =>

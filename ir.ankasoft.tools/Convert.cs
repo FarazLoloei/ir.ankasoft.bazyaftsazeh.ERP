@@ -100,11 +100,10 @@ namespace ir.ankasoft.tools
         {
             return value.ToString(string.Format("N{0}", precision), CultureInfo.InvariantCulture);
         }
+
         public static string GroupDigiting(string value, int precision)
         {
             return System.Convert.ToDouble(value).ToString(string.Format("N{0}", precision), CultureInfo.InvariantCulture);
         }
     }
-
-
 }

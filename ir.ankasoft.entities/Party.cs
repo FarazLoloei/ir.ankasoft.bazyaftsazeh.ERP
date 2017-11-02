@@ -24,7 +24,6 @@ namespace ir.ankasoft.entities
 
         public virtual ICollection<Communication> CommunicationCollection { get; set; }
 
-
         #region IDateTracking
 
         public DateTime createdDateTime { get; set; }

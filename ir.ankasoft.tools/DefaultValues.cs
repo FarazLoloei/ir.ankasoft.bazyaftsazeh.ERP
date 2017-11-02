@@ -10,7 +10,7 @@ namespace ir.ankasoft.tools
         public const int page = 1;
         public const string EmptyString = "";
 
-        private static List<int> _pageSizeCollection = new List<int> {5, 10, 25, 50, 100 };
+        private static List<int> _pageSizeCollection = new List<int> { 5, 10, 25, 50, 100 };
 
         public static List<SelectListItem> PageSizeCollection
         {
@@ -27,7 +27,7 @@ namespace ir.ankasoft.tools
 
     public enum SortType
     {
-        ASC = 1, 
+        ASC = 1,
         DESC
     }
 }

@@ -7,14 +7,11 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 {
-	public partial class Startup
-	{
+    public partial class Startup
+    {
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {

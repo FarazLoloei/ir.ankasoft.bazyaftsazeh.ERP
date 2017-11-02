@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
+﻿namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 {
     public class Bundles
     {
@@ -22,7 +17,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             public static readonly string bootstrapDatePicker = "~/Scripts";
             public static readonly string ankaDataTable = "~/Vendor/anka";
             public static readonly string tagsinput = "~/Scripts/tagsinput";
-            
         }
 
         public class Styles
@@ -39,7 +33,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             public static readonly string bootstrapPersianDatePickerCss = "~/Content/MdBootstrapPersianDateTimePicker";
             public static readonly string bootstrapDatePickerCss = "~/Content";
             public static readonly string tagsinputCss = "~/Content/tagsinput";
-            
         }
     }
 }

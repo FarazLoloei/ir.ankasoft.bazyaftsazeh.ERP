@@ -38,8 +38,7 @@ function toggleSortIcon(header) {
     var i = $header.parent().find('i');
     var thead = $('table.anka_dataTable').find('thead');
     //console.info(3);
-    if ($header.data('column') != $('#sortBy').val())
-    {
+    if ($header.data('column') != $('#sortBy').val()) {
         var $i = thead.find('i');
         $i.addClass('fa-sort');
         $i.removeClass("fa-sort-amount-desc ").removeClass("fa-sort-amount-asc");
@@ -52,7 +51,7 @@ function toggleSortIcon(header) {
     }
     i.toggleClass('fa-sort-amount-desc fa-sort-amount-asc');
     //console.info(2);
-    
+
     var sortType = 1;
     if (i.hasClass('fa-sort-amount-desc'))
         sortType = 2;

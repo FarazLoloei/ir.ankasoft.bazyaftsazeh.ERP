@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ir.ankasoft.infrastructure.DataContext
+﻿namespace ir.ankasoft.infrastructure.DataContext
 {
     public interface IDataContextContainer<T>
     {

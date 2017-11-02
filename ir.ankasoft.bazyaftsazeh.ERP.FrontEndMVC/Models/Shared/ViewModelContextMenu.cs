@@ -22,6 +22,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models
         public int Priority { get; set; }
 
         private string _disable;
+
         [Display(Name = nameof(Disable), ResourceType = typeof(Resource))]
         public string Disable
         {

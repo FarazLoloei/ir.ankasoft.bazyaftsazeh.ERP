@@ -168,7 +168,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
 
-
             _.CreateMap<Person, ViewModelCreatePerson>()
                 .ForMember(p => p.parentId, t => t.Ignore());
 
@@ -248,7 +247,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.creatorUser, t => t.Ignore())
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
-
 
             _.CreateMap<Importer, ViewModelCreateImporter>()
                 .ForMember(p => p.parentId, t => t.Ignore());
@@ -331,7 +329,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
 
-
             _.CreateMap<Organization, ViewModelCreateOrganization>()
                 .ForMember(p => p.parentId, t => t.Ignore());
 
@@ -408,7 +405,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.Title, t => t.Ignore())
                 .ForMember(p => p.NationalCode, t => t.Ignore())
                 .ForMember(p => p.Type, opt => opt.MapFrom(dest => dest.CommunicationType));
-
         }
 
         private static void ConfigPostalAddress(IMapperConfigurationExpression _)

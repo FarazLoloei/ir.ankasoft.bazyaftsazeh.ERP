@@ -1,11 +1,5 @@
 ﻿using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF;
-using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
-using ir.ankasoft.entities;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 {

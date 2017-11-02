@@ -1,8 +1,6 @@
 ﻿using ir.ankasoft.entities;
-using ir.ankasoft.entities.Enums;
 using ir.ankasoft.entities.Repositories;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 {
@@ -35,7 +33,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
                 else
                     _communication.IsPrimary = status;
             }
-
         }
     }
 }

@@ -7,34 +7,34 @@
         toggle = new StateToggler();
 
         $('[data-toggle-state]')
-          .on('click', function (e) {
-              // e.preventDefault();
-              e.stopPropagation();
-              var element = $(this),
-                  classname = element.data('toggleState'),
-                  target = element.data('target'),
-                  noPersist = (element.attr('data-no-persist') !== undefined);
+            .on('click', function (e) {
+                // e.preventDefault();
+                e.stopPropagation();
+                var element = $(this),
+                    classname = element.data('toggleState'),
+                    target = element.data('target'),
+                    noPersist = (element.attr('data-no-persist') !== undefined);
 
-              // Specify a target selector to toggle classname
-              // use body by default
-              var $target = target ? $(target) : $body;
+                // Specify a target selector to toggle classname
+                // use body by default
+                var $target = target ? $(target) : $body;
 
-              if (classname) {
-                  if ($target.hasClass(classname)) {
-                      $target.removeClass(classname);
-                      if (!noPersist)
-                          toggle.removeState(classname);
-                  }
-                  else {
-                      $target.addClass(classname);
-                      if (!noPersist)
-                          toggle.addState(classname);
-                  }
-              }
-              // some elements may need this when toggled class change the content size
-              // e.g. sidebar collapsed mode and jqGrid
-              $(window).resize();
-          });
+                if (classname) {
+                    if ($target.hasClass(classname)) {
+                        $target.removeClass(classname);
+                        if (!noPersist)
+                            toggle.removeState(classname);
+                    }
+                    else {
+                        $target.addClass(classname);
+                        if (!noPersist)
+                            toggle.addState(classname);
+                    }
+                }
+                // some elements may need this when toggled class change the content size
+                // e.g. sidebar collapsed mode and jqGrid
+                $(window).resize();
+            });
     });
 
     // Handle states to/from localstorage

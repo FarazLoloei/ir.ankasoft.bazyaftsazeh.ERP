@@ -17,7 +17,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IPartyRepository _partyRepository;
-        
+
         private readonly ICommunicationRepository _communicationRpository;
         private readonly IPostalAddressRepository _postalAddressRpository;
         private readonly IContextMenuItemRepository _contextMenuItemRepository;
@@ -175,7 +175,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             model.CommunicationCollection = model.CommunicationCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
             return View(model);
         }
-        
+
         [HttpGet]
         public virtual ActionResult PostalAddressList(long id)
         {

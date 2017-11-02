@@ -2,7 +2,6 @@
 using System.Linq.Expressions;
 using System.Resources;
 using System.Web.Mvc;
-using System.Web.WebPages;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Helpers
 {
@@ -19,6 +18,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Helpers
 
             return new MvcHtmlString(new ResourceManager(typeof(resource.Resource)).GetString(value.ToString()));
         }
+
         //public static string AnkaResource<T>(this HtmlHelper html, object key)
         //{
         //    //ResourceManager resourceManager = new ResourceManager(typeof(resource.Resource));

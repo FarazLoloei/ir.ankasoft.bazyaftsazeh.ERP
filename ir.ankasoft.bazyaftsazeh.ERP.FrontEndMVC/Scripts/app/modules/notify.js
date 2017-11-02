@@ -80,8 +80,8 @@
         this.element = $([
             // alert-dismissable enables bs close icon
             '<div class="uk-notify-message alert-dismissable">',
-                '<a class="close">&times;</a>',
-                '<div>' + this.options.message + '</div>',
+            '<a class="close">&times;</a>',
+            '<div>' + this.options.message + '</div>',
             '</div>'
 
         ].join('')).data("notifyMessage", this);

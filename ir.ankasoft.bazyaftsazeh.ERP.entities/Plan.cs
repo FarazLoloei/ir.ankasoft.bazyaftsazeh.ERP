@@ -40,6 +40,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         #endregion IUserTracking
 
         #region Validation
+
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (RepresentorRefRecId == 0)
@@ -49,6 +50,5 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         }
 
         #endregion Validation
-
     }
 }

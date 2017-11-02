@@ -10,7 +10,6 @@ using ir.ankasoft.infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
@@ -42,6 +41,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
         }
+
         // GET: Organization
         public virtual ActionResult Index(FilterDataSource request)
         {

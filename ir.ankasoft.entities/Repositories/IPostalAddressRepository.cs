@@ -1,10 +1,4 @@
-﻿using ir.ankasoft.entities.Enums;
-using ir.ankasoft.infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ir.ankasoft.infrastructure;
 
 namespace ir.ankasoft.entities.Repositories
 {

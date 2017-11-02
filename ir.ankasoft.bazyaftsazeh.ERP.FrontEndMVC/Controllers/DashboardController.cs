@@ -5,8 +5,6 @@ using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
@@ -25,6 +23,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             _unitOfWorkFactory = unitOfWorkFactory;
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
         }
+
         // GET: Dashboard
         public virtual ActionResult Index()
         {
@@ -43,15 +42,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         public virtual ActionResult ClearCache(string returnUrl = "")
         {
-            if(Session != null)
-            Session.Abandon();
+            if (Session != null)
+                Session.Abandon();
             if (String.IsNullOrEmpty(returnUrl))
                 return RedirectToAction(MVC.Dashboard.Index());
             //prevent open redirection attack
             //if (!Url.IsLocalUrl(returnUrl))
             //    return RedirectToAction("Index", "Home", new { area = "Admin" });
             return Redirect(returnUrl);
-
         }
     }
 }

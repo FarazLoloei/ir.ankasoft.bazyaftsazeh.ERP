@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 {
@@ -162,7 +158,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             bundles.Add(new ScriptBundle(Bundles.Scripts.Select2).Include(
                 Links.Bundles.Scripts.Assets.select2_full_min_js
-                //Links.Bundles.Scripts.Assets.select2_min_js
+            //Links.Bundles.Scripts.Assets.select2_min_js
             ));
 
             bundles.Add(new ScriptBundle(Bundles.Scripts.bootstrapPersianDatePicker).Include(
@@ -181,7 +177,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             bundles.Add(new ScriptBundle(Bundles.Scripts.ankaDataTable).Include(
                 "~/Vendor/Anka/ankasoft.datatable.js"
-                //Links.Vendor.Anka.ankasoft_datatable_js
+            //Links.Vendor.Anka.ankasoft_datatable_js
             ));
         }
     }

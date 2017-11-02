@@ -34,9 +34,9 @@
         // hover mode don't try to expand active collapse
         if (!useAsideHover())
             currentItem
-              .addClass('active')     // activate the parent
-              .children('.collapse')  // find the collapse
-              .collapse('show');      // and show it
+                .addClass('active')     // activate the parent
+                .children('.collapse')  // find the collapse
+                .collapse('show');      // and show it
 
         // remove this if you use only collapsible sidebar items
         $sidebar.find('li > a + ul').on('show.bs.collapse', function (e) {
@@ -70,7 +70,7 @@
                 if (!$target.parents('.aside').length && // if not child of sidebar
                     !$target.is('#user-block-toggle') && // user block toggle anchor
                     !$target.parent().is('#user-block-toggle') // user block toggle icon
-                  ) {
+                ) {
                     $body.removeClass('aside-toggled');
                 }
             });
@@ -88,10 +88,10 @@
     // - desktop only opens on hover
     function toggleTouchItem($element) {
         $element
-          .siblings('li')
-          .removeClass('open')
-          .end()
-          .toggleClass('open');
+            .siblings('li')
+            .removeClass('open')
+            .end()
+            .toggleClass('open');
     }
 
     // Handles hover to open items under collapsed menu
@@ -120,12 +120,12 @@
         var vwHeight = $win.height();
 
         subNav
-          .addClass('nav-floating')
-          .css({
-              position: isFixed() ? 'fixed' : 'absolute',
-              top: itemTop,
-              bottom: (subNav.outerHeight(true) + itemTop > vwHeight) ? 0 : 'auto'
-          });
+            .addClass('nav-floating')
+            .css({
+                position: isFixed() ? 'fixed' : 'absolute',
+                top: itemTop,
+                bottom: (subNav.outerHeight(true) + itemTop > vwHeight) ? 0 : 'auto'
+            });
 
         subNav.on('mouseleave', function () {
             toggleTouchItem($listItem);

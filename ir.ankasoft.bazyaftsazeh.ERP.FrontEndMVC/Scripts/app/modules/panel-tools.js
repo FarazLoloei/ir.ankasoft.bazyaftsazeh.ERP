@@ -33,16 +33,16 @@
             var col = parent.parent();
 
             $.when(parent.trigger(removedEvent, [parent]))
-             .done(function () {
-                 parent.remove();
-                 // remove the parent if it is a row and is empty and not a sortable (portlet)
-                 col
-                   .trigger(removedEvent) // An event to catch when the panel has been removed from DOM
-                   .filter(function () {
-                       var el = $(this);
-                       return (el.is('[class*="col-"]:not(.sortable)') && el.children('*').length === 0);
-                   }).remove();
-             });
+                .done(function () {
+                    parent.remove();
+                    // remove the parent if it is a row and is empty and not a sortable (portlet)
+                    col
+                        .trigger(removedEvent) // An event to catch when the panel has been removed from DOM
+                        .filter(function () {
+                            var el = $(this);
+                            return (el.is('[class*="col-"]:not(.sortable)') && el.children('*').length === 0);
+                        }).remove();
+                });
         }
     });
 }(jQuery, window, document));
@@ -73,26 +73,26 @@
         // we need a wrapper to avoid jumping due to the paddings
         if (!wrapper.length) {
             wrapper =
-              parent.children('.panel-heading').nextAll() //find('.panel-body, .panel-footer')
-                .wrapAll('<div/>')
-                .parent()
-                .addClass('panel-wrapper');
+                parent.children('.panel-heading').nextAll() //find('.panel-body, .panel-footer')
+                    .wrapAll('<div/>')
+                    .parent()
+                    .addClass('panel-wrapper');
             collapseOpts = {};
         }
 
         // Init collapse and bind events to switch icons
         wrapper
-          .collapse(collapseOpts)
-          .on('hide.bs.collapse', function () {
-              setIconHide(iconElement);
-              savePanelState(panelId, 'hide');
-              wrapper.prev('.panel-heading').addClass('panel-heading-collapsed');
-          })
-          .on('show.bs.collapse', function () {
-              setIconShow(iconElement);
-              savePanelState(panelId, 'show');
-              wrapper.prev('.panel-heading').removeClass('panel-heading-collapsed');
-          });
+            .collapse(collapseOpts)
+            .on('hide.bs.collapse', function () {
+                setIconHide(iconElement);
+                savePanelState(panelId, 'hide');
+                wrapper.prev('.panel-heading').addClass('panel-heading-collapsed');
+            })
+            .on('show.bs.collapse', function () {
+                setIconShow(iconElement);
+                savePanelState(panelId, 'show');
+                wrapper.prev('.panel-heading').removeClass('panel-heading-collapsed');
+            });
 
         // Load the saved state if exists
         var currentState = loadPanelState(panelId);
@@ -158,7 +158,7 @@
         var $this = $(this),
             panel = $this.parents('.panel').eq(0),
             spinner = $this.data('spinner') || defaultSpinner
-        ;
+            ;
 
         // start showing the spinner
         panel.addClass(whirlClass + ' ' + spinner);

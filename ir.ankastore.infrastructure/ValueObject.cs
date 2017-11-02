@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ir.ankasoft.infrastructure
 {
@@ -98,7 +96,6 @@ namespace ir.ankasoft.infrastructure
             if (ReferenceEquals(this, obj))
             {
                 return true;
-
             }
             var item = obj as ValueObject<T>;
 
@@ -110,7 +107,7 @@ namespace ir.ankasoft.infrastructure
         }
 
         /// <summary>
-        /// Serves as a hash function for a particular type. 
+        /// Serves as a hash function for a particular type.
         /// </summary>
         /// <returns>
         /// A hash code for the current <see cref="T:System.Object" />.

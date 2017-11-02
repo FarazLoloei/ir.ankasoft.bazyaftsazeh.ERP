@@ -1,6 +1,4 @@
-﻿
-using AutoMapper;
-using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
+﻿using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.entities;
 using ir.ankasoft.entities.Repositories;
@@ -42,8 +40,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                         return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
                     }).ToList();
             }
-
-
 
             public static void getContextMenu(string controllerTitle)
             {

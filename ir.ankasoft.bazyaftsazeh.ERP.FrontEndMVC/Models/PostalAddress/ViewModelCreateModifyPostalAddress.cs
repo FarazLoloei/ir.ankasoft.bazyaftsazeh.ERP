@@ -3,7 +3,6 @@ using ir.ankasoft.resource;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress
@@ -63,9 +62,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress
                 //}
                 //else
                 //{
-                    var _value = value.Split(',');
-                    ProvinceRefRecId = Convert.ToInt64(_value[1]);
-                    CityRefRecId = Convert.ToInt64(_value[0]);
+                var _value = value.Split(',');
+                ProvinceRefRecId = Convert.ToInt64(_value[1]);
+                CityRefRecId = Convert.ToInt64(_value[0]);
                 //}
             }
         }

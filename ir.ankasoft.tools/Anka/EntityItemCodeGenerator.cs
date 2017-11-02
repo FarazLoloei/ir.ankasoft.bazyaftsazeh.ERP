@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ir.ankasoft.tools.Anka
 {
@@ -13,6 +10,7 @@ namespace ir.ankasoft.tools.Anka
             CurrentItemCode = currentItemCode;
             NextItemCode = generateNextItemCode();
         }
+
         private string generateNextItemCode()
         {
             string[] codeFragments = CurrentItemCode.Split('-');
@@ -33,6 +31,5 @@ namespace ir.ankasoft.tools.Anka
         public string CurrentItemCode { get; set; }
 
         public string NextItemCode { get; set; }
-
     }
 }

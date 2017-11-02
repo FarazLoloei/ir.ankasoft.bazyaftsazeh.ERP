@@ -4,8 +4,6 @@ using ir.ankasoft.resource;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress
@@ -26,10 +24,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress
 
         [Display(Name = nameof(Province), ResourceType = typeof(Resource))]
         public long ProvinceRefRecId { get; set; }
+
         public string Province { get; set; }
 
         [Display(Name = nameof(City), ResourceType = typeof(Resource))]
         public long CityRefRecId { get; set; }
+
         public string City { get; set; }
 
         [Display(Name = nameof(City), ResourceType = typeof(Resource))]
@@ -50,9 +50,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress
                 //}
                 //else
                 //{
-                    var _value = value.Split(',');
-                    ProvinceRefRecId = Convert.ToInt64(_value[1]);
-                    CityRefRecId = Convert.ToInt64(_value[0]);
+                var _value = value.Split(',');
+                ProvinceRefRecId = Convert.ToInt64(_value[1]);
+                CityRefRecId = Convert.ToInt64(_value[0]);
                 //}
             }
         }

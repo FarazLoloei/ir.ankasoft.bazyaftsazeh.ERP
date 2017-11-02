@@ -7,10 +7,13 @@ namespace ir.ankasoft.entities.Enums
     {
         [Display(Name = nameof(Mr), ResourceType = typeof(Resource))]
         Mr = 1,
+
         [Display(Name = nameof(Mrs), ResourceType = typeof(Resource))]
         Mrs,
+
         [Display(Name = nameof(Company), ResourceType = typeof(Resource))]
         Company,
+
         [Display(Name = nameof(TransportCompany), ResourceType = typeof(Resource))]
         TransportCompany
     }

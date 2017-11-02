@@ -27,6 +27,7 @@ namespace ir.ankasoft.entities
         }
 
         public long PartyRefRecId { get; set; }
+
         [ForeignKey(nameof(PartyRefRecId))]
         public Party Party { get; set; }
 

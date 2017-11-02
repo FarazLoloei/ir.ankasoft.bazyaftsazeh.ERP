@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
  * jQuery contextMenu - Plugin for simple contextMenu handling
  *
@@ -16,7 +16,7 @@
  */
 @font-face {
   font-family: "context-menu-icons";
-  font-style: normal; 
+  font-style: normal;
   font-weight: normal;
 
   src: url("font/context-menu-icons.eot?2cl8a");
@@ -55,7 +55,7 @@
   position: absolute;
   top: 50%;
   left: 0;
-  width: 2em; 
+  width: 2em;
   font-family: "context-menu-icons";
   font-size: 1em;
   font-style: normal;
@@ -87,7 +87,7 @@
   position: absolute;
   top: 50%;
   left: 0;
-  width: 2em; 
+  width: 2em;
   font-family: FontAwesome;
   font-size: 1em;
   font-style: normal;
@@ -111,7 +111,7 @@
 }
 
 .context-menu-list {
-  position: absolute; 
+  position: absolute;
   display: inline-block;
   min-width: 13em;
   max-width: 26em;
@@ -134,12 +134,12 @@
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none; 
+          user-select: none;
   background-color: #fff;
 }
 
 .context-menu-separator {
-  padding: 0; 
+  padding: 0;
   margin: .35em 0;
   border-bottom: 1px solid #e6e6e6;
 }
@@ -154,13 +154,13 @@
 
 .context-menu-item.context-menu-hover {
   color: #fff;
-  cursor: pointer; 
+  cursor: pointer;
   background-color: #2980b9;
 }
 
 .context-menu-item.context-menu-disabled {
   color: #bbb;
-  cursor: default; 
+  cursor: default;
   background-color: #fff;
 }
 
@@ -172,7 +172,7 @@
   position: absolute;
   top: 50%;
   right: .5em;
-  z-index: 1; 
+  z-index: 1;
   width: 0;
   height: 0;
   content: '';
@@ -201,7 +201,7 @@
 .context-menu-input > label > input[type="checkbox"],
 .context-menu-input > label > input[type="radio"] {
   position: relative;
-  top: .12em; 
+  top: .12em;
   margin-right: .4em;
 }
 
@@ -214,7 +214,7 @@
 .context-menu-input > label > textarea,
 .context-menu-input > label > select {
   display: block;
-  width: 100%; 
+  width: 100%;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -225,7 +225,7 @@
 }
 
 .context-menu-item > .context-menu-list {
-  top: .3em; 
+  top: .3em;
   /* re-positioned by js */
   right: -.3em;
   display: none;

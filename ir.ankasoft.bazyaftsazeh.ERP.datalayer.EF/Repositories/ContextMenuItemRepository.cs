@@ -17,7 +17,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
                        .ThenBy(_ => _.Priority);
             if (containHeaderItems)
                 menu = menu.Select(_ => { _.Disable = _.DisableOnHeader; return _; });
-           else
+            else
                 menu = menu.Select(_ => { _.Disable = _.DisableOnRow; return _; });
             //collection.Select(c => { c.PropertyToSet = value; return c; }).ToList();
             return menu;

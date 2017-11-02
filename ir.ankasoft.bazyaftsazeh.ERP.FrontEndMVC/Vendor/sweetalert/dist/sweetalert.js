@@ -551,35 +551,35 @@
             });
             var injectedHTML =
 
-            // Dark overlay
-            "<div class=\"sweet-overlay\" tabIndex=\"-1\"></div>" +
+                // Dark overlay
+                "<div class=\"sweet-overlay\" tabIndex=\"-1\"></div>" +
 
-            // Modal
-            "<div class=\"sweet-alert\" tabIndex=\"-1\">" +
+                // Modal
+                "<div class=\"sweet-alert\" tabIndex=\"-1\">" +
 
-            // Error icon
-            "<div class=\"sa-icon sa-error\">\n      <span class=\"sa-x-mark\">\n        <span class=\"sa-line sa-left\"></span>\n        <span class=\"sa-line sa-right\"></span>\n      </span>\n    </div>" +
+                // Error icon
+                "<div class=\"sa-icon sa-error\">\n      <span class=\"sa-x-mark\">\n        <span class=\"sa-line sa-left\"></span>\n        <span class=\"sa-line sa-right\"></span>\n      </span>\n    </div>" +
 
-            // Warning icon
-            "<div class=\"sa-icon sa-warning\">\n      <span class=\"sa-body\"></span>\n      <span class=\"sa-dot\"></span>\n    </div>" +
+                // Warning icon
+                "<div class=\"sa-icon sa-warning\">\n      <span class=\"sa-body\"></span>\n      <span class=\"sa-dot\"></span>\n    </div>" +
 
-            // Info icon
-            "<div class=\"sa-icon sa-info\"></div>" +
+                // Info icon
+                "<div class=\"sa-icon sa-info\"></div>" +
 
-            // Success icon
-            "<div class=\"sa-icon sa-success\">\n      <span class=\"sa-line sa-tip\"></span>\n      <span class=\"sa-line sa-long\"></span>\n\n      <div class=\"sa-placeholder\"></div>\n      <div class=\"sa-fix\"></div>\n    </div>" + "<div class=\"sa-icon sa-custom\"></div>" +
+                // Success icon
+                "<div class=\"sa-icon sa-success\">\n      <span class=\"sa-line sa-tip\"></span>\n      <span class=\"sa-line sa-long\"></span>\n\n      <div class=\"sa-placeholder\"></div>\n      <div class=\"sa-fix\"></div>\n    </div>" + "<div class=\"sa-icon sa-custom\"></div>" +
 
-            // Title, text and input
-            "<h2>Title</h2>\n    <p class=\"lead text-muted\">Text</p>\n    <div class=\"form-group\">\n      <input type=\"text\" class=\"form-control\" tabIndex=\"3\" />\n      <span class=\"sa-input-error help-block\">\n        <span class=\"glyphicon glyphicon-exclamation-sign\"></span> <span class=\"sa-help-text\">Not valid</span>\n      </span>\n    </div>" +
+                // Title, text and input
+                "<h2>Title</h2>\n    <p class=\"lead text-muted\">Text</p>\n    <div class=\"form-group\">\n      <input type=\"text\" class=\"form-control\" tabIndex=\"3\" />\n      <span class=\"sa-input-error help-block\">\n        <span class=\"glyphicon glyphicon-exclamation-sign\"></span> <span class=\"sa-help-text\">Not valid</span>\n      </span>\n    </div>" +
 
-            // Cancel and confirm buttons
-            "<div class=\"sa-button-container\">\n      <button class=\"cancel btn btn-lg\" tabIndex=\"2\">Cancel</button>\n      <div class=\"sa-confirm-button-container\">\n        <button class=\"confirm btn btn-lg\" tabIndex=\"1\">{defaulOkButtonText}</button>" +
+                // Cancel and confirm buttons
+                "<div class=\"sa-button-container\">\n      <button class=\"cancel btn btn-lg\" tabIndex=\"2\">Cancel</button>\n      <div class=\"sa-confirm-button-container\">\n        <button class=\"confirm btn btn-lg\" tabIndex=\"1\">{defaulOkButtonText}</button>" +
 
-            // Loading animation
-            "<div class=\"la-ball-fall\">\n          <div></div>\n          <div></div>\n          <div></div>\n        </div>\n      </div>\n    </div>" +
+                // Loading animation
+                "<div class=\"la-ball-fall\">\n          <div></div>\n          <div></div>\n          <div></div>\n        </div>\n      </div>\n    </div>" +
 
-            // End of modal
-            "</div>";
+                // End of modal
+                "</div>";
 
             exports.default = injectedHTML;
         }, {}], 7: [function (require, module, exports) {
@@ -951,7 +951,7 @@
                         params.type = arguments[2] || '';
                         break;
 
-                        // Ex: swal({ title:"Hello", text: "Just testing", type: "info" });
+                    // Ex: swal({ title:"Hello", text: "Just testing", type: "info" });
                     case 'object':
                         if (customizations.title === undefined) {
                             (0, _utils.logStr)('Missing "title" argument!');

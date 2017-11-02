@@ -19,8 +19,8 @@
     </div>
 }
 
-@using (Html.BeginForm(MVC.Party.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { } 
-@using (Html.BeginForm(MVC.Party.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" })) 
+@using (Html.BeginForm(MVC.Party.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { }
+@using (Html.BeginForm(MVC.Party.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
 @using (Html.BeginForm(MVC.Party.CommunicationList(), FormMethod.Get, new { @class = "invisible", id = "EditCommunication" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
