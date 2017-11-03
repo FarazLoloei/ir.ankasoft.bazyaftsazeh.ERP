@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
-    public partial class OrganizationController : Controller
+    public partial class OrganizationController : BaseController
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IOrganizationRepository _organizationRepository;

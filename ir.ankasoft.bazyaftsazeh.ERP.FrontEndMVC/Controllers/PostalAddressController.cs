@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
-    public partial class PostalAddressController : Controller
+    public partial class PostalAddressController : BaseController
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IPostalAddressRepository _postalAddressRpository;

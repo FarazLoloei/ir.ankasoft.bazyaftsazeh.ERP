@@ -13,7 +13,7 @@ using System.Web.Mvc;
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
     [Authorize]
-    public partial class CommunicationController : Controller
+    public partial class CommunicationController : BaseController
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly ICommunicationRepository _communicationRpository;

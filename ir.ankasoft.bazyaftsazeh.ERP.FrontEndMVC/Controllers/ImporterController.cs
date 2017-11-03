@@ -15,7 +15,7 @@ using System.Web.Mvc;
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
     [Authorize]
-    public partial class ImporterController : Controller
+    public partial class ImporterController : BaseController
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IImporterRepository _importerRepository;

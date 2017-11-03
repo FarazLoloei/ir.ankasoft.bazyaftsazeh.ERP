@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
-    public partial class PersonController : Controller
+    public partial class PersonController : BaseController
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IPersonRepository _personRepository;
