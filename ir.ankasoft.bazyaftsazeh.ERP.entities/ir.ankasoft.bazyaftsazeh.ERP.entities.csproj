@@ -61,6 +61,7 @@
     <Compile Include="ReplacementsPlan.cs" />
     <Compile Include="Repositories\IImporterRepository.cs" />
     <Compile Include="Repositories\IOrganizationRepository.cs" />
+    <Compile Include="Repositories\IVehicleRepository.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleTip.cs" />
   </ItemGroup>

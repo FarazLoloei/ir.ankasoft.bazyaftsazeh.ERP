@@ -104,6 +104,7 @@
     <Compile Include="Repositories\PostalAddressRepository.cs" />
     <Compile Include="Repositories\ProvinceRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\VehicleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
