@@ -1,0 +1,103 @@
+﻿@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehicleTip.ViewModelVehicleTipDisplay>
+
+<table class="table anka_dataTable table-striped table-bordered">
+    @{
+        var modelHeader = Model.Data.FirstOrDefault();
+        var defaultClass = "";
+        <thead>
+            @Html.Hidden("sortBy", Model.PageData.filterDataSource.sortBy)
+            @Html.Hidden("sortType", Model.PageData.filterDataSource.sortType)
+            <tr class="context-menu-header">
+                <th class="col-md-2">
+                    <a href="#" data-column="@nameof(modelHeader.Type)">
+                        @Html.LabelFor(modelItem => modelHeader.Type)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.Type))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
+                <th class="col-md-2">
+                    <a href="#" data-column="@nameof(modelHeader.System)">
+                        @Html.LabelFor(modelItem => modelHeader.System)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.System))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
+                <th class="col-md-1">
+                    <a href="#" data-column="@nameof(modelHeader.Capasity)">
+                        @Html.LabelFor(modelItem => modelHeader.Capasity)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.Capasity))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
+                <th class="col-md-1">
+                    <a href="#" data-column="@nameof(modelHeader.CapasityType)">
+                        @Html.LabelFor(modelItem => modelHeader.CapasityType)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.CapasityType))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
+                <th class="col-md-6"></th>
+            </tr>
+        </thead>
+                            if (Model.Data.Any())
+                            {
+                                <tbody>
+                                    @foreach (var item in Model.Data)
+                {
+                                        <tr data-itemid='@item.recId' class="context-menu">
+                                            <td class="col-md-2">@Html.AnkaResource(model=>item.Type)</td>
+                                            <td class="col-md-2">@Html.DisplayFor(modelItem => item.System)</td>
+                                            <td class="col-md-1 text-right">@Html.DisplayFor(modelItem => item.Capasity)</td>
+                                            <td class="col-md-1">@Html.AnkaResource(model => item.CapasityType)</td>
+                                            <td class="col-md-6"></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                @*<tfoot>
+                                        <tr>
+
+                                            <td class="col-md-2">@Html.Editor(Model.filter.NationalCode)</td>
+                                                <td class="col-md-2">@Html.Editor(Model.filter.Title)</td>
+                                                <td class="col-md-2"></td>
+                                                <td class="col-md-1"></td>
+                                                <td class="col-md-1"></td>
+                                                <td class="col-md-4"></td>
+                                        </tr>
+                                    </tfoot>*@
+                            }
+    }
+</table>
+
+@Html.Partial(MVC.Shared.Views._Pager, Model.PageData)

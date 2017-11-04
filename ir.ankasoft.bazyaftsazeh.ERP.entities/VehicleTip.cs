@@ -17,8 +17,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public Enums.VehicleType Type { get; set; } = Enums.VehicleType.MotorCar;
 
         [Required]
-        [MaxLength(100)]
-        public string Capasity { get; set; }
+        public long Capasity { get; set; }
+
+        public Enums.CapasityType CapasityType { get; set; } = Enums.CapasityType.Individual;
 
         #region IDateTracking
 
@@ -51,7 +52,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
                 yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(System)), new[] { nameof(System) });
             }
 
-            if (string.IsNullOrEmpty(Capasity))
+            if (Capasity < 1)
             {
                 yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Capasity)), new[] { nameof(Capasity) });
             }

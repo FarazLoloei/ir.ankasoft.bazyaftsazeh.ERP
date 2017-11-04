@@ -10,6 +10,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Person;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Province;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehicleTip;
 using ir.ankasoft.entities;
 using System.Linq;
 
@@ -46,6 +47,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 /*City*/
                 ConfigCity(_);
+
+                /*Vehicle Tip*/
+                ConfigVehicleTip(_);
 
                 //*Dashborad*/
                 ConfigNotification(_);
@@ -495,7 +499,32 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             _.CreateMap<City, ViewModelDisplayCity>()
                 .ForMember(p => p.Province, opt => opt.MapFrom(dest => dest.Province.Title));
         }
+private static void ConfigVehicleTip(IMapperConfigurationExpression _)
+        {
+            _.CreateMap<ViewModelVehicleTipDisplay, VehicleTip>()
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
 
+            _.CreateMap<VehicleTip, ViewModelVehicleTipDisplay>()                ;
+
+            //Create
+            _.CreateMap<ViewModelCreateAndEditVehicleTip, VehicleTip>()
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<VehicleTip, ViewModelCreateAndEditVehicleTip>();
+
+        }
         private static void ConfigNotification(IMapperConfigurationExpression _)
         {
             _.CreateMap<ViewModelDisplayNotification, Notification>()

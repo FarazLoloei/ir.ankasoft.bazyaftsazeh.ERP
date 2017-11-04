@@ -897,4 +897,40 @@
   <data name="DefineAsImporter" xml:space="preserve">
     <value>تعریف به عنوان وارد کننده</value>
   </data>
+  <data name="System" xml:space="preserve">
+    <value>سیستم</value>
+  </data>
+  <data name="VehicleTip" xml:space="preserve">
+    <value>نوع وسیله نقلیه</value>
+  </data>
+  <data name="Bus" xml:space="preserve">
+    <value>اتوبوس</value>
+  </data>
+  <data name="Capasity" xml:space="preserve">
+    <value>ظرفیت</value>
+  </data>
+  <data name="Lorry" xml:space="preserve">
+    <value>کامیونت</value>
+  </data>
+  <data name="Minibus" xml:space="preserve">
+    <value>مینی بوس</value>
+  </data>
+  <data name="MotorCar" xml:space="preserve">
+    <value>سواری</value>
+  </data>
+  <data name="Pickup" xml:space="preserve">
+    <value>وانت</value>
+  </data>
+  <data name="Truck" xml:space="preserve">
+    <value>کامیون</value>
+  </data>
+  <data name="Van" xml:space="preserve">
+    <value>ون</value>
+  </data>
+  <data name="Individual" xml:space="preserve">
+    <value>نفر</value>
+  </data>
+  <data name="KG" xml:space="preserve">
+    <value>کیلوگرم</value>
+  </data>
 </root>

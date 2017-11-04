@@ -172,6 +172,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VehicleTipController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Content Include="Content\app\css\app-rtl.css" />
     <Content Include="Content\app\css\app.css" />
     <Content Include="Content\app\css\bootstrap-rtl.css" />
@@ -468,6 +471,7 @@
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\PostalAddressController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\VehicleTipController.cs" />
     <Compile Include="DashboardController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -534,6 +538,8 @@
     <Compile Include="Models\Shared\FilterDataSource.cs" />
     <Compile Include="Models\Shared\ViewModelSelect2List.cs" />
     <Compile Include="Models\Shared\ViewModelWithSelectList.cs" />
+    <Compile Include="Models\VehicleTip\ViewModelCreateAndEditVehicleTip.cs" />
+    <Compile Include="Models\VehicleTip\ViewModelVehicleTipDisplay.cs" />
     <Compile Include="OrganizationController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -703,6 +709,11 @@
     <Content Include="Views\Importer\Modify.cshtml" />
     <Content Include="Views\Importer\PostalAddressList.cshtml" />
     <Content Include="Views\Importer\Index.cshtml" />
+    <Content Include="Views\VehicleTip\_Detail.cshtml" />
+    <Content Include="Views\VehicleTip\_List.cshtml" />
+    <Content Include="Views\VehicleTip\Create.cshtml" />
+    <Content Include="Views\VehicleTip\Index.cshtml" />
+    <Content Include="Views\VehicleTip\Modify.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

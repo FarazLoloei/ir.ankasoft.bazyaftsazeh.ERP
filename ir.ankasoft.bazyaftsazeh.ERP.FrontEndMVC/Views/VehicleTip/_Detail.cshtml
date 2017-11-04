@@ -1,0 +1,33 @@
+﻿@model ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehicleTip.ViewModelCreateAndEditVehicleTip
+
+@Html.HiddenFor(model => model.recId)
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EnumDropDownListFor(model => model.Type, new { @class = "form-control select2" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.System, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.System, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.System, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Capasity, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Capasity, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Capasity, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.CapasityType, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EnumDropDownListFor(model => model.CapasityType, new { @class = "form-control select2" })
+    </div>
+</div>

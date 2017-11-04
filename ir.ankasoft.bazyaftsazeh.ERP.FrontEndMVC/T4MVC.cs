@@ -39,6 +39,7 @@ public static partial class MVC
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PersonController Person = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PersonController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.PostalAddressController PostalAddress = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_PostalAddressController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.RolesAdminController RolesAdmin = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_RolesAdminController();
+    public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.VehicleTipController VehicleTip = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_VehicleTipController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

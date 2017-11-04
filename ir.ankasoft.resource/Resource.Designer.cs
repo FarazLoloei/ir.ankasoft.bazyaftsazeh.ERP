@@ -223,6 +223,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to اتوبوس.
+        /// </summary>
+        public static string Bus {
+            get {
+                return ResourceManager.GetString("Bus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to انصراف.
         /// </summary>
         public static string Cancel {
@@ -246,6 +255,15 @@ namespace ir.ankasoft.resource {
         public static string Cancelled {
             get {
                 return ResourceManager.GetString("Cancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ظرفیت.
+        /// </summary>
+        public static string Capasity {
+            get {
+                return ResourceManager.GetString("Capasity", resourceCulture);
             }
         }
         
@@ -808,6 +826,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نفر.
+        /// </summary>
+        public static string Individual {
+            get {
+                return ResourceManager.GetString("Individual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اطلاعات.
         /// </summary>
         public static string Information {
@@ -997,6 +1024,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to کیلوگرم.
+        /// </summary>
+        public static string KG {
+            get {
+                return ResourceManager.GetString("KG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to خرداد.
         /// </summary>
         public static string Khordad {
@@ -1087,6 +1123,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to کامیونت.
+        /// </summary>
+        public static string Lorry {
+            get {
+                return ResourceManager.GetString("Lorry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to والد.
         /// </summary>
         public static string MasterParent {
@@ -1173,6 +1218,15 @@ namespace ir.ankasoft.resource {
         public static string MenuItem {
             get {
                 return ResourceManager.GetString("MenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مینی بوس.
+        /// </summary>
+        public static string Minibus {
+            get {
+                return ResourceManager.GetString("Minibus", resourceCulture);
             }
         }
         
@@ -1281,6 +1335,15 @@ namespace ir.ankasoft.resource {
         public static string More {
             get {
                 return ResourceManager.GetString("More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سواری.
+        /// </summary>
+        public static string MotorCar {
+            get {
+                return ResourceManager.GetString("MotorCar", resourceCulture);
             }
         }
         
@@ -1461,6 +1524,15 @@ namespace ir.ankasoft.resource {
         public static string PersonalTitle {
             get {
                 return ResourceManager.GetString("PersonalTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to وانت.
+        /// </summary>
+        public static string Pickup {
+            get {
+                return ResourceManager.GetString("Pickup", resourceCulture);
             }
         }
         
@@ -1960,6 +2032,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to سیستم.
+        /// </summary>
+        public static string System {
+            get {
+                return ResourceManager.GetString("System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to تلفن.
         /// </summary>
         public static string Telephone {
@@ -2082,6 +2163,15 @@ namespace ir.ankasoft.resource {
         public static string TransportCompany {
             get {
                 return ResourceManager.GetString("TransportCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to کامیون.
+        /// </summary>
+        public static string Truck {
+            get {
+                return ResourceManager.GetString("Truck", resourceCulture);
             }
         }
         
@@ -2230,11 +2320,29 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ون.
+        /// </summary>
+        public static string Van {
+            get {
+                return ResourceManager.GetString("Van", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اطلاعات خودرو.
         /// </summary>
         public static string VehicleInfo {
             get {
                 return ResourceManager.GetString("VehicleInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نوع وسیله نقلیه.
+        /// </summary>
+        public static string VehicleTip {
+            get {
+                return ResourceManager.GetString("VehicleTip", resourceCulture);
             }
         }
         
