@@ -95,6 +95,7 @@
     <Compile Include="Repositories\CityRepository.cs" />
     <Compile Include="Repositories\CommunicationRepository.cs" />
     <Compile Include="Repositories\ContextMenuItemRepository.cs" />
+    <Compile Include="Repositories\DocumentRepository.cs" />
     <Compile Include="Repositories\ImporterRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\ObjectiveRepository.cs" />

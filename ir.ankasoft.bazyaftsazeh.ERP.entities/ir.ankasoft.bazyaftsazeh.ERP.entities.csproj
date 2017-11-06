@@ -60,6 +60,7 @@
     <Compile Include="Plate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplacementsPlan.cs" />
+    <Compile Include="Repositories\IDocumentRepository.cs" />
     <Compile Include="Repositories\IImporterRepository.cs" />
     <Compile Include="Repositories\IOrganizationRepository.cs" />
     <Compile Include="Repositories\IVehicleRepository.cs" />
