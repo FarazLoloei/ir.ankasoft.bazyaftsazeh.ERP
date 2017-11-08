@@ -4,6 +4,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cost;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Imperfection;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Importer;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Notification;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Organization;
@@ -54,6 +55,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 /*Cost*/
                 ConfigCost(_);
+
+                /*Imperfection*/
+                ConfigImperfection(_);
 
                 //*Notification*/
                 ConfigNotification(_);
@@ -561,7 +565,36 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title));
 
         }
+private static void ConfigImperfection(IMapperConfigurationExpression _)
+        {
+            _.CreateMap<ViewModelImperfectionDisplay, Imperfection>()
+                .ForMember(p => p.PreDefineTitleRefRecId, t => t.Ignore())
+                .ForMember(p => p.Title, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore());
 
+            _.CreateMap<Imperfection, ViewModelImperfectionDisplay>()
+                .ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title));
+
+            //Create
+            _.CreateMap<ViewModelCreateAndModifyImperfection, Imperfection>()
+                .ForMember(p => p.PreDefineTitleRefRecId, t => t.Ignore())
+                .ForMember(p => p.Title, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Imperfection, ViewModelCreateAndModifyImperfection>()
+                .ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title));
+
+        }
         private static void ConfigNotification(IMapperConfigurationExpression _)
         {
             _.CreateMap<ViewModelDisplayNotification, Notification>()

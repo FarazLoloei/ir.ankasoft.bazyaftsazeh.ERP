@@ -1,0 +1,31 @@
+﻿@model ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Imperfection.ViewModelCreateAndModifyImperfection
+
+<div class="content-heading">@Resource.Imperfection</div>
+
+<div class="row">
+    <div class="col-lg-9">
+        @using (Html.BeginForm(MVC.Imperfection.Modify(), FormMethod.Post, new { @class = "panel" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">@Resource.Edit</div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        @Html.Partial(MVC.Imperfection.Views._Detail, Model)
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+                    <div class="clearfix">
+                        <div class="pull-right">
+                            <button class="btn btn-primary" type="submit">@Resource.Edit</button>
+                            @Html.ActionLink(Resource.Cancel, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-warning" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

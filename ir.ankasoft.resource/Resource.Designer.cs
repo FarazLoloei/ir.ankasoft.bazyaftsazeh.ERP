@@ -835,6 +835,24 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نقص.
+        /// </summary>
+        public static string Imperfection {
+            get {
+                return ResourceManager.GetString("Imperfection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نقوص.
+        /// </summary>
+        public static string Imperfections {
+            get {
+                return ResourceManager.GetString("Imperfections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to وارد کننده.
         /// </summary>
         public static string Importer {

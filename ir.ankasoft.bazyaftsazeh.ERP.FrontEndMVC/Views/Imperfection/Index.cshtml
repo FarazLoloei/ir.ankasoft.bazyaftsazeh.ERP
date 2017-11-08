@@ -1,0 +1,167 @@
+﻿@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Imperfection.ViewModelImperfectionDisplay>
+
+@{
+    var controllerTitle = this.ViewContext.RouteData.Values["controller"].ToString();
+    var contextMenu = Session[$"ContextMenu_{controllerTitle}"] as IEnumerable<ViewModelContextMenu>;
+    var contextMenuHeader = Session[$"ContextMenu_{controllerTitle}_Header"] as IEnumerable<ViewModelContextMenu>;
+    int group;
+}
+
+<div class="content-heading">@Resource.List @Resource.Imperfections </div>
+@using (Html.BeginForm(MVC.Imperfection.Index(), FormMethod.Get, new { id = "dataTable" }))
+{
+    @Html.Partial(MVC.Shared.Views._ListFilter, Model.PageData.filterDataSource);
+    <div class="table-responsive b0" id="anka-DataSection">
+        <div id="datatable1_wrapper" class="dataTables_wrapper form-inline no-footer">
+            @Html.Partial(MVC.Imperfection.Views._List, Model)
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm(MVC.Imperfection.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { }
+@using (Html.BeginForm(MVC.Imperfection.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" }))
+{ <input type="hidden" name="id" value="" id="RecID" /> }
+
+@section Styles {
+    @Styles.Render(Bundles.Styles.sweetAlertCss)
+}
+
+@section scripts{
+    @Scripts.Render(Bundles.Scripts.sweetAlert)
+    @Scripts.Render(Bundles.Scripts.ankaDataTable)
+    @Scripts.Render(Bundles.Scripts.AnkaTools)
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('select[name=PageSize]').val('@Model.PageData.filterDataSource.pageSize');
+
+            $('#dataTable').submit(function (e) {
+                e.preventDefault();
+                var serializedValues = $('#dataTable').serialize();
+                UpdateQueryString(serializedValues);
+                $.ajax({
+                    url: '@Url.Action(MVC.Imperfection.Index())',
+                    contentType: 'application/json; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    data: serializedValues,
+                    success: function (result) {
+                        $('#anka-DataSection').html(result);
+                        InitContextMenu();
+                        bindHeaderSortClick();
+                    },
+                    error: function (xhr, status) {
+                        swal("@Resource.Cancelled ", status, "error");
+                    }
+                })
+            });
+
+            InitContextMenu();
+
+        });
+
+        function InitContextMenu() {
+            $.contextMenu({
+                selector: '.context-menu-header',
+                callback: function (key, options) {
+                    ContextMenuOperation(key, options);
+                },
+                items: {
+                    @{
+                        group = 0;
+                        foreach (var item in contextMenuHeader)
+                        {
+                            if (group == 0 || group == item.GroupCode)
+                            {
+                                group = item.GroupCode;
+                            <text>"@item.Title": { name: '@Html.AnkaResource(model=>item.Title)', icon: '@item.Icon', disabled: @item.Disable.ToString().ToLower()},</text>
+                            }
+                            else
+                            {
+                            var sep = $"sep{item.GroupCode}";
+                                <text> @sep: "---------",
+                                 "@item.Title": { name: '@Html.AnkaResource(model=>item.Title)', icon: '@item.Icon', disabled: @item.Disable.ToString().ToLower()},</text>
+                                group = item.GroupCode;
+                            }
+                        }
+                    }
+                }
+            });
+
+            $.contextMenu({
+                selector: '.context-menu',
+                callback: function (key, options) {
+                    ContextMenuOperation(key, options);
+                },
+                items: {
+                    @{
+                        group = 0;
+                        foreach (var item in contextMenu)
+                        {
+                            if (group == 0 || group == item.GroupCode)
+                            {
+                                group = item.GroupCode;
+                            <text>"@item.Title": { name: '@Html.AnkaResource(model => item.Title)', icon: '@item.Icon', disabled: @item.Disable.ToString().ToLower()},</text>
+                            }
+                            else
+                            {
+                                var sep = $"sep{item.GroupCode}";
+                                <text> @sep: "---------",
+                                 "@item.Title": { name: '@Html.AnkaResource(model => item.Title)', icon: '@item.Icon', disabled: @item.Disable.ToString().ToLower()},</text>
+                                group = item.GroupCode;
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        function ContextMenuOperation(key, options)
+        {
+            var _itemId = $(options.$trigger).data('itemid');
+            switch (key) {
+                case 'New':
+                    $('#Create').submit();
+                    break;
+                case 'Edit':
+                    $('#Modify #RecID').val(_itemId);
+                    $('#Modify').submit();
+                    break;
+                case 'Delete':
+                    swal({
+                        title: "@Resource.AreYouSure ",
+                        text: "@Resource.YouWillNotBeAbleToRecoverThisRecord ",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "@Resource.Yes ",
+                        cancelButtonText: "@Resource.No ",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function (isConfirm) {
+                        if (isConfirm) { Delete(_itemId); } else { swal("@Resource.Cancelled ", "@Resource.YourFileIsSafe ", "error"); }
+                    });
+                    break;
+                case 'ExportToExcel':
+                    $('#ExportToExcel').submit();
+                    break;
+            }
+        }
+        function Delete(itemId) {
+            var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.Imperfection.Remove())/{itemId}';
+            $.ajax({
+                type: "POST",
+                url: myUrl.replace("{itemId}", itemId),
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    $('#dataTable').submit();
+                    swal("@Resource.Deleted ", "@Resource.YourFileHasBeenDeleted ", "success");
+                },
+                error: function (Error) {
+                    swal("@Resource.Cancelled ", "@Resource.YourFileIsSafe ", "error");
+                }
+            });
+        }
+    </script>
+}

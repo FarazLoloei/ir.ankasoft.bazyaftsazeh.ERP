@@ -942,4 +942,10 @@
   <data name="GeneralDefination" xml:space="preserve">
     <value>تعاریف عمومی</value>
   </data>
+  <data name="Imperfection" xml:space="preserve">
+    <value>نقص</value>
+  </data>
+  <data name="Imperfections" xml:space="preserve">
+    <value>نقوص</value>
+  </data>
 </root>

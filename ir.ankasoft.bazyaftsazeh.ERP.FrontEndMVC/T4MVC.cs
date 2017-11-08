@@ -33,6 +33,7 @@ public static partial class MVC
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.CostController Cost = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_CostController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DashboardController Dashboard = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_DashboardController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DocumentController Document = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_DocumentController();
+    public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.ImperfectionController Imperfection = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_ImperfectionController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.ImporterController Importer = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_ImporterController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.ManageController Manage = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_ManageController();
     public static ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.OrganizationController Organization = new ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.T4MVC_OrganizationController();

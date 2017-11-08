@@ -62,6 +62,7 @@
     <Compile Include="ReplacementsPlan.cs" />
     <Compile Include="Repositories\ICostRepository.cs" />
     <Compile Include="Repositories\IDocumentRepository.cs" />
+    <Compile Include="Repositories\IImperfectionRepository.cs" />
     <Compile Include="Repositories\IImporterRepository.cs" />
     <Compile Include="Repositories\IOrganizationRepository.cs" />
     <Compile Include="Repositories\IPreDefineTitleRepository.cs" />

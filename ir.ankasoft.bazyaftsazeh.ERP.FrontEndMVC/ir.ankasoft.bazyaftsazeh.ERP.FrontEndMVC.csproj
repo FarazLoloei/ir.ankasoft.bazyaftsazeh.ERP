@@ -174,14 +174,20 @@
   <ItemGroup>
     <Compile Include="Controllers\CostController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\ImperfectionController.cs" />
     <Compile Include="CostController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="DocumentController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="ImperfectionController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cost\ViewModelCostDisplay.cs" />
     <Compile Include="Models\Cost\ViewModelCreateAndModifyCost.cs" />
+    <Compile Include="Models\Imperfection\ViewModelImperfectionDisplay.cs" />
+    <Compile Include="Models\Imperfection\ViewModelCreateAndModifyImperfection.cs" />
     <Compile Include="VehicleTipController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -729,6 +735,11 @@
     <Content Include="Views\Cost\Create.cshtml" />
     <Content Include="Views\Cost\Index.cshtml" />
     <Content Include="Views\Cost\Modify.cshtml" />
+    <Content Include="Views\Imperfection\_Detail.cshtml" />
+    <Content Include="Views\Imperfection\_List.cshtml" />
+    <Content Include="Views\Imperfection\Create.cshtml" />
+    <Content Include="Views\Imperfection\Index.cshtml" />
+    <Content Include="Views\Imperfection\Modify.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
