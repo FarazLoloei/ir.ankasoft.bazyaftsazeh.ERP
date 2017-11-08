@@ -172,7 +172,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CostController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="CostController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cost\ViewModelCostDisplay.cs" />
+    <Compile Include="Models\Cost\ViewModelCreateAndModifyCost.cs" />
     <Compile Include="VehicleTipController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -715,6 +724,11 @@
     <Content Include="Views\VehicleTip\Create.cshtml" />
     <Content Include="Views\VehicleTip\Index.cshtml" />
     <Content Include="Views\VehicleTip\Modify.cshtml" />
+    <Content Include="Views\Cost\_Detail.cshtml" />
+    <Content Include="Views\Cost\_List.cshtml" />
+    <Content Include="Views\Cost\Create.cshtml" />
+    <Content Include="Views\Cost\Index.cshtml" />
+    <Content Include="Views\Cost\Modify.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

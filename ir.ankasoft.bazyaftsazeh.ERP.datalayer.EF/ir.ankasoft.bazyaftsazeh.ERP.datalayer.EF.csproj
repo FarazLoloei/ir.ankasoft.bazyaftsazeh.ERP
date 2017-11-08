@@ -95,6 +95,7 @@
     <Compile Include="Repositories\CityRepository.cs" />
     <Compile Include="Repositories\CommunicationRepository.cs" />
     <Compile Include="Repositories\ContextMenuItemRepository.cs" />
+    <Compile Include="Repositories\CostRepository.cs" />
     <Compile Include="Repositories\DocumentRepository.cs" />
     <Compile Include="Repositories\ImporterRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Repositories\PartyRepository.cs" />
     <Compile Include="Repositories\PersonRepository.cs" />
     <Compile Include="Repositories\PostalAddressRepository.cs" />
+    <Compile Include="Repositories\PreDefineTitleRepository.cs" />
     <Compile Include="Repositories\ProvinceRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\VehicleRepository.cs" />

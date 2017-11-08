@@ -385,6 +385,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to هزینه.
+        /// </summary>
+        public static string Cost {
+            get {
+                return ResourceManager.GetString("Cost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to طرف حساب.
         /// </summary>
         public static string CounterParty {
@@ -700,6 +709,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to تعاریف مالی.
+        /// </summary>
+        public static string FinancialDefination {
+            get {
+                return ResourceManager.GetString("FinancialDefination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to نام.
         /// </summary>
         public static string FirstName {
@@ -741,6 +759,15 @@ namespace ir.ankasoft.resource {
         public static string FullName {
             get {
                 return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تعاریف عمومی.
+        /// </summary>
+        public static string GeneralDefination {
+            get {
+                return ResourceManager.GetString("GeneralDefination", resourceCulture);
             }
         }
         

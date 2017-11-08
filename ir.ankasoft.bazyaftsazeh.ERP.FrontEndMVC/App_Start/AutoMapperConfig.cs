@@ -3,6 +3,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.entities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Importer;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Notification;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Organization;
@@ -51,7 +52,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 /*Vehicle Tip*/
                 ConfigVehicleTip(_);
 
-                //*Dashborad*/
+                /*Cost*/
+                ConfigCost(_);
+
+                //*Notification*/
                 ConfigNotification(_);
 
                 //*Shared */
@@ -499,7 +503,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             _.CreateMap<City, ViewModelDisplayCity>()
                 .ForMember(p => p.Province, opt => opt.MapFrom(dest => dest.Province.Title));
         }
-private static void ConfigVehicleTip(IMapperConfigurationExpression _)
+
+        private static void ConfigVehicleTip(IMapperConfigurationExpression _)
         {
             _.CreateMap<ViewModelVehicleTipDisplay, VehicleTip>()
                 .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
@@ -508,10 +513,10 @@ private static void ConfigVehicleTip(IMapperConfigurationExpression _)
                 .ForMember(p => p.modifierUser, t => t.Ignore())
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())
-                
+
                 .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.recId));
 
-            _.CreateMap<VehicleTip, ViewModelVehicleTipDisplay>()                ;
+            _.CreateMap<VehicleTip, ViewModelVehicleTipDisplay>();
 
             //Create
             _.CreateMap<ViewModelCreateAndEditVehicleTip, VehicleTip>()
@@ -525,6 +530,38 @@ private static void ConfigVehicleTip(IMapperConfigurationExpression _)
             _.CreateMap<VehicleTip, ViewModelCreateAndEditVehicleTip>();
 
         }
+
+        private static void ConfigCost(IMapperConfigurationExpression _)
+        {
+            _.CreateMap<ViewModelCostDisplay, Cost>()
+                .ForMember(p => p.PreDefineTitleRefRecId, t => t.Ignore())
+                .ForMember(p => p.Title, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore());
+
+            _.CreateMap<Cost, ViewModelCostDisplay>()
+                .ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title));
+
+            //Create
+            _.CreateMap<ViewModelCreateAndModifyCost, Cost>()
+                .ForMember(p => p.PreDefineTitleRefRecId, t => t.Ignore())
+                .ForMember(p => p.Title, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Cost, ViewModelCreateAndModifyCost>()
+                .ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title));
+
+        }
+
         private static void ConfigNotification(IMapperConfigurationExpression _)
         {
             _.CreateMap<ViewModelDisplayNotification, Notification>()

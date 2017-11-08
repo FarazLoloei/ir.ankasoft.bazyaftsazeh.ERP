@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
-    public class DocumentController : Controller
+    public partial class DocumentController : Controller
     {
         // GET: Document
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }

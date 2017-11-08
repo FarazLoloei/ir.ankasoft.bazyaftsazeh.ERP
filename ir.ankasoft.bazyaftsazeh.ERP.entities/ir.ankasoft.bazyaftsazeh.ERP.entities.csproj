@@ -60,9 +60,11 @@
     <Compile Include="Plate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplacementsPlan.cs" />
+    <Compile Include="Repositories\ICostRepository.cs" />
     <Compile Include="Repositories\IDocumentRepository.cs" />
     <Compile Include="Repositories\IImporterRepository.cs" />
     <Compile Include="Repositories\IOrganizationRepository.cs" />
+    <Compile Include="Repositories\IPreDefineTitleRepository.cs" />
     <Compile Include="Repositories\IVehicleRepository.cs" />
     <Compile Include="Repositories\IVehicleTipRepository.cs" />
     <Compile Include="Vehicle.cs" />

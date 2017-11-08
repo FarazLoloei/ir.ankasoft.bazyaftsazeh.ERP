@@ -933,4 +933,13 @@
   <data name="KG" xml:space="preserve">
     <value>کیلوگرم</value>
   </data>
+  <data name="Cost" xml:space="preserve">
+    <value>هزینه</value>
+  </data>
+  <data name="FinancialDefination" xml:space="preserve">
+    <value>تعاریف مالی</value>
+  </data>
+  <data name="GeneralDefination" xml:space="preserve">
+    <value>تعاریف عمومی</value>
+  </data>
 </root>
