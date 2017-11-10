@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cost.cs" />
+    <Compile Include="DocumentCost.cs" />
+    <Compile Include="DocumentImperfection.cs" />
     <Compile Include="Enums\CapasityType.cs" />
     <Compile Include="PreDefineTitle.cs" />
     <Compile Include="Document.cs" />

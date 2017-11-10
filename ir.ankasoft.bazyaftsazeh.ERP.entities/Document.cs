@@ -13,12 +13,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public long LastOwnerRefRecId { get; set; }
 
         [ForeignKey(nameof(LastOwnerRefRecId))]
-        public Person LastOwner { get; set; }
+        public Party LastOwner { get; set; }
 
         public long PlateOwnerRefRecId { get; set; }
 
         [ForeignKey(nameof(PlateOwnerRefRecId))]
-        public Person PlateOwner { get; set; }
+        public Party PlateOwner { get; set; }
 
         public long InvestorRefRecId { get; set; }
 
@@ -56,9 +56,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         /// </summary>
         public Party Contractor { get; set; }
 
-        public virtual ICollection<Cost> Costs { get; set; }
+        public virtual ICollection<DocumentCost> Costs { get; set; }
 
-        public virtual ICollection<Imperfection> Imperfections { get; set; }
+        public virtual ICollection<DocumentImperfection> Imperfections { get; set; }
 
         public long PlanRefRecId { get; set; }
 

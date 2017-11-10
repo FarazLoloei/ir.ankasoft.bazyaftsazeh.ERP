@@ -174,6 +174,8 @@
   <ItemGroup>
     <Compile Include="Controllers\CostController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\DocumentCostController.cs" />
+    <Compile Include="Controllers\DocumentImprefectionController.cs" />
     <Compile Include="Controllers\ImperfectionController.cs" />
     <Compile Include="CostController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -181,13 +183,25 @@
     <Compile Include="DocumentController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="DocumentCostController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentImprefectionController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="ImperfectionController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cost\ViewModelCostDisplay.cs" />
     <Compile Include="Models\Cost\ViewModelCreateAndModifyCost.cs" />
+    <Compile Include="Models\DocumentCost\ViewModelDisplayDocumentCost.cs" />
+    <Compile Include="Models\DocumentImperfection\ViewModelDisplayDocumentImperfection.cs" />
+    <Compile Include="Models\Document\ViewModelCreateDocument.cs" />
     <Compile Include="Models\Imperfection\ViewModelImperfectionDisplay.cs" />
     <Compile Include="Models\Imperfection\ViewModelCreateAndModifyImperfection.cs" />
+    <Compile Include="Models\Payment\ViewModelCreateAndModifyPayment.cs" />
+    <Compile Include="Models\Vehicle\ViewModelCreateAndModifyVehicle.cs" />
+    <Compile Include="Models\Vehicle\ViewModelVehicleDisplay.cs" />
     <Compile Include="VehicleTipController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -740,6 +754,11 @@
     <Content Include="Views\Imperfection\Create.cshtml" />
     <Content Include="Views\Imperfection\Index.cshtml" />
     <Content Include="Views\Imperfection\Modify.cshtml" />
+    <Content Include="Views\Document\_List.cshtml" />
+    <Content Include="Views\Document\Index.cshtml" />
+    <Content Include="Views\Document\Create.cshtml" />
+    <Content Include="Views\DocumentCost\_Repeater.cshtml" />
+    <Content Include="Views\DocumentImprefection\_Repeater.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -750,7 +769,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
-    <Folder Include="Views\Document\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

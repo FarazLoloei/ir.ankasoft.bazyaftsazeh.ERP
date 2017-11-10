@@ -26,5 +26,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party
 
         [Display(Name = nameof(Mobile), ResourceType = typeof(Resource))]
         public string Mobile { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Title} - {NationalCode}";
+            //return base.ToString();
+        }
     }
 }

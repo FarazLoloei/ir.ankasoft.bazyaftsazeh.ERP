@@ -25,13 +25,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
-    public partial class DocumentController
+    public partial class DocumentCostController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public DocumentController() { }
+        public DocumentCostController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected DocumentController(Dummy d) { }
+        protected DocumentCostController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -59,15 +59,21 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult CostDetail()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CostDetail);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public DocumentController Actions { get { return MVC.Document; } }
+        public DocumentCostController Actions { get { return MVC.DocumentCost; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Document";
+        public readonly string Name = "DocumentCost";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Document";
+        public const string NameConst = "DocumentCost";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -76,17 +82,25 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string Create = "Create";
+            public readonly string CostDetail = "CostDetail";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string Create = "Create";
+            public const string CostDetail = "CostDetail";
         }
 
 
+        static readonly ActionParamsClass_CostDetail s_params_CostDetail = new ActionParamsClass_CostDetail();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CostDetail CostDetailParams { get { return s_params_CostDetail; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CostDetail
+        {
+            public readonly string request = "request";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -97,20 +111,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _List = "_List";
-                public readonly string Create = "Create";
-                public readonly string Index = "Index";
+                public readonly string _Repeater = "_Repeater";
             }
-            public readonly string _List = "~/Views/Document/_List.cshtml";
-            public readonly string Create = "~/Views/Document/Create.cshtml";
-            public readonly string Index = "~/Views/Document/Index.cshtml";
+            public readonly string _Repeater = "~/Views/DocumentCost/_Repeater.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_DocumentController : ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DocumentController
+    public partial class T4MVC_DocumentCostController : ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DocumentCostController
     {
-        public T4MVC_DocumentController() : base(Dummy.Instance) { }
+        public T4MVC_DocumentCostController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -124,13 +134,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void CostDetailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost.ViewModelDisplayDocumentCost> request);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create()
+        public override System.Web.Mvc.ActionResult CostDetail(System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost.ViewModelDisplayDocumentCost> request)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            CreateOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CostDetail);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            CostDetailOverride(callInfo, request);
             return callInfo;
         }
 

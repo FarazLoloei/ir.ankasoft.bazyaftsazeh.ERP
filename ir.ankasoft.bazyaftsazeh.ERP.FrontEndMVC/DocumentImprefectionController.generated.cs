@@ -25,13 +25,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
-    public partial class DocumentController
+    public partial class DocumentImprefectionController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public DocumentController() { }
+        public DocumentImprefectionController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected DocumentController(Dummy d) { }
+        protected DocumentImprefectionController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -59,15 +59,21 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ImprefectionDetail()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImprefectionDetail);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public DocumentController Actions { get { return MVC.Document; } }
+        public DocumentImprefectionController Actions { get { return MVC.DocumentImprefection; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Document";
+        public readonly string Name = "DocumentImprefection";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Document";
+        public const string NameConst = "DocumentImprefection";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -76,17 +82,25 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string Create = "Create";
+            public readonly string ImprefectionDetail = "ImprefectionDetail";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string Create = "Create";
+            public const string ImprefectionDetail = "ImprefectionDetail";
         }
 
 
+        static readonly ActionParamsClass_ImprefectionDetail s_params_ImprefectionDetail = new ActionParamsClass_ImprefectionDetail();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ImprefectionDetail ImprefectionDetailParams { get { return s_params_ImprefectionDetail; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ImprefectionDetail
+        {
+            public readonly string request = "request";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -97,20 +111,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _List = "_List";
-                public readonly string Create = "Create";
-                public readonly string Index = "Index";
+                public readonly string _Repeater = "_Repeater";
             }
-            public readonly string _List = "~/Views/Document/_List.cshtml";
-            public readonly string Create = "~/Views/Document/Create.cshtml";
-            public readonly string Index = "~/Views/Document/Index.cshtml";
+            public readonly string _Repeater = "~/Views/DocumentImprefection/_Repeater.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_DocumentController : ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DocumentController
+    public partial class T4MVC_DocumentImprefectionController : ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DocumentImprefectionController
     {
-        public T4MVC_DocumentController() : base(Dummy.Instance) { }
+        public T4MVC_DocumentImprefectionController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -124,13 +134,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void ImprefectionDetailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelDisplayDocumentImperfection> request);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create()
+        public override System.Web.Mvc.ActionResult ImprefectionDetail(System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelDisplayDocumentImperfection> request)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            CreateOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImprefectionDetail);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            ImprefectionDetailOverride(callInfo, request);
             return callInfo;
         }
 

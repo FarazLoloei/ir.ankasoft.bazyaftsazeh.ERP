@@ -1,4 +1,5 @@
-﻿using ir.ankasoft.entities;
+﻿using ir.ankasoft.bazyaftsazeh.ERP.entities;
+using ir.ankasoft.entities;
 using ir.ankasoft.infrastructure;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -313,6 +314,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<entities.Document>()
+                .HasRequired(x => x.LastOwner)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<entities.Document>()
                 .HasRequired(x => x.PlateOwner)
                 .WithMany()
                 .WillCascadeOnDelete(false);
@@ -389,10 +395,20 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
             modelBuilder.Entity<entities.Organization>()
                .HasMany(x => x.PostalAddressCollection)
                .WithOptional()
-               .HasForeignKey(c => c.OrganizationRefRecId);
+               .HasForeignKey(c => c.OrganizationRefRecId); 
 
             modelBuilder.Entity<Objective>()
                 .HasRequired(x => x.creatorUser)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<DocumentCost>()
+                .HasRequired(x => x.Document)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<DocumentImperfection>()
+                .HasRequired(x => x.Document)
                 .WithMany()
                 .WillCascadeOnDelete(false);
         }

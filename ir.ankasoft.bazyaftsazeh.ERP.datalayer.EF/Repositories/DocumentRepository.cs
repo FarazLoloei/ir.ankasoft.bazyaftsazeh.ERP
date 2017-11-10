@@ -16,8 +16,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
                                            out int totalRecords)
         {
 
-            IQueryable<Document> objects = FindAll(x => x.LastOwner.FullName.Contains(request.keyword) ||
-                                                        x.PlateOwner.FullName.Contains(request.keyword)
+            IQueryable<Document> objects = FindAll(x => x.LastOwner.Title.Contains(request.keyword) ||
+                                                        x.PlateOwner.Title.Contains(request.keyword)
                                                      ).AsQueryable();
             totalRecords = objects.Count();
             return objects.OrderBy(BuildOrderBy(request.sort.Key, request.sort.Value.ToString())).Skip((request.page * request.pageSize) - request.pageSize).Take(request.pageSize);

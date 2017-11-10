@@ -115,6 +115,24 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to یک ماه.
+        /// </summary>
+        public static string A_Month {
+            get {
+                return ResourceManager.GetString("A_Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to یک هفته.
+        /// </summary>
+        public static string A_Week {
+            get {
+                return ResourceManager.GetString("A_Week", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to آبان.
         /// </summary>
         public static string Aban {
@@ -385,6 +403,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to پیمانکار.
+        /// </summary>
+        public static string Contractor {
+            get {
+                return ResourceManager.GetString("Contractor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to هزینه.
         /// </summary>
         public static string Cost {
@@ -444,6 +471,15 @@ namespace ir.ankasoft.resource {
         public static string Currency {
             get {
                 return ResourceManager.GetString("Currency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to در تاریخ.
+        /// </summary>
+        public static string Custome {
+            get {
+                return ResourceManager.GetString("Custome", resourceCulture);
             }
         }
         
@@ -579,6 +615,15 @@ namespace ir.ankasoft.resource {
         public static string Disable {
             get {
                 return ResourceManager.GetString("Disable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to پرونده.
+        /// </summary>
+        public static string Document {
+            get {
+                return ResourceManager.GetString("Document", resourceCulture);
             }
         }
         
@@ -988,6 +1033,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to سرمایگذار.
+        /// </summary>
+        public static string Investor {
+            get {
+                return ResourceManager.GetString("Investor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to فاکتور.
         /// </summary>
         public static string Invoice {
@@ -1101,6 +1155,15 @@ namespace ir.ankasoft.resource {
         public static string LastName {
             get {
                 return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مالک قبلی.
+        /// </summary>
+        public static string LastOwner {
+            get {
+                return ResourceManager.GetString("LastOwner", resourceCulture);
             }
         }
         
@@ -1591,6 +1654,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to صاحب پلاک.
+        /// </summary>
+        public static string PlateOwner {
+            get {
+                return ResourceManager.GetString("PlateOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لطفا پست الکترونیکی خود را برای رست کردن رمز عبور چک کنید.
         /// </summary>
         public static string PleaseCheckYourEmailToResetYourPassword {
@@ -1888,6 +1960,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to روز جاری.
+        /// </summary>
+        public static string SameDay {
+            get {
+                return ResourceManager.GetString("SameDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to شنبه.
         /// </summary>
         public static string Saterday {
@@ -2104,6 +2185,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ده روز.
+        /// </summary>
+        public static string TenDays {
+            get {
+                return ResourceManager.GetString("TenDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to از اینکه پست الکترونیکی خود را تایید کردید متشکریم. لطفا از این لینک برای ورود به سیستم استفاده نمایید..
         /// </summary>
         public static string ThankYouForConfirmingYourEmailPleaseClickToLogin {
@@ -2235,6 +2325,15 @@ namespace ir.ankasoft.resource {
         public static string Tuesday {
             get {
                 return ResourceManager.GetString("Tuesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to دو هفته.
+        /// </summary>
+        public static string TwoWeeks {
+            get {
+                return ResourceManager.GetString("TwoWeeks", resourceCulture);
             }
         }
         

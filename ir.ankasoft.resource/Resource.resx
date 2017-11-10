@@ -948,4 +948,37 @@
   <data name="Imperfections" xml:space="preserve">
     <value>نقوص</value>
   </data>
+  <data name="A_Month" xml:space="preserve">
+    <value>یک ماه</value>
+  </data>
+  <data name="A_Week" xml:space="preserve">
+    <value>یک هفته</value>
+  </data>
+  <data name="Contractor" xml:space="preserve">
+    <value>پیمانکار</value>
+  </data>
+  <data name="Custome" xml:space="preserve">
+    <value>در تاریخ</value>
+  </data>
+  <data name="Investor" xml:space="preserve">
+    <value>سرمایگذار</value>
+  </data>
+  <data name="LastOwner" xml:space="preserve">
+    <value>مالک قبلی</value>
+  </data>
+  <data name="PlateOwner" xml:space="preserve">
+    <value>صاحب پلاک</value>
+  </data>
+  <data name="SameDay" xml:space="preserve">
+    <value>روز جاری</value>
+  </data>
+  <data name="TenDays" xml:space="preserve">
+    <value>ده روز</value>
+  </data>
+  <data name="TwoWeeks" xml:space="preserve">
+    <value>دو هفته</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>پرونده</value>
+  </data>
 </root>
