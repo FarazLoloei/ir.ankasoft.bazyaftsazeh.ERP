@@ -22,9 +22,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
         public long recId { get; set; }
 
         [Display(Name = nameof(LastOwner), ResourceType = typeof(Resource))]
-        public long LastOwnerRecId { get; set; }
+        public string LastOwnerRecId { get; set; }
 
-        public List<SelectListItem> LastOwner { get; set; }
+        public List<SelectListItem> LastOwner { get; set; } = new List<SelectListItem>();
 
         [Display(Name = nameof(PlateOwner), ResourceType = typeof(Resource))]
         public long PlateOwnerRecId { get; set; }
@@ -56,21 +56,23 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
 
         public List<ViewModelCreateAndModifyPayment> PaymentCollection { get; set; }
 
+        public List<SelectListItem> PartiesList { get; set; }
 
 
-        [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
-        [MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = nameof(Name), ResourceType = typeof(Resource))]
-        public string Name { get; set; }
 
-        [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
-        [MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = nameof(Family), ResourceType = typeof(Resource))]
-        public string Family { get; set; }
+        //[Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
+        //[MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
+        //[Display(Name = nameof(Name), ResourceType = typeof(Resource))]
+        //public string Name { get; set; }
 
-        [MaxLength(100, ErrorMessageResourceName = "MaxLenght20", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = nameof(ImporterNumber), ResourceType = typeof(Resource))]
-        public string ImporterNumber { get; set; }
+        //[Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
+        //[MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
+        //[Display(Name = nameof(Family), ResourceType = typeof(Resource))]
+        //public string Family { get; set; }
+
+        //[MaxLength(100, ErrorMessageResourceName = "MaxLenght20", ErrorMessageResourceType = typeof(Resource))]
+        //[Display(Name = nameof(ImporterNumber), ResourceType = typeof(Resource))]
+        //public string ImporterNumber { get; set; }
 
 
         //public List<ViewModelPostalAddress> PostalAddressCollection { get; set; }

@@ -21,22 +21,23 @@
                 </ul>
                 <div class="tab-content">
                     <div id="edit" role="tabpanel" class="tab-pane active">
-                        
+
                         <fieldset>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.LastOwnerRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.LastOwnerRecId, Model.LastOwner,
+                                        new { @class = "lastOwner_select2_dynamic form-control" } )
+                                    @Html.ValidationMessageFor(model => model.LastOwnerRecId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Family, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.PlateOwner, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Family, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Family, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.PlateOwner, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PlateOwner, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </fieldset>
@@ -95,6 +96,33 @@
 @section scripts{
     <script type="text/javascript">
         $(document).ready(function () {
+            $('.lastOwner_select2_dynamic').select2({
+                placeholder: "Select a known location", // Placeholder text
+                minimumInputLength: 0,
+                allowClear: true, //Allows deselection of chosen address
+                ajax: {
+                    url: '@Url.Action("Party", "GetPartiesList")', //'/Party/GetPartiesList', // Where we want the ajax to call
+                    dataType: 'json', // The datatype we are expecting to be returned
+                    type: "GET", //Just a get method
+                    //Data: allows us to pass a parameter to the controller
+                    data: function (term, page) {
+                        return {
+                            pageSize: pageSize,
+                            pageNum: page,
+                            searchTerm: term
+                        };
+                    },
+                    //processes the results from the JSON method and gives us the select list
+                    processResults: function (data) {
+                        console.log(data)
+                        return {
+                            results: JSON.parse(data)
+                        };
+                    }
+                }
+            });
+            
+
             /*Cost*/
             $('.buttonAddCost').click(function () {
                 var communication = $('#cost .costs');
@@ -156,5 +184,5 @@
                 selector.find('select').select2({ dir: "rtl" }); //.css('width', '100%')
             }
         });
-</script>
+    </script>
 }

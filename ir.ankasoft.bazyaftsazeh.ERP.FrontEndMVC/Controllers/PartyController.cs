@@ -72,6 +72,33 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return model;
         }
 
+        public virtual ActionResult GetPartiesList(string filter)
+        {
+            var list = new List<ViewModelSelect2List>();
+
+            list.Add(new ViewModelSelect2List()
+            {
+                text = "India",
+                id = 101
+            });
+            list.Add(new ViewModelSelect2List()
+            {
+                text = "Srilanka",
+                id = 102
+            });
+            list.Add(new ViewModelSelect2List()
+            {
+                text = "Singapore",
+                id = 103
+            });
+
+            if (!(string.IsNullOrEmpty(filter) || string.IsNullOrWhiteSpace(filter)))
+            {
+                list = list.Where(x => x.text.ToLower().StartsWith(filter.ToLower())).ToList();
+            }
+            return Json(new { items = list }, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public virtual ActionResult Create()
         {
