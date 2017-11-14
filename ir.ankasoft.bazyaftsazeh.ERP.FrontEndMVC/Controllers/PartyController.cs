@@ -72,31 +72,32 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return model;
         }
 
-        public virtual ActionResult GetPartiesList(string filter)
+        public virtual ActionResult GetPartiesList(string searchTerm, int pageSize, int pageNumber)
         {
-            var list = new List<ViewModelSelect2List>();
+            var model = _partyRepository.GetPartiesForSelectors(searchTerm);
 
-            list.Add(new ViewModelSelect2List()
-            {
-                text = "India",
-                id = 101
-            });
-            list.Add(new ViewModelSelect2List()
-            {
-                text = "Srilanka",
-                id = 102
-            });
-            list.Add(new ViewModelSelect2List()
-            {
-                text = "Singapore",
-                id = 103
-            });
 
-            if (!(string.IsNullOrEmpty(filter) || string.IsNullOrWhiteSpace(filter)))
-            {
-                list = list.Where(x => x.text.ToLower().StartsWith(filter.ToLower())).ToList();
-            }
-            return Json(new { items = list }, JsonRequestBehavior.AllowGet);
+            //list.Add(new ViewModelSelect2List()
+            //{
+            //    text = "India",
+            //    id = 101
+            //});
+            //list.Add(new ViewModelSelect2List()
+            //{
+            //    text = "Srilanka",
+            //    id = 102
+            //});
+            //list.Add(new ViewModelSelect2List()
+            //{
+            //    text = "Singapore",
+            //    id = 103
+            //});
+
+            //if (!(string.IsNullOrEmpty(filter) || string.IsNullOrWhiteSpace(filter)))
+            //{
+            //    list = list.Where(x => x.text.ToLower().StartsWith(filter.ToLower())).ToList();
+            //}
+            return new JsonNetResult(model, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

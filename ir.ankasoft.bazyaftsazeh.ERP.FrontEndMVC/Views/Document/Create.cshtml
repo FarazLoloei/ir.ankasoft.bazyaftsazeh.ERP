@@ -27,17 +27,18 @@
                                 @Html.LabelFor(model => model.LastOwnerRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.DropDownListFor(model => model.LastOwnerRecId, Model.LastOwner,
-                                        new { @class = "lastOwner_select2_dynamic form-control" } )
+                                        new { @class = "lastOwner_select2_dynamic form-control" })
+                                    @*@Html.HiddenFor(model => model.LastOwnerRecId, new { htmlAttributes = new { @class = "form-control" } })*@
                                     @Html.ValidationMessageFor(model => model.LastOwnerRecId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.PlateOwner, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.PlateOwnerRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.PlateOwner, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.PlateOwner, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.PlateOwnerRecId, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PlateOwnerRecId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </fieldset>
@@ -96,32 +97,104 @@
 @section scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.lastOwner_select2_dynamic').select2({
-                placeholder: "Select a known location", // Placeholder text
-                minimumInputLength: 0,
-                allowClear: true, //Allows deselection of chosen address
+            var pageSize = 20;
+            var optionListUrl = '@Url.Action("GetPartiesList", "Party")';
+            alert('pox');
+            $("#LastOwnerRecId").select2({
+                tags: true,
+                multiple: true,
+                minimumInputLength: 2,
+                minimumResultsForSearch: 10,
                 ajax: {
-                    url: '@Url.Action("Party", "GetPartiesList")', //'/Party/GetPartiesList', // Where we want the ajax to call
-                    dataType: 'json', // The datatype we are expecting to be returned
-                    type: "GET", //Just a get method
-                    //Data: allows us to pass a parameter to the controller
-                    data: function (term, page) {
-                        return {
-                            pageSize: pageSize,
-                            pageNum: page,
-                            searchTerm: term
-                        };
+                    url: "@Url.Action("GetPartiesList", "Party")",//optionListUrl,
+                    dataType: "json",
+                    type: "GET",
+                    data: function (params) {
+
+                        var queryParameters = {
+                            term: params.term
+                        }
+                        return queryParameters;
                     },
-                    //processes the results from the JSON method and gives us the select list
                     processResults: function (data) {
-                        console.log(data)
                         return {
-                            results: JSON.parse(data)
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.Value,
+                                    id: item.Key
+                                }
+                            })
                         };
                     }
                 }
             });
-            
+
+
+            @*$('#LastOwnerRecId').select2({
+                placeholder: "Type to find a Contract",
+                allowClear: true,
+                //minimumInputLength: 2,
+                ajax: {
+                    cache: false,
+                    dataType: "json",
+                    type: "GET",
+                    url: "@Url.Action(MVC.Party.GetPartiesList())",
+                    data: function(searchTerm){
+                        return { query: searchTerm };
+                    },
+                    results: function(data){
+                        return { results: data };
+                    }
+                },
+                formatResult: contractFormatResult,
+                formatSelection: contractFormatSelection,
+                escapeMarkup: function (m) { return m; }
+            });*@
+
+            function contractFormatResult(contract) {
+                var markup = "<table class='contract-result'><tr>";
+                if (contract.name !== undefined) {
+                    markup += "<div class='contract-name'>" + contract.name + "</div>";
+                }
+                markup += "</td></tr></table>"
+                return markup;
+            }
+
+            function contractFormatSelection(contract) {
+                return contract.name;
+            }
+
+                @*minimumInputLength: 2,
+                tags: [],
+                ajax: {
+                    cache: false,
+                    url: '@Url.Action("Party", "GetPartiesList")',
+                    dataType: 'json',
+                    type: "GET",
+                    //quietMillis: 50,
+                    data: function (term) {
+                        return {
+                            filter: JSON.stringify( term)
+                        };
+                    },
+                    processResults: function (data) {
+                        alert(121);
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.value,
+                                    id: item.key,
+                                    data: item
+                                }
+                            })
+                        };
+                    }
+
+                }
+                    });*@
+
+
+
 
             /*Cost*/
             $('.buttonAddCost').click(function () {

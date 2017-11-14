@@ -27,17 +27,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
         public List<SelectListItem> LastOwner { get; set; } = new List<SelectListItem>();
 
         [Display(Name = nameof(PlateOwner), ResourceType = typeof(Resource))]
-        public long PlateOwnerRecId { get; set; }
+        public string PlateOwnerRecId { get; set; }
 
         public List<SelectListItem> PlateOwner { get; set; }
 
         [Display(Name = nameof(Investor), ResourceType = typeof(Resource))]
-        public long InvestorRecId { get; set; }
+        public string InvestorRecId { get; set; }
 
         public List<SelectListItem> Investor { get; set; }
 
         [Display(Name = nameof(Contractor), ResourceType = typeof(Resource))]
-        public long ContractorRecId { get; set; }
+        public string ContractorRecId { get; set; }
 
         public List<SelectListItem> Contractor { get; set; }
 

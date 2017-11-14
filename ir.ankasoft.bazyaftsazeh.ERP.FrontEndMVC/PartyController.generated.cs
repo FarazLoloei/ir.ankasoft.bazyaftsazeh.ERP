@@ -64,6 +64,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult GetPartiesList()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetPartiesList);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Modify()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
@@ -109,6 +115,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string GetPartiesList = "GetPartiesList";
             public readonly string Create = "Create";
             public readonly string Modify = "Modify";
             public readonly string Remove = "Remove";
@@ -121,6 +128,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string GetPartiesList = "GetPartiesList";
             public const string Create = "Create";
             public const string Modify = "Modify";
             public const string Remove = "Remove";
@@ -137,6 +145,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionParamsClass_Index
         {
             public readonly string request = "request";
+        }
+        static readonly ActionParamsClass_GetPartiesList s_params_GetPartiesList = new ActionParamsClass_GetPartiesList();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetPartiesList GetPartiesListParams { get { return s_params_GetPartiesList; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetPartiesList
+        {
+            public readonly string searchTerm = "searchTerm";
+            public readonly string pageSize = "pageSize";
+            public readonly string pageNumber = "pageNumber";
         }
         static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -231,6 +249,20 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
             IndexOverride(callInfo, request);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetPartiesListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string searchTerm, int pageSize, int pageNumber);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GetPartiesList(string searchTerm, int pageSize, int pageNumber)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetPartiesList);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "searchTerm", searchTerm);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "pageSize", pageSize);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "pageNumber", pageNumber);
+            GetPartiesListOverride(callInfo, searchTerm, pageSize, pageNumber);
             return callInfo;
         }
 

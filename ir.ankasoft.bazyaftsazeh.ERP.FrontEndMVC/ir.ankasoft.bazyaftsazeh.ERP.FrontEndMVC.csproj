@@ -172,6 +172,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\JsonNetResult.cs" />
     <Compile Include="Controllers\CostController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\DocumentCostController.cs" />
@@ -566,7 +567,7 @@
     <Compile Include="Models\Party\ViewModelPartyDisplay.cs" />
     <Compile Include="Models\RolesAdmin\ApplicationRoleViewModel.cs" />
     <Compile Include="Models\Shared\FilterDataSource.cs" />
-    <Compile Include="Models\Shared\ViewModelSelect2List.cs" />
+    <Compile Include="Models\Shared\ViewModelSelect2.cs" />
     <Compile Include="Models\Shared\ViewModelWithSelectList.cs" />
     <Compile Include="Models\VehicleTip\ViewModelCreateAndEditVehicleTip.cs" />
     <Compile Include="Models\VehicleTip\ViewModelVehicleTipDisplay.cs" />
