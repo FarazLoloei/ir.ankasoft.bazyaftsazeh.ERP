@@ -27,8 +27,8 @@
                                 @Html.LabelFor(model => model.LastOwnerRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.DropDownListFor(model => model.LastOwnerRecId, Model.LastOwner,
-                                        new { @class = "lastOwner_select2_dynamic form-control" })
-                                    @*@Html.HiddenFor(model => model.LastOwnerRecId, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        new { @class = "select2 form-control" })
+                                    @*@Html.EditorFor(model => model.LastOwnerRecId,  new { @class = "form-control" } )*@
                                     @Html.ValidationMessageFor(model => model.LastOwnerRecId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -37,7 +37,8 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.PlateOwnerRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.PlateOwnerRecId, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.DropDownListFor(model => model.PlateOwnerRecId, Model.LastOwner,
+                                        new { @class = "select2 form-control" })
                                     @Html.ValidationMessageFor(model => model.PlateOwnerRecId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -97,12 +98,10 @@
 @section scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            var pageSize = 20;
-            var optionListUrl = '@Url.Action("GetPartiesList", "Party")';
-            alert('pox');
-            $("#LastOwnerRecId").select2({
-                tags: true,
-                multiple: true,
+            
+            @*$("#LastOwnerRecId").select2({
+                //tags: true,
+                //multiple: true,
                 minimumInputLength: 2,
                 minimumResultsForSearch: 10,
                 ajax: {
@@ -127,7 +126,7 @@
                         };
                     }
                 }
-            });
+            });*@
 
 
             @*$('#LastOwnerRecId').select2({
