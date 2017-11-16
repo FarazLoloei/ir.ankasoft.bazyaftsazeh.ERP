@@ -196,6 +196,7 @@
     <Compile Include="Models\Cost\ViewModelCostDisplay.cs" />
     <Compile Include="Models\Cost\ViewModelCreateAndModifyCost.cs" />
     <Compile Include="Models\DocumentCost\ViewModelDisplayDocumentCost.cs" />
+    <Compile Include="Models\DocumentCost\ViewModelCreateAndModifyDocumentCost.cs" />
     <Compile Include="Models\DocumentImperfection\ViewModelDisplayDocumentImperfection.cs" />
     <Compile Include="Models\Document\ViewModelCreateDocument.cs" />
     <Compile Include="Models\Document\ViewModelDocumentDisplay.cs" />
@@ -354,6 +355,7 @@
     <Content Include="Content\IranSans\IRANSansWeb_Medium.woff2" />
     <Content Include="Content\IranSans\IRANSansWeb_UltraLight.woff" />
     <Content Include="Content\IranSans\IRANSansWeb_UltraLight.woff2" />
+    <Content Include="Content\MdBootstrapPersianDateTimePicker\jquery.Bootstrap-PersianDateTimePicker-overlay.css" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />

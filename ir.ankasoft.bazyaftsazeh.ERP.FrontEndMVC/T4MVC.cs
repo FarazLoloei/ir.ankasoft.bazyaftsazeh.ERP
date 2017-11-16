@@ -664,6 +664,7 @@ namespace Links
             public const string UrlPath = "~/Content/MdBootstrapPersianDateTimePicker";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string jquery_Bootstrap_PersianDateTimePicker_overlay_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.Bootstrap-PersianDateTimePicker-overlay.min.css") ? Url("jquery.Bootstrap-PersianDateTimePicker-overlay.min.css") : Url("jquery.Bootstrap-PersianDateTimePicker-overlay.css");
             public static readonly string jquery_Bootstrap_PersianDateTimePicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.Bootstrap-PersianDateTimePicker.min.css") ? Url("jquery.Bootstrap-PersianDateTimePicker.min.css") : Url("jquery.Bootstrap-PersianDateTimePicker.css");
         }
     
@@ -1074,6 +1075,7 @@ namespace Links
             {
                 public static class Assets
                 {
+                    public const string jquery_Bootstrap_PersianDateTimePicker_overlay_css = "~/Content/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker-overlay.css";
                     public const string jquery_Bootstrap_PersianDateTimePicker_css = "~/Content/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker.css";
                 }
             }

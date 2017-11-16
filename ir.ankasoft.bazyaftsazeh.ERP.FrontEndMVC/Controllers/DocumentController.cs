@@ -77,7 +77,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 Value = _.Key.ToString()
             }).ToList();
             var model = new ViewModelCreateDocument();
-            model.LastOwner = model.PlateOwner = model.Investor = _partiesList;
+            model.LastOwner = model.PlateOwner = model.Investor = model.Contractor = _partiesList;
             return View(model);
         }
     }

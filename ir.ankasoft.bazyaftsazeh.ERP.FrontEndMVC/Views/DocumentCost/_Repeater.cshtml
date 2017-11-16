@@ -1,8 +1,8 @@
 ﻿@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost
-@model List<ViewModelDisplayDocumentCost>
+@model List<ViewModelCreateAndModifyDocumentCost>
 @*Cost*@
 @{
-    ViewModelDisplayDocumentCost schema = Model.FirstOrDefault();
+    ViewModelCreateAndModifyDocumentCost schema = Model.FirstOrDefault();
 }
 @{
     if (Model.Any())
@@ -10,9 +10,9 @@
         <thead>
             <tr>
                 <th class="hidden"></th>
-                <th class="col-md-1">@Html.LabelFor(model => schema.Title)</th>
-                <th class="col-md-1">@Html.LabelFor(model => schema.ValueDisplayMode)</th>
-                <th class="col-md-10"></th>
+                <th class="col-md-4">@Html.LabelFor(model => schema.Title)</th>
+                <th class="col-md-2">@Html.LabelFor(model => schema.ValueDisplayMode)</th>
+                <th class="col-md-6"></th>
             </tr>
         </thead>
         <tbody>
@@ -20,9 +20,9 @@
             {
                 <tr>
                     <td class="hidden">@Html.HiddenFor(model => Model[@item.i].recId)</td>
-                    <td class="col-md-1">@Html.EnumDropDownListFor(model => Model[@item.i].Title, new { @class = "select2" })</td>
+                    <td class="col-md-4">@Html.DropDownListFor(model => Model[@item.i].Title, Model[item.i].CostList, new { @class = "select2 form-control" })</td>
                     <td class="col-md-2">@Html.EditorFor(model => Model[@item.i].ValueDisplayMode, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
-                    <td class="col-md-10"></td>
+                    <td class="col-md-6"></td>
                 </tr>
             }
         </tbody>

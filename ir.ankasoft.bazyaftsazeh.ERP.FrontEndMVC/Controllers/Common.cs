@@ -1,7 +1,9 @@
 ﻿using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
+using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.entities;
 using ir.ankasoft.entities.Repositories;
+using ir.ankasoft.tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,8 +45,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
             public static void getContextMenu(string controllerTitle)
             {
-                //string controllerTitle = nameof(PartyController).Replace("Controller", "");
-
                 string key = $"ContextMenu_{controllerTitle}";
                 string keyHeader = $"ContextMenu_{controllerTitle}_Header";
                 IContextMenuItemRepository _contextMenuItemRepository = new ContextMenuItemRepository();
@@ -67,6 +67,44 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     Icon = _.Icon
                 }).ToList();
             }
+            public static List<SelectListItem> getCosts()
+            {
+                string key = $"Costs";
+                ICostRepository _costRepository = new CostRepository();
+                int totalRow = 1;
+                if (HttpContext.Current.Session[key] == null)
+                    HttpContext.Current.Session[key] = Map(_costRepository.LoadByFilter(new FilterDataSource() { }, out totalRow));
+                return HttpContext.Current.Session[key] as List<SelectListItem>;
+
+            }
+            private static List<SelectListItem> Map(IEnumerable<entities.Cost> list)
+            {
+                return list.Select(_ => new SelectListItem()
+                {
+                    Value = $"{_.recId},{_.Value}",
+                    Text = $"{_.Title.Title } - {_.ValueInDisplayMode} {DefaultValues.DefaultCurrency}"
+                }).ToList();
+            }
+
+            public static List<SelectListItem> getImperfection()
+            {
+                string key = $"Imperfection";
+                IImperfectionRepository _imperfectionRepository = new ImperfectionRepository();
+                int totalRow = 1;
+                if (HttpContext.Current.Session[key] == null)
+                    HttpContext.Current.Session[key] = Map(_imperfectionRepository.LoadByFilter(new FilterDataSource() { }, out totalRow));
+                return HttpContext.Current.Session[key] as List<SelectListItem>;
+
+            }
+            private static List<SelectListItem> Map(IEnumerable<entities.Imperfection> list)
+            {
+                return list.Select(_ => new SelectListItem()
+                {
+                    Value = $"{_.recId},{_.Value}",
+                    Text = $"{_.Title.Title } - {_.Value} {DefaultValues.DefaultCurrency}"
+                }).ToList();
+            }
+
         }
 
         public static Tuple<string, string> getProvinceAndCityTitleById(string provinceCityId)
@@ -75,5 +113,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             string[] province_city = _provinceCity.Split('-');
             return new Tuple<string, string>(province_city[0].Trim(), province_city[1].Trim());
         }
+
+
     }
 }

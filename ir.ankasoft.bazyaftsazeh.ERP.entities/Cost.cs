@@ -17,6 +17,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public double Value { get; set; }
 
+        [NotMapped]
+        public string ValueInDisplayMode { get { return tools.Convert.GroupDigiting(Value, 0); } }
+
         #region IDateTracking
 
         public DateTime createdDateTime { get; set; }

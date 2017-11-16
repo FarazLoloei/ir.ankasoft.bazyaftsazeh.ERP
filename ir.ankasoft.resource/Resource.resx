@@ -981,4 +981,10 @@
   <data name="Document" xml:space="preserve">
     <value>پرونده</value>
   </data>
+  <data name="PaymentDate" xml:space="preserve">
+    <value>تاریخ پرداخت</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>نحوه پرداخت</value>
+  </data>
 </root>

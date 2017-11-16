@@ -28,7 +28,6 @@
                                 <div class="col-md-10">
                                     @Html.DropDownListFor(model => model.LastOwnerRecId, Model.LastOwner,
                                         new { @class = "select2 form-control" })
-                                    @*@Html.EditorFor(model => model.LastOwnerRecId,  new { @class = "form-control" } )*@
                                     @Html.ValidationMessageFor(model => model.LastOwnerRecId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -37,11 +36,50 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.PlateOwnerRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.DropDownListFor(model => model.PlateOwnerRecId, Model.LastOwner,
+                                    @Html.DropDownListFor(model => model.PlateOwnerRecId, Model.PlateOwner,
                                         new { @class = "select2 form-control" })
                                     @Html.ValidationMessageFor(model => model.PlateOwnerRecId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.InvestorRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.InvestorRecId, Model.Investor,
+                                        new { @class = "select2 form-control" })
+                                    @Html.ValidationMessageFor(model => model.InvestorRecId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ContractorRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.ContractorRecId, Model.Contractor,
+                                        new { @class = "select2 form-control" })
+                                    @Html.ValidationMessageFor(model => model.ContractorRecId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PaymentDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.PaymentDate, new { @class = "form-control PaymentDateDataPicker" })
+
+                                    @Html.ValidationMessageFor(model => model.PaymentDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+                       
+                        <fieldset>
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.PaymentType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EnumDropDownListFor(model => model.PaymentType, new { @class = "form-control select2" })
+                                    </div>
+                                </div>*@
                         </fieldset>
                     </div>
                     <div id="cost" role="tabpanel" class="tab-pane ">
@@ -94,11 +132,24 @@
         }
     </div>
 </div>
-
+@section styles{
+    @Styles.Render(Bundles.Styles.bootstrapPersianDatePickerCss)
+}
 @section scripts{
+@Scripts.Render(Bundles.Scripts.sweetAlert)
+    @Scripts.Render(Bundles.Scripts.bootstrapPersianDatePicker)
     <script type="text/javascript">
         $(document).ready(function () {
-            
+
+            $('.PaymentDateDataPicker').MdPersianDateTimePicker({
+                //Placement: 'right', // default is 'bottom'
+                //Trigger: 'focus', // default is 'focus',
+                //EnableTimePicker: true, // default is true,
+                TargetSelector: '.PaymentDateDataPicker', // default is empty,
+                //GroupId: '', // default is empty,
+                //ToDate: false, // default is false,
+                // FromDate: false, // default is false,
+            });
             @*$("#LastOwnerRecId").select2({
                 //tags: true,
                 //multiple: true,

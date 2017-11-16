@@ -1,0 +1,11 @@
+﻿[data-name="md-datetimepicker-title"] { font-family: "IranSans"; font-size: inherit; }
+
+[data-name="md-persiandatetimepicker"] button { font-size: inherit; }
+
+[data-name="md-persiandatetimepicker"] table.table td { font-size: inherit; }
+
+[data-name="md-persiandatetimepicker"] table.table tr[data-name="md-persiandatetimepicker-weekdaysnames"] td { font-size: 13px; }
+
+[data-name="md-persiandatetimepicker-timepicker"] [data-name="clock-hour"],
+[data-name="md-persiandatetimepicker-timepicker"] [data-name="clock-minute"],
+[data-name="md-persiandatetimepicker-timepicker"] [data-name="clock-second"] { font-size: inherit; }

@@ -15,10 +15,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View();
         }
 
-        public virtual ActionResult CostDetail(List<ViewModelDisplayDocumentCost> request)
+        public virtual ActionResult CostDetail(List<ViewModelCreateAndModifyDocumentCost> request)
         {
-            request = request ?? new List<ViewModelDisplayDocumentCost>();
-            request.Add(new ViewModelDisplayDocumentCost());
+            request = request ?? new List<ViewModelCreateAndModifyDocumentCost>();
+            var costsList = Common.sessionManager.getCosts();
+            request.Add(new ViewModelCreateAndModifyDocumentCost());
+            request = request.Select(_ =>
+            {
+                _.CostList = costsList;
+                return _;
+            }).ToList();
             return PartialView(MVC.DocumentCost.Views._Repeater, request);
         }
     }
