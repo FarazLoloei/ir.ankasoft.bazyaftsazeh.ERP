@@ -987,4 +987,7 @@
   <data name="PaymentType" xml:space="preserve">
     <value>نحوه پرداخت</value>
   </data>
+  <data name="SelectAValue" xml:space="preserve">
+    <value>انتخاب کنید</value>
+  </data>
 </root>

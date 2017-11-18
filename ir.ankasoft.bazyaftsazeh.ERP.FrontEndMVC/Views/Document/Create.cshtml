@@ -140,15 +140,18 @@
     @Scripts.Render(Bundles.Scripts.bootstrapPersianDatePicker)
     <script type="text/javascript">
         $(document).ready(function () {
-
+            $(document.body).on("change", ".selector", function (e) {
+                $(e.target).parent().parent().find('.value').val(this.value.split(',')[1]);
+            });
             $('.PaymentDateDataPicker').MdPersianDateTimePicker({
-                //Placement: 'right', // default is 'bottom'
+                Placement: 'right', // default is 'bottom'
                 //Trigger: 'focus', // default is 'focus',
                 //EnableTimePicker: true, // default is true,
                 TargetSelector: '.PaymentDateDataPicker', // default is empty,
                 //GroupId: '', // default is empty,
                 //ToDate: false, // default is false,
                 // FromDate: false, // default is false,
+                DisableBeforeToday: false,
             });
             @*$("#LastOwnerRecId").select2({
                 //tags: true,
@@ -201,18 +204,18 @@
                 escapeMarkup: function (m) { return m; }
             });*@
 
-            function contractFormatResult(contract) {
-                var markup = "<table class='contract-result'><tr>";
-                if (contract.name !== undefined) {
-                    markup += "<div class='contract-name'>" + contract.name + "</div>";
-                }
-                markup += "</td></tr></table>"
-                return markup;
-            }
+            //function contractFormatResult(contract) {
+            //    var markup = "<table class='contract-result'><tr>";
+            //    if (contract.name !== undefined) {
+            //        markup += "<div class='contract-name'>" + contract.name + "</div>";
+            //    }
+            //    markup += "</td></tr></table>"
+            //    return markup;
+            //}
 
-            function contractFormatSelection(contract) {
-                return contract.name;
-            }
+            //function contractFormatSelection(contract) {
+            //    return contract.name;
+            //}
 
                 @*minimumInputLength: 2,
                 tags: [],
@@ -275,10 +278,10 @@
                 communication.find('tbody tr').last().remove();
             });
             /*Imprefection*/
-            $('.buttonAddImprefection').click(function () {
-                var postal = $('#imprefection .imprefections');
-                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.DocumentImprefection.ImprefectionDetail())';
-                var Url = '@Url.Action(MVC.DocumentImprefection.ImprefectionDetail())';
+            $('.buttonAddImperfection').click(function () {
+                var postal = $('#imperfection .imperfections');
+                var myUrl = '@Url.JavaScriptReplaceableUrl(MVC.DocumentImperfection.ImperfectionDetail())';
+                var Url = '@Url.Action(MVC.DocumentImperfection.ImperfectionDetail())';
                 var serializedValues = postal.find('input, select').serializeArray();
                 if (postal.find('input').length < 1)
                     Url = myUrl;
@@ -298,8 +301,8 @@
                 })
             });
 
-            $('.buttonRemoveImprefection').click(function () {
-                var communication = $('#imprefection .imprefections');
+            $('.buttonRemoveimperfection').click(function () {
+                var communication = $('#imperfection .imperfections');
                 communication.find('tbody tr').last().remove();
             });
 

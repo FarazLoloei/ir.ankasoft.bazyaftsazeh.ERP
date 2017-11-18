@@ -73,7 +73,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 ICostRepository _costRepository = new CostRepository();
                 int totalRow = 1;
                 if (HttpContext.Current.Session[key] == null)
-                    HttpContext.Current.Session[key] = Map(_costRepository.LoadByFilter(new FilterDataSource() { }, out totalRow));
+                {
+                    var list = Map(_costRepository.LoadByFilter(new FilterDataSource() { }, out totalRow));
+                    list.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+                    HttpContext.Current.Session[key] = list;
+                }
                 return HttpContext.Current.Session[key] as List<SelectListItem>;
 
             }
@@ -92,7 +96,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 IImperfectionRepository _imperfectionRepository = new ImperfectionRepository();
                 int totalRow = 1;
                 if (HttpContext.Current.Session[key] == null)
-                    HttpContext.Current.Session[key] = Map(_imperfectionRepository.LoadByFilter(new FilterDataSource() { }, out totalRow));
+                {
+                    var list = Map(_imperfectionRepository.LoadByFilter(new FilterDataSource() { }, out totalRow));
+                    list.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+                    HttpContext.Current.Session[key] = list;
+                }
                 return HttpContext.Current.Session[key] as List<SelectListItem>;
 
             }

@@ -176,7 +176,7 @@
     <Compile Include="Controllers\CostController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\DocumentCostController.cs" />
-    <Compile Include="Controllers\DocumentImprefectionController.cs" />
+    <Compile Include="Controllers\DocumentImperfectionController.cs" />
     <Compile Include="Controllers\ImperfectionController.cs" />
     <Compile Include="CostController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -187,7 +187,7 @@
     <Compile Include="DocumentCostController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="DocumentImprefectionController.generated.cs">
+    <Compile Include="DocumentImperfectionController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="ImperfectionController.generated.cs">
@@ -762,7 +762,7 @@
     <Content Include="Views\Document\Index.cshtml" />
     <Content Include="Views\Document\Create.cshtml" />
     <Content Include="Views\DocumentCost\_Repeater.cshtml" />
-    <Content Include="Views\DocumentImprefection\_Repeater.cshtml" />
+    <Content Include="Views\DocumentImperfection\_Repeater.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

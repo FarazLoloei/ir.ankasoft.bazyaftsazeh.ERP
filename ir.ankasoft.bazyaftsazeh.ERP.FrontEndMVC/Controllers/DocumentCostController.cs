@@ -25,6 +25,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 _.CostList = costsList;
                 return _;
             }).ToList();
+
             return PartialView(MVC.DocumentCost.Views._Repeater, request);
         }
     }

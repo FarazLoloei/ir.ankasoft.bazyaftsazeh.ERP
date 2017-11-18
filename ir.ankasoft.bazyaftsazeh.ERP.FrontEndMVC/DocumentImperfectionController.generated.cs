@@ -25,13 +25,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
-    public partial class DocumentImprefectionController
+    public partial class DocumentImperfectionController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public DocumentImprefectionController() { }
+        public DocumentImperfectionController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected DocumentImprefectionController(Dummy d) { }
+        protected DocumentImperfectionController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -61,19 +61,19 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult ImprefectionDetail()
+        public virtual System.Web.Mvc.ActionResult ImperfectionDetail()
         {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImprefectionDetail);
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImperfectionDetail);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public DocumentImprefectionController Actions { get { return MVC.DocumentImprefection; } }
+        public DocumentImperfectionController Actions { get { return MVC.DocumentImperfection; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "DocumentImprefection";
+        public readonly string Name = "DocumentImperfection";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "DocumentImprefection";
+        public const string NameConst = "DocumentImperfection";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -82,22 +82,22 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string ImprefectionDetail = "ImprefectionDetail";
+            public readonly string ImperfectionDetail = "ImperfectionDetail";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string ImprefectionDetail = "ImprefectionDetail";
+            public const string ImperfectionDetail = "ImperfectionDetail";
         }
 
 
-        static readonly ActionParamsClass_ImprefectionDetail s_params_ImprefectionDetail = new ActionParamsClass_ImprefectionDetail();
+        static readonly ActionParamsClass_ImperfectionDetail s_params_ImperfectionDetail = new ActionParamsClass_ImperfectionDetail();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_ImprefectionDetail ImprefectionDetailParams { get { return s_params_ImprefectionDetail; } }
+        public ActionParamsClass_ImperfectionDetail ImperfectionDetailParams { get { return s_params_ImperfectionDetail; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_ImprefectionDetail
+        public class ActionParamsClass_ImperfectionDetail
         {
             public readonly string request = "request";
         }
@@ -113,14 +113,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             {
                 public readonly string _Repeater = "_Repeater";
             }
-            public readonly string _Repeater = "~/Views/DocumentImprefection/_Repeater.cshtml";
+            public readonly string _Repeater = "~/Views/DocumentImperfection/_Repeater.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_DocumentImprefectionController : ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DocumentImprefectionController
+    public partial class T4MVC_DocumentImperfectionController : ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers.DocumentImperfectionController
     {
-        public T4MVC_DocumentImprefectionController() : base(Dummy.Instance) { }
+        public T4MVC_DocumentImperfectionController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -134,14 +134,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void ImprefectionDetailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelDisplayDocumentImperfection> request);
+        partial void ImperfectionDetailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelDisplayDocumentImperfection> request);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult ImprefectionDetail(System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelDisplayDocumentImperfection> request)
+        public override System.Web.Mvc.ActionResult ImperfectionDetail(System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelDisplayDocumentImperfection> request)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImprefectionDetail);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImperfectionDetail);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            ImprefectionDetailOverride(callInfo, request);
+            ImperfectionDetailOverride(callInfo, request);
             return callInfo;
         }
 

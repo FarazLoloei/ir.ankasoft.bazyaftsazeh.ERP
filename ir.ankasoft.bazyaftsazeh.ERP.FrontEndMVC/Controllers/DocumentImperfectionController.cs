@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 {
-    public partial class DocumentImprefectionController : Controller
+    public partial class DocumentImperfectionController : Controller
     {
         // GET: DocumentImprefection
         public virtual ActionResult Index()
@@ -15,11 +15,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View();
         }
 
-        public virtual ActionResult ImprefectionDetail(List<ViewModelDisplayDocumentImperfection> request)
+        public virtual ActionResult ImperfectionDetail(List<ViewModelDisplayDocumentImperfection> request)
         {
             request = request ?? new List<ViewModelDisplayDocumentImperfection>();
+            var imperfectionList = Common.sessionManager.getImperfection();
             request.Add(new ViewModelDisplayDocumentImperfection());
-            return PartialView(MVC.DocumentImprefection.Views._Repeater, request);
+            request = request.Select(_ =>
+            {
+                _.ImperfectionList = imperfectionList;
+                return _;
+            }).ToList();
+
+            return PartialView(MVC.DocumentImperfection.Views._Repeater, request);
         }
     }
 }

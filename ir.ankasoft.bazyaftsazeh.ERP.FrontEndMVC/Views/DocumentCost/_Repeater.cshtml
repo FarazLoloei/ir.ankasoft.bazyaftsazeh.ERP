@@ -10,8 +10,8 @@
         <thead>
             <tr>
                 <th class="hidden"></th>
-                <th class="col-md-4">@Html.LabelFor(model => schema.Title)</th>
-                <th class="col-md-2">@Html.LabelFor(model => schema.ValueDisplayMode)</th>
+                <th class="col-md-4">@Html.LabelFor(model => schema.CostTitle)</th>
+                <th class="col-md-2">@Html.LabelFor(model => schema.CostValueDisplayMode)</th>
                 <th class="col-md-6"></th>
             </tr>
         </thead>
@@ -19,9 +19,9 @@
             @foreach (var item in Model.Select((value, i) => new { i, value }))
             {
                 <tr>
-                    <td class="hidden">@Html.HiddenFor(model => Model[@item.i].recId)</td>
-                    <td class="col-md-4">@Html.DropDownListFor(model => Model[@item.i].Title, Model[item.i].CostList, new { @class = "select2 form-control" })</td>
-                    <td class="col-md-2">@Html.EditorFor(model => Model[@item.i].ValueDisplayMode, new { htmlAttributes = new { @class = "form-control text-right" } })</td>
+                    <td class="hidden">@Html.HiddenFor(model => Model[@item.i].CostrecId)</td>
+                    <td class="col-md-4">@Html.DropDownListFor(model => Model[@item.i].CostTitle, Model[item.i].CostList, new { @class = "select2 form-control selector" })</td>
+                    <td class="col-md-2">@Html.EditorFor(model => Model[@item.i].CostValue, new { htmlAttributes = new { @class = "form-control text-right value" } })</td>
                     <td class="col-md-6"></td>
                 </tr>
             }

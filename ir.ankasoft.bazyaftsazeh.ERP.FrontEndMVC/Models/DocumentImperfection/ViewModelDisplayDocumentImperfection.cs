@@ -13,13 +13,20 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection
         [HiddenInput(DisplayValue = false)]
         public long recId { get; set; }
 
-        [Display(Name = nameof(Title), ResourceType = typeof(Resource))]
-        public string Title { get; set; }
+        [Display(Name = "Title", ResourceType = typeof(Resource))]
+        public string ImperfectionTitle { get; set; }
 
-        [Display(Name = nameof(Value), ResourceType = typeof(Resource))]
-        public double Value { get; set; }
+        [Display(Name = "Value", ResourceType = typeof(Resource))]
+        public double ImperfectionValue { get; set; }
 
-        [Display(Name = nameof(Value), ResourceType = typeof(Resource))]
-        public string ValueDisplayMode { get { return tools.Convert.GroupDigiting(Value, 0); } }
+        [Display(Name = "Value", ResourceType = typeof(Resource))]
+        public string ImperfectionValueDisplayMode { get { return tools.Convert.GroupDigiting(ImperfectionValue, 0); } }
+
+        public List<SelectListItem> ImperfectionList { get; set; }
+
+        public override string ToString()
+        {
+            return $"{ImperfectionTitle} - {ImperfectionValueDisplayMode}";
+        }
     }
 }
