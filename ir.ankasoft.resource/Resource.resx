@@ -957,7 +957,7 @@
   <data name="Contractor" xml:space="preserve">
     <value>پیمانکار</value>
   </data>
-  <data name="Custome" xml:space="preserve">
+  <data name="Custom" xml:space="preserve">
     <value>در تاریخ</value>
   </data>
   <data name="Investor" xml:space="preserve">
@@ -984,10 +984,34 @@
   <data name="PaymentDate" xml:space="preserve">
     <value>تاریخ پرداخت</value>
   </data>
+  <data name="SelectAValue" xml:space="preserve">
+    <value>انتخاب کنید</value>
+  </data>
   <data name="PaymentType" xml:space="preserve">
     <value>نحوه پرداخت</value>
   </data>
-  <data name="SelectAValue" xml:space="preserve">
-    <value>انتخاب کنید</value>
+  <data name="Cash" xml:space="preserve">
+    <value>نقدی</value>
+  </data>
+  <data name="Government" xml:space="preserve">
+    <value>دولتی</value>
+  </data>
+  <data name="Replacements" xml:space="preserve">
+    <value>جایگذینی</value>
+  </data>
+  <data name="BeneficiaryImporter" xml:space="preserve">
+    <value>وارد کننده ذینفع</value>
+  </data>
+  <data name="PermissionNumber" xml:space="preserve">
+    <value>شماره مجوز</value>
+  </data>
+  <data name="ReplacementVehicle" xml:space="preserve">
+    <value>خودرو جایگذین</value>
+  </data>
+  <data name="Representer" xml:space="preserve">
+    <value>نمایندگی</value>
+  </data>
+  <data name="Representor" xml:space="preserve">
+    <value>نمایندگی</value>
   </data>
 </root>

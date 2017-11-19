@@ -56,25 +56,33 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
 
         public List<ViewModelCreateAndModifyPayment> PaymentCollection { get; set; }
 
-        public List<SelectListItem> PartiesList { get; set; }
+        public PlanType PlanType { get; set; }
+
+        /*Replacement*/
+        [Display(Name = nameof(BeneficiaryImporter), ResourceType = typeof(Resource))]
+        public long BeneficiaryImporterRecId { get; set; }
+
+        public List<SelectListItem> BeneficiaryImporter { get; set; } = new List<SelectListItem>();
+
+        [Display(Name = nameof(Importer), ResourceType = typeof(Resource))]
+        public long ReplacementVehicleRecId { get; set; }
+
+        public List<SelectListItem> ReplacementVehicle { get; set; }
+
+        [Display(Name = nameof(Representor), ResourceType = typeof(Resource))]
+        public string RepresentorRecId { get; set; }
+        
+        public List<SelectListItem> Representor { get; set; } = new List<SelectListItem>();
+
+        /*Government*/
+        [Display(Name = nameof(Organization), ResourceType = typeof(Resource))]
+        public long OrganizationRecId { get; set; }
+
+        public List<SelectListItem> Organization { get; set; } = new List<SelectListItem>();
+
+        [Display(Name = nameof(PermissionNumber), ResourceType = typeof(Resource))]
+        public string PermissionNumber { get; set; }
 
 
-
-        //[Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
-        //[MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
-        //[Display(Name = nameof(Name), ResourceType = typeof(Resource))]
-        //public string Name { get; set; }
-
-        //[Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
-        //[MaxLength(100, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
-        //[Display(Name = nameof(Family), ResourceType = typeof(Resource))]
-        //public string Family { get; set; }
-
-        //[MaxLength(100, ErrorMessageResourceName = "MaxLenght20", ErrorMessageResourceType = typeof(Resource))]
-        //[Display(Name = nameof(ImporterNumber), ResourceType = typeof(Resource))]
-        //public string ImporterNumber { get; set; }
-
-
-        //public List<ViewModelPostalAddress> PostalAddressCollection { get; set; }
     }
 }

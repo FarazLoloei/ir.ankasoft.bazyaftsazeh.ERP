@@ -10,7 +10,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
     public class Plan : DomainEntity<long>, IDateTracking, IUserTracking
     {
-        public Enums.PlanType Type { get; set; } = Enums.PlanType.cash;
+        public Enums.PlanType Type { get; set; } = Enums.PlanType.Cash;
 
         public long RepresentorRefRecId { get; set; }
 

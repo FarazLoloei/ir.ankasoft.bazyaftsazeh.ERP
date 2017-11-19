@@ -64,6 +64,14 @@
                         </fieldset>
                         <fieldset>
                             <div class="form-group">
+                                @Html.LabelFor(model => model.PaymentType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EnumDropDownListFor(model => model.PaymentType, new { @class = "form-control select2" })
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
                                 @Html.LabelFor(model => model.PaymentDate, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.TextBoxFor(model => model.PaymentDate, new { @class = "form-control PaymentDateDataPicker" })
@@ -72,15 +80,76 @@
                                 </div>
                             </div>
                         </fieldset>
-                       
                         <fieldset>
-                            @*<div class="form-group">
-                                    @Html.LabelFor(model => model.PaymentType, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EnumDropDownListFor(model => model.PaymentType, new { @class = "form-control select2" })
-                                    </div>
-                                </div>*@
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PaymentType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EnumDropDownListFor(model => model.PaymentType, new { @class = "form-control select2" })
+                                </div>
+                            </div>
                         </fieldset>
+
+                        <div class="well">
+                            <h4>@Resource.Replacements</h4>
+                            
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.BeneficiaryImporterRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.BeneficiaryImporterRecId, Model.BeneficiaryImporter,
+                                        new { @class = "select2 form-control" })
+                                        @Html.ValidationMessageFor(model => model.ContractorRecId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.RepresentorRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.RepresentorRecId, Model.Representor,
+                                        new { @class = "select2 form-control" })
+                                        @Html.ValidationMessageFor(model => model.RepresentorRecId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="well">
+                            <h4>@Resource.Government</h4>
+
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.OrganizationRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.OrganizationRecId, Model.Organization,
+                                        new { @class = "select2 form-control" })
+                                        @Html.ValidationMessageFor(model => model.OrganizationRecId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PermissionNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.PermissionNumber, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.PermissionNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.RepresentorRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.RepresentorRecId, Model.Representor,
+                                        new { @class = "select2 form-control" })
+                                        @Html.ValidationMessageFor(model => model.RepresentorRecId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        
                     </div>
                     <div id="cost" role="tabpanel" class="tab-pane ">
                         <div class="form-group">
