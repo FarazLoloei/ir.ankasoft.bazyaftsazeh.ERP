@@ -56,6 +56,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
 
         public List<ViewModelCreateAndModifyPayment> PaymentCollection { get; set; }
 
+        [Display(Name = nameof(PlanType), ResourceType = typeof(Resource))]
         public PlanType PlanType { get; set; }
 
         /*Replacement*/

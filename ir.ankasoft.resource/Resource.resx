@@ -1014,4 +1014,7 @@
   <data name="Representor" xml:space="preserve">
     <value>نمایندگی</value>
   </data>
+  <data name="PlanType" xml:space="preserve">
+    <value>نوع طرح</value>
+  </data>
 </root>

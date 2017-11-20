@@ -47,14 +47,15 @@ $(document).ready(function () {
     //document.addEventListener('contextmenu', event => event.preventDefault());
     $('.select2').select2({
         dir: "rtl",
-        placeholder: 'Select an option',
-        allowClear: true
+        placeholder: "انتخاب کنید"//,
+        //allowClear: true
     });
 });
 
 function recreateSelect2(selector) {
     selector.find('select').select2({
         dir: "rtl",
-        placeholder: 'Select an option',
-        allowClear: true});
+        placeholder: "انتخاب کنید"//,
+        //allowClear: true
+    });
 }

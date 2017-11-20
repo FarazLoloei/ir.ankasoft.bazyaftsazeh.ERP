@@ -17,6 +17,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IPartyRepository _partyRepository;
+        private readonly IImporterRepository _importerRepository;
+        private readonly IOrganizationRepository _organizationRepository;
+        private readonly IPersonRepository _personRepository;
         private readonly IDocumentRepository _documentRepository;
 
         private readonly IContextMenuItemRepository _contextMenuItemRepository;
@@ -25,10 +28,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public DocumentController(IPartyRepository partyRepository,
                                   IContextMenuItemRepository contextMenuItemRepository,
                                   IDocumentRepository documentRepository,
-
+                                  IImporterRepository importerRepository,
+                                  IOrganizationRepository organizationRepository,
+                                  IPersonRepository personRepository,
                                   IUnitOfWorkFactory unitOfWorkFactory)
         {
             _partyRepository = partyRepository;
+            _importerRepository = importerRepository;
+            _organizationRepository = organizationRepository;
+            _personRepository = personRepository;
             _documentRepository = documentRepository;
             _contextMenuItemRepository = contextMenuItemRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
@@ -76,8 +84,30 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 Text = _.Value,
                 Value = _.Key.ToString()
             }).ToList();
+            _partiesList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+            var _importersList = _importerRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
+            {
+                Text = _.Value,
+                Value = _.Key.ToString()
+            }).ToList();
+            _importersList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+            var _organizationList = _organizationRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
+            {
+                Text = _.Value,
+                Value = _.Key.ToString()
+            }).ToList();
+            _organizationList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+            var _personList = _personRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
+            {
+                Text = _.Value,
+                Value = _.Key.ToString()
+            }).ToList();
+            _personList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
             var model = new ViewModelCreateDocument();
             model.LastOwner = model.PlateOwner = model.Investor = model.Contractor = _partiesList;
+            model.BeneficiaryImporter = _importersList;
+            model.Organization = _organizationList;
+            model.Representor = _personList;
             return View(model);
         }
     }

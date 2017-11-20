@@ -82,14 +82,14 @@
                         </fieldset>
                         <fieldset>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.PaymentType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.PlanType, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EnumDropDownListFor(model => model.PaymentType, new { @class = "form-control select2" })
+                                    @Html.EnumDropDownListFor(model => model.PlanType, new { @class = "form-control select2" })
                                 </div>
                             </div>
                         </fieldset>
 
-                        <div class="well">
+                        <div class="well hidden" id="ReplacementSection">
                             <h4>@Resource.Replacements</h4>
                             
                             <fieldset>
@@ -115,7 +115,7 @@
                             </fieldset>
                         </div>
 
-                        <div class="well">
+                        <div class="well hidden" id="governmentSection">
                             <h4>@Resource.Government</h4>
 
                             <fieldset>
@@ -220,8 +220,34 @@
                 //GroupId: '', // default is empty,
                 //ToDate: false, // default is false,
                 // FromDate: false, // default is false,
-                DisableBeforeToday: false,
+                DisableBeforeToday: true,
             });
+
+            //$(document.body).on("change", ".selector", function (e) {
+            //    $(e.target).parent().parent().find('.value').val(this.value.split(',')[1]);
+            //});
+            $('#PlanType').on("change", function (e) {
+                //$('div.well').removeClass('hidden').addClass('hidden');
+                switch (this.value) {
+
+                    case '2': //Replacement
+                        $('div#ReplacementSection').removeClass('hidden');
+                        $('div#governmentSection').addClass('hidden');
+                        
+                        break;
+                    case '3':// Government
+                        $('div#ReplacementSection').addClass('hidden');
+                        $('div#governmentSection').removeClass('hidden');
+                        break;
+                    default:
+                        $('div#ReplacementSection').addClass('hidden');
+                        $('div#governmentSection').addClass('hidden');
+                        break;
+                }
+                //console.info(this.value);
+                //alert(12);
+            });
+
             @*$("#LastOwnerRecId").select2({
                 //tags: true,
                 //multiple: true,
