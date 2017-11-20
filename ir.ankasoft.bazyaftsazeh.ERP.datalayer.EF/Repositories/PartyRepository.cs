@@ -51,7 +51,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
             base.Remove(id);
         }
 
-        public Dictionary<long, string> GetPartiesForSelectors(string filter)
+        public Dictionary<long, string> GetForSelectors(string filter)
         {
             filter = filter ?? string.Empty;
             return FindAll(_ => _.NationalCode.Contains(filter) || _.Title.Contains(filter)).ToDictionary(x => x.recId, x => $"{x.Title} - {x.NationalCode}");

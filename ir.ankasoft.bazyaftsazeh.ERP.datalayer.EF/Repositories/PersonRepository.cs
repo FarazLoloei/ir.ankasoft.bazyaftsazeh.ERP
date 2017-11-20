@@ -23,5 +23,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
         {
             return string.Format("{0} {1}", sortOn, sortDirection);
         }
+
+        public Dictionary<long, string> GetForSelectors(string filter)
+        {
+            filter = filter ?? string.Empty;
+            return FindAll(_ => _.Name.Contains(filter) || _.Family.Contains(filter)).ToDictionary(x => x.recId, x => $"{x.FullName}");
+        }
     }
 }

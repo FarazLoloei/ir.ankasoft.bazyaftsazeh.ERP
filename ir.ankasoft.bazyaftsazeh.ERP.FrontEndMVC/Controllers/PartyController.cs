@@ -74,7 +74,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
         public virtual ActionResult GetPartiesList(string searchTerm, int pageSize, int pageNumber)
         {
-            var model = _partyRepository.GetPartiesForSelectors(searchTerm);
+            var model = _partyRepository.GetForSelectors(searchTerm);
 
 
             //list.Add(new ViewModelSelect2List()

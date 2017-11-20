@@ -71,7 +71,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult Create()
         {
-            var _partiesList = _partyRepository.GetPartiesForSelectors(string.Empty).Select(_ => new SelectListItem()
+            var _partiesList = _partyRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
             {
                 Text = _.Value,
                 Value = _.Key.ToString()

@@ -10,7 +10,7 @@ namespace ir.ankasoft.entities.Repositories
 
         new void Add(Party entity);
 
-        Dictionary<long, string> GetPartiesForSelectors(string filter);
+        Dictionary<long, string> GetForSelectors(string filter);
 
         bool CheckExistingNationalCode(string nationalCode);
     }

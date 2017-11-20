@@ -7,5 +7,7 @@ namespace ir.ankasoft.entities.Repositories
     {
         new IEnumerable<Person> LoadByFilter(IFilterDataSource request,
                                              out int totalRecords);
+
+        Dictionary<long, string> GetForSelectors(string filter);
     }
 }
