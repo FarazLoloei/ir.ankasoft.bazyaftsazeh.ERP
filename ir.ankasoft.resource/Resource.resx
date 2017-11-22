@@ -1017,4 +1017,118 @@
   <data name="PlanType" xml:space="preserve">
     <value>نوع طرح</value>
   </data>
+  <data name="Blue" xml:space="preserve">
+    <value>آبی</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>سبز</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>قرمز</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>سفید</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>زرد</value>
+  </data>
+  <data name="Alef" xml:space="preserve">
+    <value>الف</value>
+  </data>
+  <data name="Be" xml:space="preserve">
+    <value>ب</value>
+  </data>
+  <data name="De" xml:space="preserve">
+    <value>د</value>
+  </data>
+  <data name="Ee" xml:space="preserve">
+    <value>ع</value>
+  </data>
+  <data name="Ge" xml:space="preserve">
+    <value>ق</value>
+  </data>
+  <data name="He" xml:space="preserve">
+    <value>ه‌</value>
+  </data>
+  <data name="Jim" xml:space="preserve">
+    <value>ج</value>
+  </data>
+  <data name="Ke" xml:space="preserve">
+    <value>ک</value>
+  </data>
+  <data name="Le" xml:space="preserve">
+    <value>ل</value>
+  </data>
+  <data name="Me" xml:space="preserve">
+    <value>م</value>
+  </data>
+  <data name="Military" xml:space="preserve">
+    <value>نظامی</value>
+  </data>
+  <data name="Ne" xml:space="preserve">
+    <value>ن</value>
+  </data>
+  <data name="Pe" xml:space="preserve">
+    <value>پ</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>شخصی</value>
+  </data>
+  <data name="Political" xml:space="preserve">
+    <value>سیاسی</value>
+  </data>
+  <data name="Sad" xml:space="preserve">
+    <value>ص</value>
+  </data>
+  <data name="Se" xml:space="preserve">
+    <value>س</value>
+  </data>
+  <data name="Ta" xml:space="preserve">
+    <value>ط</value>
+  </data>
+  <data name="Taxi" xml:space="preserve">
+    <value>تاکسی</value>
+  </data>
+  <data name="Te" xml:space="preserve">
+    <value>ت</value>
+  </data>
+  <data name="Ve" xml:space="preserve">
+    <value>و</value>
+  </data>
+  <data name="Ye" xml:space="preserve">
+    <value>ی</value>
+  </data>
+  <data name="C12" xml:space="preserve">
+    <value>12 سیلندر</value>
+  </data>
+  <data name="C16" xml:space="preserve">
+    <value>16 سیلندر</value>
+  </data>
+  <data name="C2" xml:space="preserve">
+    <value>2 سیلندر</value>
+  </data>
+  <data name="C3" xml:space="preserve">
+    <value>3 سیلندر</value>
+  </data>
+  <data name="C4" xml:space="preserve">
+    <value>4 سیلندر</value>
+  </data>
+  <data name="C6" xml:space="preserve">
+    <value>6 سیلندر</value>
+  </data>
+  <data name="C8" xml:space="preserve">
+    <value>8 سیلندر</value>
+  </data>
+  <data name="ChassisNo" xml:space="preserve">
+    <value>شماره شاسی</value>
+  </data>
+  <data name="CylenderCount" xml:space="preserve">
+    <value>تعداد سیلندر</value>
+  </data>
+  <data name="EngineNo" xml:space="preserve">
+    <value>شماره موتور</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>مدل خودرو</value>
+  </data>
 </root>

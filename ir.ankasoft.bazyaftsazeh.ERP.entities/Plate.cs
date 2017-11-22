@@ -14,14 +14,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [MaxLength(20)]
         public string Number { get; set; }
 
+        [Required]
         public Enums.PlateSeries Series { get; set; }
 
         [Required]
-        [MaxLength(100)]
-        public string Color { get; set; }
+        public Enums.PlateColors Color { get; set; }
 
-        [MaxLength(100)]
-        public string Shape { get; set; }
+        [Required]
+        public Enums.PlateShapes Shape { get; set; }
 
         #region IDateTracking
 
@@ -52,10 +52,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
             if (string.IsNullOrEmpty(Number))
             {
                 yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Number)), new[] { nameof(Number) });
-            }
-            if (string.IsNullOrEmpty(Color))
-            {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Color)), new[] { nameof(Color) });
             }
         }
 

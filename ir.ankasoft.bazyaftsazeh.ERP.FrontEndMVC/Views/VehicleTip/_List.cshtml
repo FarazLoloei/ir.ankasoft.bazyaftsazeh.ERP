@@ -53,7 +53,7 @@
                         <i class="fa @defaultClass" aria-hidden="true"></i>
                     </span>
                 </th>
-                <th class="col-md-1">
+                <th class="col-md-2">
                     <a href="#" data-column="@nameof(modelHeader.CapasityType)">
                         @Html.LabelFor(modelItem => modelHeader.CapasityType)
                     </a>
@@ -80,7 +80,7 @@
                                             <td class="col-md-2">@Html.AnkaResource(model=>item.Type)</td>
                                             <td class="col-md-2">@Html.DisplayFor(modelItem => item.System)</td>
                                             <td class="col-md-1 text-right">@Html.DisplayFor(modelItem => item.Capasity)</td>
-                                            <td class="col-md-1">@Html.AnkaResource(model => item.CapasityType)</td>
+                                            <td class="col-md-2">@Html.AnkaResource(model => item.CapasityType)</td>
                                             <td class="col-md-6"></td>
                                         </tr>
                                     }

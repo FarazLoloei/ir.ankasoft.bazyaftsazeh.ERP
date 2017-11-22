@@ -7,6 +7,7 @@ using ir.ankasoft.tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Web;
 using System.Web.Mvc;
 
@@ -110,6 +111,30 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 {
                     Value = $"{_.recId},{_.Value}",
                     Text = $"{_.Title.Title } - {_.Value} {DefaultValues.DefaultCurrency}"
+                }).ToList();
+            }
+
+            public static List<SelectListItem> getVehicleTips()
+            {
+                string key = $"VehicleTip";
+                IVehicleTipRepository _vehicleTipRepository = new VehicleTipRepository();
+                int totalRow = 1;
+                if (HttpContext.Current.Session[key] == null)
+                {
+                    var list = Map(_vehicleTipRepository.LoadByFilter(new FilterDataSource() { }, out totalRow));
+                    list.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+                    HttpContext.Current.Session[key] = list;
+                }
+                return HttpContext.Current.Session[key] as List<SelectListItem>;
+
+            }
+            private static List<SelectListItem> Map(IEnumerable<entities.VehicleTip> list)
+            {
+                var _resource = new ResourceManager(typeof(resource.Resource));
+                return list.Select(_ => new SelectListItem()
+                {
+                    Value = $"{_.recId}",
+                    Text = $"{_resource.GetString(_.Type.ToString())} {_.System} ({_.Capasity} {_resource.GetString(_.CapasityType.ToString()) })"
                 }).ToList();
             }
 

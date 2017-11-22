@@ -85,29 +85,36 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 Value = _.Key.ToString()
             }).ToList();
             _partiesList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+
             var _importersList = _importerRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
             {
                 Text = _.Value,
                 Value = _.Key.ToString()
             }).ToList();
             _importersList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+
             var _organizationList = _organizationRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
             {
                 Text = _.Value,
                 Value = _.Key.ToString()
             }).ToList();
             _organizationList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+
             var _personList = _personRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
             {
                 Text = _.Value,
                 Value = _.Key.ToString()
             }).ToList();
             _personList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+
+            
+
             var model = new ViewModelCreateDocument();
             model.LastOwner = model.PlateOwner = model.Investor = model.Contractor = _partiesList;
             model.BeneficiaryImporter = _importersList;
             model.Organization = _organizationList;
             model.Representor = _personList;
+            model.VehicleTip = Common.sessionManager.getVehicleTips();
             return View(model);
         }
     }

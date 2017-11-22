@@ -187,6 +187,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to الف.
+        /// </summary>
+        public static string Alef {
+            get {
+                return ResourceManager.GetString("Alef", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to این مورد قبلا در سیستم ثبت شده است.
         /// </summary>
         public static string AlreadyExists {
@@ -241,6 +250,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ب.
+        /// </summary>
+        public static string Be {
+            get {
+                return ResourceManager.GetString("Be", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to وارد کننده ذینفع.
         /// </summary>
         public static string BeneficiaryImporter {
@@ -250,11 +268,83 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to آبی.
+        /// </summary>
+        public static string Blue {
+            get {
+                return ResourceManager.GetString("Blue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اتوبوس.
         /// </summary>
         public static string Bus {
             get {
                 return ResourceManager.GetString("Bus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 12 سیلندر.
+        /// </summary>
+        public static string C12 {
+            get {
+                return ResourceManager.GetString("C12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 16 سیلندر.
+        /// </summary>
+        public static string C16 {
+            get {
+                return ResourceManager.GetString("C16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 سیلندر.
+        /// </summary>
+        public static string C2 {
+            get {
+                return ResourceManager.GetString("C2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3 سیلندر.
+        /// </summary>
+        public static string C3 {
+            get {
+                return ResourceManager.GetString("C3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4 سیلندر.
+        /// </summary>
+        public static string C4 {
+            get {
+                return ResourceManager.GetString("C4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6 سیلندر.
+        /// </summary>
+        public static string C6 {
+            get {
+                return ResourceManager.GetString("C6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 8 سیلندر.
+        /// </summary>
+        public static string C8 {
+            get {
+                return ResourceManager.GetString("C8", resourceCulture);
             }
         }
         
@@ -309,6 +399,15 @@ namespace ir.ankasoft.resource {
         public static string Category {
             get {
                 return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شماره شاسی.
+        /// </summary>
+        public static string ChassisNo {
+            get {
+                return ResourceManager.GetString("ChassisNo", resourceCulture);
             }
         }
         
@@ -511,11 +610,29 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to تعداد سیلندر.
+        /// </summary>
+        public static string CylenderCount {
+            get {
+                return ResourceManager.GetString("CylenderCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to داشبورد.
         /// </summary>
         public static string Dashboard {
             get {
                 return ResourceManager.GetString("Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to د.
+        /// </summary>
+        public static string De {
+            get {
+                return ResourceManager.GetString("De", resourceCulture);
             }
         }
         
@@ -673,6 +790,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ع.
+        /// </summary>
+        public static string Ee {
+            get {
+                return ResourceManager.GetString("Ee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to پست الکترونیکی.
         /// </summary>
         public static string Email {
@@ -687,6 +813,15 @@ namespace ir.ankasoft.resource {
         public static string EmailLink {
             get {
                 return ResourceManager.GetString("EmailLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شماره موتور.
+        /// </summary>
+        public static string EngineNo {
+            get {
+                return ResourceManager.GetString("EngineNo", resourceCulture);
             }
         }
         
@@ -826,6 +961,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ق.
+        /// </summary>
+        public static string Ge {
+            get {
+                return ResourceManager.GetString("Ge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to تعاریف عمومی.
         /// </summary>
         public static string GeneralDefination {
@@ -840,6 +984,15 @@ namespace ir.ankasoft.resource {
         public static string Government {
             get {
                 return ResourceManager.GetString("Government", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سبز.
+        /// </summary>
+        public static string Green {
+            get {
+                return ResourceManager.GetString("Green", resourceCulture);
             }
         }
         
@@ -867,6 +1020,15 @@ namespace ir.ankasoft.resource {
         public static string Guild {
             get {
                 return ResourceManager.GetString("Guild", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ه‌.
+        /// </summary>
+        public static string He {
+            get {
+                return ResourceManager.GetString("He", resourceCulture);
             }
         }
         
@@ -1150,6 +1312,24 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ج.
+        /// </summary>
+        public static string Jim {
+            get {
+                return ResourceManager.GetString("Jim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ک.
+        /// </summary>
+        public static string Ke {
+            get {
+                return ResourceManager.GetString("Ke", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to کیلوگرم.
         /// </summary>
         public static string KG {
@@ -1218,6 +1398,15 @@ namespace ir.ankasoft.resource {
         public static string LatitudeY {
             get {
                 return ResourceManager.GetString("LatitudeY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ل.
+        /// </summary>
+        public static string Le {
+            get {
+                return ResourceManager.GetString("Le", resourceCulture);
             }
         }
         
@@ -1330,6 +1519,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to م.
+        /// </summary>
+        public static string Me {
+            get {
+                return ResourceManager.GetString("Me", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to واحد اندازه گیری.
         /// </summary>
         public static string MeasuringUnit {
@@ -1353,6 +1551,15 @@ namespace ir.ankasoft.resource {
         public static string MenuItem {
             get {
                 return ResourceManager.GetString("MenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نظامی.
+        /// </summary>
+        public static string Military {
+            get {
+                return ResourceManager.GetString("Military", resourceCulture);
             }
         }
         
@@ -1389,6 +1596,15 @@ namespace ir.ankasoft.resource {
         public static string Mobile {
             get {
                 return ResourceManager.GetString("Mobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مدل خودرو.
+        /// </summary>
+        public static string Model {
+            get {
+                return ResourceManager.GetString("Model", resourceCulture);
             }
         }
         
@@ -1528,6 +1744,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ن.
+        /// </summary>
+        public static string Ne {
+            get {
+                return ResourceManager.GetString("Ne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to وزن خالص.
         /// </summary>
         public static string NetWeight {
@@ -1663,6 +1888,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to پ.
+        /// </summary>
+        public static string Pe {
+            get {
+                return ResourceManager.GetString("Pe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to شماره مجوز.
         /// </summary>
         public static string PermissionNumber {
@@ -1677,6 +1911,15 @@ namespace ir.ankasoft.resource {
         public static string Person {
             get {
                 return ResourceManager.GetString("Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شخصی.
+        /// </summary>
+        public static string Personal {
+            get {
+                return ResourceManager.GetString("Personal", resourceCulture);
             }
         }
         
@@ -1740,6 +1983,15 @@ namespace ir.ankasoft.resource {
         public static string PM {
             get {
                 return ResourceManager.GetString("PM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سیاسی.
+        /// </summary>
+        public static string Political {
+            get {
+                return ResourceManager.GetString("Political", resourceCulture);
             }
         }
         
@@ -1875,6 +2127,15 @@ namespace ir.ankasoft.resource {
         public static string Recover {
             get {
                 return ResourceManager.GetString("Recover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to قرمز.
+        /// </summary>
+        public static string Red {
+            get {
+                return ResourceManager.GetString("Red", resourceCulture);
             }
         }
         
@@ -2059,6 +2320,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ص.
+        /// </summary>
+        public static string Sad {
+            get {
+                return ResourceManager.GetString("Sad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to روز جاری.
         /// </summary>
         public static string SameDay {
@@ -2082,6 +2352,15 @@ namespace ir.ankasoft.resource {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to س.
+        /// </summary>
+        public static string Se {
+            get {
+                return ResourceManager.GetString("Se", resourceCulture);
             }
         }
         
@@ -2271,6 +2550,33 @@ namespace ir.ankasoft.resource {
         public static string System {
             get {
                 return ResourceManager.GetString("System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ط.
+        /// </summary>
+        public static string Ta {
+            get {
+                return ResourceManager.GetString("Ta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تاکسی.
+        /// </summary>
+        public static string Taxi {
+            get {
+                return ResourceManager.GetString("Taxi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ت.
+        /// </summary>
+        public static string Te {
+            get {
+                return ResourceManager.GetString("Te", resourceCulture);
             }
         }
         
@@ -2581,6 +2887,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to و.
+        /// </summary>
+        public static string Ve {
+            get {
+                return ResourceManager.GetString("Ve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اطلاعات خودرو.
         /// </summary>
         public static string VehicleInfo {
@@ -2698,11 +3013,38 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to سفید.
+        /// </summary>
+        public static string White {
+            get {
+                return ResourceManager.GetString("White", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to محل کار.
         /// </summary>
         public static string WorkPlace {
             get {
                 return ResourceManager.GetString("WorkPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ی.
+        /// </summary>
+        public static string Ye {
+            get {
+                return ResourceManager.GetString("Ye", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to زرد.
+        /// </summary>
+        public static string Yellow {
+            get {
+                return ResourceManager.GetString("Yellow", resourceCulture);
             }
         }
         

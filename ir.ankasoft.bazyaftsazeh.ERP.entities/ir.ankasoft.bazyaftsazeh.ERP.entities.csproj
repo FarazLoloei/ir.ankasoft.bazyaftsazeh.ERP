@@ -45,6 +45,10 @@
     <Compile Include="DocumentCost.cs" />
     <Compile Include="DocumentImperfection.cs" />
     <Compile Include="Enums\CapasityType.cs" />
+    <Compile Include="Enums\CylenderCounts.cs" />
+    <Compile Include="Enums\PlateAlphabets.cs" />
+    <Compile Include="Enums\PlateColors.cs" />
+    <Compile Include="Enums\PlateShapes.cs" />
     <Compile Include="PreDefineTitle.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Enums\DocumentPaymentType.cs" />

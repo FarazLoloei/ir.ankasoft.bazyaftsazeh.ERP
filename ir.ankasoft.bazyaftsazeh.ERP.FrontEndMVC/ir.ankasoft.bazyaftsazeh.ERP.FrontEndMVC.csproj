@@ -203,6 +203,7 @@
     <Compile Include="Models\Imperfection\ViewModelImperfectionDisplay.cs" />
     <Compile Include="Models\Imperfection\ViewModelCreateAndModifyImperfection.cs" />
     <Compile Include="Models\Payment\ViewModelCreateAndModifyPayment.cs" />
+    <Compile Include="Models\VehiclePlate\ViewModelCreateVehiclePlate.cs" />
     <Compile Include="Models\Vehicle\ViewModelCreateAndModifyVehicle.cs" />
     <Compile Include="Models\Vehicle\ViewModelVehicleDisplay.cs" />
     <Compile Include="VehicleTipController.generated.cs">

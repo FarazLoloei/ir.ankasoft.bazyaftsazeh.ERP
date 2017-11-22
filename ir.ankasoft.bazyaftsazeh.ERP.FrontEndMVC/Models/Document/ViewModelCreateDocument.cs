@@ -1,17 +1,12 @@
 ﻿using ir.ankasoft.bazyaftsazeh.ERP.entities.Enums;
-using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection;
-using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Imperfection;
-using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Payment;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Vehicle;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehiclePlate;
 using ir.ankasoft.resource;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
@@ -41,8 +36,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
 
         public List<SelectListItem> Contractor { get; set; }
 
-        [Display(Name = nameof(Vehicle), ResourceType = typeof(Resource))]
-        public ViewModelCreateAndModifyVehicle Vehicle { get; set; }
+        //[Display(Name = nameof(Vehicle), ResourceType = typeof(Resource))]
+        //public ViewModelCreateAndModifyVehicle Vehicle { get; set; }
 
         [Display(Name = nameof(PaymentDate), ResourceType = typeof(Resource))]
         public string PaymentDate { get; set; }
@@ -60,6 +55,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
         public PlanType PlanType { get; set; }
 
         /*Replacement*/
+
         [Display(Name = nameof(BeneficiaryImporter), ResourceType = typeof(Resource))]
         public long BeneficiaryImporterRecId { get; set; }
 
@@ -72,10 +68,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
 
         [Display(Name = nameof(Representor), ResourceType = typeof(Resource))]
         public string RepresentorRecId { get; set; }
-        
+
         public List<SelectListItem> Representor { get; set; } = new List<SelectListItem>();
 
         /*Government*/
+
         [Display(Name = nameof(Organization), ResourceType = typeof(Resource))]
         public long OrganizationRecId { get; set; }
 
@@ -83,6 +80,28 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
 
         [Display(Name = nameof(PermissionNumber), ResourceType = typeof(Resource))]
         public string PermissionNumber { get; set; }
+
+        public ViewModelCreateVehiclePlate Plate { get; set; }
+
+        [Display(Name = nameof(Model), ResourceType = typeof(Resource))]
+        public string Model { get; set; }
+
+        [Display(Name = nameof(VehicleTip), ResourceType = typeof(Resource))]
+        public long VehicleTipRecId { get; set; }
+
+        public List<SelectListItem> VehicleTip { get; set; }
+
+        [Display(Name = nameof(Color), ResourceType = typeof(Resource))]
+        public string Color { get; set; }
+
+        [Display(Name = nameof(ChassisNo), ResourceType = typeof(Resource))]
+        public string ChassisNo { get; set; }
+
+        [Display(Name = nameof(EngineNo), ResourceType = typeof(Resource))]
+        public string EngineNo { get; set; }
+
+        [Display(Name = nameof(CylenderCount), ResourceType = typeof(Resource))]
+        public CylenderCounts CylenderCount { get; set; } = CylenderCounts.C4;
 
 
     }
