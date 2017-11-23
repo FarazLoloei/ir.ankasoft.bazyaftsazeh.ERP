@@ -1131,4 +1131,43 @@
   <data name="Model" xml:space="preserve">
     <value>مدل خودرو</value>
   </data>
+  <data name="Collapse" xml:space="preserve">
+    <value>بستن</value>
+  </data>
+  <data name="Local" xml:space="preserve">
+    <value>منطقه ای</value>
+  </data>
+  <data name="MotoCycle_Iran" xml:space="preserve">
+    <value>موتور ایران</value>
+  </data>
+  <data name="MotoCycle_Old" xml:space="preserve">
+    <value>موتور قدیم</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>شماره</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>قدیمی</value>
+  </data>
+  <data name="OneColor_Alphabetic" xml:space="preserve">
+    <value>تک رنگ حرفی</value>
+  </data>
+  <data name="OneColor_Numeric" xml:space="preserve">
+    <value>تک رنگ عددی</value>
+  </data>
+  <data name="Series" xml:space="preserve">
+    <value>سری</value>
+  </data>
+  <data name="Shape" xml:space="preserve">
+    <value>شکل</value>
+  </data>
+  <data name="TwoColor_OtherCity" xml:space="preserve">
+    <value>دو رنگ سایر شهرها</value>
+  </data>
+  <data name="TwoColor_Tehran" xml:space="preserve">
+    <value>دورنگ تهران</value>
+  </data>
+  <data name="VehiclePlate" xml:space="preserve">
+    <value>پلاک خودرو</value>
+  </data>
 </root>
