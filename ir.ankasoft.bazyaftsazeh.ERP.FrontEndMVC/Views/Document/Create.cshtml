@@ -90,12 +90,12 @@
                                     </div>
                                 </fieldset>
 
-                                <div id="panelDemo1" class="panel panel-default">
+                                <div id="ReplacementSection" class="panel panel-default">
                                     <div class="panel-heading panel-heading-collapsed">
                                         @Resource.Replacements
                                         @*<a href="#" data-tool="panel-collapse" data-toggle="tooltip" title="@Resource.Collapse" class="pull-right">
-                                            <em class="fa fa-minus"></em>
-                                        </a>*@
+                                                <em class="fa fa-minus"></em>
+                                            </a>*@
                                     </div>
                                     <div class="panel-wrapper collapse">
                                         <div class="panel-body row">
@@ -122,12 +122,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel panel-default">
+                                <div id="GovernmentSection" class="panel panel-default">
                                     <div class="panel-heading panel-heading-collapsed">
                                         @Resource.Government
                                         @*<a href="#" data-tool="panel-collapse" data-toggle="tooltip" title="@Resource.Collapse" class="pull-right">
-                                            <em class="fa fa-minus"></em>
-                                        </a>*@
+                                                <em class="fa fa-minus"></em>
+                                            </a>*@
                                     </div>
                                     <div class="panel-wrapper collapse">
                                         <div class="panel-body row">
@@ -135,8 +135,7 @@
                                                 <div class="form-group">
                                                     @Html.LabelFor(model => model.OrganizationRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-md-10">
-                                                        @Html.DropDownListFor(model => model.OrganizationRecId, Model.Organization,
-                                        new { @class = "select2 form-control" })
+                                                        @Html.DropDownListFor(model => model.OrganizationRecId, Model.Organization, new { @class = "select2 form-control" })
                                                         @Html.ValidationMessageFor(model => model.OrganizationRecId, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
@@ -161,7 +160,7 @@
                                                 </div>
                                             </fieldset>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +271,7 @@
                                     </div>
                                 </div>
 
-                                
+
                             </div>
                         </div>
                     </div>
@@ -352,25 +351,45 @@
             //    $(e.target).parent().parent().find('.value').val(this.value.split(',')[1]);
             //});
             $('#PlanType').on("change", function (e) {
-                //$('div.well').removeClass('hidden').addClass('hidden');
                 switch (this.value) {
 
                     case '2': //Replacement
-                        $('div#ReplacementSection').removeClass('hidden');
-                        $('div#governmentSection').addClass('hidden');
+                        var governmentSection = $('div#GovernmentSection');
+                        if (!governmentSection.find('div.panel-heading').hasClass('panel-heading-collapsed'))
+                        {
+                            governmentSection.find('div.panel-heading').addClass('panel-heading-collapsed');
+                            governmentSection.find('div.panel-wrapper').addClass('collapse');
+                        }
+
+                        var replacementSection = $('div#ReplacementSection');
+                        replacementSection.find('div.panel-heading').removeClass('panel-heading-collapsed');
+                        replacementSection.find('div.panel-wrapper').removeClass('collapse');
 
                         break;
                     case '3':// Government
-                        $('div#ReplacementSection').addClass('hidden');
-                        $('div#governmentSection').removeClass('hidden');
+                        var replacementSection = $('div#ReplacementSection');
+                        if (!replacementSection.find('div.panel-heading').hasClass('panel-heading-collapsed')) {
+                            replacementSection.find('div.panel-heading').addClass('panel-heading-collapsed');
+                            replacementSection.find('div.panel-wrapper').addClass('collapse');
+                        }
+
+                        var governmentSection = $('div#GovernmentSection');
+                        governmentSection.find('div.panel-heading').removeClass('panel-heading-collapsed');
+                        governmentSection.find('div.panel-wrapper').removeClass('collapse');
                         break;
                     default:
-                        $('div#ReplacementSection').addClass('hidden');
-                        $('div#governmentSection').addClass('hidden');
+                        var replacementSection = $('div#ReplacementSection');
+                        if (!replacementSection.find('div.panel-heading').hasClass('panel-heading-collapsed')) {
+                            replacementSection.find('div.panel-heading').addClass('panel-heading-collapsed');
+                            replacementSection.find('div.panel-wrapper').addClass('collapse');
+                        }
+                        var governmentSection = $('div#GovernmentSection');
+                        if (!governmentSection.find('div.panel-heading').hasClass('panel-heading-collapsed')) {
+                            governmentSection.find('div.panel-heading').addClass('panel-heading-collapsed');
+                            governmentSection.find('div.panel-wrapper').addClass('collapse');
+                        }
                         break;
                 }
-                //console.info(this.value);
-                //alert(12);
             });
 
             @*$("#LastOwnerRecId").select2({

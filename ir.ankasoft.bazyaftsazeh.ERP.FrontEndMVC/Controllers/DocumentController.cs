@@ -3,6 +3,8 @@ using ir.ankasoft.bazyaftsazeh.ERP.entities;
 using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection;
 using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
 using System;
@@ -116,6 +118,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             model.Representor = _personList;
             model.VehicleTip = Common.sessionManager.getVehicleTips();
             return View(model);
+        }
+
+        [HttpPost]
+        public virtual ActionResult Create(ViewModelCreateDocument request, 
+            ViewModelCreateAndModifyDocumentCost documentCostRequest,
+            ViewModelCreateAndModifyDocumentImperfection documentImperfectionRequest) {
+
+            return RedirectToAction(MVC.Document.Index());
         }
     }
 }

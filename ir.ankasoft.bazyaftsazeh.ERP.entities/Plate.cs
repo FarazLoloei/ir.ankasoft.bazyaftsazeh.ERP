@@ -15,7 +15,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public string Number { get; set; }
 
         [Required]
-        public Enums.PlateSeries Series { get; set; }
+        public Enums.PlateAlphabets Series { get; set; }
 
         [Required]
         public Enums.PlateColors Color { get; set; }

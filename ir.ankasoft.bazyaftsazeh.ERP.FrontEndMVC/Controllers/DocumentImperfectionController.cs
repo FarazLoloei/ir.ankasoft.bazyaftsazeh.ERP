@@ -15,11 +15,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View();
         }
 
-        public virtual ActionResult ImperfectionDetail(List<ViewModelDisplayDocumentImperfection> request)
+        public virtual ActionResult ImperfectionDetail(List<ViewModelCreateAndModifyDocumentImperfection> request)
         {
-            request = request ?? new List<ViewModelDisplayDocumentImperfection>();
+            request = request ?? new List<ViewModelCreateAndModifyDocumentImperfection>();
             var imperfectionList = Common.sessionManager.getImperfection();
-            request.Add(new ViewModelDisplayDocumentImperfection());
+            request.Add(new ViewModelCreateAndModifyDocumentImperfection());
             request = request.Select(_ =>
             {
                 _.ImperfectionList = imperfectionList;

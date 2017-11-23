@@ -15,7 +15,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehiclePlate
         public long recId { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
-        [MaxLength(5, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
+        [MaxLength(10, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = nameof(Number), ResourceType = typeof(Resource))]
         public string Number { get; set; }
 

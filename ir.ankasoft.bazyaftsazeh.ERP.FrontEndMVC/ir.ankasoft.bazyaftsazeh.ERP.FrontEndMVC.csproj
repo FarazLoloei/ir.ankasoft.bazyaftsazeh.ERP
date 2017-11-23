@@ -197,6 +197,7 @@
     <Compile Include="Models\Cost\ViewModelCreateAndModifyCost.cs" />
     <Compile Include="Models\DocumentCost\ViewModelDisplayDocumentCost.cs" />
     <Compile Include="Models\DocumentCost\ViewModelCreateAndModifyDocumentCost.cs" />
+    <Compile Include="Models\DocumentImperfection\ViewModelCreateAndModifyDocumentImperfection.cs" />
     <Compile Include="Models\DocumentImperfection\ViewModelDisplayDocumentImperfection.cs" />
     <Compile Include="Models\Document\ViewModelCreateDocument.cs" />
     <Compile Include="Models\Document\ViewModelDocumentDisplay.cs" />

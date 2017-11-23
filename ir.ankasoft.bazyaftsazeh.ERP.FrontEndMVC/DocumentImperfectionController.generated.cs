@@ -134,10 +134,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void ImperfectionDetailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelDisplayDocumentImperfection> request);
+        partial void ImperfectionDetailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelCreateAndModifyDocumentImperfection> request);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult ImperfectionDetail(System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelDisplayDocumentImperfection> request)
+        public override System.Web.Mvc.ActionResult ImperfectionDetail(System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelCreateAndModifyDocumentImperfection> request)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImperfectionDetail);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);

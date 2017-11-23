@@ -8,7 +8,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost
     public class ViewModelCreateAndModifyDocumentCost
     {
         [HiddenInput(DisplayValue = false)]
-        public long CostrecId { get; set; }
+        public long CostRecId { get; set; }
 
         [Display(Name = "Title", ResourceType = typeof(Resource))]
         public string CostTitle { get; set; }

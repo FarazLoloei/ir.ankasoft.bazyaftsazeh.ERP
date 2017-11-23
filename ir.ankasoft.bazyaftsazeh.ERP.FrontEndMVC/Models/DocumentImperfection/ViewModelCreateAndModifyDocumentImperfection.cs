@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection
 {
-    public class ViewModelDisplayDocumentImperfection
+    public class ViewModelCreateAndModifyDocumentImperfection
     {
         [HiddenInput(DisplayValue = false)]
         public long recId { get; set; }
@@ -21,6 +21,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection
 
         [Display(Name = "Value", ResourceType = typeof(Resource))]
         public string ImperfectionValueDisplayMode { get { return tools.Convert.GroupDigiting(ImperfectionValue, 0); } }
+
+        public List<SelectListItem> ImperfectionList { get; set; }
 
         public override string ToString()
         {
