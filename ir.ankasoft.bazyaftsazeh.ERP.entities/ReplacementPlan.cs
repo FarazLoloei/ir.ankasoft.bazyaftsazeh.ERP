@@ -9,21 +9,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
-    public class GovernmentPlan : DomainEntity<long>, IPlan, IDateTracking, IUserTracking
+    public class ReplacementPlan : DomainEntity<long>, IPlan, IDateTracking, IUserTracking
     {
-        public GovernmentPlan()
-        {
-            Type = Enums.PlanType.Government;
-        }
+        public long ImporterRefRecId { get; set; }
 
-        public long OrganizationRefRecId { get; set; }
+        [ForeignKey(nameof(ImporterRefRecId))]
+        public Importer BeneficiaryImporter { get; set; }
 
-        [ForeignKey(nameof(OrganizationRefRecId))]
-        public Organization Organization { get; set; }
+        public long ReplacementVehicleRefRecId { get; set; }
 
-        public string PermissionNumber { get; set; }
+        [ForeignKey(nameof(ReplacementVehicleRefRecId))]
+        public Vehicle ReplacementsVehicle { get; set; }
 
-        public PlanType Type { get; set; }
+        public PlanType Type { get; set; } = Enums.PlanType.Replacements;
 
         public long RepresentorRefRecId { get; set; }
 

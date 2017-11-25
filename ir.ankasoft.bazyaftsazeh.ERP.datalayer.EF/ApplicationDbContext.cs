@@ -41,10 +41,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         public DbSet<entities.Importer> Importer { get; set; }
         public DbSet<entities.Organization> Organization { get; set; }
         public DbSet<entities.Payment> Payment { get; set; }
-        public DbSet<entities.Plan> Plans { get; set; }
+        //public DbSet<entities.Plan> Plans { get; set; }
         public DbSet<entities.Plate> Plates { get; set; }
         public DbSet<entities.PreDefineTitle> PreDefineTitles { get; set; }
-        public DbSet<entities.ReplacementsPlan> ReplacementsPlan { get; set; }
+        public DbSet<entities.ReplacementPlan> ReplacementsPlan { get; set; }
         public DbSet<entities.Vehicle> Vehicles { get; set; }
         public DbSet<entities.VehicleTip> VehicleTips { get; set; }
         public DbSet<City> Cities { get; set; }
@@ -268,10 +268,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                 .WithMany()
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<entities.Plan>()
-                .HasRequired(x => x.creatorUser)
-                .WithMany()
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<entities.Plan>()
+            //    .HasRequired(x => x.creatorUser)
+            //    .WithMany()
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<entities.Organization>()
                 .HasRequired(x => x.creatorUser)
@@ -323,17 +323,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                 .WithMany()
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<entities.Plan>()
+            modelBuilder.Entity<entities.GovernmentPlan>()
                 .HasRequired(x => x.Representor)
                 .WithMany()
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<entities.Plan>()
+            modelBuilder.Entity<entities.ReplacementPlan>()
                 .HasRequired(x => x.Representor)
                 .WithMany()
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<entities.ReplacementsPlan>()
+            modelBuilder.Entity<entities.ReplacementPlan>()
                 .HasRequired(x => x.ReplacementsVehicle)
                 .WithMany()
                 .WillCascadeOnDelete(false);

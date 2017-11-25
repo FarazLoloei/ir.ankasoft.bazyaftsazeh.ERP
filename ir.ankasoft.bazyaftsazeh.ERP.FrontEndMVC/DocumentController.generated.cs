@@ -105,8 +105,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionParamsClass_Create
         {
             public readonly string request = "request";
-            public readonly string documentCostRequest = "documentCostRequest";
-            public readonly string documentImperfectionRequest = "documentImperfectionRequest";
+            public readonly string documentCostCollection = "documentCostCollection";
+            public readonly string documentImperfectionCollection = "documentImperfectionCollection";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -157,16 +157,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelCreateDocument request, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost.ViewModelCreateAndModifyDocumentCost documentCostRequest, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelCreateAndModifyDocumentImperfection documentImperfectionRequest);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelCreateDocument request, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost.ViewModelCreateAndModifyDocumentCost> documentCostCollection, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelCreateAndModifyDocumentImperfection> documentImperfectionCollection);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelCreateDocument request, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost.ViewModelCreateAndModifyDocumentCost documentCostRequest, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelCreateAndModifyDocumentImperfection documentImperfectionRequest)
+        public override System.Web.Mvc.ActionResult Create(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelCreateDocument request, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost.ViewModelCreateAndModifyDocumentCost> documentCostCollection, System.Collections.Generic.List<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection.ViewModelCreateAndModifyDocumentImperfection> documentImperfectionCollection)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "documentCostRequest", documentCostRequest);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "documentImperfectionRequest", documentImperfectionRequest);
-            CreateOverride(callInfo, request, documentCostRequest, documentImperfectionRequest);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "documentCostCollection", documentCostCollection);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "documentImperfectionCollection", documentImperfectionCollection);
+            CreateOverride(callInfo, request, documentCostCollection, documentImperfectionCollection);
             return callInfo;
         }
 

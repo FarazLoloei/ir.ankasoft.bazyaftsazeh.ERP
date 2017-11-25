@@ -65,7 +65,7 @@
     <Compile Include="Plan.cs" />
     <Compile Include="Plate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReplacementsPlan.cs" />
+    <Compile Include="ReplacementPlan.cs" />
     <Compile Include="Repositories\ICostRepository.cs" />
     <Compile Include="Repositories\IDocumentRepository.cs" />
     <Compile Include="Repositories\IImperfectionRepository.cs" />

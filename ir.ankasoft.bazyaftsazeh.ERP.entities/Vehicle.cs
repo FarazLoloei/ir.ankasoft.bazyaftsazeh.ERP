@@ -1,4 +1,5 @@
-﻿using ir.ankasoft.entities;
+﻿using ir.ankasoft.bazyaftsazeh.ERP.entities.Enums;
+using ir.ankasoft.entities;
 using ir.ankasoft.infrastructure;
 using ir.ankasoft.resource;
 using System;
@@ -38,7 +39,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [MaxLength(20)]
         public string EngineNumber { get; set; }
 
-        public int CylinderCount { get; set; } = 4;
+        public CylinderCounts CylinderCount { get; set; } = CylinderCounts.C4;
 
         #region IDateTracking
 

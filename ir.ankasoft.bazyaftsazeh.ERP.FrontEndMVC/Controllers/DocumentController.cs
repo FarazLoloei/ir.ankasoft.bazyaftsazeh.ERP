@@ -113,19 +113,51 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
             var model = new ViewModelCreateDocument();
             model.LastOwner = model.PlateOwner = model.Investor = model.Contractor = _partiesList;
-            model.BeneficiaryImporter = _importersList;
-            model.Organization = _organizationList;
-            model.Representor = _personList;
-            model.VehicleTip = Common.sessionManager.getVehicleTips();
+            model.ReplacementPlan.BeneficiaryImporter = _importersList;
+            model.GovernmentPlan.Organization = _organizationList;
+            model.ReplacementPlan.Representor = _personList;
+            model.Vehicle.VehicleTip = Common.sessionManager.getVehicleTips();
             return View(model);
         }
 
         [HttpPost]
         public virtual ActionResult Create(ViewModelCreateDocument request, 
-            ViewModelCreateAndModifyDocumentCost documentCostRequest,
-            ViewModelCreateAndModifyDocumentImperfection documentImperfectionRequest) {
+            List<ViewModelCreateAndModifyDocumentCost> documentCostCollection,
+            List<ViewModelCreateAndModifyDocumentImperfection> documentImperfectionCollection) {
 
-            return RedirectToAction(MVC.Document.Index());
+            if (documentCostCollection != null)
+                request.CostCollection = documentCostCollection.Where(_ => !string.IsNullOrEmpty(_.CostTitle)).ToList();
+            if (documentImperfectionCollection != null)
+            {
+                request.ImperfectionCollection = documentImperfectionCollection.Where(_ => !string.IsNullOrEmpty(_.ImperfectionTitle)).ToList();
+                request.ImperfectionCollection = request.ImperfectionCollection.Count() > 0 ? request.ImperfectionCollection : null;
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (_unitOfWorkFactory.Create())
+                    {
+                        var _document = Mapper.Map<Document>(request);
+                        _document.Vehicle = Mapper.Map<Vehicle>(request.Vehicle);
+                        _document.Vehicle.Plate = Mapper.Map<Plate>(request.Vehicle.Plate);
+                        _documentRepository.Add(_document);
+                        return RedirectToAction(MVC.Document.Index());
+                    }
+                }
+                catch (ModelValidationException modelValidationException)
+                {
+                    foreach (var error in modelValidationException.ValidationErrors)
+                    {
+                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
+                    }
+                }
+            }
+
+            return View(request);
+
+
+            //return RedirectToAction(MVC.Document.Index());
         }
     }
 }

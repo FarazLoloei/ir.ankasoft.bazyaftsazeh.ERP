@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehiclePlate
 {
-    public class ViewModelCreateVehiclePlate
+    public class ViewModelCreateAndModifyVehiclePlate
     {
         [HiddenInput(DisplayValue = false)]
         public long recId { get; set; }

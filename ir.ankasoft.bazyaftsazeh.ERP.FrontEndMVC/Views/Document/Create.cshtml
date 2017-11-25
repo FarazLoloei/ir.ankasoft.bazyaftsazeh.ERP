@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        @using (Html.BeginForm(MVC.Cost.Create(), FormMethod.Post, new { @class = "panel" }))
+        @using (Html.BeginForm(MVC.Document.Create(), FormMethod.Post, new { @class = "panel" }))
         {
             @Html.AntiForgeryToken()
             <div role="tabpanel">
@@ -73,11 +73,11 @@
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.PaymentDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.PaymentDateShamsi, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.TextBoxFor(model => model.PaymentDate, new { @class = "form-control PaymentDateDataPicker" })
+                                            @Html.TextBoxFor(model => model.PaymentDateShamsi, new { @class = "form-control PaymentDateDataPicker" })
 
-                                            @Html.ValidationMessageFor(model => model.PaymentDate, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(model => model.PaymentDateShamsi, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </fieldset>
@@ -101,9 +101,9 @@
                                         <div class="panel-body row">
                                             <fieldset>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.BeneficiaryImporterRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.LabelFor(model => model.ReplacementPlan.BeneficiaryImporterRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-md-10">
-                                                        @Html.DropDownListFor(model => model.BeneficiaryImporterRecId, Model.BeneficiaryImporter,
+                                                        @Html.DropDownListFor(model => model.ReplacementPlan.BeneficiaryImporterRecId, Model.ReplacementPlan.BeneficiaryImporter,
                                         new { @class = "select2 form-control" })
                                                         @Html.ValidationMessageFor(model => model.ContractorRecId, "", new { @class = "text-danger" })
                                                     </div>
@@ -111,11 +111,11 @@
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.RepresentorRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.LabelFor(model => model.ReplacementPlan.RepresentorRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-md-10">
-                                                        @Html.DropDownListFor(model => model.RepresentorRecId, Model.Representor,
+                                                        @Html.DropDownListFor(model => model.ReplacementPlan.RepresentorRecId, Model.ReplacementPlan.Representor,
                                         new { @class = "select2 form-control" })
-                                                        @Html.ValidationMessageFor(model => model.RepresentorRecId, "", new { @class = "text-danger" })
+                                                        @Html.ValidationMessageFor(model => model.ReplacementPlan.RepresentorRecId, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -133,29 +133,29 @@
                                         <div class="panel-body row">
                                             <fieldset>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.OrganizationRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.LabelFor(model => model.GovernmentPlan.OrganizationRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-md-10">
-                                                        @Html.DropDownListFor(model => model.OrganizationRecId, Model.Organization, new { @class = "select2 form-control" })
-                                                        @Html.ValidationMessageFor(model => model.OrganizationRecId, "", new { @class = "text-danger" })
+                                                        @Html.DropDownListFor(model => model.GovernmentPlan.OrganizationRecId, Model.GovernmentPlan.Organization, new { @class = "select2 form-control" })
+                                                        @Html.ValidationMessageFor(model => model.GovernmentPlan.OrganizationRecId, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.PermissionNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.LabelFor(model => model.GovernmentPlan.PermissionNumber, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-md-10">
-                                                        @Html.TextBoxFor(model => model.PermissionNumber, new { @class = "form-control" })
-                                                        @Html.ValidationMessageFor(model => model.PermissionNumber, "", new { @class = "text-danger" })
+                                                        @Html.TextBoxFor(model => model.GovernmentPlan.PermissionNumber, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.GovernmentPlan.PermissionNumber, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.RepresentorRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.LabelFor(model => model.GovernmentPlan.RepresentorRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-md-10">
-                                                        @Html.DropDownListFor(model => model.RepresentorRecId, Model.Representor,
-                                        new { @class = "form-control" })
-                                                        @Html.ValidationMessageFor(model => model.RepresentorRecId, "", new { @class = "text-danger" })
+                                                        @Html.DropDownListFor(model => model.GovernmentPlan.RepresentorRecId, Model.GovernmentPlan.Representor,
+                                        new { @class = "form-control select2" })
+                                                        @Html.ValidationMessageFor(model => model.GovernmentPlan.RepresentorRecId, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -167,57 +167,57 @@
                             <div class="col-md-6">
                                 <fieldset>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.VehicleTipRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Vehicle.VehicleTipRecId, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.DropDownListFor(model => model.VehicleTipRecId, Model.VehicleTip,
+                                            @Html.DropDownListFor(model => model.Vehicle.VehicleTipRecId, Model.Vehicle.VehicleTip,
                                         new { @class = "select2 form-control" })
-                                            @Html.ValidationMessageFor(model => model.VehicleTipRecId, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(model => model.Vehicle.VehicleTipRecId, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Vehicle.Model, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.TextBoxFor(model => model.Model, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(model => model.Vehicle.Model, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Vehicle.Model, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Vehicle.Color, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.TextBoxFor(model => model.Color, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(model => model.Vehicle.Color, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Vehicle.Color, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.ChassisNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Vehicle.ChassisNumber, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.TextBoxFor(model => model.ChassisNo, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.ChassisNo, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(model => model.Vehicle.ChassisNumber, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Vehicle.ChassisNumber, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.EngineNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Vehicle.EngineNumber, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.TextBoxFor(model => model.EngineNo, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.EngineNo, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(model => model.Vehicle.EngineNumber, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Vehicle.EngineNumber, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.CylenderCount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Vehicle.CylinderCount, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EnumDropDownListFor(model => model.CylenderCount,
+                                            @Html.EnumDropDownListFor(model => model.Vehicle.CylinderCount,
                                         new { @class = "select2 form-control" })
-                                            @Html.ValidationMessageFor(model => model.CylenderCount, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(model => model.Vehicle.CylinderCount, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </fieldset>
@@ -232,37 +232,37 @@
                                         <div class="panel-body row">
                                             <fieldset>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.Plate.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.LabelFor(model => model.Vehicle.Plate.Color, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-md-10">
-                                                        @Html.EnumDropDownListFor(model => model.Plate.Color, new { @class = "select2 form-control" })
-                                                        @Html.ValidationMessageFor(model => model.VehicleTipRecId, "", new { @class = "text-danger" })
+                                                        @Html.EnumDropDownListFor(model => model.Vehicle.Plate.Color, new { @class = "select2 form-control" })
+                                                        @Html.ValidationMessageFor(model => model.Vehicle.Plate.Color, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.Plate.Series, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.LabelFor(model => model.Vehicle.Plate.Series, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-md-10">
-                                                        @Html.EnumDropDownListFor(model => model.Plate.Series, new { @class = "select2 form-control" })
-                                                        @Html.ValidationMessageFor(model => model.Plate.Series, "", new { @class = "text-danger" })
+                                                        @Html.EnumDropDownListFor(model => model.Vehicle.Plate.Series, new { @class = "select2 form-control" })
+                                                        @Html.ValidationMessageFor(model => model.Vehicle.Plate.Series, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.Plate.Number, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.LabelFor(model => model.Vehicle.Plate.Number, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-md-10">
-                                                        @Html.TextBoxFor(model => model.Plate.Number, new { @class = "form-control" })
-                                                        @Html.ValidationMessageFor(model => model.Plate.Number, "", new { @class = "text-danger" })
+                                                        @Html.TextBoxFor(model => model.Vehicle.Plate.Number, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.Vehicle.Plate.Number, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.Plate.Shape, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.LabelFor(model => model.Vehicle.Plate.Shape, htmlAttributes: new { @class = "control-label col-md-2" })
                                                     <div class="col-md-10">
-                                                        @Html.EnumDropDownListFor(model => model.Plate.Shape, new { @class = "select2 form-control" })
-                                                        @Html.ValidationMessageFor(model => model.Plate.Shape, "", new { @class = "text-danger" })
+                                                        @Html.EnumDropDownListFor(model => model.Vehicle.Plate.Shape, new { @class = "select2 form-control" })
+                                                        @Html.ValidationMessageFor(model => model.Vehicle.Plate.Shape, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -345,6 +345,7 @@
                 //ToDate: false, // default is false,
                 // FromDate: false, // default is false,
                 DisableBeforeToday: true,
+                EnglishNumber: true,
             });
 
             //$(document.body).on("change", ".selector", function (e) {

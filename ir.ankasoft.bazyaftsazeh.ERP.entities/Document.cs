@@ -60,10 +60,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public virtual ICollection<DocumentImperfection> Imperfections { get; set; }
 
-        public long PlanRefRecId { get; set; }
+        public long? ReplacementRefRecId { get; set; }
 
-        [ForeignKey(nameof(PlanRefRecId))]
-        public Plan Plan { get; set; }
+        [ForeignKey(nameof(ReplacementRefRecId))]
+        public ReplacementPlan ReplacementPlan { get; set; }
+
+        public long? GovernmentPlanRefRecId { get; set; }
+
+        [ForeignKey(nameof(GovernmentPlanRefRecId))]
+        public GovernmentPlan GovernmentPlan { get; set; }
 
         public virtual ICollection<Payment> Payments { get; set; }
 
@@ -108,8 +113,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
             if (ContractorRefRecId < 0)
                 yield return new ValidationResult(string.Format(Resource._0MustBeSelect, 0, nameof(ContractorRefRecId)), new[] { nameof(ContractorRefRecId) });
 
-            if (PlanRefRecId < 0)
-                yield return new ValidationResult(string.Format(Resource._0MustBeSelect, 0, nameof(PlanRefRecId)), new[] { nameof(PlanRefRecId) });
+            //if (PlanRefRecId < 0)
+            //    yield return new ValidationResult(string.Format(Resource._0MustBeSelect, 0, nameof(PlanRefRecId)), new[] { nameof(PlanRefRecId) });
         }
 
         #endregion Validation

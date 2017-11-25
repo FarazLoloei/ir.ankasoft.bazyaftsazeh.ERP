@@ -19,7 +19,7 @@ namespace ir.ankasoft.resource {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resource {
@@ -405,9 +405,9 @@ namespace ir.ankasoft.resource {
         /// <summary>
         ///   Looks up a localized string similar to شماره شاسی.
         /// </summary>
-        public static string ChassisNo {
+        public static string ChassisNumber {
             get {
-                return ResourceManager.GetString("ChassisNo", resourceCulture);
+                return ResourceManager.GetString("ChassisNumber", resourceCulture);
             }
         }
         
@@ -621,9 +621,9 @@ namespace ir.ankasoft.resource {
         /// <summary>
         ///   Looks up a localized string similar to تعداد سیلندر.
         /// </summary>
-        public static string CylenderCount {
+        public static string CylinderCount {
             get {
-                return ResourceManager.GetString("CylenderCount", resourceCulture);
+                return ResourceManager.GetString("CylinderCount", resourceCulture);
             }
         }
         
@@ -828,9 +828,9 @@ namespace ir.ankasoft.resource {
         /// <summary>
         ///   Looks up a localized string similar to شماره موتور.
         /// </summary>
-        public static string EngineNo {
+        public static string EngineNumber {
             get {
-                return ResourceManager.GetString("EngineNo", resourceCulture);
+                return ResourceManager.GetString("EngineNumber", resourceCulture);
             }
         }
         
@@ -1947,6 +1947,15 @@ namespace ir.ankasoft.resource {
         public static string PaymentDate {
             get {
                 return ResourceManager.GetString("PaymentDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تاریخ پرداخت.
+        /// </summary>
+        public static string PaymentDateShamsi {
+            get {
+                return ResourceManager.GetString("PaymentDateShamsi", resourceCulture);
             }
         }
         

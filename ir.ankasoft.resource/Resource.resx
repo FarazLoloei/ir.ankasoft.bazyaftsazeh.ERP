@@ -1119,13 +1119,13 @@
   <data name="C8" xml:space="preserve">
     <value>8 سیلندر</value>
   </data>
-  <data name="ChassisNo" xml:space="preserve">
+  <data name="ChassisNumber" xml:space="preserve">
     <value>شماره شاسی</value>
   </data>
-  <data name="CylenderCount" xml:space="preserve">
+  <data name="CylinderCount" xml:space="preserve">
     <value>تعداد سیلندر</value>
   </data>
-  <data name="EngineNo" xml:space="preserve">
+  <data name="EngineNumber" xml:space="preserve">
     <value>شماره موتور</value>
   </data>
   <data name="Model" xml:space="preserve">
@@ -1169,5 +1169,8 @@
   </data>
   <data name="VehiclePlate" xml:space="preserve">
     <value>پلاک خودرو</value>
+  </data>
+  <data name="PaymentDateShamsi" xml:space="preserve">
+    <value>تاریخ پرداخت</value>
   </data>
 </root>
