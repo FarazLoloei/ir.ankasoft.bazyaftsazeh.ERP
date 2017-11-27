@@ -76,7 +76,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                 new Objective() { Title = "Organization", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //4
                 new Objective() { Title = "Cost", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //5
                 new Objective() { Title = "Imperfection", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //6
-                new Objective() { Title = "VehicleTip", Type = ankasoft.entities.Enums.ObjectiveType.Controller } //7
+                new Objective() { Title = "VehicleTip", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //7
+                new Objective() { Title = "Document", Type = ankasoft.entities.Enums.ObjectiveType.Controller } //8
                 );
             context.SaveChanges();
             var _objectiveRefRecId = 1;
@@ -565,6 +566,63 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
             #endregion
 
             _objectiveRefRecId = 7;
+            context.ContextMenuItems.AddOrUpdate(
+            #region VehicleTip
+                new ContextMenuItem()
+                {
+                    Title = "New",
+                    ObjectiveRefRecId = _objectiveRefRecId,
+                    RoleRefRecId = 1,
+                    ShowOnHeader = true,
+                    DisableOnHeader = false,
+                    ShowOnRow = true,
+                    DisableOnRow = false,
+                    Icon = "fa-file-o",
+                    GroupCode = 1,
+                    Priority = 1
+                },
+                new ContextMenuItem()
+                {
+                    Title = "Edit",
+                    ObjectiveRefRecId = _objectiveRefRecId,
+                    RoleRefRecId = 1,
+                    ShowOnHeader = true,
+                    DisableOnHeader = true,
+                    ShowOnRow = true,
+                    DisableOnRow = false,
+                    Icon = "fa-pencil",
+                    GroupCode = 1,
+                    Priority = 2
+                },
+                new ContextMenuItem()
+                {
+                    Title = "Delete",
+                    ObjectiveRefRecId = _objectiveRefRecId,
+                    RoleRefRecId = 1,
+                    ShowOnHeader = true,
+                    DisableOnHeader = true,
+                    ShowOnRow = true,
+                    DisableOnRow = false,
+                    Icon = "fa-trash-o",
+                    GroupCode = 1,
+                    Priority = 3
+                },
+                new ContextMenuItem()
+                {
+                    Title = "ExportToExcel",
+                    ObjectiveRefRecId = _objectiveRefRecId,
+                    RoleRefRecId = 1,
+                    ShowOnHeader = true,
+                    DisableOnHeader = false,
+                    ShowOnRow = true,
+                    DisableOnRow = true,
+                    Icon = "fa-file-excel-o",
+                    GroupCode = 2,
+                    Priority = 1
+                });
+            #endregion
+
+            _objectiveRefRecId = 8;
             context.ContextMenuItems.AddOrUpdate(
             #region VehicleTip
                 new ContextMenuItem()

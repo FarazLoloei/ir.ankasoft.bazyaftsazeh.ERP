@@ -1173,4 +1173,7 @@
   <data name="PaymentDateShamsi" xml:space="preserve">
     <value>تاریخ پرداخت</value>
   </data>
+  <data name="Vehicle" xml:space="preserve">
+    <value>خودرو</value>
+  </data>
 </root>

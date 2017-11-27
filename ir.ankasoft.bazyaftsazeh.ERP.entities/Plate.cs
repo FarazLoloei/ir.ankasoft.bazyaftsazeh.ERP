@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
@@ -22,6 +23,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         [Required]
         public Enums.PlateShapes Shape { get; set; }
+
+        public override string ToString()
+        {
+            var _number = Number.Split('-').ToList();
+            if (_number.Count() > 1)
+                return $"{_number[0]} {Series} {_number[1]}";
+            else
+                return $"{Number}";
+            //return base.ToString();
+        }
 
         #region IDateTracking
 

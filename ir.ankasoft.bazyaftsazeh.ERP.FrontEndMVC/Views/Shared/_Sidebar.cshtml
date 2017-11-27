@@ -36,6 +36,13 @@
                     <span data-localize="sidebar.nav.DASHBOARD">@Resource.Dashboard</span>
                 </a>
             </li>
+            <li class="@Html.isActive(controller: "Document")">
+                <a href="@Url.Action(MVC.Document.Index())" title="@Resource.Document">
+                    @*<div class="label label-info pull-right">3</div>*@
+                    <em class="fa fa-folder-open"></em>
+                    <span data-localize="sidebar.nav.DOCUMENT">@Resource.Document</span>
+                </a>
+            </li>
             @*<li class="">
                 <a href="#warehouse" title="Warehouse" data-toggle="collapse">
                     <em class="fa fa-building"></em>

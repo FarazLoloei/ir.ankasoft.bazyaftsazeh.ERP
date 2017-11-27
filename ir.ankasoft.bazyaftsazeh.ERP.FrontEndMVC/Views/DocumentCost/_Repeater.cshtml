@@ -19,7 +19,7 @@
             @foreach (var item in Model.Select((value, i) => new { i, value }))
             {
                 <tr>
-                    <td class="hidden">@Html.HiddenFor(model => Model[@item.i].CostrecId)</td>
+                    <td class="hidden">@Html.HiddenFor(model => Model[@item.i].CostRecId)</td>
                     <td class="col-md-4">@Html.DropDownListFor(model => Model[@item.i].CostTitle, Model[item.i].CostList, new { @class = "select2 form-control selector" })</td>
                     <td class="col-md-2">@Html.EditorFor(model => Model[@item.i].CostValue, new { htmlAttributes = new { @class = "form-control text-right value" } })</td>
                     <td class="col-md-6"></td>

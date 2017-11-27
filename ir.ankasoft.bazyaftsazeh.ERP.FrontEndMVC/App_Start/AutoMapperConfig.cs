@@ -581,9 +581,23 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
         private static void ConfigDocument(IMapperConfigurationExpression _)
         {
             /*Display*/
-            //_.CreateMap<ViewModelCreateDocument, Document>()
-            //    //.ForMember(p => p.PreDefineTitleRefRecId, t => t.Ignore())
-            //    //.ForMember(p => p.Title, t => t.Ignore())
+            //_.CreateMap<ViewModelDocumentDisplay, Document>()
+            //    .ForMember(p => p.LastOwnerRefRecId, t => t.Ignore())
+            //    .ForMember(p => p.PlateOwnerRefRecId, t => t.Ignore())
+            //    .ForMember(p => p.InvestorRefRecId, t => t.Ignore())
+            //    .ForMember(p => p.Investor, t => t.Ignore())
+            //    .ForMember(p => p.VehicleRefRecId, t => t.Ignore())
+            //    .ForMember(p => p.PaymentType, t => t.Ignore())
+            //    .ForMember(p => p.PaymentDate, t => t.Ignore())
+            //    .ForMember(p => p.ContractorRefRecId, t => t.Ignore())
+            //    .ForMember(p => p.Contractor, t => t.Ignore())
+            //    .ForMember(p => p.Costs, t => t.Ignore())
+            //    .ForMember(p => p.Imperfections, t => t.Ignore())
+            //    .ForMember(p => p.ReplacementRefRecId, t => t.Ignore())
+            //    .ForMember(p => p.ReplacementPlan, t => t.Ignore())
+            //    .ForMember(p => p.GovernmentPlanRefRecId, t => t.Ignore())
+            //    .ForMember(p => p.GovernmentPlan, t => t.Ignore())
+            //    .ForMember(p => p.Payments, t => t.Ignore())
             //    .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
             //    .ForMember(p => p.creatorUser, t => t.Ignore())
             //    .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
@@ -591,8 +605,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             //    .ForMember(p => p.createdDateTime, t => t.Ignore())
             //    .ForMember(p => p.modifiedDateTime, t => t.Ignore());
 
-            //_.CreateMap<Document, ViewModelCreateDocument>();
-            //.ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title));
+            _.CreateMap<Document, ViewModelDisplayDocument>()
+            .ForMember(p => p.LastOwner, opt => opt.MapFrom(dest => dest.LastOwner.Title))
+            .ForMember(p => p.PlateOwner, opt => opt.MapFrom(dest => dest.PlateOwner.Title))
+            .ForMember(p => p.Vehicle, opt => opt.MapFrom(dest => dest.Vehicle.ToString()))
+            .ForMember(p => p.PlateNumber, opt => opt.MapFrom(dest => dest.Vehicle.Plate.ToString()))
+            .ForMember(p => p.PlanType, opt => opt.MapFrom(dest => dest.Vehicle.Plate.ToString()));
 
             /*Create*/
             _.CreateMap<ViewModelCreateDocument, Document>()

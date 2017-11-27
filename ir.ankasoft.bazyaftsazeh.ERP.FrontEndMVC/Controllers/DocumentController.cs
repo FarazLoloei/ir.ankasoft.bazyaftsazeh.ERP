@@ -48,7 +48,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         // GET: Document
         public virtual ActionResult Index(FilterDataSource request)
         {
-            Common.sessionManager.getContextMenu(nameof(PartyController).Replace(nameof(Controller), string.Empty));
+            Common.sessionManager.getContextMenu(nameof(DocumentController).Replace(nameof(Controller), string.Empty));
 
             request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
             if (Request.IsAjaxRequest())
@@ -57,16 +57,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View(Load(request));
         }
 
-        private PagerModel<ViewModelDocumentDisplay> Load(FilterDataSource request)
+        private PagerModel<ViewModelDisplayDocument> Load(FilterDataSource request)
         {
-            var data = new List<ViewModelDocumentDisplay>();
+            var data = new List<ViewModelDisplayDocument>();
             int totalRecords;
             IQueryable<Document> documents =
                 _documentRepository.LoadByFilter(
                     request, out totalRecords)
                                    .AsQueryable();
-            data = Mapper.Map<List<ViewModelDocumentDisplay>>(documents);
-            var model = new PagerModel<ViewModelDocumentDisplay>
+            data = Mapper.Map<List<ViewModelDisplayDocument>>(documents);
+            var model = new PagerModel<ViewModelDisplayDocument>
             {
                 Data = data,
                 PageData = new PagerData
@@ -158,6 +158,23 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
 
             //return RedirectToAction(MVC.Document.Index());
+        }
+
+        [HttpGet]
+        public virtual ActionResult Modify(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public virtual ActionResult Modify()
+        {
+            return View();
+        }
+
+        public virtual ActionResult Remove(int id)
+        {
+            return View();
         }
     }
 }

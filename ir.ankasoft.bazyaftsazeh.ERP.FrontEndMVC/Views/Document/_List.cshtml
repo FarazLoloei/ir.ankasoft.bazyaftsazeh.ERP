@@ -1,1 +1,83 @@
-﻿
+﻿@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelDisplayDocument>
+
+<table class="table anka_dataTable table-striped table-bordered">
+    @{
+        var modelHeader = Model.Data.FirstOrDefault();
+        var defaultClass = "";
+        <thead>
+            @Html.Hidden("sortBy", Model.PageData.filterDataSource.sortBy)
+            @Html.Hidden("sortType", Model.PageData.filterDataSource.sortType)
+            <tr class="context-menu-header">
+                <th>
+                    <a href="#" data-column="@nameof(modelHeader.LastOwner)">
+                        @Html.LabelFor(modelItem => modelHeader.LastOwner)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.LastOwner))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
+                <th>
+                    <a href="#" data-column="@nameof(modelHeader.PlateOwner)">
+                        @Html.LabelFor(modelItem => modelHeader.PlateOwner)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.PlateOwner))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
+                <th>
+                    @Html.LabelFor(modelItem => modelHeader.PlanType)
+                </th>
+                <th>
+                    @Html.LabelFor(modelItem => modelHeader.Vehicle)
+                </th>
+                <th>
+                    @Html.LabelFor(modelItem => modelHeader.PlateNumber)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+                            if (Model.Data.Any())
+                            {
+                                <tbody>
+                                    @foreach (var item in Model.Data)
+                {
+                                        <tr data-itemid='@item.recId' class="context-menu">
+                                            <td class="col-md-2">@Html.DisplayFor(modelItem => item.LastOwner)</td>
+                                            <td class="col-md-2">@Html.DisplayFor(modelItem => item.PlateOwner)</td>
+                                            <td class="col-md-2">@Html.DisplayFor(modelItem => item.PlanType)</td>
+                                            <td class="col-md-1">@Html.DisplayFor(modelItem => item.Vehicle)</td>
+                                            <td class="col-md-1">@Html.DisplayFor(modelItem => item.PlateNumber)</td>
+                                            <td class="col-md-4"></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                @*<tfoot>
+                                        <tr>
+
+                                            <td class="col-md-2">@Html.Editor(Model.filter.NationalCode)</td>
+                                                <td class="col-md-2">@Html.Editor(Model.filter.Title)</td>
+                                                <td class="col-md-2"></td>
+                                                <td class="col-md-1"></td>
+                                                <td class="col-md-1"></td>
+                                                <td class="col-md-4"></td>
+                                        </tr>
+                                    </tfoot>*@
+                            }
+    }
+</table>
+
+@Html.Partial(MVC.Shared.Views._Pager, Model.PageData)

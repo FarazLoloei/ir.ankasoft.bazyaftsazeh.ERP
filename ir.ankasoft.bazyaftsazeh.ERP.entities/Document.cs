@@ -1,4 +1,5 @@
-﻿using ir.ankasoft.entities;
+﻿using ir.ankasoft.bazyaftsazeh.ERP.entities.Enums;
+using ir.ankasoft.entities;
 using ir.ankasoft.infrastructure;
 using ir.ankasoft.resource;
 using System;
@@ -59,6 +60,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public virtual ICollection<DocumentCost> Costs { get; set; }
 
         public virtual ICollection<DocumentImperfection> Imperfections { get; set; }
+
+        public virtual PlanType PlanType { get; set; }
 
         public long? ReplacementRefRecId { get; set; }
 

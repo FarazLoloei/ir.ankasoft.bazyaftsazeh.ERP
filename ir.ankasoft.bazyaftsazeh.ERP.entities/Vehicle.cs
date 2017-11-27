@@ -41,6 +41,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public CylinderCounts CylinderCount { get; set; } = CylinderCounts.C4;
 
+        public override string ToString()
+        {
+            return $"{VehicleTip.ToString()} - {Plate.ToString()}";
+            //return base.ToString();
+        }
+
         #region IDateTracking
 
         public DateTime createdDateTime { get; set; }

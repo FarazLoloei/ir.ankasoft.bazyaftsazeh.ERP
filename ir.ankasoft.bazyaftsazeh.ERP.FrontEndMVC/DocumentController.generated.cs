@@ -62,6 +62,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Remove()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Remove);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public DocumentController Actions { get { return MVC.Document; } }
@@ -80,6 +86,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Create = "Create";
+            public readonly string Modify = "Modify";
+            public readonly string Remove = "Remove";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -87,6 +95,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public const string Index = "Index";
             public const string Create = "Create";
+            public const string Modify = "Modify";
+            public const string Remove = "Remove";
         }
 
 
@@ -107,6 +117,22 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string request = "request";
             public readonly string documentCostCollection = "documentCostCollection";
             public readonly string documentImperfectionCollection = "documentImperfectionCollection";
+        }
+        static readonly ActionParamsClass_Modify s_params_Modify = new ActionParamsClass_Modify();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Modify ModifyParams { get { return s_params_Modify; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Modify
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_Remove s_params_Remove = new ActionParamsClass_Remove();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Remove RemoveParams { get { return s_params_Remove; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Remove
+        {
+            public readonly string id = "id";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -167,6 +193,41 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "documentCostCollection", documentCostCollection);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "documentImperfectionCollection", documentImperfectionCollection);
             CreateOverride(callInfo, request, documentCostCollection, documentImperfectionCollection);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Modify(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ModifyOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Modify()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
+            ModifyOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void RemoveOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Remove(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Remove);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            RemoveOverride(callInfo, id);
             return callInfo;
         }
 
