@@ -609,8 +609,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             .ForMember(p => p.LastOwner, opt => opt.MapFrom(dest => dest.LastOwner.Title))
             .ForMember(p => p.PlateOwner, opt => opt.MapFrom(dest => dest.PlateOwner.Title))
             .ForMember(p => p.Vehicle, opt => opt.MapFrom(dest => dest.Vehicle.ToString()))
-            .ForMember(p => p.PlateNumber, opt => opt.MapFrom(dest => dest.Vehicle.Plate.ToString()))
-            .ForMember(p => p.PlanType, opt => opt.MapFrom(dest => dest.Vehicle.Plate.ToString()));
+            .ForMember(p => p.PlateNumber, opt => opt.MapFrom(dest => dest.Vehicle.Plate.ToString()));
+            //.ForMember(p => p.PlanType, opt => opt.MapFrom(dest => dest.PlanType));
 
             /*Create*/
             _.CreateMap<ViewModelCreateDocument, Document>()

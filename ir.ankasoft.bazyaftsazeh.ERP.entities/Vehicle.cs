@@ -43,7 +43,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override string ToString()
         {
-            return $"{VehicleTip.ToString()} - {Plate.ToString()}";
+            return $"{VehicleTip.ToString()}";// - {Plate.ToString()}";
             //return base.ToString();
         }
 

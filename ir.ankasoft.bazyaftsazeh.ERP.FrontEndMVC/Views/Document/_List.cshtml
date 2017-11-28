@@ -58,10 +58,10 @@
                                         <tr data-itemid='@item.recId' class="context-menu">
                                             <td class="col-md-2">@Html.DisplayFor(modelItem => item.LastOwner)</td>
                                             <td class="col-md-2">@Html.DisplayFor(modelItem => item.PlateOwner)</td>
-                                            <td class="col-md-2">@Html.DisplayFor(modelItem => item.PlanType)</td>
-                                            <td class="col-md-1">@Html.DisplayFor(modelItem => item.Vehicle)</td>
-                                            <td class="col-md-1">@Html.DisplayFor(modelItem => item.PlateNumber)</td>
-                                            <td class="col-md-4"></td>
+                                            <td class="col-md-2">@Html.AnkaResource(modelItem => item.PlanType)</td>
+                                            <td class="col-md-2">@Html.DisplayFor(modelItem => item.Vehicle)</td>
+                                            <td class="col-md-1 text-right">@Html.DisplayFor(modelItem => item.PlateNumber)</td>
+                                            <td class="col-md-3"></td>
                                         </tr>
                                     }
                                 </tbody>

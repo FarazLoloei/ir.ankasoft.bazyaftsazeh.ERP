@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Resources;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
@@ -20,6 +21,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public long Capasity { get; set; }
 
         public Enums.CapasityType CapasityType { get; set; } = Enums.CapasityType.Individual;
+
+        public override string ToString()
+        {
+            var _resource = new ResourceManager(typeof(resource.Resource));
+            return $"{_resource.GetString(Type.ToString())} {System} ({Capasity} {_resource.GetString(CapasityType.ToString())})";
+            //return base.ToString();
+        }
 
         #region IDateTracking
 

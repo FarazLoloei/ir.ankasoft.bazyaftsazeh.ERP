@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Resources;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
@@ -26,9 +27,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override string ToString()
         {
+            
             var _number = Number.Split('-').ToList();
             if (_number.Count() > 1)
-                return $"{_number[0]} {Series} {_number[1]}";
+                return $"{_number[1]} {new ResourceManager(typeof(resource.Resource)).GetString(Series.ToString())} {_number[0]}";
             else
                 return $"{Number}";
             //return base.ToString();

@@ -17,11 +17,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
         {
 
             IQueryable<Document> objects = FindAll(x => x.LastOwner.Title.Contains(request.keyword) ||
-                                                        x.PlateOwner.Title.Contains(request.keyword),
+                                                        x.PlateOwner.Title.Contains(request.keyword) ||
+                                                        x.Vehicle.VehicleTip.System.Contains(request.keyword) ||
+                                                        x.Vehicle.Plate.Number.Contains(request.keyword),
                                                         y => y.LastOwner,
                                                         y => y.PlateOwner,
                                                         y => y.Vehicle,
-                                                        y => y.Vehicle.Plate
+                                                        y => y.Vehicle.Plate,
+                                                        y => y.Vehicle.VehicleTip
                                                      ).AsQueryable();
             totalRecords = objects.Count();
             return objects.OrderBy(BuildOrderBy(request.sort.Key, request.sort.Value.ToString())).Skip((request.page * request.pageSize) - request.pageSize).Take(request.pageSize);
