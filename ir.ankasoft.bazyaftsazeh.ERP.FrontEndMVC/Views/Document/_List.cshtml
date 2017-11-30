@@ -39,13 +39,28 @@
                     </span>
                 </th>
                 <th>
-                    @Html.LabelFor(modelItem => modelHeader.PlanType)
+                    <a href="#" data-column="@nameof(modelHeader.PlanType)">
+                        @Html.LabelFor(modelItem => modelHeader.PlanType)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.PlanType))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
                 </th>
                 <th>
                     @Html.LabelFor(modelItem => modelHeader.Vehicle)
                 </th>
                 <th>
                     @Html.LabelFor(modelItem => modelHeader.PlateNumber)
+                </th>
+                <th>
+                    @Html.LabelFor(modelItem => modelHeader.TotalCostValue)
                 </th>
                 <th></th>
             </tr>
@@ -54,14 +69,15 @@
                             {
                                 <tbody>
                                     @foreach (var item in Model.Data)
-                {
+                                    {
                                         <tr data-itemid='@item.recId' class="context-menu">
                                             <td class="col-md-2">@Html.DisplayFor(modelItem => item.LastOwner)</td>
                                             <td class="col-md-2">@Html.DisplayFor(modelItem => item.PlateOwner)</td>
                                             <td class="col-md-2">@Html.AnkaResource(modelItem => item.PlanType)</td>
                                             <td class="col-md-2">@Html.DisplayFor(modelItem => item.Vehicle)</td>
                                             <td class="col-md-1 text-right">@Html.DisplayFor(modelItem => item.PlateNumber)</td>
-                                            <td class="col-md-3"></td>
+                                            <td class="col-md-1 text-right">@Html.DisplayFor(modelItem => item.TotalCostValueDisplayMode)</td>
+                                            <td class="col-md-2"></td>
                                         </tr>
                                     }
                                 </tbody>

@@ -31,5 +31,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
 
         [Display(Name = nameof(PlanType), ResourceType = typeof(Resource))]
         public PlanType PlanType { get; set; }
+
+        [Display(Name = nameof(TotalCostValue), ResourceType = typeof(Resource))]
+        public string TotalCostValueDisplayMode
+        {
+            get
+            {
+                return tools.Convert.GroupDigiting(TotalCostValue, 0);
+            }
+        }
+
+        [Display(Name = nameof(TotalCostValue), ResourceType = typeof(Resource))]
+        public double TotalCostValue { get; set; }
     }
 }

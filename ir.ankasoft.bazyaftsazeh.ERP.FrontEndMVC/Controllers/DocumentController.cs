@@ -109,7 +109,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             }).ToList();
             _personList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
 
-            
+
 
             var model = new ViewModelCreateDocument();
             model.LastOwner = model.PlateOwner = model.Investor = model.Contractor = _partiesList;
@@ -121,9 +121,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Create(ViewModelCreateDocument request, 
+        public virtual ActionResult Create(ViewModelCreateDocument request,
             List<ViewModelCreateAndModifyDocumentCost> documentCostCollection,
-            List<ViewModelCreateAndModifyDocumentImperfection> documentImperfectionCollection) {
+            List<ViewModelCreateAndModifyDocumentImperfection> documentImperfectionCollection)
+        {
 
             if (documentCostCollection != null)
                 request.CostCollection = documentCostCollection.Where(_ => !string.IsNullOrEmpty(_.CostTitle)).ToList();
@@ -139,6 +140,27 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     using (_unitOfWorkFactory.Create())
                     {
                         var _document = Mapper.Map<Document>(request);
+                        //_document.Costs = Mapper.Map<List<DocumentCost>, List<ViewModelCreateAndModifyDocumentCost>>(request.CostCollection);
+
+                        _document.Costs = request.CostCollection.Select(_ =>
+                        {
+                            return new DocumentCost()
+                            {
+                                PreDefineTitleRefRecId = Convert.ToInt32(_.CostTitle.Split(',')[0]),
+                                Value = _.CostValue
+                            };
+                        }).ToList();
+
+
+                        _document.Imperfections = request.ImperfectionCollection.Select(_ =>
+                        {
+                            return new DocumentImperfection()
+                            {
+                                PreDefineTitleRefRecId = Convert.ToInt32(_.ImperfectionTitle.Split(',')[0]),
+                                Value = _.ImperfectionValue
+                            };
+                        }).ToList();
+
                         _document.Vehicle = Mapper.Map<Vehicle>(request.Vehicle);
                         _document.Vehicle.Plate = Mapper.Map<Plate>(request.Vehicle.Plate);
                         _documentRepository.Add(_document);

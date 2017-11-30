@@ -1176,4 +1176,7 @@
   <data name="Vehicle" xml:space="preserve">
     <value>خودرو</value>
   </data>
+  <data name="TotalCostValue" xml:space="preserve">
+    <value>جمع هزینه ها</value>
+  </data>
 </root>

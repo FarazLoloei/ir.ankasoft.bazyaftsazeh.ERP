@@ -2779,6 +2779,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to جمع هزینه ها.
+        /// </summary>
+        public static string TotalCostValue {
+            get {
+                return ResourceManager.GetString("TotalCostValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to مقدار کل.
         /// </summary>
         public static string TotalQty {

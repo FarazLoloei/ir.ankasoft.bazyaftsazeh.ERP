@@ -5,6 +5,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Imperfection;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Importer;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Notification;
@@ -64,6 +65,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 /*Document*/
                 ConfigDocument(_);
+
+                /*Document Cost*/
+                ConfigDocumentCost(_);
 
                 /*ConfigVehicle*/
                 ConfigVehicle(_);
@@ -609,7 +613,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             .ForMember(p => p.LastOwner, opt => opt.MapFrom(dest => dest.LastOwner.Title))
             .ForMember(p => p.PlateOwner, opt => opt.MapFrom(dest => dest.PlateOwner.Title))
             .ForMember(p => p.Vehicle, opt => opt.MapFrom(dest => dest.Vehicle.ToString()))
-            .ForMember(p => p.PlateNumber, opt => opt.MapFrom(dest => dest.Vehicle.Plate.ToString()));
+            .ForMember(p => p.PlateNumber, opt => opt.MapFrom(dest => dest.Vehicle.Plate.ToString()))
+            .ForMember(p => p.TotalCostValue, opt => opt.MapFrom(dest => dest.Costs.Sum(x => x.Value)));
             //.ForMember(p => p.PlanType, opt => opt.MapFrom(dest => dest.PlanType));
 
             /*Create*/
@@ -657,6 +662,76 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
         }
 
+        private static void ConfigDocumentCost(IMapperConfigurationExpression _)
+        {
+            /*Create*/
+            _.CreateMap<DocumentCost, ViewModelCreateAndModifyDocumentCost>()
+            .ForMember(p => p.CostRecId, opt => opt.MapFrom(dest => dest.recId))
+            .ForMember(p => p.CostTitle, opt => opt.MapFrom(dest => dest.Title))
+            .ForMember(p => p.CostValue, opt => opt.MapFrom(dest => dest.Value))
+            .ForMember(p => p.CostList, t => t.Ignore());
+
+            _.CreateMap<ViewModelCreateAndModifyDocumentCost, DocumentCost>()
+            .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.CostRecId))
+            .ForMember(p => p.PreDefineTitleRefRecId, t => t.Ignore())
+            .ForMember(p => p.Title, t => t.Ignore())//, opt => opt.MapFrom(dest => dest.CostTitle))
+            .ForMember(p => p.Value, opt => opt.MapFrom(dest => dest.CostValue))
+            .ForMember(p => p.DocumentRefRecId, t => t.Ignore())
+            .ForMember(p => p.Document, t => t.Ignore())
+            .ForMember(p => p.createdDateTime, t => t.Ignore())
+            .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+            .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+            .ForMember(p => p.creatorUser, t => t.Ignore())
+            .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+            .ForMember(p => p.modifierUser, t => t.Ignore());
+
+
+
+
+
+
+            //.ForMember(p => p.LastOwnerRefRecId, opt => opt.MapFrom(dest => dest.LastOwnerRecId))
+            //.ForMember(p => p.LastOwner, t => t.Ignore())
+            //.ForMember(p => p.PlateOwnerRefRecId, opt => opt.MapFrom(dest => dest.PlateOwnerRecId))
+            //.ForMember(p => p.PlateOwner, t => t.Ignore())
+            //.ForMember(p => p.InvestorRefRecId, opt => opt.MapFrom(dest => dest.InvestorRecId))
+            //.ForMember(p => p.Investor, t => t.Ignore())
+            //.ForMember(p => p.VehicleRefRecId, t => t.Ignore())
+            //.ForMember(p => p.Vehicle, t => t.Ignore())
+            //.ForMember(p => p.PaymentDate, t => t.Ignore())
+            //.ForMember(p => p.ContractorRefRecId, opt => opt.MapFrom(dest => dest.ContractorRecId))
+            //.ForMember(p => p.Contractor, t => t.Ignore())
+            //.ForMember(p => p.Costs, t => t.Ignore())
+            //.ForMember(p => p.Imperfections, t => t.Ignore())
+            //.ForMember(p => p.ReplacementRefRecId, t => t.Ignore())
+            //.ForMember(p => p.ReplacementPlan, t => t.Ignore())
+            //.ForMember(p => p.GovernmentPlanRefRecId, t => t.Ignore())
+            //.ForMember(p => p.GovernmentPlan, t => t.Ignore())
+            //.ForMember(p => p.Payments, t => t.Ignore())
+
+            //.ForMember(p => p.createdDateTime, t => t.Ignore())
+            //.ForMember(p => p.modifiedDateTime, t => t.Ignore())
+            //.ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+            //.ForMember(p => p.creatorUser, t => t.Ignore())
+            //.ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+            //.ForMember(p => p.modifierUser, t => t.Ignore());
+
+            //_.CreateMap<Document, ViewModelCreateDocument>()
+            //    .ForMember(p => p.CostCollection, t => t.Ignore())
+            //    .ForMember(p => p.ImperfectionCollection, t => t.Ignore())
+            //    .ForMember(p => p.PaymentCollection, t => t.Ignore())
+            //    .ForMember(p => p.BeneficiaryImporterRecId, t => t.Ignore())
+            //    .ForMember(p => p.BeneficiaryImporter, t => t.Ignore())
+            //    .ForMember(p => p.ReplacementVehicleRecId, t => t.Ignore())
+            //    .ForMember(p => p.ReplacementVehicle, t => t.Ignore())
+            //    .ForMember(p => p.RepresentorRecId, t => t.Ignore())
+            //    .ForMember(p => p.Representor, t => t.Ignore())
+            //    .ForMember(p => p.OrganizationRecId, t => t.Ignore())
+            //    .ForMember(p => p.Organization, t => t.Ignore())
+            //    .ForMember(p => p.PermissionNumber, t => t.Ignore());
+            //.ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title));
+
+        }
         private static void ConfigVehicle(IMapperConfigurationExpression _)
         {
             /*Display*/
