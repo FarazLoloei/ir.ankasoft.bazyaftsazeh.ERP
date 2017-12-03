@@ -1179,4 +1179,10 @@
   <data name="TotalCostValue" xml:space="preserve">
     <value>جمع هزینه ها</value>
   </data>
+  <data name="EditCosts" xml:space="preserve">
+    <value>ویرایش هزینه ها</value>
+  </data>
+  <data name="EditImperfections" xml:space="preserve">
+    <value>ویرایش نقص ها</value>
+  </data>
 </root>

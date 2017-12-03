@@ -1,0 +1,279 @@
+﻿@model ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelModifyDocument
+
+<h3>@Resource.Document</h3>
+
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm(MVC.Party.Modify(), FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">@Resource.Edit</div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <div class="form-horizontal">
+                            @Html.HiddenFor(model => model.recId)
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LastOwnerRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.LastOwnerRecId, Model.LastOwner,
+                                        new { @class = "select2 form-control" })
+                                        @Html.ValidationMessageFor(model => model.LastOwnerRecId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PlateOwnerRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.PlateOwnerRecId, Model.PlateOwner,
+                                        new { @class = "select2 form-control" })
+                                        @Html.ValidationMessageFor(model => model.PlateOwnerRecId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.InvestorRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.InvestorRecId, Model.Investor,
+                                        new { @class = "select2 form-control" })
+                                        @Html.ValidationMessageFor(model => model.InvestorRecId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ContractorRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.ContractorRecId, Model.Contractor,
+                                        new { @class = "select2 form-control" })
+                                        @Html.ValidationMessageFor(model => model.ContractorRecId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PaymentType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EnumDropDownListFor(model => model.PaymentType, new { @class = "form-control select2" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PaymentDateShamsi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.PaymentDateShamsi, new { @class = "form-control PaymentDateDataPicker" })
+
+                                        @Html.ValidationMessageFor(model => model.PaymentDateShamsi, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="form-horizontal col-md-6">
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Vehicle.VehicleTipRecId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Vehicle.VehicleTipRecId, Model.Vehicle.VehicleTip,
+                                        new { @class = "select2 form-control" })
+                                    @Html.ValidationMessageFor(model => model.Vehicle.VehicleTipRecId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Vehicle.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.Vehicle.Model, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Vehicle.Model, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Vehicle.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.Vehicle.Color, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Vehicle.Color, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Vehicle.ChassisNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.Vehicle.ChassisNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Vehicle.ChassisNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Vehicle.EngineNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.Vehicle.EngineNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Vehicle.EngineNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Vehicle.CylinderCount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EnumDropDownListFor(model => model.Vehicle.CylinderCount,
+                                        new { @class = "select2 form-control" })
+                                    @Html.ValidationMessageFor(model => model.Vehicle.CylinderCount, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                @Resource.VehiclePlate @Resource.Information
+                                <a href="#" data-tool="panel-collapse" data-toggle="tooltip" title="@Resource.Collapse" class="pull-right">
+                                    <em class="fa fa-minus"></em>
+                                </a>
+                            </div>
+                            <div class="panel-wrapper collapse in">
+                                <div class="panel-body">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Vehicle.Plate.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EnumDropDownListFor(model => model.Vehicle.Plate.Color, new { @class = "select2 form-control" })
+                                                @Html.ValidationMessageFor(model => model.Vehicle.Plate.Color, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Vehicle.Plate.Series, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EnumDropDownListFor(model => model.Vehicle.Plate.Series, new { @class = "select2 form-control" })
+                                                @Html.ValidationMessageFor(model => model.Vehicle.Plate.Series, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Vehicle.Plate.Number, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(model => model.Vehicle.Plate.Number, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Vehicle.Plate.Number, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Vehicle.Plate.Shape, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EnumDropDownListFor(model => model.Vehicle.Plate.Shape, new { @class = "select2 form-control" })
+                                                @Html.ValidationMessageFor(model => model.Vehicle.Plate.Shape, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                </div>
+                                @*<div class="panel-footer">Panel Footer</div>*@
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="panel-footer">
+                    <div class="clearfix">
+                        <div class="pull-right">
+                            <button class="btn btn-primary" type="submit">@Resource.Edit</button>
+                            @Html.ActionLink(Resource.EditCosts, MVC.Party.CommunicationList(Model.recId), new { @class = "btn btn-green" })
+                            @Html.ActionLink(Resource.EditImperfections, MVC.Party.PostalAddressList(Model.recId), new { @class = "btn btn-green" })
+                            @Html.ActionLink(Resource.Cancel, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-warning" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section styles{
+    @Styles.Render(Bundles.Styles.bootstrapPersianDatePickerCss)
+}
+@section scripts{
+    @Scripts.Render(Bundles.Scripts.sweetAlert)
+    @Scripts.Render(Bundles.Scripts.bootstrapPersianDatePicker)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document.body).on("change", ".selector", function (e) {
+                $(e.target).parent().parent().find('.value').val(this.value.split(',')[1]);
+            });
+            $('.PaymentDateDataPicker').MdPersianDateTimePicker({
+                Placement: 'right', // default is 'bottom'
+                //Trigger: 'focus', // default is 'focus',
+                //EnableTimePicker: true, // default is true,
+                TargetSelector: '.PaymentDateDataPicker', // default is empty,
+                //GroupId: '', // default is empty,
+                //ToDate: false, // default is false,
+                // FromDate: false, // default is false,
+                DisableBeforeToday: true,
+                EnglishNumber: true,
+            });
+
+            //$('#PlanType').on("change", function (e) {
+            //    switch (this.value) {
+
+            //        case '2': //Replacement
+            //            var governmentSection = $('div#GovernmentSection');
+            //            if (!governmentSection.find('div.panel-heading').hasClass('panel-heading-collapsed'))
+            //            {
+            //                governmentSection.find('div.panel-heading').addClass('panel-heading-collapsed');
+            //                governmentSection.find('div.panel-wrapper').addClass('collapse');
+            //            }
+
+            //            var replacementSection = $('div#ReplacementSection');
+            //            replacementSection.find('div.panel-heading').removeClass('panel-heading-collapsed');
+            //            replacementSection.find('div.panel-wrapper').removeClass('collapse');
+
+            //            break;
+            //        case '3':// Government
+            //            var replacementSection = $('div#ReplacementSection');
+            //            if (!replacementSection.find('div.panel-heading').hasClass('panel-heading-collapsed')) {
+            //                replacementSection.find('div.panel-heading').addClass('panel-heading-collapsed');
+            //                replacementSection.find('div.panel-wrapper').addClass('collapse');
+            //            }
+
+            //            var governmentSection = $('div#GovernmentSection');
+            //            governmentSection.find('div.panel-heading').removeClass('panel-heading-collapsed');
+            //            governmentSection.find('div.panel-wrapper').removeClass('collapse');
+            //            break;
+            //        default:
+            //            var replacementSection = $('div#ReplacementSection');
+            //            if (!replacementSection.find('div.panel-heading').hasClass('panel-heading-collapsed')) {
+            //                replacementSection.find('div.panel-heading').addClass('panel-heading-collapsed');
+            //                replacementSection.find('div.panel-wrapper').addClass('collapse');
+            //            }
+            //            var governmentSection = $('div#GovernmentSection');
+            //            if (!governmentSection.find('div.panel-heading').hasClass('panel-heading-collapsed')) {
+            //                governmentSection.find('div.panel-heading').addClass('panel-heading-collapsed');
+            //                governmentSection.find('div.panel-wrapper').addClass('collapse');
+            //            }
+            //            break;
+            //    }
+            //});
+        });
+    </script>
+}

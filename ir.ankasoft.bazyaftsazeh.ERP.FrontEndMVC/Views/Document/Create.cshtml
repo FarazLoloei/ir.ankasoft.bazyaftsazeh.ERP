@@ -93,9 +93,6 @@
                                 <div id="ReplacementSection" class="panel panel-default">
                                     <div class="panel-heading panel-heading-collapsed">
                                         @Resource.Replacements
-                                        @*<a href="#" data-tool="panel-collapse" data-toggle="tooltip" title="@Resource.Collapse" class="pull-right">
-                                                <em class="fa fa-minus"></em>
-                                            </a>*@
                                     </div>
                                     <div class="panel-wrapper collapse">
                                         <div class="panel-body row">
@@ -125,9 +122,6 @@
                                 <div id="GovernmentSection" class="panel panel-default">
                                     <div class="panel-heading panel-heading-collapsed">
                                         @Resource.Government
-                                        @*<a href="#" data-tool="panel-collapse" data-toggle="tooltip" title="@Resource.Collapse" class="pull-right">
-                                                <em class="fa fa-minus"></em>
-                                            </a>*@
                                     </div>
                                     <div class="panel-wrapper collapse">
                                         <div class="panel-body row">
@@ -267,7 +261,6 @@
                                                 </div>
                                             </fieldset>
                                         </div>
-                                        @*<div class="panel-footer">Panel Footer</div>*@
                                     </div>
                                 </div>
 
@@ -348,9 +341,6 @@
                 EnglishNumber: true,
             });
 
-            //$(document.body).on("change", ".selector", function (e) {
-            //    $(e.target).parent().parent().find('.value').val(this.value.split(',')[1]);
-            //});
             $('#PlanType').on("change", function (e) {
                 switch (this.value) {
 
@@ -392,102 +382,6 @@
                         break;
                 }
             });
-
-            @*$("#LastOwnerRecId").select2({
-                //tags: true,
-                //multiple: true,
-                minimumInputLength: 2,
-                minimumResultsForSearch: 10,
-                ajax: {
-                    url: "@Url.Action("GetPartiesList", "Party")",//optionListUrl,
-                    dataType: "json",
-                    type: "GET",
-                    data: function (params) {
-
-                        var queryParameters = {
-                            term: params.term
-                        }
-                        return queryParameters;
-                    },
-                    processResults: function (data) {
-                        return {
-                            results: $.map(data, function (item) {
-                                return {
-                                    text: item.Value,
-                                    id: item.Key
-                                }
-                            })
-                        };
-                    }
-                }
-            });*@
-
-
-            @*$('#LastOwnerRecId').select2({
-                placeholder: "Type to find a Contract",
-                allowClear: true,
-                //minimumInputLength: 2,
-                ajax: {
-                    cache: false,
-                    dataType: "json",
-                    type: "GET",
-                    url: "@Url.Action(MVC.Party.GetPartiesList())",
-                    data: function(searchTerm){
-                        return { query: searchTerm };
-                    },
-                    results: function(data){
-                        return { results: data };
-                    }
-                },
-                formatResult: contractFormatResult,
-                formatSelection: contractFormatSelection,
-                escapeMarkup: function (m) { return m; }
-            });*@
-
-            //function contractFormatResult(contract) {
-            //    var markup = "<table class='contract-result'><tr>";
-            //    if (contract.name !== undefined) {
-            //        markup += "<div class='contract-name'>" + contract.name + "</div>";
-            //    }
-            //    markup += "</td></tr></table>"
-            //    return markup;
-            //}
-
-            //function contractFormatSelection(contract) {
-            //    return contract.name;
-            //}
-
-                @*minimumInputLength: 2,
-                tags: [],
-                ajax: {
-                    cache: false,
-                    url: '@Url.Action("Party", "GetPartiesList")',
-                    dataType: 'json',
-                    type: "GET",
-                    //quietMillis: 50,
-                    data: function (term) {
-                        return {
-                            filter: JSON.stringify( term)
-                        };
-                    },
-                    processResults: function (data) {
-                        alert(121);
-                        return {
-                            results: $.map(data, function (item) {
-                                return {
-                                    text: item.value,
-                                    id: item.key,
-                                    data: item
-                                }
-                            })
-                        };
-                    }
-
-                }
-                    });*@
-
-
-
 
             /*Cost*/
             $('.buttonAddCost').click(function () {

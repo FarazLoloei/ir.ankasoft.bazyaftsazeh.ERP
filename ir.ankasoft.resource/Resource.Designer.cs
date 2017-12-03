@@ -790,6 +790,24 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ویرایش هزینه ها.
+        /// </summary>
+        public static string EditCosts {
+            get {
+                return ResourceManager.GetString("EditCosts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ویرایش نقص ها.
+        /// </summary>
+        public static string EditImperfections {
+            get {
+                return ResourceManager.GetString("EditImperfections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ویرایش اطلاعات پستی.
         /// </summary>
         public static string EditPostalAddress {

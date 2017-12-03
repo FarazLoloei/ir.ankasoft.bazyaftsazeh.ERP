@@ -201,6 +201,7 @@
     <Compile Include="Models\DocumentImperfection\ViewModelDisplayDocumentImperfection.cs" />
     <Compile Include="Models\Document\ViewModelCreateDocument.cs" />
     <Compile Include="Models\Document\ViewModelDocumentDisplay.cs" />
+    <Compile Include="Models\Document\ViewModelModifyDocument.cs" />
     <Compile Include="Models\GovernmentPlan\ViewModelCreateGovernmentPlan.cs" />
     <Compile Include="Models\Imperfection\ViewModelImperfectionDisplay.cs" />
     <Compile Include="Models\Imperfection\ViewModelCreateAndModifyImperfection.cs" />
@@ -767,6 +768,7 @@
     <Content Include="Views\Document\Create.cshtml" />
     <Content Include="Views\DocumentCost\_Repeater.cshtml" />
     <Content Include="Views\DocumentImperfection\_Repeater.cshtml" />
+    <Content Include="Views\Document\Modify.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

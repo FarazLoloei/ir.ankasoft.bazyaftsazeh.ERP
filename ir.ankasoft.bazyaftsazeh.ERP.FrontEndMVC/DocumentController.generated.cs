@@ -147,10 +147,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 public readonly string _List = "_List";
                 public readonly string Create = "Create";
                 public readonly string Index = "Index";
+                public readonly string Modify = "Modify";
             }
             public readonly string _List = "~/Views/Document/_List.cshtml";
             public readonly string Create = "~/Views/Document/Create.cshtml";
             public readonly string Index = "~/Views/Document/Index.cshtml";
+            public readonly string Modify = "~/Views/Document/Modify.cshtml";
         }
     }
 
@@ -197,10 +199,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Modify(int id)
+        public override System.Web.Mvc.ActionResult Modify(long id)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);

@@ -81,43 +81,57 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult Create()
         {
-            var _partiesList = _partyRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
-            {
-                Text = _.Value,
-                Value = _.Key.ToString()
-            }).ToList();
-            _partiesList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+            var model = new ViewModelCreateDocument();
+            model.LastOwner = model.PlateOwner = model.Investor = model.Contractor = CreatePartiesList();
+            model.ReplacementPlan.BeneficiaryImporter = CreateImportersList();
+            model.GovernmentPlan.Organization = CreateOrganizationlist();
+            model.ReplacementPlan.Representor = CreatePeopleList();
+            model.Vehicle.VehicleTip = Common.sessionManager.getVehicleTips();
+            return View(model);
+        }
 
-            var _importersList = _importerRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
-            {
-                Text = _.Value,
-                Value = _.Key.ToString()
-            }).ToList();
-            _importersList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
-
-            var _organizationList = _organizationRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
-            {
-                Text = _.Value,
-                Value = _.Key.ToString()
-            }).ToList();
-            _organizationList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
-
+        private List<SelectListItem> CreatePeopleList()
+        {
             var _personList = _personRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
             {
                 Text = _.Value,
                 Value = _.Key.ToString()
             }).ToList();
             _personList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+            return _personList;
+        }
 
+        private List<SelectListItem> CreateOrganizationlist()
+        {
+            var _organizationList = _organizationRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
+            {
+                Text = _.Value,
+                Value = _.Key.ToString()
+            }).ToList();
+            _organizationList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+            return _organizationList;
+        }
 
+        private List<SelectListItem> CreateImportersList()
+        {
+            var _importersList = _importerRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
+            {
+                Text = _.Value,
+                Value = _.Key.ToString()
+            }).ToList();
+            _importersList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+            return _importersList;
+        }
 
-            var model = new ViewModelCreateDocument();
-            model.LastOwner = model.PlateOwner = model.Investor = model.Contractor = _partiesList;
-            model.ReplacementPlan.BeneficiaryImporter = _importersList;
-            model.GovernmentPlan.Organization = _organizationList;
-            model.ReplacementPlan.Representor = _personList;
-            model.Vehicle.VehicleTip = Common.sessionManager.getVehicleTips();
-            return View(model);
+        private List<SelectListItem> CreatePartiesList()
+        {
+            var _partiesList = _partyRepository.GetForSelectors(string.Empty).Select(_ => new SelectListItem()
+            {
+                Text = _.Value,
+                Value = _.Key.ToString()
+            }).ToList();
+            _partiesList.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+            return _partiesList;
         }
 
         [HttpPost]
@@ -183,9 +197,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult Modify(int id)
+        public virtual ActionResult Modify(long id)
         {
-            return View();
+            var model = new ViewModelModifyDocument()
+            {
+                recId = id,
+            };
+            model.LastOwner = model.PlateOwner = model.Investor = model.Contractor = CreatePartiesList();
+            model.Vehicle.VehicleTip = Common.sessionManager.getVehicleTips();
+            return View(model);
         }
 
         [HttpPost]
