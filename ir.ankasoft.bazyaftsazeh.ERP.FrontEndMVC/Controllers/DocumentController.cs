@@ -155,25 +155,25 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     {
                         var _document = Mapper.Map<Document>(request);
                         //_document.Costs = Mapper.Map<List<DocumentCost>, List<ViewModelCreateAndModifyDocumentCost>>(request.CostCollection);
-
-                        _document.Costs = request.CostCollection.Select(_ =>
-                        {
-                            return new DocumentCost()
+                        if (request.CostCollection != null)
+                            _document.Costs = request.CostCollection.Select(_ =>
                             {
-                                PreDefineTitleRefRecId = Convert.ToInt32(_.CostTitle.Split(',')[0]),
-                                Value = _.CostValue
-                            };
-                        }).ToList();
+                                return new DocumentCost()
+                                {
+                                    PreDefineTitleRefRecId = Convert.ToInt32(_.CostTitle.Split(',')[0]),
+                                    Value = _.CostValue
+                                };
+                            }).ToList();
 
-
-                        _document.Imperfections = request.ImperfectionCollection.Select(_ =>
-                        {
-                            return new DocumentImperfection()
+                        if (request.ImperfectionCollection != null)
+                            _document.Imperfections = request.ImperfectionCollection.Select(_ =>
                             {
-                                PreDefineTitleRefRecId = Convert.ToInt32(_.ImperfectionTitle.Split(',')[0]),
-                                Value = _.ImperfectionValue
-                            };
-                        }).ToList();
+                                return new DocumentImperfection()
+                                {
+                                    PreDefineTitleRefRecId = Convert.ToInt32(_.ImperfectionTitle.Split(',')[0]),
+                                    Value = _.ImperfectionValue
+                                };
+                            }).ToList();
 
                         _document.Vehicle = Mapper.Map<Vehicle>(request.Vehicle);
                         _document.Vehicle.Plate = Mapper.Map<Plate>(request.Vehicle.Plate);
@@ -199,13 +199,24 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult Modify(long id)
         {
-            var model = new ViewModelModifyDocument()
-            {
-                recId = id,
-            };
-            model.LastOwner = model.PlateOwner = model.Investor = model.Contractor = CreatePartiesList();
-            model.Vehicle.VehicleTip = Common.sessionManager.getVehicleTips();
-            return View(model);
+            var _model = _documentRepository.FindById(id, y => y.Contractor,
+                                                          y => y.Investor,
+                                                          y => y.LastOwner,
+                                                          y => y.PlateOwner,
+                                                          y => y.Vehicle,
+                                                          y => y.Vehicle.Plate,
+                                                          y => y.Vehicle.VehicleTip);
+            if(_model == null)
+                return HttpNotFound();
+
+            //var model = new ViewModelModifyDocument()
+            //{
+            //    recId = id,
+            //};
+            var data = Mapper.Map<ViewModelModifyDocument>(_model);
+            data.LastOwner = data.PlateOwner = data.Investor = data.Contractor = CreatePartiesList();
+            data.Vehicle.VehicleTip = Common.sessionManager.getVehicleTips();
+            return View(data);
         }
 
         [HttpPost]
