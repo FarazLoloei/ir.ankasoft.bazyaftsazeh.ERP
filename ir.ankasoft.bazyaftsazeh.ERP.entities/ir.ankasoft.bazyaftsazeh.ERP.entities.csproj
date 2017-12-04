@@ -71,6 +71,7 @@
     <Compile Include="Repositories\IImperfectionRepository.cs" />
     <Compile Include="Repositories\IImporterRepository.cs" />
     <Compile Include="Repositories\IOrganizationRepository.cs" />
+    <Compile Include="Repositories\IPlateRepository.cs" />
     <Compile Include="Repositories\IPreDefineTitleRepository.cs" />
     <Compile Include="Repositories\IVehicleRepository.cs" />
     <Compile Include="Repositories\IVehicleTipRepository.cs" />

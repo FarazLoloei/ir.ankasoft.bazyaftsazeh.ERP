@@ -64,6 +64,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Modify()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Remove()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Remove);
@@ -125,6 +131,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public class ActionParamsClass_Modify
         {
             public readonly string id = "id";
+            public readonly string request = "request";
         }
         static readonly ActionParamsClass_Remove s_params_Remove = new ActionParamsClass_Remove();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -211,13 +218,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelModifyDocument request);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Modify()
+        public override System.Web.Mvc.ActionResult Modify(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelModifyDocument request)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
-            ModifyOverride(callInfo);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            ModifyOverride(callInfo, request);
             return callInfo;
         }
 

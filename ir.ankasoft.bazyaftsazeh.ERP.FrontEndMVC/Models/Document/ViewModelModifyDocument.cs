@@ -50,6 +50,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
         [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
         public DocumentPaymentType PaymentType { get; set; }
 
+        public long VehicleRecId { get; set; }
+
         public ViewModelCreateAndModifyVehicle Vehicle { get; set; } = new ViewModelCreateAndModifyVehicle();
     }
 }

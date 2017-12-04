@@ -5,6 +5,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Vehicle;
 using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
 using System;
@@ -23,6 +24,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IPersonRepository _personRepository;
         private readonly IDocumentRepository _documentRepository;
+        private readonly IVehicleRepository _vehicleRepository;
+        private readonly IPlateRepository _plateRepository;
+
 
         private readonly IContextMenuItemRepository _contextMenuItemRepository;
         private IMapper Mapper;
@@ -30,7 +34,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public DocumentController(IPartyRepository partyRepository,
                                   IContextMenuItemRepository contextMenuItemRepository,
                                   IDocumentRepository documentRepository,
+                                  IVehicleRepository vehicleRepository,
                                   IImporterRepository importerRepository,
+                                  //IPlateRepository plateRepository,
                                   IOrganizationRepository organizationRepository,
                                   IPersonRepository personRepository,
                                   IUnitOfWorkFactory unitOfWorkFactory)
@@ -40,6 +46,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             _organizationRepository = organizationRepository;
             _personRepository = personRepository;
             _documentRepository = documentRepository;
+            _vehicleRepository = vehicleRepository;
+            //_plateRepository = plateRepository;
             _contextMenuItemRepository = contextMenuItemRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
@@ -191,9 +199,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             }
 
             return View(request);
-
-
-            //return RedirectToAction(MVC.Document.Index());
         }
 
         [HttpGet]
@@ -208,21 +213,39 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                                           y => y.Vehicle.VehicleTip);
             if(_model == null)
                 return HttpNotFound();
-
-            //var model = new ViewModelModifyDocument()
-            //{
-            //    recId = id,
-            //};
             var data = Mapper.Map<ViewModelModifyDocument>(_model);
+            data.Vehicle = Mapper.Map<ViewModelCreateAndModifyVehicle>(_model.Vehicle);
             data.LastOwner = data.PlateOwner = data.Investor = data.Contractor = CreatePartiesList();
             data.Vehicle.VehicleTip = Common.sessionManager.getVehicleTips();
             return View(data);
         }
 
         [HttpPost]
-        public virtual ActionResult Modify()
+        public virtual ActionResult Modify(ViewModelModifyDocument request)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (_unitOfWorkFactory.Create())
+                    {
+                        Document _document = _documentRepository.FindById(request.recId);
+                        Vehicle _vehicle = _vehicleRepository.FindById(request.Vehicle.recId);
+                        //Plate
+                        Mapper.Map(request, _document, typeof(ViewModelModifyDocument), typeof(Document));
+                        Mapper.Map(request.Vehicle, _vehicle, typeof(ViewModelCreateAndModifyVehicle), typeof(Vehicle));
+                        return RedirectToAction(MVC.Document.Index());
+                    }
+                }
+                catch (ModelValidationException modelValidationException)
+                {
+                    foreach (var error in modelValidationException.ValidationErrors)
+                    {
+                        ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
+                    }
+                }
+            }
+            return View(request);
         }
 
         public virtual ActionResult Remove(int id)

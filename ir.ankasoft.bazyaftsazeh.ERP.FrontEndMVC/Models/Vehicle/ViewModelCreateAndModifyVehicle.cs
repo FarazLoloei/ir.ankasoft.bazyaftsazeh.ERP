@@ -20,7 +20,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Vehicle
         [MaxLength(4, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
         public string Model { get; set; }
 
-        public long PlateRefRecId { get; set; }
+        public long PlateRecId { get; set; }
 
         [Display(Name = nameof(Color), ResourceType = typeof(Resource))]
         [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
