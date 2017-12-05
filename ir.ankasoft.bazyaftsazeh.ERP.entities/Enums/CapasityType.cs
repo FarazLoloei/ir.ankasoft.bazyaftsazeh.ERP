@@ -7,6 +7,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities.Enums
     {
         [Display(Name = nameof(KG), ResourceType = typeof(Resource))]
         KG = 1,
+
         [Display(Name = nameof(Individual), ResourceType = typeof(Resource))]
         Individual
     }

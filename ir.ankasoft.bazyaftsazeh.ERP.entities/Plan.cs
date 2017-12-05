@@ -1,14 +1,9 @@
 ﻿using ir.ankasoft.entities;
-using ir.ankasoft.infrastructure;
-using ir.ankasoft.resource;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
-    public interface  IPlan //: DomainEntity<long>//, IDateTracking, IUserTracking
+    public interface IPlan //: DomainEntity<long>//, IDateTracking, IUserTracking
     {
         Enums.PlanType Type { get; set; } //= Enums.PlanType.Cash;
 

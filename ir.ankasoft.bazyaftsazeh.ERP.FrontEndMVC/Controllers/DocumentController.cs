@@ -6,12 +6,12 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Vehicle;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehiclePlate;
 using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
@@ -25,9 +25,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly IPersonRepository _personRepository;
         private readonly IDocumentRepository _documentRepository;
         private readonly IVehicleRepository _vehicleRepository;
-        private readonly IPlateRepository _plateRepository;
-
-
         private readonly IContextMenuItemRepository _contextMenuItemRepository;
         private IMapper Mapper;
 
@@ -36,7 +33,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                   IDocumentRepository documentRepository,
                                   IVehicleRepository vehicleRepository,
                                   IImporterRepository importerRepository,
-                                  //IPlateRepository plateRepository,
                                   IOrganizationRepository organizationRepository,
                                   IPersonRepository personRepository,
                                   IUnitOfWorkFactory unitOfWorkFactory)
@@ -53,6 +49,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
         }
+
         // GET: Document
         public virtual ActionResult Index(FilterDataSource request)
         {
@@ -147,7 +144,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             List<ViewModelCreateAndModifyDocumentCost> documentCostCollection,
             List<ViewModelCreateAndModifyDocumentImperfection> documentImperfectionCollection)
         {
-
             if (documentCostCollection != null)
                 request.CostCollection = documentCostCollection.Where(_ => !string.IsNullOrEmpty(_.CostTitle)).ToList();
             if (documentImperfectionCollection != null)
@@ -211,7 +207,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                                           y => y.Vehicle,
                                                           y => y.Vehicle.Plate,
                                                           y => y.Vehicle.VehicleTip);
-            if(_model == null)
+            if (_model == null)
                 return HttpNotFound();
             var data = Mapper.Map<ViewModelModifyDocument>(_model);
             data.Vehicle = Mapper.Map<ViewModelCreateAndModifyVehicle>(_model.Vehicle);
@@ -229,11 +225,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 {
                     using (_unitOfWorkFactory.Create())
                     {
-                        Document _document = _documentRepository.FindById(request.recId);
-                        Vehicle _vehicle = _vehicleRepository.FindById(request.Vehicle.recId);
-                        //Plate
+                        Document _document = _documentRepository.FindById(request.recId,
+                            y => y.Vehicle,
+                            y => y.Vehicle.Plate);
                         Mapper.Map(request, _document, typeof(ViewModelModifyDocument), typeof(Document));
-                        Mapper.Map(request.Vehicle, _vehicle, typeof(ViewModelCreateAndModifyVehicle), typeof(Vehicle));
+                        Mapper.Map(request.Vehicle.Plate, _document.Vehicle.Plate,
+                            typeof(ViewModelCreateAndModifyVehiclePlate),
+                            typeof(Plate));
                         return RedirectToAction(MVC.Document.Index());
                     }
                 }

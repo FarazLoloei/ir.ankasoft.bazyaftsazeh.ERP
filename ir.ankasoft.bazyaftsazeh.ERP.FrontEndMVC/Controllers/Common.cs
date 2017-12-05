@@ -68,6 +68,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     Icon = _.Icon
                 }).ToList();
             }
+
             public static List<SelectListItem> getCosts()
             {
                 string key = $"Costs";
@@ -80,8 +81,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     HttpContext.Current.Session[key] = list;
                 }
                 return HttpContext.Current.Session[key] as List<SelectListItem>;
-
             }
+
             private static List<SelectListItem> Map(IEnumerable<entities.Cost> list)
             {
                 return list.Select(_ => new SelectListItem()
@@ -103,8 +104,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     HttpContext.Current.Session[key] = list;
                 }
                 return HttpContext.Current.Session[key] as List<SelectListItem>;
-
             }
+
             private static List<SelectListItem> Map(IEnumerable<entities.Imperfection> list)
             {
                 return list.Select(_ => new SelectListItem()
@@ -126,8 +127,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     HttpContext.Current.Session[key] = list;
                 }
                 return HttpContext.Current.Session[key] as List<SelectListItem>;
-
             }
+
             private static List<SelectListItem> Map(IEnumerable<entities.VehicleTip> list)
             {
                 var _resource = new ResourceManager(typeof(resource.Resource));
@@ -137,7 +138,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     Text = $"{_resource.GetString(_.Type.ToString())} {_.System} ({_.Capasity} {_resource.GetString(_.CapasityType.ToString()) })"
                 }).ToList();
             }
-
         }
 
         public static Tuple<string, string> getProvinceAndCityTitleById(string provinceCityId)
@@ -146,7 +146,5 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             string[] province_city = _provinceCity.Split('-');
             return new Tuple<string, string>(province_city[0].Trim(), province_city[1].Trim());
         }
-
-
     }
 }

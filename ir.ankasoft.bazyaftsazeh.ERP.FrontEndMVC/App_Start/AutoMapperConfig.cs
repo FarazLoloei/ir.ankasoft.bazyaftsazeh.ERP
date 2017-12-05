@@ -160,7 +160,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             _.CreateMap<ViewModelPersonDisplay, Person>()
                 .ForMember(p => p.PartyRefRecId, t => t.Ignore())
                 .ForMember(p => p.Party, t => t.Ignore())
-                //.ForMember(p => p.PersonalTitle, t => t.Ignore())
                 .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.creatorUser, t => t.Ignore())
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
@@ -240,7 +239,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             _.CreateMap<ViewModelImporterDisplay, Importer>()
                 .ForMember(p => p.PartyRefRecId, t => t.Ignore())
                 .ForMember(p => p.Party, t => t.Ignore())
-                //.ForMember(p => p.PersonalTitle, t => t.Ignore())
                 .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.creatorUser, t => t.Ignore())
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
@@ -548,7 +546,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUser, t => t.Ignore());
 
             _.CreateMap<VehicleTip, ViewModelCreateAndEditVehicleTip>();
-
         }
 
         private static void ConfigCost(IMapperConfigurationExpression _)
@@ -579,7 +576,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             _.CreateMap<Cost, ViewModelCreateAndModifyCost>()
                 .ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title));
-
         }
 
         private static void ConfigDocument(IMapperConfigurationExpression _)
@@ -625,7 +621,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.InvestorRefRecId, opt => opt.MapFrom(dest => dest.InvestorRecId))
                 .ForMember(p => p.Investor, t => t.Ignore())
                 .ForMember(p => p.VehicleRefRecId, t => t.Ignore())
-                
+
                 .ForMember(p => p.PaymentDate, t => t.Ignore())
                 .ForMember(p => p.ContractorRefRecId, opt => opt.MapFrom(dest => dest.ContractorRecId))
                 .ForMember(p => p.Contractor, t => t.Ignore())
@@ -651,7 +647,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.PlateOwner, t => t.Ignore())
                 .ForMember(p => p.InvestorRefRecId, opt => opt.MapFrom(dest => dest.InvestorRecId))
                 .ForMember(p => p.Investor, t => t.Ignore())
-                .ForMember(p => p.VehicleRefRecId, opt => opt.MapFrom(dest => dest.VehicleRecId))
+                .ForMember(p => p.VehicleRefRecId, t => t.Ignore())
                 .ForMember(p => p.PaymentDate, t => t.Ignore())
                 .ForMember(p => p.ContractorRefRecId, opt => opt.MapFrom(dest => dest.ContractorRecId))
                 .ForMember(p => p.Contractor, t => t.Ignore())
@@ -702,11 +698,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
             .ForMember(p => p.modifierUser, t => t.Ignore());
 
-
-
-
-
-
             //.ForMember(p => p.LastOwnerRefRecId, opt => opt.MapFrom(dest => dest.LastOwnerRecId))
             //.ForMember(p => p.LastOwner, t => t.Ignore())
             //.ForMember(p => p.PlateOwnerRefRecId, opt => opt.MapFrom(dest => dest.PlateOwnerRecId))
@@ -747,7 +738,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             //    .ForMember(p => p.Organization, t => t.Ignore())
             //    .ForMember(p => p.PermissionNumber, t => t.Ignore());
             //.ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title));
-
         }
 
         private static void ConfigVehicle(IMapperConfigurationExpression _)
@@ -769,9 +759,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             /*Create*/
             _.CreateMap<ViewModelCreateAndModifyVehicle, Vehicle>()
                 .ForMember(p => p.VehicleTip, t => t.Ignore())
-                .ForMember(p => p.VehicleTipRefRecId, opt => opt.MapFrom(dest => dest.VehicleTipRecId))
+                .ForMember(p => p.VehicleTipRefRecId, t => t.Ignore())
                 .ForMember(p => p.Plate, t => t.Ignore())
-                .ForMember(p => p.PlateRefRecId, opt => opt.MapFrom(dest => dest.PlateRecId))
+                .ForMember(p => p.PlateRefRecId, t => t.Ignore())//, opt => opt.MapFrom(dest => dest.PlateRecId))
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())
                 .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
@@ -781,8 +771,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             _.CreateMap<Vehicle, ViewModelCreateAndModifyVehicle>()
                 .ForMember(p => p.VehicleTip, t => t.Ignore());
-
-
         }
 
         private static void ConfigVehiclePlate(IMapperConfigurationExpression _)
@@ -812,7 +800,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             _.CreateMap<Plate, ViewModelCreateAndModifyVehiclePlate>()
                 ;
-
         }
 
         private static void ConfigImperfection(IMapperConfigurationExpression _)
@@ -843,7 +830,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             _.CreateMap<Imperfection, ViewModelCreateAndModifyImperfection>()
                 .ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title));
-
         }
 
         private static void ConfigNotification(IMapperConfigurationExpression _)

@@ -27,7 +27,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override string ToString()
         {
-            
             var _number = Number.Split('-').ToList();
             if (_number.Count() > 1)
                 return $"{_number[1]} {new ResourceManager(typeof(resource.Resource)).GetString(Series.ToString())} {_number[0]}";

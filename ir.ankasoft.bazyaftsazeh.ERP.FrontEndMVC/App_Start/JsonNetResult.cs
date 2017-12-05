@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http.Results;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
@@ -14,7 +10,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
         {
             this.Data = model;
             this.JsonRequestBehavior = requestBehavior;
-        } 
+        }
+
         public JsonNetResult()
         {
             Settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Error };

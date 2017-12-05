@@ -57,6 +57,4 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
             return FindAll(_ => _.NationalCode.Contains(filter) || _.Title.Contains(filter)).ToDictionary(x => x.recId, x => $"{x.Title} - {x.NationalCode}");
         }
     }
-
-    
 }

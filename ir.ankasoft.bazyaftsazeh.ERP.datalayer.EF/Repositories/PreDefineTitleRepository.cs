@@ -4,14 +4,11 @@ using ir.ankasoft.infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
-using System;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 {
     public class PreDefineTitleRepository : Repository<PreDefineTitle>, IPreDefineTitleRepository
     {
-        
-
         public override IEnumerable<PreDefineTitle> LoadByFilter(IFilterDataSource request,
                                            out int totalRecords)
         {

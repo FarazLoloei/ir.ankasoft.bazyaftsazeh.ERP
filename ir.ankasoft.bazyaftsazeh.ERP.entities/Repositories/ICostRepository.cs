@@ -1,9 +1,5 @@
 ﻿using ir.ankasoft.infrastructure;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories
 {
@@ -11,6 +7,5 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories
     {
         new IEnumerable<Cost> LoadByFilter(IFilterDataSource request,
                                                out int totalRecords);
-
     }
 }

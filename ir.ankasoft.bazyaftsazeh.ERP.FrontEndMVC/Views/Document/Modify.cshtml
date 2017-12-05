@@ -7,6 +7,8 @@
         @using (Html.BeginForm(MVC.Document.Modify(), FormMethod.Post))
         {
             @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Vehicle.recId)
+            @Html.HiddenFor(model => model.Vehicle.Plate.recId)
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">@Resource.Edit</div>
@@ -76,7 +78,7 @@
                         </div>
                     </div>
                     <div class="form-horizontal col-md-6">
-                        @Html.HiddenFor(model=>model.VehicleRecId)
+
                         <fieldset>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Vehicle.VehicleTipRecId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -148,7 +150,7 @@
                             </div>
                             <div class="panel-wrapper collapse in">
                                 <div class="panel-body">
-                                    @Html.HiddenFor(model=>model.Vehicle.PlateRecId)
+
                                     <fieldset>
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Vehicle.Plate.Color, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -188,13 +190,11 @@
                                             </div>
                                         </div>
                                     </fieldset>
-
                                 </div>
                                 @*<div class="panel-footer">Panel Footer</div>*@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="panel-footer">

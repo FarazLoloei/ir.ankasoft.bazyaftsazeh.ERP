@@ -1,12 +1,9 @@
 ﻿using ir.ankasoft.bazyaftsazeh.ERP.entities;
 using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 using ir.ankasoft.infrastructure;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 {
@@ -15,7 +12,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
         public override IEnumerable<Document> LoadByFilter(IFilterDataSource request,
                                            out int totalRecords)
         {
-
             IQueryable<Document> objects = FindAll(x => x.LastOwner.Title.Contains(request.keyword) ||
                                                         x.PlateOwner.Title.Contains(request.keyword) ||
                                                         x.Vehicle.VehicleTip.System.Contains(request.keyword) ||

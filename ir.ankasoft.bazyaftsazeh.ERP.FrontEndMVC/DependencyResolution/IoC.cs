@@ -49,7 +49,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
                 x.For<IImporterRepository>().Use<ImporterRepository>();
                 x.For<IVehicleRepository>().Use<VehicleRepository>();
                 x.For<IVehicleTipRepository>().Use<VehicleTipRepository>();
-                x.For<ICostRepository>().Use<CostRepository>(); 
+                x.For<ICostRepository>().Use<CostRepository>();
                 x.For<IPreDefineTitleRepository>().Use<PreDefineTitleRepository>();
                 x.For<IImperfectionRepository>().Use<ImperfectionRepository>();
                 x.For<IDocumentRepository>().Use<DocumentRepository>();

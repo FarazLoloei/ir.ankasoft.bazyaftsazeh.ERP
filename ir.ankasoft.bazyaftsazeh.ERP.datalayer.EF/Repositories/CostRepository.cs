@@ -20,8 +20,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 
         private string BuildOrderBy(string sortOn, string sortDirection)
         {
-            if(sortOn == null ) return " 0";
-            return string.Format("{0} {1}", sortOn.Replace('_','.'), sortDirection);
+            if (sortOn == null) return " 0";
+            return string.Format("{0} {1}", sortOn.Replace('_', '.'), sortDirection);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models
         public long id { get; set; }
         public string text { get; set; }
     }
+
     public class ViewModelSelect2PagedResult
     {
         public int Total { get; set; }

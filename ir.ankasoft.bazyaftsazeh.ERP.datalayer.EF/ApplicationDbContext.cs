@@ -41,8 +41,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         public DbSet<entities.Importer> Importer { get; set; }
         public DbSet<entities.Organization> Organization { get; set; }
         public DbSet<entities.Payment> Payment { get; set; }
+
         //public DbSet<entities.Plan> Plans { get; set; }
         public DbSet<entities.Plate> Plates { get; set; }
+
         public DbSet<entities.PreDefineTitle> PreDefineTitles { get; set; }
         public DbSet<entities.ReplacementPlan> ReplacementsPlan { get; set; }
         public DbSet<entities.Vehicle> Vehicles { get; set; }
@@ -395,7 +397,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
             modelBuilder.Entity<entities.Organization>()
                .HasMany(x => x.PostalAddressCollection)
                .WithOptional()
-               .HasForeignKey(c => c.OrganizationRefRecId); 
+               .HasForeignKey(c => c.OrganizationRefRecId);
 
             modelBuilder.Entity<Objective>()
                 .HasRequired(x => x.creatorUser)

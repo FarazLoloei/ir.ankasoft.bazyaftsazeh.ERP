@@ -1,14 +1,9 @@
 ﻿using ir.ankasoft.resource;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities.Enums
 {
-    public enum PlateShapes:int
+    public enum PlateShapes : int
     {
         //[Display(Name = nameof(Personal), ResourceType = typeof(Resource))]
         //Personal = 1 ,
@@ -23,18 +18,25 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities.Enums
 
         [Display(Name = nameof(Local), ResourceType = typeof(Resource))]
         Local = 1,
+
         [Display(Name = nameof(TwoColor_Tehran), ResourceType = typeof(Resource))]
         TwoColor_Tehran,
+
         [Display(Name = nameof(TwoColor_OtherCity), ResourceType = typeof(Resource))]
         TwoColor_OtherCity,
+
         [Display(Name = nameof(Old), ResourceType = typeof(Resource))]
         Old,
+
         [Display(Name = nameof(OneColor_Numeric), ResourceType = typeof(Resource))]
         OneColor_Numeric,
+
         [Display(Name = nameof(OneColor_Alphabetic), ResourceType = typeof(Resource))]
         OneColor_Alphabetic,
+
         [Display(Name = nameof(MotoCycle_Iran), ResourceType = typeof(Resource))]
         MotoCycle_Iran,
+
         [Display(Name = nameof(MotoCycle_Old), ResourceType = typeof(Resource))]
         MotoCycle_Old
     }

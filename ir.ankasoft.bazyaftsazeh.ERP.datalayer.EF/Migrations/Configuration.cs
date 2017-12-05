@@ -67,8 +67,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
 
             #endregion Identity Core
 
-
-
             context.Objectives.AddOrUpdate(_ => _.Title,
                 new Objective() { Title = "Party", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //1
                 new Objective() { Title = "Person", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //2
@@ -82,7 +80,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
             context.SaveChanges();
             var _objectiveRefRecId = 1;
             context.ContextMenuItems.AddOrUpdate(
+
             #region Party
+
                 new ContextMenuItem()
                 {
                     Title = "New",
@@ -200,11 +200,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                     GroupCode = 4,
                     Priority = 3
                 });
-            #endregion
+
+            #endregion Party
 
             _objectiveRefRecId = 2;
             context.ContextMenuItems.AddOrUpdate(
+
             #region Person
+
                 new ContextMenuItem()
                 {
                     Title = "New",
@@ -283,11 +286,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                     GroupCode = 3,
                     Priority = 1
                 });
-            #endregion
+
+            #endregion Person
 
             _objectiveRefRecId = 3;
             context.ContextMenuItems.AddOrUpdate(
+
             #region Importer
+
                 new ContextMenuItem()
                 {
                     Title = "New",
@@ -366,11 +372,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                     GroupCode = 3,
                     Priority = 1
                 });
-            #endregion
+
+            #endregion Importer
 
             _objectiveRefRecId = 4;
             context.ContextMenuItems.AddOrUpdate(
+
             #region Organization
+
                 new ContextMenuItem()
                 {
                     Title = "New",
@@ -449,11 +458,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                     GroupCode = 3,
                     Priority = 1
                 });
-            #endregion
+
+            #endregion Organization
 
             _objectiveRefRecId = 5;
             context.ContextMenuItems.AddOrUpdate(
+
             #region Cost
+
                 new ContextMenuItem()
                 {
                     Title = "New",
@@ -506,11 +518,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                     GroupCode = 2,
                     Priority = 1
                 });
-            #endregion
+
+            #endregion Cost
 
             _objectiveRefRecId = 6;
             context.ContextMenuItems.AddOrUpdate(
+
             #region Imperfection
+
                 new ContextMenuItem()
                 {
                     Title = "New",
@@ -563,11 +578,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                     GroupCode = 2,
                     Priority = 1
                 });
-            #endregion
+
+            #endregion Imperfection
 
             _objectiveRefRecId = 7;
             context.ContextMenuItems.AddOrUpdate(
+
             #region VehicleTip
+
                 new ContextMenuItem()
                 {
                     Title = "New",
@@ -620,11 +638,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                     GroupCode = 2,
                     Priority = 1
                 });
-            #endregion
+
+            #endregion VehicleTip
 
             _objectiveRefRecId = 8;
             context.ContextMenuItems.AddOrUpdate(
+
             #region VehicleTip
+
                 new ContextMenuItem()
                 {
                     Title = "New",
@@ -677,7 +698,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                     GroupCode = 2,
                     Priority = 1
                 });
-            #endregion
+
+            #endregion VehicleTip
         }
     }
 }

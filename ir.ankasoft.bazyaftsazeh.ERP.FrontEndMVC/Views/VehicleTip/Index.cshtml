@@ -79,7 +79,7 @@
                             <text>"@item.Title": { name: '@Html.AnkaResource(model=>item.Title)', icon: '@item.Icon', disabled: @item.Disable.ToString().ToLower()},</text>
                             }
                             else
-                            { 
+                            {
                             var sep = $"sep{item.GroupCode}";
                                 <text> @sep: "---------",
                                  "@item.Title": { name: '@Html.AnkaResource(model=>item.Title)', icon: '@item.Icon', disabled: @item.Disable.ToString().ToLower()},</text>
@@ -94,7 +94,7 @@
                 selector: '.context-menu',
                 callback: function (key, options) {
                     ContextMenuOperation(key, options);
-                }, 
+                },
                 items: {
                     @{
                         group = 0;

@@ -76,7 +76,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             var model = _partyRepository.GetForSelectors(searchTerm);
 
-
             //list.Add(new ViewModelSelect2List()
             //{
             //    text = "India",
