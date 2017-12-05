@@ -644,7 +644,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
             _objectiveRefRecId = 8;
             context.ContextMenuItems.AddOrUpdate(
 
-            #region VehicleTip
+            #region Document
 
                 new ContextMenuItem()
                 {
@@ -697,7 +697,47 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                     Icon = "fa-file-excel-o",
                     GroupCode = 2,
                     Priority = 1
-                });
+                },
+                new ContextMenuItem()
+                {
+                    Title = "Costs",
+                    ObjectiveRefRecId = _objectiveRefRecId,
+                    RoleRefRecId = 1,
+                    ShowOnHeader = false,
+                    DisableOnHeader = true,
+                    ShowOnRow = true,
+                    DisableOnRow = false,
+                    Icon = "fa-usd",
+                    GroupCode = 3,
+                    Priority = 1
+                },
+                new ContextMenuItem()
+                {
+                    Title = "Imperfections",
+                    ObjectiveRefRecId = _objectiveRefRecId,
+                    RoleRefRecId = 1,
+                    ShowOnHeader = false,
+                    DisableOnHeader = true,
+                    ShowOnRow = true,
+                    DisableOnRow = false,
+                    Icon = "fa-exclamation-circle",
+                    GroupCode = 3,
+                    Priority = 2
+                },
+                new ContextMenuItem()
+                {
+                    Title = "Payments",
+                    ObjectiveRefRecId = _objectiveRefRecId,
+                    RoleRefRecId = 1,
+                    ShowOnHeader = false,
+                    DisableOnHeader = true,
+                    ShowOnRow = true,
+                    DisableOnRow = false,
+                    Icon = "fa-money",
+                    GroupCode = 4,
+                    Priority = 1
+                }
+                );
 
             #endregion VehicleTip
         }

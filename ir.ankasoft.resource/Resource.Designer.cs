@@ -547,6 +547,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to هزینه ها.
+        /// </summary>
+        public static string Costs {
+            get {
+                return ResourceManager.GetString("Costs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to طرف حساب.
         /// </summary>
         public static string CounterParty {
@@ -1974,6 +1983,15 @@ namespace ir.ankasoft.resource {
         public static string PaymentDateShamsi {
             get {
                 return ResourceManager.GetString("PaymentDateShamsi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to پرداخت ها.
+        /// </summary>
+        public static string Payments {
+            get {
+                return ResourceManager.GetString("Payments", resourceCulture);
             }
         }
         

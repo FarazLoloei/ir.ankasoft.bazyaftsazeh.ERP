@@ -1185,4 +1185,10 @@
   <data name="EditImperfections" xml:space="preserve">
     <value>ویرایش نقص ها</value>
   </data>
+  <data name="Costs" xml:space="preserve">
+    <value>هزینه ها</value>
+  </data>
+  <data name="Payments" xml:space="preserve">
+    <value>پرداخت ها</value>
+  </data>
 </root>
