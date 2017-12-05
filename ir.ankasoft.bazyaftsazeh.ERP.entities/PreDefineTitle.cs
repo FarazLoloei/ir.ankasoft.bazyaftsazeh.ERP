@@ -16,8 +16,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [MaxLength(100)]
         public string Title { get; set; }
 
-        public double SuggestedPrice { get; set; }
-
         #region IDateTracking
 
         public DateTime createdDateTime { get; set; }
@@ -49,10 +47,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
                 yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Title)), new[] { nameof(Title) });
             }
 
-            if (SuggestedPrice < 0)
-            {
-                yield return new ValidationResult(string.Format(Resource._0MustBeGreaterThan1, 0, nameof(SuggestedPrice)), new[] { nameof(SuggestedPrice) });
-            }
+            
         }
 
         #endregion Validation
