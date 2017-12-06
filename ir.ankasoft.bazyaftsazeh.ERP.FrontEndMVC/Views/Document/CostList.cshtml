@@ -63,16 +63,6 @@
                                                         <li>
                                                             <a href="@Url.Action(MVC.DocumentCost.ModifyDocumentCost(item.ParentId, item.recId))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
                                                         </li>
-                                                        @*<li>
-                                                            <a href="@Url.Action(MVC.Communication.ChangePrimary(item.recId, item.ParentId, !item.IsPrimary))">
-                                                                <i class="fa @(item.IsPrimary ? "fa-square-o" : "fa-check-square-o")" aria-hidden="true"></i> @(item.IsPrimary ? @Resource.UnSetPrimary : @Resource.SetAsPrimary)
-                                                            </a>
-                                                        </li>*@
-                                                        @*<li>
-    <a href="@Url.Action(MVC.Party.RemoveCommunication(item.recId, item.ParentId))">
-             <i class="fa fa-remove" aria-hidden="true"></i> @Resource.Remove
-         </a>
-                                                        </li>*@
                                                     </ul>
                                                 </div>
                                             </td>
@@ -88,7 +78,7 @@
             <div class="panel-footer">
                 <div class="clearfix">
                     <div class="pull-right">
-                        @Html.ActionLink(Resource.Return, null, null, null, new { href = Url.Action(MVC.Party.Index()), @class = "btn btn-warning" })
+                        @Html.ActionLink(Resource.Return, null, null, null, new { href = Url.Action(MVC.Document.Index()), @class = "btn btn-warning" })
                     </div>
                 </div>
             </div>

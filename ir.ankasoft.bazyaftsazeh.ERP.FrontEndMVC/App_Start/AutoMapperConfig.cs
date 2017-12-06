@@ -589,7 +589,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             /*Create*/
             _.CreateMap<ViewModelCreateDocument, Document>()
+
             #region MyRegion
+
                 .ForMember(p => p.LastOwnerRefRecId, opt => opt.MapFrom(dest => dest.LastOwnerRecId))
                 .ForMember(p => p.LastOwner, t => t.Ignore())
                 .ForMember(p => p.PlateOwnerRefRecId, opt => opt.MapFrom(dest => dest.PlateOwnerRecId))
@@ -615,10 +617,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.creatorUser, t => t.Ignore())
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
-            #endregion
+
+            #endregion MyRegion
 
             _.CreateMap<ViewModelModifyDocument, Document>()
+
             #region MyRegion
+
                 .ForMember(p => p.LastOwnerRefRecId, opt => opt.MapFrom(dest => dest.LastOwnerRecId))
                 .ForMember(p => p.LastOwner, t => t.Ignore())
                 .ForMember(p => p.PlateOwnerRefRecId, opt => opt.MapFrom(dest => dest.PlateOwnerRecId))
@@ -643,7 +648,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.creatorUser, t => t.Ignore())
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
-            #endregion
+
+            #endregion MyRegion
 
             _.CreateMap<Document, ViewModelModifyDocument>()
                 .ForMember(p => p.IsAnyPaymentPaid, t => t.Ignore())
@@ -656,18 +662,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
         private static void ConfigDocumentCost(IMapperConfigurationExpression _)
         {
-
             _.CreateMap<DocumentCost, ViewModelDisplayDocumentCost>()
                 .ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title.Title))
                 .ForMember(p => p.ParentId, t => t.Ignore());
 
-            //_.CreateMap<DocumentCost, ViewModelDocumentCost>()
-            //    .ForMember(p => p.Title, opt => opt.MapFrom(dest => dest.Title));
             /*Create*/
             _.CreateMap<DocumentCost, ViewModelCreateAndModifyDocumentCost>()
                 .ForMember(p => p.CostRecId, opt => opt.MapFrom(dest => dest.recId))
-                .ForMember(p => p.CostTitle, opt => opt.MapFrom(dest => dest.Title))
+                .ForMember(p => p.CostTitle, opt => opt.MapFrom(dest => dest.Title.Title))
+                .ForMember(p => p.CostTitleRecId, opt => opt.MapFrom(dest => dest.PreDefineTitleRefRecId))
                 .ForMember(p => p.CostValue, opt => opt.MapFrom(dest => dest.Value))
+                .ForMember(p => p.ParentId, t => t.Ignore())
                 .ForMember(p => p.CostList, t => t.Ignore());
 
             _.CreateMap<ViewModelCreateAndModifyDocumentCost, DocumentCost>()
@@ -685,9 +690,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUser, t => t.Ignore());
 
             _.CreateMap<Document, ViewModelDocumentCost>();
-            //.ForMember(p => p.CostCollection, t => t.Ignore());
-
-
         }
 
         private static void ConfigVehicle(IMapperConfigurationExpression _)

@@ -69,28 +69,52 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 }).ToList();
             }
 
-            public static List<SelectListItem> getCosts()
+            public static List<SelectListItem> getCosts(bool suggestPrice)
             {
-                string key = $"Costs";
+                string key= "Costs";
+                if (suggestPrice)
+                    key = $"CostsWithPriceSuggestion";
+
                 ICostRepository _costRepository = new CostRepository();
                 int totalRow = 1;
                 if (HttpContext.Current.Session[key] == null)
                 {
-                    var list = Map(_costRepository.LoadByFilter(new FilterDataSource() { }, out totalRow));
+                    var list = Map(_costRepository.LoadByFilter(new FilterDataSource() { }, out totalRow), suggestPrice);
                     list.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
                     HttpContext.Current.Session[key] = list;
                 }
                 return HttpContext.Current.Session[key] as List<SelectListItem>;
             }
 
-            private static List<SelectListItem> Map(IEnumerable<entities.Cost> list)
+            private static List<SelectListItem> Map(IEnumerable<entities.Cost> list, bool suggestPrice)
             {
+                if (suggestPrice)
+                    return list.Select(_ => new SelectListItem()
+                    {
+                        Value = $"{_.recId},{_.Value}",
+                        Text = $"{_.Title.Title } - {_.ValueInDisplayMode} {DefaultValues.DefaultCurrency}"
+                    }).ToList();
+
                 return list.Select(_ => new SelectListItem()
                 {
-                    Value = $"{_.recId},{_.Value}",
+                    Value = $"{_.recId}",
                     Text = $"{_.Title.Title } - {_.ValueInDisplayMode} {DefaultValues.DefaultCurrency}"
                 }).ToList();
             }
+
+            //public static List<SelectListItem> getCosts()
+            //{
+            //    string key = $"CostsWithPriceSuggestion";
+            //    ICostRepository _costRepository = new CostRepository();
+            //    int totalRow = 1;
+            //    if (HttpContext.Current.Session[key] == null)
+            //    {
+            //        var list = Map(_costRepository.LoadByFilter(new FilterDataSource() { }, out totalRow), false);
+            //        list.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+            //        HttpContext.Current.Session[key] = list;
+            //    }
+            //    return HttpContext.Current.Session[key] as List<SelectListItem>;
+            //}
 
             public static List<SelectListItem> getImperfection()
             {
@@ -138,6 +162,30 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     Text = $"{_resource.GetString(_.Type.ToString())} {_.System} ({_.Capasity} {_resource.GetString(_.CapasityType.ToString()) })"
                 }).ToList();
             }
+
+            //public static List<SelectListItem> getDocumentCostTips()
+            //{
+            //    string key = $"VehicleTip";
+            //    IVehicleTipRepository _vehicleTipRepository = new VehicleTipRepository();
+            //    int totalRow = 1;
+            //    if (HttpContext.Current.Session[key] == null)
+            //    {
+            //        var list = Map(_vehicleTipRepository.LoadByFilter(new FilterDataSource() { }, out totalRow));
+            //        list.Insert(0, new SelectListItem() { Text = resource.Resource.SelectAValue, Value = "0" });
+            //        HttpContext.Current.Session[key] = list;
+            //    }
+            //    return HttpContext.Current.Session[key] as List<SelectListItem>;
+            //}
+
+            //private static List<SelectListItem> Map(IEnumerable<entities.VehicleTip> list)
+            //{
+            //    var _resource = new ResourceManager(typeof(resource.Resource));
+            //    return list.Select(_ => new SelectListItem()
+            //    {
+            //        Value = $"{_.recId}",
+            //        Text = $"{_resource.GetString(_.Type.ToString())} {_.System} ({_.Capasity} {_resource.GetString(_.CapasityType.ToString()) })"
+            //    }).ToList();
+            //}
         }
 
         public static Tuple<string, string> getProvinceAndCityTitleById(string provinceCityId)

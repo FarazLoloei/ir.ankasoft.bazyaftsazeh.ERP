@@ -53,6 +53,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
                 x.For<IPreDefineTitleRepository>().Use<PreDefineTitleRepository>();
                 x.For<IImperfectionRepository>().Use<ImperfectionRepository>();
                 x.For<IDocumentRepository>().Use<DocumentRepository>();
+                x.For<IDocumentCostRepository>().Use<DocumentCostRepository>();
                 //x.For<IMapper>().Use("", y => { return AutoMapperConfig.MapperConfiguration.CreateMapper(); });
                 //x.For<IMapper>().Use(AutoMapperConfig.MapperConfiguration.CreateMapper());
 

@@ -33,7 +33,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public virtual ActionResult CostDetail(List<ViewModelCreateAndModifyDocumentCost> request)
         {
             request = request ?? new List<ViewModelCreateAndModifyDocumentCost>();
-            var costsList = Common.sessionManager.getCosts();
+            var costsList = Common.sessionManager.getCosts(true);
             request.Add(new ViewModelCreateAndModifyDocumentCost());
             request = request.Select(_ =>
             {
@@ -48,7 +48,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public virtual ActionResult CreateDocumentCost(long parentId)
         {
 
-            var model = new ViewModelCreateAndModifyDocumentCost();
+            var model = new ViewModelCreateAndModifyDocumentCost()
+            {
+                CostList = Common.sessionManager.getCosts(false)
+            };
             //{
             //    ParentId = parentId,
             //    PersonalTitle = _party.PersonalTitle,
@@ -91,17 +94,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public virtual ActionResult ModifyDocumentCost(long parentId, long documentCostId)
         {
 
-            DocumentCost _model = _documentCostRpository.FindById(documentCostId);
+            DocumentCost _model = _documentCostRpository.FindById(documentCostId, x=>x.Title);
             if (_model == null)
             {
                 return HttpNotFound();
             }
             var data = Mapper.Map<ViewModelCreateAndModifyDocumentCost>(_model);
-            //data.ParentId = parentId;
-            //data.PersonalTitle = _party.PersonalTitle;
-            //data.Title = _party.Title;
-            //data.NationalCode = _party.NationalCode;
-            //data.ObjectiveType = objectiveType;
+            data.CostList = Common.sessionManager.getCosts(false);
             return View(data);
         }
 
@@ -117,7 +116,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     {
                         DocumentCost _documentCost = _documentCostRpository.FindById(request.CostRecId);
                         Mapper.Map(request, _documentCost, typeof(ViewModelCreateAndModifyDocumentCost), typeof(DocumentCost));
-                        //return 
+                        return RedirectToAction(MVC.Document.CostList(request.ParentId));
                     }
                 }
                 catch (ModelValidationException modelValidationException)

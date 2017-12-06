@@ -771,6 +771,8 @@
     <Content Include="Views\DocumentImperfection\_Repeater.cshtml" />
     <Content Include="Views\Document\Modify.cshtml" />
     <Content Include="Views\Document\CostList.cshtml" />
+    <Content Include="Views\DocumentCost\ModifyDocumentCost.cshtml" />
+    <Content Include="Views\DocumentCost\_Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
