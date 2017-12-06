@@ -47,7 +47,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult CreateDocumentCost(long parentId)
         {
-
             var model = new ViewModelCreateAndModifyDocumentCost()
             {
                 CostList = Common.sessionManager.getCosts(false)
@@ -70,13 +69,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             {
                 try
                 {
-                    //using (_unitOfWorkFactory.Create())
-                    //{
-                    //    var _communication = Mapper.Map<Communication>(request);
+                    using (_unitOfWorkFactory.Create())
+                    {
+                        var _documentCost = Mapper.Map<DocumentCost>(request);
 
-                    //    _communicationRpository.Add(_communication);
-
-                    //}
+                        _documentCostRpository.Add(_documentCost);
+                        return RedirectToAction(MVC.Document.CostList(request.ParentId));
+                    }
                 }
                 catch (ModelValidationException modelValidationException)
                 {
@@ -93,8 +92,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult ModifyDocumentCost(long parentId, long documentCostId)
         {
-
-            DocumentCost _model = _documentCostRpository.FindById(documentCostId, x=>x.Title);
+            DocumentCost _model = _documentCostRpository.FindById(documentCostId, x => x.Title);
             if (_model == null)
             {
                 return HttpNotFound();

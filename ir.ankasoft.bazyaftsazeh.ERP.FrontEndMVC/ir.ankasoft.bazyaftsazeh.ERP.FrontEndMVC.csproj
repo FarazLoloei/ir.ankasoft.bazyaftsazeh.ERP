@@ -773,6 +773,7 @@
     <Content Include="Views\Document\CostList.cshtml" />
     <Content Include="Views\DocumentCost\ModifyDocumentCost.cshtml" />
     <Content Include="Views\DocumentCost\_Detail.cshtml" />
+    <Content Include="Views\DocumentCost\CreateDocumentCost.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

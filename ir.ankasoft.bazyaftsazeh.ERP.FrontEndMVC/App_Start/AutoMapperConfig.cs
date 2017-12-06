@@ -677,10 +677,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             _.CreateMap<ViewModelCreateAndModifyDocumentCost, DocumentCost>()
                 .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.CostRecId))
-                .ForMember(p => p.PreDefineTitleRefRecId, t => t.Ignore())
+                .ForMember(p => p.PreDefineTitleRefRecId, opt => opt.MapFrom(dest => dest.CostTitleRecId))
                 .ForMember(p => p.Title, t => t.Ignore())//, opt => opt.MapFrom(dest => dest.CostTitle))
                 .ForMember(p => p.Value, opt => opt.MapFrom(dest => dest.CostValue))
-                .ForMember(p => p.DocumentRefRecId, t => t.Ignore())
+                .ForMember(p => p.DocumentRefRecId, opt => opt.MapFrom(dest => dest.ParentId))
                 .ForMember(p => p.Document, t => t.Ignore())
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())
