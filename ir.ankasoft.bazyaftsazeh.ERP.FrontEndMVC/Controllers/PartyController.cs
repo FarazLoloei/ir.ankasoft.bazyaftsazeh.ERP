@@ -141,6 +141,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View(request);
         }
 
+        public virtual ActionResult Display(long id)
+        {
+            Party _model = _partyRepository.FindById(id);
+            if (_model == null)
+            {
+                return HttpNotFound();
+            }
+            var data = Mapper.Map<ViewModelModifyParty>(_model);
+            return View(data);
+        }
+
         public virtual ActionResult Modify(long id)
         {
             Party _model = _partyRepository.FindById(id);

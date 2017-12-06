@@ -6,6 +6,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Imperfection;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Importer;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Notification;
@@ -68,6 +69,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 /*Document Cost*/
                 ConfigDocumentCost(_);
+
+                /*Document Imperfection*/
+                ConfigDocumentImperfection(_);
 
                 /*ConfigVehicle*/
                 ConfigVehicle(_);
@@ -582,7 +586,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
         {
             _.CreateMap<Document, ViewModelDisplayDocument>()
             .ForMember(p => p.LastOwner, opt => opt.MapFrom(dest => dest.LastOwner.Title))
+            .ForMember(p => p.LastOwnerRecId, opt => opt.MapFrom(dest => dest.LastOwnerRefRecId))
             .ForMember(p => p.PlateOwner, opt => opt.MapFrom(dest => dest.PlateOwner.Title))
+            .ForMember(p => p.PlateOwnerRecId, opt => opt.MapFrom(dest => dest.PlateOwnerRefRecId))
             .ForMember(p => p.Vehicle, opt => opt.MapFrom(dest => dest.Vehicle.ToString()))
             .ForMember(p => p.PlateNumber, opt => opt.MapFrom(dest => dest.Vehicle.Plate.ToString()))
             .ForMember(p => p.TotalCostValue, opt => opt.MapFrom(dest => dest.CostCollection.Sum(x => x.Value)));
@@ -690,6 +696,39 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUser, t => t.Ignore());
 
             _.CreateMap<Document, ViewModelDocumentCost>();
+        }
+
+        private static void ConfigDocumentImperfection(IMapperConfigurationExpression _)
+        {
+            _.CreateMap<DocumentImperfection, ViewModelDisplayDocumentImperfection>()
+                .ForMember(p => p.ImperfectionTitle, opt => opt.MapFrom(dest => dest.Title.Title))
+                .ForMember(p => p.ImperfectionValue, opt => opt.MapFrom(dest => dest.Value))
+                .ForMember(p => p.ParentId, t => t.Ignore());
+
+            /*Create*/
+            _.CreateMap<DocumentImperfection, ViewModelCreateAndModifyDocumentImperfection>()
+                .ForMember(p => p.ImperfectionRecId, opt => opt.MapFrom(dest => dest.recId))
+                .ForMember(p => p.ImperfectionTitle, opt => opt.MapFrom(dest => dest.Title.Title))
+                .ForMember(p => p.ImperfectionTitleRecId, opt => opt.MapFrom(dest => dest.PreDefineTitleRefRecId))
+                .ForMember(p => p.ImperfectionValue, opt => opt.MapFrom(dest => dest.Value))
+                .ForMember(p => p.ParentId, t => t.Ignore())
+                .ForMember(p => p.ImperfectionList, t => t.Ignore());
+
+            _.CreateMap<ViewModelCreateAndModifyDocumentImperfection, DocumentImperfection>()
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.ImperfectionRecId))
+                .ForMember(p => p.PreDefineTitleRefRecId, opt => opt.MapFrom(dest => dest.ImperfectionTitleRecId))
+                .ForMember(p => p.Title, t => t.Ignore())
+                .ForMember(p => p.Value, opt => opt.MapFrom(dest => dest.ImperfectionValue))
+                .ForMember(p => p.DocumentRefRecId, opt => opt.MapFrom(dest => dest.ParentId))
+                .ForMember(p => p.Document, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<Document, ViewModelDocumentImperfection>();
         }
 
         private static void ConfigVehicle(IMapperConfigurationExpression _)

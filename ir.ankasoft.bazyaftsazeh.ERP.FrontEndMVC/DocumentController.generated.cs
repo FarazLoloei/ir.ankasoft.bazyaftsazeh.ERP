@@ -80,6 +80,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CostList);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ImperfectionList()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImperfectionList);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public DocumentController Actions { get { return MVC.Document; } }
@@ -101,6 +107,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string Modify = "Modify";
             public readonly string Remove = "Remove";
             public readonly string CostList = "CostList";
+            public readonly string ImperfectionList = "ImperfectionList";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -111,6 +118,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public const string Modify = "Modify";
             public const string Remove = "Remove";
             public const string CostList = "CostList";
+            public const string ImperfectionList = "ImperfectionList";
         }
 
 
@@ -157,6 +165,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string id = "id";
         }
+        static readonly ActionParamsClass_ImperfectionList s_params_ImperfectionList = new ActionParamsClass_ImperfectionList();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ImperfectionList ImperfectionListParams { get { return s_params_ImperfectionList; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ImperfectionList
+        {
+            public readonly string id = "id";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -170,12 +186,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 public readonly string _List = "_List";
                 public readonly string CostList = "CostList";
                 public readonly string Create = "Create";
+                public readonly string ImperfectionList = "ImperfectionList";
                 public readonly string Index = "Index";
                 public readonly string Modify = "Modify";
             }
             public readonly string _List = "~/Views/Document/_List.cshtml";
             public readonly string CostList = "~/Views/Document/CostList.cshtml";
             public readonly string Create = "~/Views/Document/Create.cshtml";
+            public readonly string ImperfectionList = "~/Views/Document/ImperfectionList.cshtml";
             public readonly string Index = "~/Views/Document/Index.cshtml";
             public readonly string Modify = "~/Views/Document/Modify.cshtml";
         }
@@ -268,6 +286,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CostList);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             CostListOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ImperfectionListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ImperfectionList(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImperfectionList);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ImperfectionListOverride(callInfo, id);
             return callInfo;
         }
 

@@ -70,6 +70,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Display()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Display);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Modify()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
@@ -117,6 +123,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string Index = "Index";
             public readonly string GetPartiesList = "GetPartiesList";
             public readonly string Create = "Create";
+            public readonly string Display = "Display";
             public readonly string Modify = "Modify";
             public readonly string Remove = "Remove";
             public readonly string CommunicationList = "CommunicationList";
@@ -130,6 +137,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public const string Index = "Index";
             public const string GetPartiesList = "GetPartiesList";
             public const string Create = "Create";
+            public const string Display = "Display";
             public const string Modify = "Modify";
             public const string Remove = "Remove";
             public const string CommunicationList = "CommunicationList";
@@ -165,6 +173,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string request = "request";
             public readonly string communicationCollection = "communicationCollection";
             public readonly string postalAddressCollection = "postalAddressCollection";
+        }
+        static readonly ActionParamsClass_Display s_params_Display = new ActionParamsClass_Display();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Display DisplayParams { get { return s_params_Display; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Display
+        {
+            public readonly string id = "id";
         }
         static readonly ActionParamsClass_Modify s_params_Modify = new ActionParamsClass_Modify();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -221,6 +237,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 public readonly string _List = "_List";
                 public readonly string CommunicationList = "CommunicationList";
                 public readonly string Create = "Create";
+                public readonly string Display = "Display";
                 public readonly string Index = "Index";
                 public readonly string Modify = "Modify";
                 public readonly string PostalAddressList = "PostalAddressList";
@@ -229,6 +246,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string _List = "~/Views/Party/_List.cshtml";
             public readonly string CommunicationList = "~/Views/Party/CommunicationList.cshtml";
             public readonly string Create = "~/Views/Party/Create.cshtml";
+            public readonly string Display = "~/Views/Party/Display.cshtml";
             public readonly string Index = "~/Views/Party/Index.cshtml";
             public readonly string Modify = "~/Views/Party/Modify.cshtml";
             public readonly string PostalAddressList = "~/Views/Party/PostalAddressList.cshtml";
@@ -288,6 +306,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "communicationCollection", communicationCollection);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "postalAddressCollection", postalAddressCollection);
             CreateOverride(callInfo, request, communicationCollection, postalAddressCollection);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DisplayOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Display(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Display);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DisplayOverride(callInfo, id);
             return callInfo;
         }
 

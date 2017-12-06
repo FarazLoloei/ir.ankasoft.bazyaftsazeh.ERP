@@ -24,9 +24,9 @@
 { <input type="hidden" name="id" value="" id="RecID" /> }
 @using (Html.BeginForm(MVC.Document.CostList(), FormMethod.Get, new { @class = "invisible", id = "EditCost" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
-@*@using (Html.BeginForm(MVC.Document.PostalAddressList(), FormMethod.Get, new { @class = "invisible", id = "EditPostalAddress" }))
+@using (Html.BeginForm(MVC.Document.ImperfectionList(), FormMethod.Get, new { @class = "invisible", id = "EditImperfection" }))
     { <input type="hidden" name="id" value="" id="RecID" /> }
-    @using (Html.BeginForm(MVC.Person.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsPerson" }))
+    @*@using (Html.BeginForm(MVC.Person.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsPerson" }))
     { <input type="hidden" name="partyId" value="" id="partyId" /> }
     @using (Html.BeginForm(MVC.Organization.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsOrganization" }))
     { <input type="hidden" name="partyId" value="" id="partyId" /> }
@@ -162,9 +162,9 @@
                     $('#EditCost #RecID').val(_itemId);
                     $('#EditCost').submit();
                     break;
-                case 'EditPostalAddress':
-                    $('#EditPostalAddress #RecID').val(_itemId);
-                    $('#EditPostalAddress').submit();
+                case 'Imperfections':
+                    $('#EditImperfection #RecID').val(_itemId);
+                    $('#EditImperfection').submit();
                     break;
                 case 'DefineAsPerson':
                     $('#DefineAsPerson #partyId').val(_itemId);

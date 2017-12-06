@@ -51,13 +51,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             {
                 CostList = Common.sessionManager.getCosts(false)
             };
-            //{
-            //    ParentId = parentId,
-            //    PersonalTitle = _party.PersonalTitle,
-            //    Title = title,
-            //    NationalCode = _party.NationalCode,
-            //    ObjectiveType = objectiveType
-            //};
             return View(model);
         }
 

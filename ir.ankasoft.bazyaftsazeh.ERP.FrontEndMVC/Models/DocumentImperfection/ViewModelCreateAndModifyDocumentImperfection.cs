@@ -8,10 +8,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection
     public class ViewModelCreateAndModifyDocumentImperfection
     {
         [HiddenInput(DisplayValue = false)]
-        public long recId { get; set; }
+        public long ParentId { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public long ImperfectionRecId { get; set; }
 
         [Display(Name = "Title", ResourceType = typeof(Resource))]
         public string ImperfectionTitle { get; set; }
+
+        [Display(Name = "Title", ResourceType = typeof(Resource))]
+        public long ImperfectionTitleRecId { get; set; }
 
         [Display(Name = "Value", ResourceType = typeof(Resource))]
         public double ImperfectionValue { get; set; }

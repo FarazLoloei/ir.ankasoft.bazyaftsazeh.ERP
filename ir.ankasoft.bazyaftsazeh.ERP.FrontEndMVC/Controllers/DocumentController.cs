@@ -263,5 +263,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             model.CostCollection = model.CostCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
             return View(model);
         }
+
+        [HttpGet]
+        public virtual ActionResult ImperfectionList(long id)
+        {
+            Document _document = _documentRepository.FindById(id, x => x.ImperfectionCollection.Select(_ => _.Title));
+            if (_document == null)
+            {
+                throw new Exception("ObjectNotFound");
+            }
+            ViewModelDocumentImperfection model = Mapper.Map<ViewModelDocumentImperfection>(_document);
+            model.ImperfectionCollection = model.ImperfectionCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
+            return View(model);
+        }
     }
 }

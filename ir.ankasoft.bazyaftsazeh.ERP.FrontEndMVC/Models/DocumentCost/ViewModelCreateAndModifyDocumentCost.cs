@@ -27,8 +27,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost
 
         public List<SelectListItem> CostList { get; set; }
 
-        //public List<SelectListItem> ImperfectionList { get; set; }
-
         public override string ToString()
         {
             return $"{CostTitle} - {CostValueDisplayMode}";

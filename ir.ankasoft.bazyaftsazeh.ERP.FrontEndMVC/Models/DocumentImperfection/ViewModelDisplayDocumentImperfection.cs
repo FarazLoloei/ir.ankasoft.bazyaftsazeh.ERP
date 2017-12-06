@@ -7,6 +7,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection
     public class ViewModelDisplayDocumentImperfection
     {
         [HiddenInput(DisplayValue = false)]
+        public long ParentId { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
         public long recId { get; set; }
 
         [Display(Name = "Title", ResourceType = typeof(Resource))]

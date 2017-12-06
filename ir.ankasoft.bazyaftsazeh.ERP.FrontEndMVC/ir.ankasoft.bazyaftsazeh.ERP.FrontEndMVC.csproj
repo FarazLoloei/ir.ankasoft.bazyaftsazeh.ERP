@@ -200,6 +200,7 @@
     <Compile Include="Models\DocumentCost\ViewModelDocumentCost.cs" />
     <Compile Include="Models\DocumentImperfection\ViewModelCreateAndModifyDocumentImperfection.cs" />
     <Compile Include="Models\DocumentImperfection\ViewModelDisplayDocumentImperfection.cs" />
+    <Compile Include="Models\DocumentImperfection\ViewModelDocumentImperfection.cs" />
     <Compile Include="Models\Document\ViewModelCreateDocument.cs" />
     <Compile Include="Models\Document\ViewModelDocumentDisplay.cs" />
     <Compile Include="Models\Document\ViewModelModifyDocument.cs" />
@@ -774,6 +775,11 @@
     <Content Include="Views\DocumentCost\ModifyDocumentCost.cshtml" />
     <Content Include="Views\DocumentCost\_Detail.cshtml" />
     <Content Include="Views\DocumentCost\CreateDocumentCost.cshtml" />
+    <Content Include="Views\Document\ImperfectionList.cshtml" />
+    <Content Include="Views\DocumentImperfection\CreateDocumentImperfection.cshtml" />
+    <Content Include="Views\DocumentImperfection\ModifyDocumentImperfection.cshtml" />
+    <Content Include="Views\DocumentImperfection\_Detail.cshtml" />
+    <Content Include="Views\Party\Display.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

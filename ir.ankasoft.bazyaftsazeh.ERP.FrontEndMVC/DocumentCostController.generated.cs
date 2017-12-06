@@ -145,10 +145,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             {
                 public readonly string _Detail = "_Detail";
                 public readonly string _Repeater = "_Repeater";
+                public readonly string CreateDocumentCost = "CreateDocumentCost";
                 public readonly string ModifyDocumentCost = "ModifyDocumentCost";
             }
             public readonly string _Detail = "~/Views/DocumentCost/_Detail.cshtml";
             public readonly string _Repeater = "~/Views/DocumentCost/_Repeater.cshtml";
+            public readonly string CreateDocumentCost = "~/Views/DocumentCost/CreateDocumentCost.cshtml";
             public readonly string ModifyDocumentCost = "~/Views/DocumentCost/ModifyDocumentCost.cshtml";
         }
     }

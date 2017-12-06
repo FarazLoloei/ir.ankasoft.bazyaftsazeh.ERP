@@ -13,8 +13,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
         [Display(Name = nameof(LastOwner), ResourceType = typeof(Resource))]
         public string LastOwner { get; set; }
 
+        public long LastOwnerRecId { get; set; }
+
         [Display(Name = nameof(PlateOwner), ResourceType = typeof(Resource))]
         public string PlateOwner { get; set; }
+
+        public long PlateOwnerRecId { get; set; }
 
         [Display(Name = nameof(Vehicle), ResourceType = typeof(Resource))]
         public string Vehicle { get; set; }
