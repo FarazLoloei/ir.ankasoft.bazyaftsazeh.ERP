@@ -22,16 +22,16 @@
 @using (Html.BeginForm(MVC.Document.Create(), FormMethod.Get, new { @class = "invisible", id = "Create" })) { }
 @using (Html.BeginForm(MVC.Document.Modify(), FormMethod.Get, new { @class = "invisible", id = "Modify" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
-@*@using (Html.BeginForm(MVC.Document.CommunicationList(), FormMethod.Get, new { @class = "invisible", id = "EditCommunication" }))
+@using (Html.BeginForm(MVC.Document.CostList(), FormMethod.Get, new { @class = "invisible", id = "EditCost" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
-@using (Html.BeginForm(MVC.Document.PostalAddressList(), FormMethod.Get, new { @class = "invisible", id = "EditPostalAddress" }))
-{ <input type="hidden" name="id" value="" id="RecID" /> }
-@using (Html.BeginForm(MVC.Person.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsPerson" }))
-{ <input type="hidden" name="partyId" value="" id="partyId" /> }
-@using (Html.BeginForm(MVC.Organization.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsOrganization" }))
-{ <input type="hidden" name="partyId" value="" id="partyId" /> }
-@using (Html.BeginForm(MVC.Importer.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsImporter" }))
-{ <input type="hidden" name="partyId" value="" id="partyId" /> }*@
+@*@using (Html.BeginForm(MVC.Document.PostalAddressList(), FormMethod.Get, new { @class = "invisible", id = "EditPostalAddress" }))
+    { <input type="hidden" name="id" value="" id="RecID" /> }
+    @using (Html.BeginForm(MVC.Person.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsPerson" }))
+    { <input type="hidden" name="partyId" value="" id="partyId" /> }
+    @using (Html.BeginForm(MVC.Organization.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsOrganization" }))
+    { <input type="hidden" name="partyId" value="" id="partyId" /> }
+    @using (Html.BeginForm(MVC.Importer.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsImporter" }))
+    { <input type="hidden" name="partyId" value="" id="partyId" /> }*@
 
 @*@using (Html.BeginForm(MVC.Party.ExportToExcel(), FormMethod.Get, new { @class = "invisible", id = "ExportToExcel" }))
     { <input type="hidden" name="keyword" value="" id="keyword" /> }*@
@@ -158,9 +158,9 @@
                 case 'ExportToExcel':
                     $('#ExportToExcel').submit();
                     break;
-                case 'EditCommunication':
-                    $('#EditCommunication #RecID').val(_itemId);
-                    $('#EditCommunication').submit();
+                case 'Costs':
+                    $('#EditCost #RecID').val(_itemId);
+                    $('#EditCost').submit();
                     break;
                 case 'EditPostalAddress':
                     $('#EditPostalAddress #RecID').val(_itemId);

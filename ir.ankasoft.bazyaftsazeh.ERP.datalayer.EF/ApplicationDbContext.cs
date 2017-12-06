@@ -406,12 +406,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
 
             modelBuilder.Entity<DocumentCost>()
                 .HasRequired(x => x.Document)
-                .WithMany()
+                .WithMany(x=>x.CostCollection)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DocumentImperfection>()
                 .HasRequired(x => x.Document)
-                .WithMany()
+                .WithMany(x => x.ImperfectionCollection)
                 .WillCascadeOnDelete(false);
         }
     }

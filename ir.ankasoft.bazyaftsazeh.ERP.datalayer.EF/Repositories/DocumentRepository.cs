@@ -21,7 +21,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
                                                         y => y.Vehicle,
                                                         y => y.Vehicle.Plate,
                                                         y => y.Vehicle.VehicleTip,
-                                                        y => y.Costs
+                                                        y => y.CostCollection
                                                      ).AsQueryable();
             totalRecords = objects.Count();
             return objects.OrderBy(BuildOrderBy(request.sort.Key, request.sort.Value.ToString())).Skip((request.page * request.pageSize) - request.pageSize).Take(request.pageSize);

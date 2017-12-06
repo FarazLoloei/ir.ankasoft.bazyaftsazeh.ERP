@@ -57,9 +57,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         /// </summary>
         public Party Contractor { get; set; }
 
-        public virtual ICollection<DocumentCost> Costs { get; set; }
+        public virtual ICollection<DocumentCost> CostCollection { get; set; }
 
-        public virtual ICollection<DocumentImperfection> Imperfections { get; set; }
+        public virtual ICollection<DocumentImperfection> ImperfectionCollection { get; set; }
 
         public virtual PlanType PlanType { get; set; }
 

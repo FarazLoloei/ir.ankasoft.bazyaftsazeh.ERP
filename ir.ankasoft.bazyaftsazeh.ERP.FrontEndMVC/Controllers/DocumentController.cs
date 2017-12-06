@@ -160,7 +160,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                         var _document = Mapper.Map<Document>(request);
                         //_document.Costs = Mapper.Map<List<DocumentCost>, List<ViewModelCreateAndModifyDocumentCost>>(request.CostCollection);
                         if (request.CostCollection != null)
-                            _document.Costs = request.CostCollection.Select(_ =>
+                            _document.CostCollection = request.CostCollection.Select(_ =>
                             {
                                 return new DocumentCost()
                                 {
@@ -170,7 +170,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                             }).ToList();
 
                         if (request.ImperfectionCollection != null)
-                            _document.Imperfections = request.ImperfectionCollection.Select(_ =>
+                            _document.ImperfectionCollection = request.ImperfectionCollection.Select(_ =>
                             {
                                 return new DocumentImperfection()
                                 {
@@ -249,6 +249,19 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         public virtual ActionResult Remove(int id)
         {
             return View();
+        }
+
+        [HttpGet]
+        public virtual ActionResult CostList(long id)
+        {
+            Document _document = _documentRepository.FindById(id, x => x.CostCollection.Select(_ => _.Title));
+            if (_document == null)
+            {
+                throw new Exception("ObjectNotFound");
+            }
+            ViewModelDocumentCost model = Mapper.Map<ViewModelDocumentCost>(_document);
+            model.CostCollection = model.CostCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
+            return View(model);
         }
     }
 }

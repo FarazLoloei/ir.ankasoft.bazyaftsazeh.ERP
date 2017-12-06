@@ -74,6 +74,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Remove);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult CostList()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CostList);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public DocumentController Actions { get { return MVC.Document; } }
@@ -94,6 +100,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string Create = "Create";
             public readonly string Modify = "Modify";
             public readonly string Remove = "Remove";
+            public readonly string CostList = "CostList";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -103,6 +110,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public const string Create = "Create";
             public const string Modify = "Modify";
             public const string Remove = "Remove";
+            public const string CostList = "CostList";
         }
 
 
@@ -141,6 +149,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string id = "id";
         }
+        static readonly ActionParamsClass_CostList s_params_CostList = new ActionParamsClass_CostList();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CostList CostListParams { get { return s_params_CostList; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CostList
+        {
+            public readonly string id = "id";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -152,11 +168,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _List = "_List";
+                public readonly string CostList = "CostList";
                 public readonly string Create = "Create";
                 public readonly string Index = "Index";
                 public readonly string Modify = "Modify";
             }
             public readonly string _List = "~/Views/Document/_List.cshtml";
+            public readonly string CostList = "~/Views/Document/CostList.cshtml";
             public readonly string Create = "~/Views/Document/Create.cshtml";
             public readonly string Index = "~/Views/Document/Index.cshtml";
             public readonly string Modify = "~/Views/Document/Modify.cshtml";
@@ -238,6 +256,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Remove);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             RemoveOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CostListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult CostList(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CostList);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            CostListOverride(callInfo, id);
             return callInfo;
         }
 

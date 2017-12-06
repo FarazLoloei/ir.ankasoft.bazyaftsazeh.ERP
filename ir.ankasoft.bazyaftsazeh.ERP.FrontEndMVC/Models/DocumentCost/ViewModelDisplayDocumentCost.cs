@@ -7,6 +7,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost
     public class ViewModelDisplayDocumentCost
     {
         [HiddenInput(DisplayValue = false)]
+        public long ParentId { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
         public long recId { get; set; }
 
         [Display(Name = nameof(Title), ResourceType = typeof(Resource))]

@@ -17,10 +17,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public double Value { get; set; }
 
-        public long DocumentRefRecId { get; set; }
+        public virtual long DocumentRefRecId { get; set; }
 
         [ForeignKey(nameof(DocumentRefRecId))]
-        public Document Document { get; set; }
+        public virtual Document Document { get; set; }
 
         #region IDateTracking
 
