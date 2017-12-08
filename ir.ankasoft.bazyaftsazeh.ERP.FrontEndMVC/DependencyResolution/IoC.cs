@@ -55,6 +55,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
                 x.For<IDocumentRepository>().Use<DocumentRepository>();
                 x.For<IDocumentCostRepository>().Use<DocumentCostRepository>();
                 x.For<IDocumentImperfectionRepository>().Use<DocumentImperfectionRepository>();
+                x.For<IPaymentRepository>().Use<PaymentRepository>();
 
 
                 x.For<IUserStore<ApplicationUser, long>>().Use<UserStore<ApplicationUser, ApplicationRole, long,

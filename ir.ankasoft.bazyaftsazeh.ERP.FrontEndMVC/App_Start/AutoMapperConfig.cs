@@ -7,6 +7,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentPayment;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Imperfection;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Importer;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Notification;
@@ -72,6 +73,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 /*Document Imperfection*/
                 ConfigDocumentImperfection(_);
+
+                /*Document Payment*/
+                ConfigDocumentPayment(_);
 
                 /*ConfigVehicle*/
                 ConfigVehicle(_);
@@ -607,6 +611,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.VehicleRefRecId, t => t.Ignore())
 
                 .ForMember(p => p.PaymentDate, t => t.Ignore())
+                .ForMember(p => p.PaymentsCollection, t => t.Ignore())
                 .ForMember(p => p.ContractorRefRecId, opt => opt.MapFrom(dest => dest.ContractorRecId))
                 .ForMember(p => p.Contractor, t => t.Ignore())
                 .ForMember(p => p.CostCollection, t => t.Ignore())
@@ -615,7 +620,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.ReplacementPlan, t => t.Ignore())
                 .ForMember(p => p.GovernmentPlanRefRecId, t => t.Ignore())
                 .ForMember(p => p.GovernmentPlan, t => t.Ignore())
-                .ForMember(p => p.Payments, t => t.Ignore())
 
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())
@@ -637,6 +641,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.InvestorRefRecId, opt => opt.MapFrom(dest => dest.InvestorRecId))
                 .ForMember(p => p.Investor, t => t.Ignore())
                 .ForMember(p => p.VehicleRefRecId, t => t.Ignore())
+                .ForMember(p => p.PaymentsCollection, t => t.Ignore())
                 .ForMember(p => p.PaymentDate, t => t.Ignore())
                 .ForMember(p => p.ContractorRefRecId, opt => opt.MapFrom(dest => dest.ContractorRecId))
                 .ForMember(p => p.Contractor, t => t.Ignore())
@@ -647,7 +652,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.ReplacementPlan, t => t.Ignore())
                 .ForMember(p => p.GovernmentPlanRefRecId, t => t.Ignore())
                 .ForMember(p => p.GovernmentPlan, t => t.Ignore())
-                .ForMember(p => p.Payments, t => t.Ignore())
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())
                 .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
@@ -729,6 +733,30 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.modifierUser, t => t.Ignore());
 
             _.CreateMap<Document, ViewModelDocumentImperfection>();
+        }
+
+        private static void ConfigDocumentPayment(IMapperConfigurationExpression _)
+        {
+            _.CreateMap<Payment, ViewModelDisplayDocumentPayment>()
+                .ForMember(p => p.DocumentRecId, opt => opt.MapFrom(dest => dest.DocumentRefRecId));
+
+            _.CreateMap<Document, ViewModelDocumentPayment>();
+                //.ForMember(p => p.PaymentCollection, t => t.Ignore());
+
+
+            _.CreateMap<Payment, ViewModelCreateAndModifyDocumentPayment>();
+
+            _.CreateMap<ViewModelCreateAndModifyDocumentPayment, Payment>()
+                .ForMember(p => p.TransactionDate, t => t.Ignore())
+                .ForMember(p => p.DueDate, t => t.Ignore())
+                .ForMember(p => p.DocumentRefRecId, opt => opt.MapFrom(dest => dest.DocumentRecId))
+                .ForMember(p => p.Document, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
         }
 
         private static void ConfigVehicle(IMapperConfigurationExpression _)

@@ -997,7 +997,7 @@
     <value>دولتی</value>
   </data>
   <data name="Replacements" xml:space="preserve">
-    <value>جایگذینی</value>
+    <value>جایگزینی</value>
   </data>
   <data name="BeneficiaryImporter" xml:space="preserve">
     <value>وارد کننده ذینفع</value>
@@ -1006,7 +1006,7 @@
     <value>شماره مجوز</value>
   </data>
   <data name="ReplacementVehicle" xml:space="preserve">
-    <value>خودرو جایگذین</value>
+    <value>خودرو جایگزین</value>
   </data>
   <data name="Representer" xml:space="preserve">
     <value>نمایندگی</value>
@@ -1190,5 +1190,26 @@
   </data>
   <data name="Payments" xml:space="preserve">
     <value>پرداخت ها</value>
+  </data>
+  <data name="Cheque" xml:space="preserve">
+    <value>چک</value>
+  </data>
+  <data name="DueDateShamsi" xml:space="preserve">
+    <value>موعد</value>
+  </data>
+  <data name="EditPayments" xml:space="preserve">
+    <value>ویرایش پرداخت ها</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>قیمت</value>
+  </data>
+  <data name="TransactionDateShamsi" xml:space="preserve">
+    <value>تاریخ تراکنش</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>مبلغ</value>
+  </data>
+  <data name="TotalPaidPrice" xml:space="preserve">
+    <value>کل مبلغ پرداختی</value>
   </data>
 </root>

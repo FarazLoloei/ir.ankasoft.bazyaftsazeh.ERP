@@ -1,0 +1,104 @@
+﻿@using ir.ankasoft;
+@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
+@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentPayment
+@using ir.ankasoft.entities.Enums
+@model ViewModelDocumentPayment
+
+<div class="content-heading">
+    @Resource.Document
+    <small>
+        @*@Html.AnkaResource(model => model.PersonalTitle) @Model.Title - @Model.NationalCode#*@
+    </small>
+</div>
+
+<div class="row">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">@Resource.EditPayments</div>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    @Html.HiddenFor(model => model.recId)
+                    <div class="clearfix">
+                        <div class="pull-right">
+                            <a class="btn btn-labeled btn-success" href="@Url.Action(MVC.DocumentPayment.Create(Model.recId))">
+                                <span class="btn btn-label">
+                                    <i class="fa fa-plus"></i>
+                                </span>@Resource.Add
+                            </a>
+                        </div>
+                    </div>
+                    <div class="communications">
+                        @Html.HiddenFor(model => Model.recId)
+                        <table class="table anka_dataTable table-striped table-bordered">
+                            @if (Model.PaymentsCollection.Any())
+                            {
+                                ViewModelDisplayDocumentPayment schema = Model.PaymentsCollection.FirstOrDefault();
+                                <thead>
+                                    <tr>
+                                        <td class="hidden"></td>
+                                        <td class="col-md-2">@Html.LabelFor(model => schema.Title)</td>
+                                        <td class="col-md-3">@Html.LabelFor(model => schema.ValueDisplayMode)</td>
+                                        <td class="col-md-1">@Html.LabelFor(model => schema.PaymentType)</td>
+                                        <td class="col-md-1">@Html.LabelFor(model => schema.TransactionDateShamsi)</td>
+                                        <td class="col-md-1">@Html.LabelFor(model => schema.DueDateShamsi)</td>
+                                        <td class="col-md-4"></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.PaymentsCollection)
+                                    {
+                                        <tr class="master display_@item.recId" data-itemid="@item.recId">
+                                            <td class="hidden">
+                                                @Html.HiddenFor(model => item.recId)
+                                                @Html.HiddenFor(model => item.DocumentRecId)
+                                            </td>
+                                            <td class="col-md-2">@Html.DisplayFor(model => item.Title)</td>
+                                            <td class="col-md-3 text-right">@Html.DisplayFor(model => item.ValueDisplayMode) @ir.ankasoft.tools.DefaultValues.DefaultCurrency</td>
+                                            <td class="col-md-1">@Html.AnkaResource(model => item.PaymentType)</td>
+                                            <td class="col-md-1 text-right">@Html.DisplayFor(model => item.TransactionDateShamsi)</td>
+                                            <td class="col-md-1 text-right">@Html.DisplayFor(model => item.DueDateShamsi)</td>
+                                            <td class="col-md-4">
+                                                <div class="btn-group mb-sm">
+                                                    <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                    </button>
+                                                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                                                        <li>
+                                                            <a href="@Url.Action(MVC.DocumentPayment.Modify(item.recId))"><i class="fa fa-edit" aria-hidden="true"></i> @Resource.Edit</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="hidden"></td>
+                                        <td class="col-md-2">@Resource.TotalPaidPrice</td>
+                                        <td class="col-md-2 text-right">@ir.ankasoft.tools.Convert.GroupDigiting(Model.PaymentsCollection.Sum(x => x.Value), 0) @ir.ankasoft.tools.DefaultValues.DefaultCurrency</td>
+                                        <td class="col-md-8" colspan="4"></td>
+                                    </tr>
+                                </tfoot>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <div class="clearfix">
+                    <div class="pull-right">
+                        @Html.ActionLink(Resource.Return, null, null, null, new { href = Url.Action(MVC.Document.Index()), @class = "btn btn-warning" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render(Bundles.Scripts.sweetAlert)
+}

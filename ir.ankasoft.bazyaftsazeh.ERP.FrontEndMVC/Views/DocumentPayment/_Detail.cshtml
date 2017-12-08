@@ -1,0 +1,45 @@
+﻿@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentPayment
+@model ViewModelCreateAndModifyDocumentPayment
+
+@Html.HiddenFor(model => model.recId)
+@Html.HiddenFor(model => model.DocumentRecId)
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.TransactionDateShamsi, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.TransactionDateShamsi, new { htmlAttributes = new { @class = "form-control TransactionDatePicker" } })
+        @Html.ValidationMessageFor(model => model.TransactionDateShamsi, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.DueDateShamsi, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.DueDateShamsi, new { htmlAttributes = new { @class = "form-control DueDatePicker" } })
+        @Html.ValidationMessageFor(model => model.DueDateShamsi, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.PaymentType, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EnumDropDownListFor(model => model.PaymentType, new { @class = "form-control select2" })
+        @Html.ValidationMessageFor(model => model.PaymentType, "", new { @class = "text-danger" })
+    </div>
+</div>

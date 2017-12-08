@@ -15,7 +15,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public string Title { get; set; }
 
         [Required]
-        public double Price { get; set; }
+        public double Value { get; set; }
 
         [Required]
         public DateTime TransactionDate { get; set; }
@@ -53,6 +53,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public Enums.PaymentType PaymentType { get; set; }
 
+        public virtual long DocumentRefRecId { get; set; }
+
+        [ForeignKey(nameof(DocumentRefRecId))]
+        public virtual Document Document { get; set; }
+
         #region IDateTracking
 
         public DateTime createdDateTime { get; set; }
@@ -83,9 +88,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
             {
                 yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Title)), new[] { nameof(Title) });
             }
-            if (Price < 0)
+            if (Value < 0)
             {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Price)), new[] { nameof(Price) });
+                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Value)), new[] { nameof(Value) });
             }
 
             if (TransactionDate == null)

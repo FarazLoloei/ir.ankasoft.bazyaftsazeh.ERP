@@ -5,6 +5,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentPayment;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Vehicle;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehiclePlate;
 using ir.ankasoft.entities.Repositories;
@@ -274,6 +275,19 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             }
             ViewModelDocumentImperfection model = Mapper.Map<ViewModelDocumentImperfection>(_document);
             model.ImperfectionCollection = model.ImperfectionCollection.Select(_ => { _.ParentId = id; return _; }).ToList();
+            return View(model);
+        }
+
+        [HttpGet]
+        public virtual ActionResult PaymentsList(long id)
+        {
+            Document _document = _documentRepository.FindById(id, x => x.PaymentsCollection);
+            if (_document == null)
+            {
+                throw new Exception("ObjectNotFound");
+            }
+            ViewModelDocumentPayment model = Mapper.Map<ViewModelDocumentPayment>(_document);
+            model.PaymentsCollection = model.PaymentsCollection.Select(_ => { _.DocumentRecId = id; return _; }).ToList();
             return View(model);
         }
     }

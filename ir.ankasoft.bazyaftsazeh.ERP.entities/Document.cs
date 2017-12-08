@@ -61,6 +61,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public virtual ICollection<DocumentImperfection> ImperfectionCollection { get; set; }
 
+        public virtual ICollection<Payment> PaymentsCollection { get; set; }
+
         public virtual PlanType PlanType { get; set; }
 
         public long? ReplacementRefRecId { get; set; }
@@ -73,7 +75,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [ForeignKey(nameof(GovernmentPlanRefRecId))]
         public GovernmentPlan GovernmentPlan { get; set; }
 
-        public virtual ICollection<Payment> Payments { get; set; }
+        //public virtual ICollection<Payment> Payments { get; set; }
 
         #region IDateTracking
 

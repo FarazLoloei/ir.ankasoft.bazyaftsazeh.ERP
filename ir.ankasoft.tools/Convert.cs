@@ -96,10 +96,16 @@ namespace ir.ankasoft.tools
             return Result;
         }
 
+        public static string GroupDigiting(double value)
+        {
+            return GroupDigiting(value, 0);
+        }
+
         public static string GroupDigiting(double value, int precision)
         {
             return value.ToString(string.Format("N{0}", precision), CultureInfo.InvariantCulture);
         }
+
 
         public static string GroupDigiting(string value, int precision)
         {

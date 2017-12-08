@@ -35,24 +35,38 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         }
 
         public DbSet<entities.Cost> Costs { get; set; }
+
         public DbSet<entities.Document> Document { get; set; }
+
         public DbSet<entities.GovernmentPlan> GovernmentPlan { get; set; }
+
         public DbSet<entities.Imperfection> Imperfection { get; set; }
+
         public DbSet<entities.Importer> Importer { get; set; }
+
         public DbSet<entities.Organization> Organization { get; set; }
+
         public DbSet<entities.Payment> Payment { get; set; }
 
         //public DbSet<entities.Plan> Plans { get; set; }
         public DbSet<entities.Plate> Plates { get; set; }
 
         public DbSet<entities.PreDefineTitle> PreDefineTitles { get; set; }
+
         public DbSet<entities.ReplacementPlan> ReplacementsPlan { get; set; }
+
         public DbSet<entities.Vehicle> Vehicles { get; set; }
+
         public DbSet<entities.VehicleTip> VehicleTips { get; set; }
+
         public DbSet<City> Cities { get; set; }
+
         public DbSet<Communication> Communications { get; set; }
+
         public DbSet<Party> Parties { get; set; }
+
         public DbSet<Person> People { get; set; }
+
         public DbSet<PostalAddress> PostalAddresses { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Notification> Notifications { get; set; }
@@ -406,12 +420,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
 
             modelBuilder.Entity<DocumentCost>()
                 .HasRequired(x => x.Document)
-                .WithMany(x=>x.CostCollection)
+                .WithMany(x => x.CostCollection)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DocumentImperfection>()
                 .HasRequired(x => x.Document)
                 .WithMany(x => x.ImperfectionCollection)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Payment>()
+                .HasRequired(x => x.Document)
+                .WithMany(x=>x.PaymentsCollection)
                 .WillCascadeOnDelete(false);
         }
     }

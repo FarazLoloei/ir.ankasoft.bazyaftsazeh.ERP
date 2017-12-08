@@ -86,6 +86,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImperfectionList);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult PaymentsList()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PaymentsList);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public DocumentController Actions { get { return MVC.Document; } }
@@ -108,6 +114,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string Remove = "Remove";
             public readonly string CostList = "CostList";
             public readonly string ImperfectionList = "ImperfectionList";
+            public readonly string PaymentsList = "PaymentsList";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -119,6 +126,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public const string Remove = "Remove";
             public const string CostList = "CostList";
             public const string ImperfectionList = "ImperfectionList";
+            public const string PaymentsList = "PaymentsList";
         }
 
 
@@ -173,6 +181,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string id = "id";
         }
+        static readonly ActionParamsClass_PaymentsList s_params_PaymentsList = new ActionParamsClass_PaymentsList();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_PaymentsList PaymentsListParams { get { return s_params_PaymentsList; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_PaymentsList
+        {
+            public readonly string id = "id";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -189,6 +205,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 public readonly string ImperfectionList = "ImperfectionList";
                 public readonly string Index = "Index";
                 public readonly string Modify = "Modify";
+                public readonly string PaymentsList = "PaymentsList";
             }
             public readonly string _List = "~/Views/Document/_List.cshtml";
             public readonly string CostList = "~/Views/Document/CostList.cshtml";
@@ -196,6 +213,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string ImperfectionList = "~/Views/Document/ImperfectionList.cshtml";
             public readonly string Index = "~/Views/Document/Index.cshtml";
             public readonly string Modify = "~/Views/Document/Modify.cshtml";
+            public readonly string PaymentsList = "~/Views/Document/PaymentsList.cshtml";
         }
     }
 
@@ -298,6 +316,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ImperfectionList);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             ImperfectionListOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void PaymentsListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult PaymentsList(long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PaymentsList);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            PaymentsListOverride(callInfo, id);
             return callInfo;
         }
 

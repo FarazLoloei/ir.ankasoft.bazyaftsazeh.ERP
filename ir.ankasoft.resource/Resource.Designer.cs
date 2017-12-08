@@ -214,6 +214,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to مبلغ.
+        /// </summary>
+        public static string Amount {
+            get {
+                return ResourceManager.GetString("Amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to شرکت بازیافت سازه.
         /// </summary>
         public static string ApplicationTitle {
@@ -408,6 +417,15 @@ namespace ir.ankasoft.resource {
         public static string ChassisNumber {
             get {
                 return ResourceManager.GetString("ChassisNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to چک.
+        /// </summary>
+        public static string Cheque {
+            get {
+                return ResourceManager.GetString("Cheque", resourceCulture);
             }
         }
         
@@ -781,6 +799,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to موعد.
+        /// </summary>
+        public static string DueDateShamsi {
+            get {
+                return ResourceManager.GetString("DueDateShamsi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ویرایش.
         /// </summary>
         public static string Edit {
@@ -813,6 +840,15 @@ namespace ir.ankasoft.resource {
         public static string EditImperfections {
             get {
                 return ResourceManager.GetString("EditImperfections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ویرایش پرداخت ها.
+        /// </summary>
+        public static string EditPayments {
+            get {
+                return ResourceManager.GetString("EditPayments", resourceCulture);
             }
         }
         
@@ -2140,6 +2176,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to قیمت.
+        /// </summary>
+        public static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اولویت.
         /// </summary>
         public static string Priority {
@@ -2320,7 +2365,7 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to جایگذینی.
+        ///   Looks up a localized string similar to جایگزینی.
         /// </summary>
         public static string Replacements {
             get {
@@ -2329,7 +2374,7 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to خودرو جایگذین.
+        ///   Looks up a localized string similar to خودرو جایگزین.
         /// </summary>
         public static string ReplacementVehicle {
             get {
@@ -2824,6 +2869,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to کل مبلغ پرداختی.
+        /// </summary>
+        public static string TotalPaidPrice {
+            get {
+                return ResourceManager.GetString("TotalPaidPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to مقدار کل.
         /// </summary>
         public static string TotalQty {
@@ -2838,6 +2892,15 @@ namespace ir.ankasoft.resource {
         public static string TotalSum {
             get {
                 return ResourceManager.GetString("TotalSum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تاریخ تراکنش.
+        /// </summary>
+        public static string TransactionDateShamsi {
+            get {
+                return ResourceManager.GetString("TransactionDateShamsi", resourceCulture);
             }
         }
         

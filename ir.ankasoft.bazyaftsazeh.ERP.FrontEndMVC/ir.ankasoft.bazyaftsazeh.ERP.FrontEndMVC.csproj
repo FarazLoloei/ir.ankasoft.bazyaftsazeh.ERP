@@ -177,6 +177,7 @@
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\DocumentCostController.cs" />
     <Compile Include="Controllers\DocumentImperfectionController.cs" />
+    <Compile Include="Controllers\DocumentPaymentController.cs" />
     <Compile Include="Controllers\ImperfectionController.cs" />
     <Compile Include="CostController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -190,6 +191,9 @@
     <Compile Include="DocumentImperfectionController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="DocumentPaymentController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="ImperfectionController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -201,6 +205,9 @@
     <Compile Include="Models\DocumentImperfection\ViewModelCreateAndModifyDocumentImperfection.cs" />
     <Compile Include="Models\DocumentImperfection\ViewModelDisplayDocumentImperfection.cs" />
     <Compile Include="Models\DocumentImperfection\ViewModelDocumentImperfection.cs" />
+    <Compile Include="Models\DocumentPayment\ViewModelCreateAndModifyDocumentPayment.cs" />
+    <Compile Include="Models\DocumentPayment\ViewModelDisplayDocumentPayment.cs" />
+    <Compile Include="Models\DocumentPayment\ViewModelDocumentPayment.cs" />
     <Compile Include="Models\Document\ViewModelCreateDocument.cs" />
     <Compile Include="Models\Document\ViewModelDocumentDisplay.cs" />
     <Compile Include="Models\Document\ViewModelModifyDocument.cs" />
@@ -780,6 +787,10 @@
     <Content Include="Views\DocumentImperfection\ModifyDocumentImperfection.cshtml" />
     <Content Include="Views\DocumentImperfection\_Detail.cshtml" />
     <Content Include="Views\Party\Display.cshtml" />
+    <Content Include="Views\Document\PaymentsList.cshtml" />
+    <Content Include="Views\DocumentPayment\Create.cshtml" />
+    <Content Include="Views\DocumentPayment\_Detail.cshtml" />
+    <Content Include="Views\DocumentPayment\Modify.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

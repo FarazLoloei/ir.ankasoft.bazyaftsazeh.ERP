@@ -53,6 +53,13 @@ namespace ir.ankasoft.tools.Utility
             throw new NotImplementedException();
         }
 
-        public static string Today { get; set; }
+        public static string Today
+        {
+            get
+            {
+                var date = Now();
+                return $"{date.Year.ToString("D4")}/{date.Month.ToString("D2")}/{date.Day.ToString("D2")}";
+            }
+        }
     }
 }
