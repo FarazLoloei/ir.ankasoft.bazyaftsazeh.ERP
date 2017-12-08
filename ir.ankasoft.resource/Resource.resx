@@ -1212,4 +1212,10 @@
   <data name="TotalPaidPrice" xml:space="preserve">
     <value>کل مبلغ پرداختی</value>
   </data>
+  <data name="ImperfectionPriceSum" xml:space="preserve">
+    <value>مبلغ کل نقص ها</value>
+  </data>
+  <data name="PaymentsTotalPrice" xml:space="preserve">
+    <value>مبلغ کل پرداختی</value>
+  </data>
 </root>

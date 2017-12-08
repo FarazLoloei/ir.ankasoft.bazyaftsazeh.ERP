@@ -1150,6 +1150,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to مبلغ کل نقص ها.
+        /// </summary>
+        public static string ImperfectionPriceSum {
+            get {
+                return ResourceManager.GetString("ImperfectionPriceSum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to نقوص.
         /// </summary>
         public static string Imperfections {
@@ -2028,6 +2037,15 @@ namespace ir.ankasoft.resource {
         public static string Payments {
             get {
                 return ResourceManager.GetString("Payments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مبلغ کل پرداختی.
+        /// </summary>
+        public static string PaymentsTotalPrice {
+            get {
+                return ResourceManager.GetString("PaymentsTotalPrice", resourceCulture);
             }
         }
         

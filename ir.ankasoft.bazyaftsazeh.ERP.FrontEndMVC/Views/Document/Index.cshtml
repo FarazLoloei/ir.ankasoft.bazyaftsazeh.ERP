@@ -8,7 +8,7 @@
     int group;
 }
 
-<div class="content-heading">@Resource.List @Resource.CounterParty </div>
+<div class="content-heading">@Resource.List @Resource.Document </div>
 @using (Html.BeginForm(MVC.Document.Index(), FormMethod.Get, new { id = "dataTable" }))
 {
     @Html.Partial(MVC.Shared.Views._ListFilter, Model.PageData.filterDataSource);

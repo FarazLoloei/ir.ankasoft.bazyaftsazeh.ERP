@@ -33,6 +33,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
         public PlanType PlanType { get; set; }
 
         [Display(Name = nameof(TotalCostValue), ResourceType = typeof(Resource))]
+        public double TotalCostValue { get; set; }
+
+        [Display(Name = nameof(TotalCostValue), ResourceType = typeof(Resource))]
         public string TotalCostValueDisplayMode
         {
             get
@@ -41,7 +44,28 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
             }
         }
 
-        [Display(Name = nameof(TotalCostValue), ResourceType = typeof(Resource))]
-        public double TotalCostValue { get; set; }
+        [Display(Name = nameof(ImperfectionPriceSum), ResourceType = typeof(Resource))]
+        public double ImperfectionPriceSum { get; set; }
+
+        [Display(Name = nameof(ImperfectionPriceSum), ResourceType = typeof(Resource))]
+        public string ImperfectionPriceSumDisplayMode
+        {
+            get
+            {
+                return tools.Convert.GroupDigiting(ImperfectionPriceSum, 0);
+            }
+        }
+
+        [Display(Name = nameof(PaymentsTotalPrice), ResourceType = typeof(Resource))]
+        public double PaymentsTotalPrice { get; set; }
+
+        [Display(Name = nameof(PaymentsTotalPrice), ResourceType = typeof(Resource))]
+        public string PaymentsTotalPriceDisplayMode
+        {
+            get
+            {
+                return tools.Convert.GroupDigiting(PaymentsTotalPrice, 0);
+            }
+        }
     }
 }

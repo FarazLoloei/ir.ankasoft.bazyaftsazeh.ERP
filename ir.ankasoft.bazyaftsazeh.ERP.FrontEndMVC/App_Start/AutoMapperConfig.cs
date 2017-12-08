@@ -595,7 +595,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             .ForMember(p => p.PlateOwnerRecId, opt => opt.MapFrom(dest => dest.PlateOwnerRefRecId))
             .ForMember(p => p.Vehicle, opt => opt.MapFrom(dest => dest.Vehicle.ToString()))
             .ForMember(p => p.PlateNumber, opt => opt.MapFrom(dest => dest.Vehicle.Plate.ToString()))
-            .ForMember(p => p.TotalCostValue, opt => opt.MapFrom(dest => dest.CostCollection.Sum(x => x.Value)));
+            .ForMember(p => p.TotalCostValue, opt => opt.MapFrom(dest => dest.CostCollection.Sum(x => x.Value)))
+            .ForMember(p => p.ImperfectionPriceSum, opt => opt.MapFrom(dest => dest.ImperfectionCollection.Sum(x => x.Value)))
+            .ForMember(p => p.PaymentsTotalPrice, opt => opt.MapFrom(dest => dest.PaymentsCollection.Sum(x => x.Value)));
 
             /*Create*/
             _.CreateMap<ViewModelCreateDocument, Document>()

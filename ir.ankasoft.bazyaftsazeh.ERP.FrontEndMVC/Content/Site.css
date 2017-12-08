@@ -1,4 +1,7 @@
 ﻿input::-webkit-calendar-picker-indicator { display: none; }
+
 input[type="date"]::-webkit-input-placeholder { visibility: hidden !important; }
 
 .anka_dataTable thead a { color: rgb(136,136,136); }
+
+.anka_dataTable tbody a { color: rgb(101,101,101); }

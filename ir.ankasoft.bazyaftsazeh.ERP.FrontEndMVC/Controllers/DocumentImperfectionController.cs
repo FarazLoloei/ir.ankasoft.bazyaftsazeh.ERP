@@ -106,7 +106,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     using (_unitOfWorkFactory.Create())
                     {
                         DocumentImperfection _documentImperfection = _documentImperfectionRpository.FindById(request.ImperfectionRecId);
-                        Mapper.Map(request, _documentImperfection, typeof(ViewModelCreateAndModifyDocumentImperfection), typeof(DocumentCost));
+                        Mapper.Map(request, _documentImperfection, typeof(ViewModelCreateAndModifyDocumentImperfection), typeof(DocumentImperfection));
                         return RedirectToAction(MVC.Document.ImperfectionList(request.ParentId));
                     }
                 }

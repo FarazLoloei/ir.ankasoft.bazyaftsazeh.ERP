@@ -62,6 +62,12 @@
                 <th>
                     @Html.LabelFor(modelItem => modelHeader.TotalCostValue)
                 </th>
+                <th>
+                    @Resource.ImperfectionPriceSum
+                </th>
+                <th>
+                    @Resource.PaymentsTotalPrice
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -73,11 +79,12 @@
                                         <tr data-itemid='@item.recId' class="context-menu">
                                             <td class="col-md-2"><a href="@Url.Action(MVC.Party.Display(item.LastOwnerRecId))">@Html.DisplayFor(modelItem => item.LastOwner)</a></td>
                                             <td class="col-md-2"><a href="@Url.Action(MVC.Party.Display(item.PlateOwnerRecId))">@Html.DisplayFor(modelItem => item.PlateOwner)</a></td>
-                                            <td class="col-md-2">@Html.AnkaResource(modelItem => item.PlanType)</td>
+                                            <td class="col-md-1">@Html.AnkaResource(modelItem => item.PlanType)</td>
                                             <td class="col-md-2">@Html.DisplayFor(modelItem => item.Vehicle)</td>
                                             <td class="col-md-1 text-right">@Html.DisplayFor(modelItem => item.PlateNumber)</td>
                                             <td class="col-md-1 text-right"><a href="@Url.Action(MVC.Document.CostList(item.recId))"> @Html.DisplayFor(modelItem => item.TotalCostValueDisplayMode) @ir.ankasoft.tools.DefaultValues.DefaultCurrency</a></td>
-                                            <td class="col-md-2"></td>
+                                            <td class="col-md-1 text-right"><a href="@Url.Action(MVC.Document.ImperfectionList(item.recId))"> @Html.DisplayFor(modelItem => item.ImperfectionPriceSumDisplayMode) @ir.ankasoft.tools.DefaultValues.DefaultCurrency</a></td>
+                                            <td class="col-md-2 text-right"><a href="@Url.Action(MVC.Document.PaymentsList(item.recId))"> @Html.DisplayFor(modelItem => item.PaymentsTotalPriceDisplayMode) @ir.ankasoft.tools.DefaultValues.DefaultCurrency</a></td>
                                         </tr>
                                     }
                                 </tbody>
