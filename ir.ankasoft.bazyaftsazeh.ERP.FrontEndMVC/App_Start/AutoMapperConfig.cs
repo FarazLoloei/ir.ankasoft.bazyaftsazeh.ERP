@@ -16,6 +16,7 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Party;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Person;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.PostalAddress;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Province;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.ReplacementPlan;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Vehicle;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehiclePlate;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehicleTip;
@@ -76,6 +77,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 /*Document Payment*/
                 ConfigDocumentPayment(_);
+
+                /*Config ReplacementPlan*/
+                ConfigReplacementPlan(_);
 
                 /*ConfigVehicle*/
                 ConfigVehicle(_);
@@ -743,8 +747,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.DocumentRecId, opt => opt.MapFrom(dest => dest.DocumentRefRecId));
 
             _.CreateMap<Document, ViewModelDocumentPayment>();
-                //.ForMember(p => p.PaymentCollection, t => t.Ignore());
-
 
             _.CreateMap<Payment, ViewModelCreateAndModifyDocumentPayment>();
 
@@ -753,6 +755,29 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.DueDate, t => t.Ignore())
                 .ForMember(p => p.DocumentRefRecId, opt => opt.MapFrom(dest => dest.DocumentRecId))
                 .ForMember(p => p.Document, t => t.Ignore())
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+        }
+
+        private static void ConfigReplacementPlan(IMapperConfigurationExpression _)
+        {
+            _.CreateMap<ReplacementPlan, ViewModelCreateReplacementPlan>()
+                .ForMember(p => p.ReplacementVehicleRecId, opt => opt.MapFrom(dest => dest.ReplacementVehicleRefRecId))
+                .ForMember(p => p.BeneficiaryImporter, t => t.Ignore())
+                .ForMember(p => p.ReplacementVehicle, t => t.Ignore())
+                .ForMember(p => p.Representor, t => t.Ignore());
+
+            _.CreateMap<ViewModelCreateReplacementPlan, ReplacementPlan>()
+                .ForMember(p => p.ImporterRefRecId, opt => opt.MapFrom(dest => dest.BeneficiaryImporterRecId))
+                .ForMember(p => p.BeneficiaryImporter, t => t.Ignore())
+                .ForMember(p => p.ReplacementVehicleRefRecId, opt => opt.MapFrom(dest => dest.ReplacementVehicleRecId))
+                .ForMember(p => p.ReplacementVehicle, t => t.Ignore())
+                .ForMember(p => p.RepresentorRefRecId, opt => opt.MapFrom(dest => dest.RepresentorRecId))
+                .ForMember(p => p.Representor, t => t.Ignore())
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())
                 .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())

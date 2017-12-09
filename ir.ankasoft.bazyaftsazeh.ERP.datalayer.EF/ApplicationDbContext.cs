@@ -350,7 +350,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<entities.ReplacementPlan>()
-                .HasRequired(x => x.ReplacementsVehicle)
+                .HasRequired(x => x.ReplacementVehicle)
                 .WithMany()
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<Person>()

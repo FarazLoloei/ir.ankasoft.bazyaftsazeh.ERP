@@ -179,7 +179,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                     Value = _.ImperfectionValue
                                 };
                             }).ToList();
-
+                        if (request.GovernmentPlan.PermissionNumber != null)
+                            _document.GovernmentPlan = Mapper.Map<GovernmentPlan>(request.GovernmentPlan);
+                        if (request.ReplacementPlan.BeneficiaryImporterRecId != 0)
+                            _document.ReplacementPlan = Mapper.Map<ReplacementPlan>(request.ReplacementPlan);
                         _document.Vehicle = Mapper.Map<Vehicle>(request.Vehicle);
                         _document.Vehicle.Plate = Mapper.Map<Plate>(request.Vehicle.Plate);
                         _documentRepository.Add(_document);

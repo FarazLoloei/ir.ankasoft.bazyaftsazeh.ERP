@@ -25,16 +25,10 @@
 @using (Html.BeginForm(MVC.Document.CostList(), FormMethod.Get, new { @class = "invisible", id = "EditCost" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
 @using (Html.BeginForm(MVC.Document.ImperfectionList(), FormMethod.Get, new { @class = "invisible", id = "EditImperfection" }))
-    { <input type="hidden" name="id" value="" id="RecID" /> }
-    @using (Html.BeginForm(MVC.Document.PaymentsList(), FormMethod.Get, new { @class = "invisible", id = "EditPayments" }))
-    { <input type="hidden" name="id" value="" id="RecID" /> }
-    @*@using (Html.BeginForm(MVC.Organization.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsOrganization" }))
-    { <input type="hidden" name="partyId" value="" id="partyId" /> }
-    @using (Html.BeginForm(MVC.Importer.Create(), FormMethod.Get, new { @class = "invisible", id = "DefineAsImporter" }))
-    { <input type="hidden" name="partyId" value="" id="partyId" /> }*@
+{ <input type="hidden" name="id" value="" id="RecID" /> }
+@using (Html.BeginForm(MVC.Document.PaymentsList(), FormMethod.Get, new { @class = "invisible", id = "EditPayments" }))
+{ <input type="hidden" name="id" value="" id="RecID" /> }
 
-@*@using (Html.BeginForm(MVC.Party.ExportToExcel(), FormMethod.Get, new { @class = "invisible", id = "ExportToExcel" }))
-    { <input type="hidden" name="keyword" value="" id="keyword" /> }*@
 @section Styles {
     @Styles.Render(Bundles.Styles.sweetAlertCss)
 }

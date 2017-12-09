@@ -15,7 +15,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.ReplacementPlan
 
         public List<SelectListItem> BeneficiaryImporter { get; set; } = new List<SelectListItem>();
 
-        [Display(Name = nameof(Importer), ResourceType = typeof(Resource))]
+        [Display(Name = "ReplacementVehicle", ResourceType = typeof(Resource))]
         public long ReplacementVehicleRecId { get; set; }
 
         public List<SelectListItem> ReplacementVehicle { get; set; }

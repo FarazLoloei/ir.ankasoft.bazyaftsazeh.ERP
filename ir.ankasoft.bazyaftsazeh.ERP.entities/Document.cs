@@ -68,12 +68,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public long? ReplacementRefRecId { get; set; }
 
         [ForeignKey(nameof(ReplacementRefRecId))]
-        public ReplacementPlan ReplacementPlan { get; set; }
+        public ReplacementPlan ReplacementPlan { get; set; } = new ReplacementPlan();
 
         public long? GovernmentPlanRefRecId { get; set; }
 
         [ForeignKey(nameof(GovernmentPlanRefRecId))]
-        public GovernmentPlan GovernmentPlan { get; set; }
+        public GovernmentPlan GovernmentPlan { get; set; } = new GovernmentPlan();
 
         //public virtual ICollection<Payment> Payments { get; set; }
 

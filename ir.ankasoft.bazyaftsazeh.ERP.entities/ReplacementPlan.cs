@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
-    public class ReplacementPlan : DomainEntity<long>, IPlan, IDateTracking, IUserTracking
+    public class ReplacementPlan : DomainEntity<long>, IDateTracking, IUserTracking
     {
         public long ImporterRefRecId { get; set; }
 
@@ -19,9 +19,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public long ReplacementVehicleRefRecId { get; set; }
 
         [ForeignKey(nameof(ReplacementVehicleRefRecId))]
-        public Vehicle ReplacementsVehicle { get; set; }
+        public Vehicle ReplacementVehicle { get; set; }
 
-        public PlanType Type { get; set; } = Enums.PlanType.Replacements;
+        //public PlanType Type { get; set; } = Enums.PlanType.Replacements;
 
         public long RepresentorRefRecId { get; set; }
 

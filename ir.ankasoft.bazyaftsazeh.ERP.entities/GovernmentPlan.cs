@@ -9,13 +9,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
-    public class GovernmentPlan : DomainEntity<long>, IPlan, IDateTracking, IUserTracking
+    public class GovernmentPlan : DomainEntity<long>, IDateTracking, IUserTracking
     {
-        public GovernmentPlan()
-        {
-            Type = Enums.PlanType.Government;
-        }
-
         public long OrganizationRefRecId { get; set; }
 
         [ForeignKey(nameof(OrganizationRefRecId))]
@@ -23,7 +18,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public string PermissionNumber { get; set; }
 
-        public PlanType Type { get; set; }
+        //public PlanType Type { get; set; }
 
         public long RepresentorRefRecId { get; set; }
 

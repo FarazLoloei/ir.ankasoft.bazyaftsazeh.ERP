@@ -1218,4 +1218,7 @@
   <data name="PaymentsTotalPrice" xml:space="preserve">
     <value>مبلغ کل پرداختی</value>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value>خودرو جایگزین</value>
+  </data>
 </root>
