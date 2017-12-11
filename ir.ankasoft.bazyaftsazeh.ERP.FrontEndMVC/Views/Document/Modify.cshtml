@@ -163,16 +163,6 @@
 
                                     <fieldset>
                                         <div class="form-group">
-                                            @Html.LabelFor(model => model.Vehicle.Plate.Series, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="col-md-10">
-                                                @Html.EnumDropDownListFor(model => model.Vehicle.Plate.Series, new { @class = "select2 form-control" })
-                                                @Html.ValidationMessageFor(model => model.Vehicle.Plate.Series, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </fieldset>
-
-                                    <fieldset>
-                                        <div class="form-group">
                                             @Html.LabelFor(model => model.Vehicle.Plate.Number, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
                                                 @Html.TextBoxFor(model => model.Vehicle.Plate.Number, new { @class = "form-control" })
@@ -180,7 +170,16 @@
                                             </div>
                                         </div>
                                     </fieldset>
-
+                                    <fieldset>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Vehicle.Plate.Series, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @*@Html.EnumDropDownListFor(model => model.Vehicle.Plate.Series, new { @class = "select2 form-control" })*@
+                                                @Html.TextBoxFor(model => model.Vehicle.Plate.Series, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Vehicle.Plate.Series, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                     <fieldset>
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Vehicle.Plate.Shape, htmlAttributes: new { @class = "control-label col-md-2" })

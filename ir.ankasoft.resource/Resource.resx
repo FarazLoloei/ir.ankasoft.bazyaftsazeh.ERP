@@ -769,7 +769,7 @@
     <value>نام کاربری</value>
   </data>
   <data name="NationalCode" xml:space="preserve">
-    <value>کد ملی</value>
+    <value>شناسه ملی</value>
   </data>
   <data name="Roles" xml:space="preserve">
     <value>نقش ها</value>
@@ -1195,7 +1195,7 @@
     <value>چک</value>
   </data>
   <data name="DueDateShamsi" xml:space="preserve">
-    <value>موعد</value>
+    <value>سررسید</value>
   </data>
   <data name="EditPayments" xml:space="preserve">
     <value>ویرایش پرداخت ها</value>

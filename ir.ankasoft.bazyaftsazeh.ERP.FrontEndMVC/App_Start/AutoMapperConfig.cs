@@ -766,7 +766,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
         private static void ConfigReplacementPlan(IMapperConfigurationExpression _)
         {
             _.CreateMap<ReplacementPlan, ViewModelCreateReplacementPlan>()
-                .ForMember(p => p.ReplacementVehicleRecId, opt => opt.MapFrom(dest => dest.ReplacementVehicleRefRecId))
+                .ForMember(p => p.ReplacementVehicleRecId, opt => opt.MapFrom(dest => dest.ReplacementVehicleTipRefRecId))
                 .ForMember(p => p.BeneficiaryImporter, t => t.Ignore())
                 .ForMember(p => p.ReplacementVehicle, t => t.Ignore())
                 .ForMember(p => p.Representor, t => t.Ignore());
@@ -774,8 +774,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             _.CreateMap<ViewModelCreateReplacementPlan, ReplacementPlan>()
                 .ForMember(p => p.ImporterRefRecId, opt => opt.MapFrom(dest => dest.BeneficiaryImporterRecId))
                 .ForMember(p => p.BeneficiaryImporter, t => t.Ignore())
-                .ForMember(p => p.ReplacementVehicleRefRecId, opt => opt.MapFrom(dest => dest.ReplacementVehicleRecId))
-                .ForMember(p => p.ReplacementVehicle, t => t.Ignore())
+                .ForMember(p => p.ReplacementVehicleTipRefRecId, opt => opt.MapFrom(dest => dest.ReplacementVehicleRecId))
+                .ForMember(p => p.ReplacementVehicleTip, t => t.Ignore())
                 .ForMember(p => p.RepresentorRefRecId, opt => opt.MapFrom(dest => dest.RepresentorRecId))
                 .ForMember(p => p.Representor, t => t.Ignore())
                 .ForMember(p => p.createdDateTime, t => t.Ignore())

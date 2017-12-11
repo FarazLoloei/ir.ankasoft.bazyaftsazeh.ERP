@@ -17,7 +17,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public string Number { get; set; }
 
         [Required]
-        public Enums.PlateAlphabets Series { get; set; }
+        //public Enums.PlateAlphabets Series { get; set; }
+        [MaxLength(20)]
+        public string Series { get; set; }
 
         [Required]
         public Enums.PlateColors Color { get; set; }
@@ -27,12 +29,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override string ToString()
         {
-            var _number = Number.Split('-').ToList();
-            if (_number.Count() > 1)
-                return $"{_number[1]} {new ResourceManager(typeof(resource.Resource)).GetString(Series.ToString())} {_number[0]}";
-            else
-                return $"{Number}";
-            //return base.ToString();
+            //var _number = Number.Split('-').ToList();
+            //if (_number.Count() > 1)
+            //    return $"{_number[1]} {new ResourceManager(typeof(resource.Resource)).GetString(Series.ToString())} {_number[0]}";
+            //else
+            //    return $"{Number}";
+            return $"{Number} - {Series}";
         }
 
         #region IDateTracking

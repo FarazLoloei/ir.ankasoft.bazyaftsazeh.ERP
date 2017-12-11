@@ -48,7 +48,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
             request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
             if (Request.IsAjaxRequest())
-                return PartialView(MVC.Party.Views._List,
+                return PartialView(MVC.Person.Views._List,
                                    Load(request));
             return View(Load(request));
         }

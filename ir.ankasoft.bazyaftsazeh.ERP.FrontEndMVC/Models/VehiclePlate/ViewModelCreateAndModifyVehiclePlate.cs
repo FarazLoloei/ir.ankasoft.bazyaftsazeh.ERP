@@ -11,12 +11,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehiclePlate
         public long recId { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
-        [MaxLength(10, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
+        [MaxLength(20, ErrorMessageResourceName = "MaxLenght20", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = nameof(Number), ResourceType = typeof(Resource))]
         public string Number { get; set; }
 
+        [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
+        [MaxLength(20, ErrorMessageResourceName = "MaxLenght20", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = nameof(Series), ResourceType = typeof(Resource))]
-        public PlateAlphabets Series { get; set; }
+        //public PlateAlphabets Series { get; set; }
+        public string Series { get; set; }
 
         [Display(Name = nameof(Color), ResourceType = typeof(Resource))]
         public PlateColors Color { get; set; }

@@ -15,6 +15,9 @@ namespace ir.ankasoft.entities.Enums
         Company,
 
         [Display(Name = nameof(TransportCompany), ResourceType = typeof(Resource))]
-        TransportCompany
+        TransportCompany,
+
+        [Display(Name = nameof(Organization), ResourceType = typeof(Resource))]
+        Organization
     }
 }

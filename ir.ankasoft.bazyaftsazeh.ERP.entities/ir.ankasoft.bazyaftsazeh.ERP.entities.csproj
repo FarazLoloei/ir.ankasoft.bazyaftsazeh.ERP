@@ -68,6 +68,7 @@
     <Compile Include="Repositories\ICostRepository.cs" />
     <Compile Include="Repositories\IDocumentCostRepository.cs" />
     <Compile Include="Repositories\IDocumentImperfectionRepository.cs" />
+    <Compile Include="Repositories\IGovernmentPlanRepository.cs" />
     <Compile Include="Repositories\IPaymentRepository.cs" />
     <Compile Include="Repositories\IDocumentRepository.cs" />
     <Compile Include="Repositories\IImperfectionRepository.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Repositories\IOrganizationRepository.cs" />
     <Compile Include="Repositories\IPlateRepository.cs" />
     <Compile Include="Repositories\IPreDefineTitleRepository.cs" />
+    <Compile Include="Repositories\IReplacementPlanRepository.cs" />
     <Compile Include="Repositories\IVehicleRepository.cs" />
     <Compile Include="Repositories\IVehicleTipRepository.cs" />
     <Compile Include="Vehicle.cs" />

@@ -799,7 +799,7 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to موعد.
+        ///   Looks up a localized string similar to سررسید.
         /// </summary>
         public static string DueDateShamsi {
             get {
@@ -1843,7 +1843,7 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to کد ملی.
+        ///   Looks up a localized string similar to شناسه ملی.
         /// </summary>
         public static string NationalCode {
             get {

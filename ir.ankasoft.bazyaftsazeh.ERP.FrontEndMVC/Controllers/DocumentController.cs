@@ -27,6 +27,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly IDocumentRepository _documentRepository;
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IContextMenuItemRepository _contextMenuItemRepository;
+        private readonly IReplacementPlanRepository _replacementPlanRepository;
+        private readonly IGovernmentPlanRepository _governmentPlanRepository;
         private IMapper Mapper;
 
         public DocumentController(IPartyRepository partyRepository,
@@ -36,7 +38,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                   IImporterRepository importerRepository,
                                   IOrganizationRepository organizationRepository,
                                   IPersonRepository personRepository,
-                                  IUnitOfWorkFactory unitOfWorkFactory)
+                                  IUnitOfWorkFactory unitOfWorkFactory,
+                                  IReplacementPlanRepository replacementPlanRepository,
+                                  IGovernmentPlanRepository governmentPlanRepository)
         {
             _partyRepository = partyRepository;
             _importerRepository = importerRepository;
@@ -44,7 +48,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             _personRepository = personRepository;
             _documentRepository = documentRepository;
             _vehicleRepository = vehicleRepository;
-            //_plateRepository = plateRepository;
+            _replacementPlanRepository = replacementPlanRepository;
+            _governmentPlanRepository = governmentPlanRepository;
             _contextMenuItemRepository = contextMenuItemRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
@@ -58,7 +63,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
             request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
             if (Request.IsAjaxRequest())
-                return PartialView(MVC.Party.Views._List,
+                return PartialView(MVC.Document.Views._List,
                                    Load(request));
             return View(Load(request));
         }
@@ -179,6 +184,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                     Value = _.ImperfectionValue
                                 };
                             }).ToList();
+                        _document.GovernmentPlan = null;
+                        _document.ReplacementPlan = null;
                         if (request.GovernmentPlan.PermissionNumber != null)
                             _document.GovernmentPlan = Mapper.Map<GovernmentPlan>(request.GovernmentPlan);
                         if (request.ReplacementPlan.BeneficiaryImporterRecId != 0)
@@ -197,7 +204,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     }
                 }
             }
-
+            request.Vehicle = Mapper.Map<ViewModelCreateAndModifyVehicle>(request.Vehicle);
+            request.LastOwner = request.PlateOwner = request.Investor = request.Contractor = CreatePartiesList();
+            request.Vehicle.VehicleTip = Common.sessionManager.getVehicleTips();
             return View(request);
         }
 
@@ -231,7 +240,21 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     {
                         Document _document = _documentRepository.FindById(request.recId,
                             y => y.Vehicle,
-                            y => y.Vehicle.Plate);
+                            y => y.Vehicle.Plate,
+                            y => y.GovernmentPlan,
+                            y => y.ReplacementPlan);
+                        switch (_document.PlanType)
+                        {
+                            case entities.Enums.PlanType.Replacements:
+                                _document.ReplacementPlan = _replacementPlanRepository.FindById(_document.ReplacementRefRecId ?? 0);
+                                _document.GovernmentPlan = null;
+                                break;
+                            case entities.Enums.PlanType.Government:
+                                _document.GovernmentPlan = _governmentPlanRepository.FindById(_document.GovernmentPlanRefRecId ?? 0);
+                                _document.ReplacementPlan = null;
+                                break;
+
+                        }
                         Mapper.Map(request, _document, typeof(ViewModelModifyDocument), typeof(Document));
                         Mapper.Map(request.Vehicle.Plate, _document.Vehicle.Plate,
                             typeof(ViewModelCreateAndModifyVehiclePlate),
@@ -246,7 +269,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                         ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
                     }
                 }
+                catch
+                {
+
+                }
             }
+            request.Vehicle = Mapper.Map<ViewModelCreateAndModifyVehicle>(request.Vehicle);
+            request.LastOwner = request.PlateOwner = request.Investor = request.Contractor = CreatePartiesList();
+            request.Vehicle.VehicleTip = Common.sessionManager.getVehicleTips();
             return View(request);
         }
 

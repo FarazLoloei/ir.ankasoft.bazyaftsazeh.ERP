@@ -16,12 +16,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [ForeignKey(nameof(ImporterRefRecId))]
         public Importer BeneficiaryImporter { get; set; }
 
-        public long ReplacementVehicleRefRecId { get; set; }
+        public long ReplacementVehicleTipRefRecId { get; set; }
 
-        [ForeignKey(nameof(ReplacementVehicleRefRecId))]
-        public Vehicle ReplacementVehicle { get; set; }
-
-        //public PlanType Type { get; set; } = Enums.PlanType.Replacements;
+        [ForeignKey(nameof(ReplacementVehicleTipRefRecId))]
+        public VehicleTip ReplacementVehicleTip { get; set; }
 
         public long RepresentorRefRecId { get; set; }
 

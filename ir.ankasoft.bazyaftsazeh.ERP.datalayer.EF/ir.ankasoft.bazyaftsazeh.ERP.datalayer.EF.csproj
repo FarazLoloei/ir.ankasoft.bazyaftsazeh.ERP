@@ -99,6 +99,7 @@
     <Compile Include="Repositories\DocumentCostRepository.cs" />
     <Compile Include="Repositories\DocumentImperfectionRepository.cs" />
     <Compile Include="Repositories\DocumentRepository.cs" />
+    <Compile Include="Repositories\GovernmentPlanRepository.cs" />
     <Compile Include="Repositories\ImperfectionRepository.cs" />
     <Compile Include="Repositories\ImporterRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Repositories\PostalAddressRepository.cs" />
     <Compile Include="Repositories\PreDefineTitleRepository.cs" />
     <Compile Include="Repositories\ProvinceRepository.cs" />
+    <Compile Include="Repositories\ReplacementPlanRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\VehicleRepository.cs" />
     <Compile Include="Repositories\VehicleTipRepository.cs" />
