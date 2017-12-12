@@ -30,8 +30,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             bundles.Add(new StyleBundle(Bundles.Styles.iranSans).Include(
                 "~/Content/IranSans/IranSans.css", new CssRewriteUrlTransform()
-            //Links.Content.IranSans.IranSans_css, new CssRewriteUrlTransform()
-            //"~/Vendor/bbcnassim/css/font-bbcnassim.min.css", new CssRewriteUrlTransform()
+
             ));
 
             bundles.Add(new StyleBundle(Bundles.Styles.roboto).Include(
@@ -47,15 +46,13 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             bundles.Add(new StyleBundle("~/bundles/contextMenuCss").Include(
                 "~/Content/jquery.contextMenu.min.css",
                 "~/Content/jquery.contextMenu-overlay.css"
-            //"~/Vendor/contextMenu/jquery.contextmenu.css",
-            //"~/Vendor/contextMenu/jquery.contextmenu-overlay.css"
             ));
             bundles.Add(new StyleBundle(Bundles.Styles.sweetAlertCss).Include(
                 "~/Vendor/sweetalert/dist/sweetalert.css",
                 "~/Vendor/sweetalert/dist/sweetalert-overlay.css"
             ));
             bundles.Add(new StyleBundle(Bundles.Styles.siteCss).Include(
-                "~/Content/site.css"
+                "~/Content/site.css", new CssRewriteUrlTransform()
             ));
 
             bundles.Add(new StyleBundle(Bundles.Styles.Select2Css).Include(
@@ -71,7 +68,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             bundles.Add(new StyleBundle(Bundles.Styles.bootstrapDatePickerCss).Include(
                 "~/Content/bootstrap-datetimepicker.css"
-            //"~/Content/bootstrap-datetimepicker.min.css"
             ));
 
             bundles.Add(new StyleBundle(Bundles.Styles.tagsinputCss).Include(

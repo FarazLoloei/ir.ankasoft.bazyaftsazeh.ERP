@@ -370,6 +370,7 @@
     <Content Include="Content\IranSans\IRANSansWeb_UltraLight.woff" />
     <Content Include="Content\IranSans\IRANSansWeb_UltraLight.woff2" />
     <Content Include="Content\MdBootstrapPersianDateTimePicker\jquery.Bootstrap-PersianDateTimePicker-overlay.css" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />
