@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="DataContextFactory.cs" />
+    <Compile Include="DocumentStatusRepository.cs" />
     <Compile Include="DropCreateDatabaseIfModelChanges.cs" />
     <Compile Include="EFUnitOfWork.cs" />
     <Compile Include="EFUnitOfWorkFactory.cs" />
