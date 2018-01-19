@@ -67,5 +67,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
                 return tools.Convert.GroupDigiting(PaymentsTotalPrice, 0);
             }
         }
+
+        [Display(Name = nameof(Status), ResourceType = typeof(Resource))]
+        public string Status { get; set; }
     }
 }

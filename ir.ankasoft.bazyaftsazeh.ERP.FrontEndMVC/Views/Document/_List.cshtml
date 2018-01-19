@@ -68,7 +68,21 @@
                 <th>
                     @Resource.PaymentsTotalPrice
                 </th>
-                <th></th>
+                <th>
+                    <a href="#" data-column="@nameof(modelHeader.Status)">
+                        @Html.LabelFor(modelItem => modelHeader.Status)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.Status))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
             </tr>
         </thead>
                             if (Model.Data.Any())
@@ -84,7 +98,8 @@
                                             <td class="col-md-1 text-right">@Html.DisplayFor(modelItem => item.PlateNumber)</td>
                                             <td class="col-md-1 text-right"><a href="@Url.Action(MVC.Document.CostList(item.recId))"> @Html.DisplayFor(modelItem => item.TotalCostValueDisplayMode) @ir.ankasoft.tools.DefaultValues.DefaultCurrency</a></td>
                                             <td class="col-md-1 text-right"><a href="@Url.Action(MVC.Document.ImperfectionList(item.recId))"> @Html.DisplayFor(modelItem => item.ImperfectionPriceSumDisplayMode) @ir.ankasoft.tools.DefaultValues.DefaultCurrency</a></td>
-                                            <td class="col-md-2 text-right"><a href="@Url.Action(MVC.Document.PaymentsList(item.recId))"> @Html.DisplayFor(modelItem => item.PaymentsTotalPriceDisplayMode) @ir.ankasoft.tools.DefaultValues.DefaultCurrency</a></td>
+                                            <td class="col-md-1 text-right"><a href="@Url.Action(MVC.Document.PaymentsList(item.recId))"> @Html.DisplayFor(modelItem => item.PaymentsTotalPriceDisplayMode) @ir.ankasoft.tools.DefaultValues.DefaultCurrency</a></td>
+                                            <td class="col-md-1">@Html.DisplayFor(modelItem => item.Status)</td>
                                         </tr>
                                     }
                                 </tbody>
