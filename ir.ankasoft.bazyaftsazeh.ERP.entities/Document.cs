@@ -75,6 +75,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [ForeignKey(nameof(GovernmentPlanRefRecId))]
         public GovernmentPlan GovernmentPlan { get; set; } = new GovernmentPlan();
 
+        public virtual ICollection<DocumentStatus> DocumentStatusCollection { get; set; }
+
         //public virtual ICollection<Payment> Payments { get; set; }
 
         #region IDateTracking

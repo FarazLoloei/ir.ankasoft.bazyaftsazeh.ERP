@@ -1,6 +1,7 @@
-namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
+﻿namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
 {
     using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
+    using ir.ankasoft.bazyaftsazeh.ERP.entities;
     using ir.ankasoft.entities;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -16,6 +17,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
+            //if (System.Diagnostics.Debugger.IsAttached == false)
+            //System.Diagnostics.Debugger.Launch();
+
             #region Identity Core
 
             const string adminName = "FarazLoloei", developerName = "farazloloei@gmail.com";
@@ -66,7 +70,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
             }
 
             #endregion Identity Core
-
+            //return;
             context.Objectives.AddOrUpdate(_ => _.Title,
                 new Objective() { Title = "Party", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //1
                 new Objective() { Title = "Person", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //2
@@ -740,6 +744,28 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Migrations
                 );
 
             #endregion VehicleTip
+
+            context.DocumentOperations.AddOrUpdate(_ => _.Title,
+                new DocumentOperation() { Title = "ثبت در سامانه" }, //1
+                new DocumentOperation() { Title = "گرفتن سریال ثبتی از سایت ستاد" },
+                new DocumentOperation() { Title = "ثبت در سیستم جامع آنکا سافت" },
+                new DocumentOperation() { Title = "تفویض وکالت" },
+                new DocumentOperation() { Title = "بررسی تسلسل اسناد" },
+                new DocumentOperation() { Title = "بررسی عدم خلافی" },
+                new DocumentOperation() { Title = "تحویل خودرو به پارکینگ" }
+                );
+
+            context.SaveChanges();
+
+            context.DocumentStatusHelpers.AddOrUpdate(_ => _.OperationRefRecId,
+                new DocumentStatusHelper() { OperationRefRecId = 1 }, //1
+                new DocumentStatusHelper() { OperationRefRecId = 2 },
+                new DocumentStatusHelper() { OperationRefRecId = 3 },
+                new DocumentStatusHelper() { OperationRefRecId = 4 },
+                new DocumentStatusHelper() { OperationRefRecId = 5 },
+                new DocumentStatusHelper() { OperationRefRecId = 6 },
+                new DocumentStatusHelper() { OperationRefRecId = 7 }
+                );
         }
     }
 }

@@ -626,6 +626,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.ReplacementPlan, t => t.Ignore())
                 .ForMember(p => p.GovernmentPlanRefRecId, t => t.Ignore())
                 .ForMember(p => p.GovernmentPlan, t => t.Ignore())
+                .ForMember(p => p.DocumentStatusCollection, t => t.Ignore())
 
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())
@@ -658,6 +659,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.ReplacementPlan, t => t.Ignore())
                 .ForMember(p => p.GovernmentPlanRefRecId, t => t.Ignore())
                 .ForMember(p => p.GovernmentPlan, t => t.Ignore())
+                .ForMember(p => p.DocumentStatusCollection, t => t.Ignore())
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())
                 .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())

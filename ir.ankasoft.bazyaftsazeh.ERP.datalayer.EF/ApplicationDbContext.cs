@@ -18,7 +18,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
     {
         public ApplicationDbContext()
             //: base("DefaultConnectionString")
-            : base("Data Source=67.225.166.182;Initial Catalog=ir.ankasoft.bazyaftsazeh.ERP;Persist Security Info=True;User ID=bazyaftsazeh;Password=@BazyafSazeh!2#;MultipleActiveResultSets=True")
+            : base("Data Source=.;Initial Catalog=ir.ankasoft.bazyaftsazeh.ERP;Persist Security Info=True;User ID=bazyaftsazeh;Password=@BazyafSazeh!2#;MultipleActiveResultSets=True")
         //: base("Data Source=87.247.179.160,1833;Initial Catalog=ir.anka.Storage;Persist Security Info=True;User ID=Anka;Password=AnkAt@123;MultipleActiveResultSets=True")
         {//192.168.20.5
             //Configuration.LazyLoadingEnabled = false;
@@ -72,6 +72,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Objective> Objectives { get; set; }
         public DbSet<ContextMenuItem> ContextMenuItems { get; set; }
+
+        public DbSet<DocumentStatus> DocumentsStatus { get; set; }
+        public DbSet<DocumentStatusHelper> DocumentStatusHelpers { get; set; }
+        public DbSet<DocumentOperation> DocumentOperations { get; set; }
+        public DbSet<FormRepo> FormRepos { get; set; }
 
         public override int SaveChanges()
         {
@@ -431,6 +436,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
             modelBuilder.Entity<Payment>()
                 .HasRequired(x => x.Document)
                 .WithMany(x=>x.PaymentsCollection)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<DocumentStatus>()
+                .HasRequired(x => x.Document)
+                .WithMany(x => x.DocumentStatusCollection)
                 .WillCascadeOnDelete(false);
         }
     }

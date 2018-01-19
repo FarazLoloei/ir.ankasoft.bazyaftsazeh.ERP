@@ -5,15 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
     public class DocumentStatus : DomainEntity<long>, IDateTracking, IUserTracking
     {
-
         public long DocumentRefRecId { get; set; }
 
         [ForeignKey(nameof(DocumentRefRecId))]
@@ -21,7 +17,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public string Description { get; set; }
 
+        public DateTime TransactionDateTime { get; set; }
 
+        public long StatusRefRecId { get; set; }
+
+        [ForeignKey(nameof(StatusRefRecId))]
+        public DocumentStatusHelper Status { get; set; }
 
         #region IDateTracking
 
