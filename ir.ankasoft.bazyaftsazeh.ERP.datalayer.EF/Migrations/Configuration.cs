@@ -771,11 +771,11 @@
             context.SaveChanges();
 
             context.DocumentOperationsAttributes.AddOrUpdate(_ => _.Title,
-                new OperationsAttribute() { Title = "عدم خلافی", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 3 }, //1
-                new OperationsAttribute() { Title = "اسناد خودرو", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 3 },
-                new OperationsAttribute() { Title = "کارت ماشین", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 3 },
-                new OperationsAttribute() { Title = "برگ سبز", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 3 },
-                new OperationsAttribute() { Title = "سایر مدارک ناموجود", IsRequired = true, DocumentOperationRefRecId = 3 }
+                new OperationsAttribute() { Title = "عدم خلافی", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 6 }, //1
+                new OperationsAttribute() { Title = "اسناد خودرو", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 4 },
+                new OperationsAttribute() { Title = "کارت ماشین", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 4 },
+                new OperationsAttribute() { Title = "برگ سبز", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 4 },
+                new OperationsAttribute() { Title = "سایر مدارک ناموجود", IsRequired = true, DocumentOperationRefRecId = 4 }
                 );
 
 
