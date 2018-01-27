@@ -323,5 +323,30 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             model.PaymentsCollection = model.PaymentsCollection.Select(_ => { _.DocumentRecId = id; return _; }).ToList();
             return View(model);
         }
+public virtual ActionResult NextStepHandler(string additionalData, long id)
+        {
+            switch (additionalData.ToLower())
+            {
+                case "/document/prereqirement":
+                    return RedirectToAction(MVC.Document.DocumentPreReqirement(id));
+                    
+                
+            }
+            return null;
+        }
+        [HttpGet]
+        public virtual ActionResult DocumentPreReqirement(long documentId)
+        {
+            var model = new ViewModelPreRequirement() { DocumentRefRecId = documentId };
+            return View(model);
+        }
+
+        [HttpPost]
+        public virtual ActionResult DocumentPreReqirement(ViewModelPreRequirement request)
+        {
+            var model = new ViewModelPreRequirement();
+            return View(model);
+        }
+
     }
 }

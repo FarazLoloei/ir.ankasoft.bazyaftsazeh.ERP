@@ -8,23 +8,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
-    public class DocumentStatus : DomainEntity<long>, IDateTracking, IUserTracking
+    public class OperationsAttributeValue : DomainEntity<long>, IDateTracking, IUserTracking
     {
-        public long DocumentRefRecId { get; set; }
+        public long DocumentStatusRefRecId { get; set; }
 
-        [ForeignKey(nameof(DocumentRefRecId))]
-        public Document Document { get; set; }
+        [ForeignKey(nameof(DocumentStatusRefRecId))]
+        public DocumentStatus DocumentStatus { get; set; }
 
-        public string Description { get; set; }
+        public long OperationsAttributeRefRecId { get; set; }
 
-        public DateTime TransactionDateTime { get; set; }
+        [ForeignKey(nameof(OperationsAttributeRefRecId))]
+        public OperationsAttribute OperationsAttribute { get; set; }
 
-        public long DocumentOperationRefRecId { get; set; }
-
-        [ForeignKey(nameof(DocumentOperationRefRecId))]
-        public DocumentOperation Operation { get; set; }
-
-        public virtual ICollection<OperationsAttributeValue> AttributeValuesCollection { get; set; }
+        public string Value { get; set; }
 
         #region IDateTracking
 
@@ -52,11 +48,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (DocumentRefRecId < 1)
+            if (string.IsNullOrEmpty(Value))
                 yield return new ValidationResult(
-                    string.Format(Resource._0CanntBeEmpty,
-                                  nameof(DocumentRefRecId)),
-                    new[] { nameof(DocumentRefRecId) });
+                    string.Format(Resource._0CanntBeEmpty, nameof(Value)), new[] { nameof(Value) });
         }
 
         #endregion Validation

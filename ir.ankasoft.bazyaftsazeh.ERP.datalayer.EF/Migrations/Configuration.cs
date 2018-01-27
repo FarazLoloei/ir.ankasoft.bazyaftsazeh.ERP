@@ -20,6 +20,7 @@
             //if (System.Diagnostics.Debugger.IsAttached == false)
             //System.Diagnostics.Debugger.Launch();
 
+            //return;
             #region Identity Core
 
             const string adminName = "FarazLoloei", developerName = "farazloloei@gmail.com";
@@ -70,7 +71,6 @@
             }
 
             #endregion Identity Core
-            //return;
             context.Objectives.AddOrUpdate(_ => _.Title,
                 new Objective() { Title = "Party", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //1
                 new Objective() { Title = "Person", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //2
@@ -740,6 +740,19 @@
                     Icon = "fa-money",
                     GroupCode = 4,
                     Priority = 1
+                },
+                new ContextMenuItem()
+                {
+                    Title = "NextStep",
+                    ObjectiveRefRecId = _objectiveRefRecId,
+                    RoleRefRecId = 1,
+                    ShowOnHeader = false,
+                    DisableOnHeader = true,
+                    ShowOnRow = true,
+                    DisableOnRow = false,
+                    Icon = "fa-forward",
+                    GroupCode = 5,
+                    Priority = 1
                 }
                 );
 
@@ -757,15 +770,15 @@
 
             context.SaveChanges();
 
-            context.DocumentStatusHelpers.AddOrUpdate(_ => _.OperationRefRecId,
-                new DocumentStatusHelper() { OperationRefRecId = 1 }, //1
-                new DocumentStatusHelper() { OperationRefRecId = 2 },
-                new DocumentStatusHelper() { OperationRefRecId = 3 },
-                new DocumentStatusHelper() { OperationRefRecId = 4 },
-                new DocumentStatusHelper() { OperationRefRecId = 5 },
-                new DocumentStatusHelper() { OperationRefRecId = 6 },
-                new DocumentStatusHelper() { OperationRefRecId = 7 }
+            context.DocumentOperationsAttributes.AddOrUpdate(_ => _.Title,
+                new OperationsAttribute() { Title = "عدم خلافی", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 3 }, //1
+                new OperationsAttribute() { Title = "اسناد خودرو", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 3 },
+                new OperationsAttribute() { Title = "کارت ماشین", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 3 },
+                new OperationsAttribute() { Title = "برگ سبز", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 3 },
+                new OperationsAttribute() { Title = "سایر مدارک ناموجود", IsRequired = true, DocumentOperationRefRecId = 3 }
                 );
+
+
         }
     }
 }

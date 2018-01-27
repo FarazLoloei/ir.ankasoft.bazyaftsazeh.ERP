@@ -83,7 +83,6 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="DataContextFactory.cs" />
-    <Compile Include="DocumentStatusRepository.cs" />
     <Compile Include="DropCreateDatabaseIfModelChanges.cs" />
     <Compile Include="EFUnitOfWork.cs" />
     <Compile Include="EFUnitOfWorkFactory.cs" />
@@ -99,7 +98,9 @@
     <Compile Include="Repositories\CostRepository.cs" />
     <Compile Include="Repositories\DocumentCostRepository.cs" />
     <Compile Include="Repositories\DocumentImperfectionRepository.cs" />
+    <Compile Include="Repositories\DocumentOperationsAttributeRepository.cs" />
     <Compile Include="Repositories\DocumentRepository.cs" />
+    <Compile Include="Repositories\DocumentStatusAttributeValueRepository.cs" />
     <Compile Include="Repositories\GovernmentPlanRepository.cs" />
     <Compile Include="Repositories\ImperfectionRepository.cs" />
     <Compile Include="Repositories\ImporterRepository.cs" />

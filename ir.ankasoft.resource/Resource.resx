@@ -1221,4 +1221,16 @@
   <data name="String1" xml:space="preserve">
     <value>خودرو جایگزین</value>
   </data>
+  <data name="NextStep" xml:space="preserve">
+    <value>مرحله بعدی</value>
+  </data>
+  <data name="BargeSabz" xml:space="preserve">
+    <value>برگ سبز</value>
+  </data>
+  <data name="Khalafi" xml:space="preserve">
+    <value>عدم خلافی</value>
+  </data>
+  <data name="Sanad" xml:space="preserve">
+    <value>سند</value>
+  </data>
 </root>

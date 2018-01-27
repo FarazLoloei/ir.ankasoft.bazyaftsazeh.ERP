@@ -259,6 +259,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to برگ سبز.
+        /// </summary>
+        public static string BargeSabz {
+            get {
+                return ResourceManager.GetString("BargeSabz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ب.
         /// </summary>
         public static string Be {
@@ -1420,6 +1429,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to عدم خلافی.
+        /// </summary>
+        public static string Khalafi {
+            get {
+                return ResourceManager.GetString("Khalafi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to خرداد.
         /// </summary>
         public static string Khordad {
@@ -1884,6 +1902,15 @@ namespace ir.ankasoft.resource {
         public static string Next {
             get {
                 return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مرحله بعدی.
+        /// </summary>
+        public static string NextStep {
+            get {
+                return ResourceManager.GetString("NextStep", resourceCulture);
             }
         }
         
@@ -2514,6 +2541,15 @@ namespace ir.ankasoft.resource {
         public static string SameDay {
             get {
                 return ResourceManager.GetString("SameDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سند.
+        /// </summary>
+        public static string Sanad {
+            get {
+                return ResourceManager.GetString("Sanad", resourceCulture);
             }
         }
         

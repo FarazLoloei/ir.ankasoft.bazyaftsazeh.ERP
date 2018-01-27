@@ -35,48 +35,32 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         }
 
         public DbSet<entities.Cost> Costs { get; set; }
-
         public DbSet<entities.Document> Document { get; set; }
-
         public DbSet<entities.GovernmentPlan> GovernmentPlan { get; set; }
-
         public DbSet<entities.Imperfection> Imperfection { get; set; }
-
         public DbSet<entities.Importer> Importer { get; set; }
-
         public DbSet<entities.Organization> Organization { get; set; }
-
         public DbSet<entities.Payment> Payment { get; set; }
-
-        //public DbSet<entities.Plan> Plans { get; set; }
         public DbSet<entities.Plate> Plates { get; set; }
-
         public DbSet<entities.PreDefineTitle> PreDefineTitles { get; set; }
-
         public DbSet<entities.ReplacementPlan> ReplacementsPlan { get; set; }
-
         public DbSet<entities.Vehicle> Vehicles { get; set; }
-
         public DbSet<entities.VehicleTip> VehicleTips { get; set; }
-
         public DbSet<City> Cities { get; set; }
-
         public DbSet<Communication> Communications { get; set; }
-
         public DbSet<Party> Parties { get; set; }
-
         public DbSet<Person> People { get; set; }
-
         public DbSet<PostalAddress> PostalAddresses { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Objective> Objectives { get; set; }
         public DbSet<ContextMenuItem> ContextMenuItems { get; set; }
-
         public DbSet<DocumentStatus> DocumentsStatus { get; set; }
-        public DbSet<DocumentStatusHelper> DocumentStatusHelpers { get; set; }
         public DbSet<DocumentOperation> DocumentOperations { get; set; }
-        public DbSet<FormRepo> FormRepos { get; set; }
+        //public DbSet<DocumentPreRequirement> DocumentPreRequirements { get; set; }
+        public DbSet<OperationsAttribute> DocumentOperationsAttributes { get; set; }
+        public DbSet<OperationsAttributeValue> DocumentStatusOperationsAttributeValues { get; set; }
+
 
         public override int SaveChanges()
         {
@@ -289,11 +273,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                 .WithMany()
                 .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<entities.Plan>()
-            //    .HasRequired(x => x.creatorUser)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<entities.Organization>()
                 .HasRequired(x => x.creatorUser)
                 .WithMany()
@@ -435,12 +414,19 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
 
             modelBuilder.Entity<Payment>()
                 .HasRequired(x => x.Document)
-                .WithMany(x=>x.PaymentsCollection)
+                .WithMany(x => x.PaymentsCollection)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DocumentStatus>()
                 .HasRequired(x => x.Document)
                 .WithMany(x => x.DocumentStatusCollection)
+                .WillCascadeOnDelete(false);
+
+           
+
+            modelBuilder.Entity<OperationsAttributeValue>()
+                .HasRequired(x => x.DocumentStatus)
+                .WithMany(x => x.AttributeValuesCollection)
                 .WillCascadeOnDelete(false);
         }
     }

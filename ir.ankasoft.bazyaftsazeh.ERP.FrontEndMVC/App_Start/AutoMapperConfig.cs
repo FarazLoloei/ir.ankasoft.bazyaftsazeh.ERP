@@ -602,7 +602,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             .ForMember(p => p.TotalCostValue, opt => opt.MapFrom(dest => dest.CostCollection.Sum(x => x.Value)))
             .ForMember(p => p.ImperfectionPriceSum, opt => opt.MapFrom(dest => dest.ImperfectionCollection.Sum(x => x.Value)))
             .ForMember(p => p.PaymentsTotalPrice, opt => opt.MapFrom(dest => dest.PaymentsCollection.Sum(x => x.Value)))
-            .ForMember(p => p.Status, opt => opt.MapFrom(dest => dest.DocumentStatusCollection.Last().Status.Operation.Title));
+            .ForMember(p => p.StatusCode, opt => opt.MapFrom(dest => dest.DocumentStatusCollection.Last().Operation.recId))
+            .ForMember(p => p.Status, opt => opt.MapFrom(dest => dest.DocumentStatusCollection.Last().Operation.Title));
+            //.ForMember(p => p.OperativeFormURL, opt => opt.MapFrom(dest => dest.DocumentStatusCollection.Last().Status.Form.FormURL));
 
             /*Create*/
             _.CreateMap<ViewModelCreateDocument, Document>()

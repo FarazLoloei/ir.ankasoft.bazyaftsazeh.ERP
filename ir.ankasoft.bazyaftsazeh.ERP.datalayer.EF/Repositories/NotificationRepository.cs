@@ -10,7 +10,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 {
     public class NotificationRepository : Repository<Notification>, INotificationRepository
     {
-        public IEnumerable<Notification> LoadByFilter(IFilterDataSource request,
+        public new  IEnumerable<Notification> LoadByFilter(IFilterDataSource request,
                                         out int totalRecords)
         {
             throw new NotImplementedException();
