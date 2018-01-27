@@ -45,14 +45,15 @@
     <Compile Include="DocumentCost.cs" />
     <Compile Include="DocumentImperfection.cs" />
     <Compile Include="DocumentOperation.cs" />
+    <Compile Include="OperationsAttribute.cs" />
     <Compile Include="DocumentStatus.cs" />
-    <Compile Include="DocumentStatusHelper.cs" />
+    <Compile Include="DocumentStatusAttributeValue.cs" />
+    <Compile Include="Enums\DataType.cs" />
     <Compile Include="Enums\CapasityType.cs" />
     <Compile Include="Enums\CylenderCounts.cs" />
     <Compile Include="Enums\PlateAlphabets.cs" />
     <Compile Include="Enums\PlateColors.cs" />
     <Compile Include="Enums\PlateShapes.cs" />
-    <Compile Include="FormRepo.cs" />
     <Compile Include="PreDefineTitle.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Enums\DocumentPaymentType.cs" />
@@ -72,6 +73,8 @@
     <Compile Include="Repositories\ICostRepository.cs" />
     <Compile Include="Repositories\IDocumentCostRepository.cs" />
     <Compile Include="Repositories\IDocumentImperfectionRepository.cs" />
+    <Compile Include="Repositories\IDocumentOperationsAttributeRepository.cs" />
+    <Compile Include="Repositories\IDocumentStatusAttributeValueRepository.cs" />
     <Compile Include="Repositories\IGovernmentPlanRepository.cs" />
     <Compile Include="Repositories\IPaymentRepository.cs" />
     <Compile Include="Repositories\IDocumentRepository.cs" />

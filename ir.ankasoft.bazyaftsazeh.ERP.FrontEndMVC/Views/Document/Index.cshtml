@@ -28,6 +28,9 @@
 { <input type="hidden" name="id" value="" id="RecID" /> }
 @using (Html.BeginForm(MVC.Document.PaymentsList(), FormMethod.Get, new { @class = "invisible", id = "EditPayments" }))
 { <input type="hidden" name="id" value="" id="RecID" /> }
+@using (Html.BeginForm(MVC.Document.NextStepHandler(), FormMethod.Get, new { @class = "invisible", id = "nextStepHandler" }))
+{   <input type="hidden" name="id" value="" id="RecID" />
+    <input type="hidden" name="additionalData" value="" id="nextStepData" /> }
 
 @section Styles {
     @Styles.Render(Bundles.Styles.sweetAlertCss)
@@ -126,6 +129,7 @@
         function ContextMenuOperation(key, options)
         {
             var _itemId = $(options.$trigger).data('itemid');
+            var _operativeFormURL = $(options.$trigger).data('nextstep');
             switch (key) {
                 case 'New':
                     $('#Create').submit();
@@ -163,6 +167,11 @@
                 case 'Payments':
                     $('#EditPayments #RecID').val(_itemId);
                     $('#EditPayments').submit();
+                    break;
+                case 'NextStep':
+                    $('#nextStepHandler #RecID').val(_itemId);
+                    $('#nextStepHandler #nextStepData').val(_operativeFormURL);
+                    $('#nextStepHandler').submit();
                     break;
                 //case 'DefineAsOrganization':
                 //    $('#DefineAsOrganization #partyId').val(_itemId);

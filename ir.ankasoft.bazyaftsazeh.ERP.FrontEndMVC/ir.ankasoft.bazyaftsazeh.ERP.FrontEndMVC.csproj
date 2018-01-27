@@ -199,6 +199,7 @@
     </Compile>
     <Compile Include="Models\Cost\ViewModelCostDisplay.cs" />
     <Compile Include="Models\Cost\ViewModelCreateAndModifyCost.cs" />
+    <Compile Include="Models\Document\ViewModelPreRequirement.cs" />
     <Compile Include="Models\DocumentCost\ViewModelDisplayDocumentCost.cs" />
     <Compile Include="Models\DocumentCost\ViewModelCreateAndModifyDocumentCost.cs" />
     <Compile Include="Models\DocumentCost\ViewModelDocumentCost.cs" />
@@ -792,6 +793,7 @@
     <Content Include="Views\DocumentPayment\Create.cshtml" />
     <Content Include="Views\DocumentPayment\_Detail.cshtml" />
     <Content Include="Views\DocumentPayment\Modify.cshtml" />
+    <Content Include="Views\Document\DocumentPreReqirement.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

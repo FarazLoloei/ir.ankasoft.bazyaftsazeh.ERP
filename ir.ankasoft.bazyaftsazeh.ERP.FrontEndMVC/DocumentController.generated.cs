@@ -92,6 +92,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PaymentsList);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult NextStepHandler()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.NextStepHandler);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DocumentPreReqirement()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DocumentPreReqirement);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public DocumentController Actions { get { return MVC.Document; } }
@@ -115,6 +127,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string CostList = "CostList";
             public readonly string ImperfectionList = "ImperfectionList";
             public readonly string PaymentsList = "PaymentsList";
+            public readonly string NextStepHandler = "NextStepHandler";
+            public readonly string DocumentPreReqirement = "DocumentPreReqirement";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -127,6 +141,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public const string CostList = "CostList";
             public const string ImperfectionList = "ImperfectionList";
             public const string PaymentsList = "PaymentsList";
+            public const string NextStepHandler = "NextStepHandler";
+            public const string DocumentPreReqirement = "DocumentPreReqirement";
         }
 
 
@@ -189,6 +205,24 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string id = "id";
         }
+        static readonly ActionParamsClass_NextStepHandler s_params_NextStepHandler = new ActionParamsClass_NextStepHandler();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_NextStepHandler NextStepHandlerParams { get { return s_params_NextStepHandler; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_NextStepHandler
+        {
+            public readonly string additionalData = "additionalData";
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_DocumentPreReqirement s_params_DocumentPreReqirement = new ActionParamsClass_DocumentPreReqirement();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DocumentPreReqirement DocumentPreReqirementParams { get { return s_params_DocumentPreReqirement; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DocumentPreReqirement
+        {
+            public readonly string documentId = "documentId";
+            public readonly string request = "request";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -202,6 +236,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 public readonly string _List = "_List";
                 public readonly string CostList = "CostList";
                 public readonly string Create = "Create";
+                public readonly string DocumentPreReqirement = "DocumentPreReqirement";
                 public readonly string ImperfectionList = "ImperfectionList";
                 public readonly string Index = "Index";
                 public readonly string Modify = "Modify";
@@ -210,6 +245,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string _List = "~/Views/Document/_List.cshtml";
             public readonly string CostList = "~/Views/Document/CostList.cshtml";
             public readonly string Create = "~/Views/Document/Create.cshtml";
+            public readonly string DocumentPreReqirement = "~/Views/Document/DocumentPreReqirement.cshtml";
             public readonly string ImperfectionList = "~/Views/Document/ImperfectionList.cshtml";
             public readonly string Index = "~/Views/Document/Index.cshtml";
             public readonly string Modify = "~/Views/Document/Modify.cshtml";
@@ -328,6 +364,43 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PaymentsList);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             PaymentsListOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void NextStepHandlerOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string additionalData, long id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult NextStepHandler(string additionalData, long id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.NextStepHandler);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "additionalData", additionalData);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            NextStepHandlerOverride(callInfo, additionalData, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DocumentPreReqirementOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long documentId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DocumentPreReqirement(long documentId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DocumentPreReqirement);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "documentId", documentId);
+            DocumentPreReqirementOverride(callInfo, documentId);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DocumentPreReqirementOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelPreRequirement request);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DocumentPreReqirement(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelPreRequirement request)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DocumentPreReqirement);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            DocumentPreReqirementOverride(callInfo, request);
             return callInfo;
         }
 

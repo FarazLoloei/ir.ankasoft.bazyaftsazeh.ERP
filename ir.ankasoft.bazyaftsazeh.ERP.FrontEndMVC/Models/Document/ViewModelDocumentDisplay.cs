@@ -68,6 +68,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
             }
         }
 
+        public long StatusCode { get; set; }
+
+        //public string OperativeFormURL { get; set; }
+
         [Display(Name = nameof(Status), ResourceType = typeof(Resource))]
         public string Status { get; set; }
     }

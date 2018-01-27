@@ -69,19 +69,20 @@
                     @Resource.PaymentsTotalPrice
                 </th>
                 <th>
-                    <a href="#" data-column="@nameof(modelHeader.Status)">
-                        @Html.LabelFor(modelItem => modelHeader.Status)
-                    </a>
-                    <span class="pull-right">
-                        @{
-                            defaultClass = "fa-sort";
-                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.Status))
-                            {
-                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
-                            }
-                        }
-                        <i class="fa @defaultClass" aria-hidden="true"></i>
-                    </span>
+                    @Resource.Status
+                    @*<a href="#" data-column="DocumentStatusCollection.Status.Operation.Title">
+        @Html.LabelFor(modelItem => modelHeader.Status)
+    </a>
+    <span class="pull-right">
+        @{
+            defaultClass = "fa-sort";
+            if (Model.PageData.filterDataSource.sortBy == "DocumentStatusCollection.Status.Operation.Title")//nameof(modelHeader.Status))
+            {
+                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+            }
+        }
+        <i class="fa @defaultClass" aria-hidden="true"></i>
+    </span>*@
                 </th>
             </tr>
         </thead>
@@ -90,7 +91,7 @@
                                 <tbody>
                                     @foreach (var item in Model.Data)
                                     {
-                                        <tr data-itemid='@item.recId' class="context-menu">
+                                        <tr data-itemid='@item.recId' class="context-menu" > @*data-nextstep='@item.OperativeFormURL'*@
                                             <td class="col-md-2"><a href="@Url.Action(MVC.Party.Display(item.LastOwnerRecId))">@Html.DisplayFor(modelItem => item.LastOwner)</a></td>
                                             <td class="col-md-2"><a href="@Url.Action(MVC.Party.Display(item.PlateOwnerRecId))">@Html.DisplayFor(modelItem => item.PlateOwner)</a></td>
                                             <td class="col-md-1">@Html.AnkaResource(modelItem => item.PlanType)</td>

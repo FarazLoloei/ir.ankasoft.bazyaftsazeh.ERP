@@ -8,23 +8,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
-    public class DocumentStatus : DomainEntity<long>, IDateTracking, IUserTracking
+    public class DocumentPreRequirement : DomainEntity<long>, IDateTracking, IUserTracking
     {
         public long DocumentRefRecId { get; set; }
-
         [ForeignKey(nameof(DocumentRefRecId))]
         public Document Document { get; set; }
-
+        public bool HasBargSabz { get; set; }
+        public bool HasSanad { get; set; }
+        public bool HasAdameKhalafi { get; set; }
         public string Description { get; set; }
-
-        public DateTime TransactionDateTime { get; set; }
-
-        public long DocumentOperationRefRecId { get; set; }
-
-        [ForeignKey(nameof(DocumentOperationRefRecId))]
-        public DocumentOperation Operation { get; set; }
-
-        public virtual ICollection<OperationsAttributeValue> AttributeValuesCollection { get; set; }
 
         #region IDateTracking
 
@@ -52,11 +44,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (DocumentRefRecId < 1)
-                yield return new ValidationResult(
-                    string.Format(Resource._0CanntBeEmpty,
-                                  nameof(DocumentRefRecId)),
-                    new[] { nameof(DocumentRefRecId) });
+
+            if (HasBargSabz && HasSanad && HasAdameKhalafi)
+            {
+                yield return new ValidationResult(string.Format(Resource.RequiredFiled, 0, nameof(Description)), new[] { nameof(Description) });
+            }
         }
 
         #endregion Validation
