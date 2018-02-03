@@ -9,6 +9,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities.Enums
         Boolean = 1,
 
         //[Display(Name = nameof(Individual), ResourceType = typeof(Resource))]
-        String
+        String,
+
+        FileUploder
     }
 }

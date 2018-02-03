@@ -2,10 +2,12 @@
 using ir.ankasoft.bazyaftsazeh.ERP.entities;
 using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Dashboard;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentPayment;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Vehicle;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehiclePlate;
 using ir.ankasoft.entities.Repositories;
@@ -29,6 +31,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         private readonly IContextMenuItemRepository _contextMenuItemRepository;
         private readonly IReplacementPlanRepository _replacementPlanRepository;
         private readonly IGovernmentPlanRepository _governmentPlanRepository;
+        private readonly IOperationsAttributeRepository _operationsAttributeRepository;
+        private readonly IOperationsAttributeValueRepository _operationsAttributeValueRepository;
         private IMapper Mapper;
 
         public DocumentController(IPartyRepository partyRepository,
@@ -40,7 +44,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                   IPersonRepository personRepository,
                                   IUnitOfWorkFactory unitOfWorkFactory,
                                   IReplacementPlanRepository replacementPlanRepository,
-                                  IGovernmentPlanRepository governmentPlanRepository)
+                                  IGovernmentPlanRepository governmentPlanRepository,
+                                  IOperationsAttributeRepository operationsAttributeRepository,
+                                  IOperationsAttributeValueRepository operationsAttributeValueRepository)
         {
             _partyRepository = partyRepository;
             _importerRepository = importerRepository;
@@ -51,6 +57,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             _replacementPlanRepository = replacementPlanRepository;
             _governmentPlanRepository = governmentPlanRepository;
             _contextMenuItemRepository = contextMenuItemRepository;
+            _operationsAttributeRepository = operationsAttributeRepository;
+            _operationsAttributeValueRepository = operationsAttributeValueRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
@@ -249,11 +257,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                 _document.ReplacementPlan = _replacementPlanRepository.FindById(_document.ReplacementRefRecId ?? 0);
                                 _document.GovernmentPlan = null;
                                 break;
+
                             case entities.Enums.PlanType.Government:
                                 _document.GovernmentPlan = _governmentPlanRepository.FindById(_document.GovernmentPlanRefRecId ?? 0);
                                 _document.ReplacementPlan = null;
                                 break;
-
                         }
                         Mapper.Map(request, _document, typeof(ViewModelModifyDocument), typeof(Document));
                         Mapper.Map(request.Vehicle.Plate, _document.Vehicle.Plate,
@@ -271,7 +279,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 }
                 catch
                 {
-
                 }
             }
             request.Vehicle = Mapper.Map<ViewModelCreateAndModifyVehicle>(request.Vehicle);
@@ -323,30 +330,77 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             model.PaymentsCollection = model.PaymentsCollection.Select(_ => { _.DocumentRecId = id; return _; }).ToList();
             return View(model);
         }
-public virtual ActionResult NextStepHandler(string additionalData, long id)
-        {
-            switch (additionalData.ToLower())
-            {
-                case "/document/prereqirement":
-                    return RedirectToAction(MVC.Document.DocumentPreReqirement(id));
-                    
-                
-            }
-            return null;
-        }
+
         [HttpGet]
-        public virtual ActionResult DocumentPreReqirement(long documentId)
+        public virtual ActionResult Dashboard(long id, long statuscode)
         {
-            var model = new ViewModelPreRequirement() { DocumentRefRecId = documentId };
+            var attributes = _operationsAttributeRepository.GetOperationsAttribute(statuscode);
+            var model = new ViewModelDocumentStatus(); //new List<ViewModelOperationsAttribute>();
+            foreach (var item in attributes)
+            {
+                model.AttributesList.Add(new ViewModelOperationsAttribute()
+                {
+                    OperationsAttributeTitleRefRecId = item.OperationRefRecId,
+                    OperationsAttributeTitle = item.Title,
+                    DataType = item.DataType,
+                    StatusRecId = statuscode
+                });
+            }
+            //model.AttributesList =
+            model.AttributesList.Where(_ => _.DataType == entities.Enums.DataType.Boolean)
+                .Select(_ => { return _.Value = false.ToString(); })
+                .ToList()                ;
+            model.AttributesList.OrderBy(x => x.DataType);
+            model.Document.recId = id;
+            model.StatusRecId = statuscode;
+
             return View(model);
         }
 
         [HttpPost]
-        public virtual ActionResult DocumentPreReqirement(ViewModelPreRequirement request)
+        public virtual ActionResult Dashboard(ViewModelDocumentStatus request)
         {
-            var model = new ViewModelPreRequirement();
-            return View(model);
+            try
+            {
+                using (_unitOfWorkFactory.Create())
+                {
+                    var document = _documentRepository.FindById(request.Document.recId);
+                    document.GovernmentPlan = null;
+                    document.ReplacementPlan = null;
+                    var _documentStatus = Mapper.Map<DocumentStatus>(request);
+                    _documentStatus.AttributeValuesCollection = Mapper.Map<List<ViewModelOperationsAttribute>, List<OperationsAttributeValue>>(request.AttributesList);
+
+                    document.DocumentStatusCollection.Add(_documentStatus);
+
+                    return RedirectToAction(MVC.Document.Index());
+                }
+            }
+            catch (ModelValidationException modelValidationException)
+            {
+                foreach (var error in modelValidationException.ValidationErrors)
+                {
+                    ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
+                }
+            }
+            catch(Exception ex)
+            {
+            }
+            return View(request);
+
         }
 
+        //[HttpGet]
+        //public virtual ActionResult DocumentPreReqirement(long documentId)
+        //{
+        //    var model = new ViewModelPreRequirement() { DocumentRefRecId = documentId };
+        //    return View(model);
+        //}
+
+        //[HttpPost]
+        //public virtual ActionResult DocumentPreReqirement(ViewModelPreRequirement request)
+        //{
+        //    var model = new ViewModelPreRequirement();
+        //    return View(model);
+        //}
     }
 }

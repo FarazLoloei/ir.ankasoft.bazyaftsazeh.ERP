@@ -4,10 +4,12 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cost;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Dashboard;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentCost;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentImperfection;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentPayment;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Imperfection;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Importer;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Notification;
@@ -77,6 +79,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 /*Document Payment*/
                 ConfigDocumentPayment(_);
+
+                /*Config DocumentStatus*/
+                ConfigDocumentStatus(_);
 
                 /*Config ReplacementPlan*/
                 ConfigReplacementPlan(_);
@@ -766,6 +771,43 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.creatorUser, t => t.Ignore())
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
+        }
+
+        private static void ConfigDocumentStatus(IMapperConfigurationExpression _)
+        {
+            _.CreateMap<DocumentStatus, ViewModelDocumentStatus>()
+                .ForMember(p => p.StatusRecId, t => t.Ignore())
+                .ForMember(p => p.AttributesList, t => t.Ignore());
+
+            _.CreateMap<ViewModelDocumentStatus, DocumentStatus>()
+                .ForMember(p => p.DocumentRefRecId, opt => opt.MapFrom(dest => dest.Document.recId))
+                .ForMember(p => p.Document, t => t.Ignore())
+                .ForMember(p => p.TransactionDateTime, t => t.Ignore())
+                .ForMember(p => p.DocumentOperationRefRecId, opt => opt.MapFrom(dest => dest.StatusRecId))
+                .ForMember(p => p.Operation, t => t.Ignore())
+                .ForMember(p => p.AttributeValuesCollection, t => t.Ignore())
+
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<ViewModelOperationsAttribute, OperationsAttributeValue>()
+                .ForMember(p => p.DocumentStatusRefRecId, opt => opt.MapFrom(dest => dest.StatusRecId)) // Status Rec Id
+                .ForMember(p => p.OperationsAttributeRefRecId, opt=>opt.MapFrom(dest=>dest.OperationsAttributeTitleRefRecId))
+                .ForMember(p => p.DocumentStatus, t => t.Ignore())
+                .ForMember(p => p.OperationsAttribute, t => t.Ignore())
+
+                .ForMember(p => p.createdDateTime, t => t.Ignore())
+                .ForMember(p => p.modifiedDateTime, t => t.Ignore())
+                .ForMember(p => p.creatorUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.creatorUser, t => t.Ignore())
+                .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
+                .ForMember(p => p.modifierUser, t => t.Ignore());
+            //_.CreateMap<OperationsAttributeValue, ViewModelOperationsAttribute>();
+
         }
 
         private static void ConfigReplacementPlan(IMapperConfigurationExpression _)

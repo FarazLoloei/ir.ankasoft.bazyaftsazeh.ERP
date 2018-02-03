@@ -759,23 +759,30 @@
             #endregion VehicleTip
 
             context.DocumentOperations.AddOrUpdate(_ => _.Title,
-                new DocumentOperation() { Title = "ثبت در سامانه" }, //1
+                //1
+                new DocumentOperation() { Title = "ثبت در سامانه" },
+                //2
                 new DocumentOperation() { Title = "گرفتن سریال ثبتی از سایت ستاد" },
+                //3
                 new DocumentOperation() { Title = "ثبت در سیستم جامع آنکا سافت" },
-                new DocumentOperation() { Title = "تفویض وکالت" },
-                new DocumentOperation() { Title = "بررسی تسلسل اسناد" },
-                new DocumentOperation() { Title = "بررسی عدم خلافی" },
-                new DocumentOperation() { Title = "تحویل خودرو به پارکینگ" }
+                //new DocumentOperation() { Title = "تفویض وکالت" },
+                //4
+                new DocumentOperation() { Title = "بررسی تسلسل اسناد", HasSubOperation = true },
+                //new DocumentOperation() { Title = "بررسی عدم خلافی" },
+                //5
+                new DocumentOperation() { Title = "تحویل خودرو به پارکینگ", HasSubOperation = true }
                 );
 
             context.SaveChanges();
 
             context.DocumentOperationsAttributes.AddOrUpdate(_ => _.Title,
-                new OperationsAttribute() { Title = "عدم خلافی", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 6 }, //1
-                new OperationsAttribute() { Title = "اسناد خودرو", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 4 },
-                new OperationsAttribute() { Title = "کارت ماشین", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 4 },
-                new OperationsAttribute() { Title = "برگ سبز", IsRequired = true, DataType = entities.Enums.DataType.Boolean, DocumentOperationRefRecId = 4 },
-                new OperationsAttribute() { Title = "سایر مدارک ناموجود", IsRequired = true, DocumentOperationRefRecId = 4 }
+                new OperationsAttribute() { Title = "عدم خلافی", IsRequired = true, DataType = entities.Enums.DataType.Boolean, OperationRefRecId = 4 }, //1
+                new OperationsAttribute() { Title = "اسناد خودرو", IsRequired = true, DataType = entities.Enums.DataType.Boolean, OperationRefRecId = 4 },
+                new OperationsAttribute() { Title = "کارت ماشین", IsRequired = true, DataType = entities.Enums.DataType.Boolean, OperationRefRecId = 4 },
+                new OperationsAttribute() { Title = "برگ سبز", IsRequired = true, DataType = entities.Enums.DataType.Boolean, OperationRefRecId = 4 },
+                new OperationsAttribute() { Title = "تویض وکالت", IsRequired = true, DataType = entities.Enums.DataType.Boolean, OperationRefRecId = 4 },
+                new OperationsAttribute() { Title = "سایر مدارک ناموجود", IsRequired = true, OperationRefRecId = 4 },
+                new OperationsAttribute() { Title = "عکس های خودرو", IsRequired = true, DataType = entities.Enums.DataType.FileUploder, OperationRefRecId = 5 }
                 );
 
 

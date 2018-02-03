@@ -17,7 +17,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public string Description { get; set; }
 
-        public DateTime TransactionDateTime { get; set; }
+        public DateTime TransactionDateTime { get; set; } = DateTime.Now;
 
         public long DocumentOperationRefRecId { get; set; }
 

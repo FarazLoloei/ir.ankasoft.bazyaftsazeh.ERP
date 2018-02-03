@@ -11,6 +11,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [MaxLength(200)]
         public string Title { get; set; }
 
+        public bool HasSubOperation { get; set; } = false;
+
         public virtual ICollection<OperationsAttribute> AttributeCollection { get; set; }
 
         #region Validation

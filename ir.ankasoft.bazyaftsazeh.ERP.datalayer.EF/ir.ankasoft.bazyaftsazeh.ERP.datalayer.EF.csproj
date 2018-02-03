@@ -98,9 +98,9 @@
     <Compile Include="Repositories\CostRepository.cs" />
     <Compile Include="Repositories\DocumentCostRepository.cs" />
     <Compile Include="Repositories\DocumentImperfectionRepository.cs" />
-    <Compile Include="Repositories\DocumentOperationsAttributeRepository.cs" />
+    <Compile Include="Repositories\OperationsAttributeRepository.cs" />
     <Compile Include="Repositories\DocumentRepository.cs" />
-    <Compile Include="Repositories\DocumentStatusAttributeValueRepository.cs" />
+    <Compile Include="Repositories\OperationsAttributeValueRepository.cs" />
     <Compile Include="Repositories\GovernmentPlanRepository.cs" />
     <Compile Include="Repositories\ImperfectionRepository.cs" />
     <Compile Include="Repositories\ImporterRepository.cs" />

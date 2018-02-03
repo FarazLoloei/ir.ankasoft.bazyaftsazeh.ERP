@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 {
-    public class DocumentOperationsAttributeRepository : Repository<OperationsAttribute>, IDocumentOperationsAttributeRepository
+    public class OperationsAttributeValueRepository : Repository<OperationsAttributeValue>, IOperationsAttributeValueRepository
     {
         public new  IEnumerable<OperationsAttribute> LoadByFilter(IFilterDataSource request,
                                               out int totalRecords)

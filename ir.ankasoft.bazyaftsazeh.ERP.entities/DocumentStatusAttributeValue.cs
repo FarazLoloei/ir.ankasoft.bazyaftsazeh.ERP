@@ -15,6 +15,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         [ForeignKey(nameof(DocumentStatusRefRecId))]
         public DocumentStatus DocumentStatus { get; set; }
 
+        /// <summary>
+        /// Record Id for title of attribute
+        /// </summary>
         public long OperationsAttributeRefRecId { get; set; }
 
         [ForeignKey(nameof(OperationsAttributeRefRecId))]

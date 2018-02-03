@@ -1,0 +1,85 @@
+﻿@*@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelDisplayDocument>*@
+@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus
+@model ViewModelDocumentStatus
+
+<h3>@Resource.Document</h3>
+
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm(MVC.Document.Dashboard(), FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Document.recId)
+            @Html.HiddenFor(model => model.StatusRecId)
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"> بررسی مدارک </div> @*@Resource.Edit*@
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-9">
+                        <div class="form-horizontal">
+                            @*foreach (var item in Model.AttributesList)*@
+                            @foreach (var item in Model.AttributesList.Select((value, i) => new { i, value }))
+                            {
+                                <fieldset>
+                                    <div class="form-group ">
+                                        @Html.HiddenFor(model => Model.AttributesList[@item.i].OperationsAttributeTitleRefRecId)
+                                        @Html.HiddenFor(model => Model.AttributesList[@item.i].OperationsAttributeTitle)
+                                        @Html.HiddenFor(model => Model.AttributesList[@item.i].DataType)
+                                        @Html.HiddenFor(model => Model.AttributesList[@item.i].StatusRecId)
+                                        @Html.Label(Model.AttributesList[@item.i].OperationsAttributeTitle, htmlAttributes: new { @class = "control-label col-md-4" })
+
+                                        <div class="col-md-8">
+                                            @switch (Model.AttributesList[@item.i].DataType)
+                                            {
+                                                case ir.ankasoft.bazyaftsazeh.ERP.entities.Enums.DataType.Boolean:
+
+                                                    <input type="checkbox" class="form-control" value=" @Boolean.Parse(Model.AttributesList[@item.i].Value)"
+                                                           name="AttributesList[@item.i].value" />
+                                                    break;
+                                                case ir.ankasoft.bazyaftsazeh.ERP.entities.Enums.DataType.String:
+                                                    @Html.TextBoxFor(model => Model.AttributesList[@item.i].Value, new { @class = "form-control" })
+                                                    break;
+
+                                            }
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            }
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+                    <div class="clearfix">
+                        <div class="pull-right">
+                            <button class="btn btn-primary" type="submit">@Resource.Save</button>
+                            @Html.ActionLink(Resource.Cancel, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-warning" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section styles{
+    @Styles.Render(Bundles.Styles.bootstrapPersianDatePickerCss)
+}
+@section scripts{
+    @Scripts.Render(Bundles.Scripts.sweetAlert)
+    @Scripts.Render(Bundles.Scripts.bootstrapPersianDatePicker)
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+}

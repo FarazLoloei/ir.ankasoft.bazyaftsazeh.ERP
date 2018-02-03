@@ -9,13 +9,18 @@ using System.Threading.Tasks;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 {
-    public class DocumentStatusOperationsAttributeValueRepository : Repository<OperationsAttributeValue>, IDocumentStatusOperationsAttributeValueRepository
+    public class OperationsAttributeRepository : Repository<OperationsAttribute>, IOperationsAttributeRepository
     {
         public new  IEnumerable<OperationsAttribute> LoadByFilter(IFilterDataSource request,
                                               out int totalRecords)
         {
             totalRecords = 0;
             return new List<OperationsAttribute>();
+        }
+
+        public IEnumerable<OperationsAttribute> GetOperationsAttribute(long operationId)
+        {
+            return FindAll(_ => _.OperationRefRecId == operationId);
         }
     }
 }

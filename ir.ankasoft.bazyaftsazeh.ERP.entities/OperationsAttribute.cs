@@ -14,22 +14,23 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public Enums.DataType DataType { get; set; } = Enums.DataType.String;
 
-        public long DocumentOperationRefRecId { get; set; }
+        public long OperationRefRecId { get; set; }
 
-        [ForeignKey(nameof(DocumentOperationRefRecId))]
+        [ForeignKey(nameof(OperationRefRecId))]
         public DocumentOperation Operation { get; set; }
 
         #region Validation
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+
             if (IsRequired)
                 yield return new ValidationResult(
                string.Format(Resource._0CanntBeEmpty, Title), new[] { Title });
 
-            //if (DocumentRefRecId < 1)
-            //    yield return new ValidationResult(
-            //        string.Format(Resource._0CanntBeEmpty, nameof(DocumentRefRecId)), new[] { nameof(DocumentRefRecId) });
+            if (OperationRefRecId < 1)
+                yield return new ValidationResult(
+                    string.Format(Resource._0CanntBeEmpty, nameof(OperationRefRecId)), new[] { nameof(OperationRefRecId) });
         }
 
         #endregion Validation

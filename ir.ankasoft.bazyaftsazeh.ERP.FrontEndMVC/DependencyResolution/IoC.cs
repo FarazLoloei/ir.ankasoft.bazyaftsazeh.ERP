@@ -58,6 +58,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.DependencyResolution
                 x.For<IPaymentRepository>().Use<PaymentRepository>();
                 x.For<IReplacementPlanRepository>().Use<ReplacementPlanRepository>();
                 x.For<IGovernmentPlanRepository>().Use<GovernmentPlanRepository>();
+                x.For<IOperationsAttributeRepository>().Use<OperationsAttributeRepository>();
+                x.For<IOperationsAttributeValueRepository>().Use<OperationsAttributeValueRepository>();
 
 
                 x.For<IUserStore<ApplicationUser, long>>().Use<UserStore<ApplicationUser, ApplicationRole, long,

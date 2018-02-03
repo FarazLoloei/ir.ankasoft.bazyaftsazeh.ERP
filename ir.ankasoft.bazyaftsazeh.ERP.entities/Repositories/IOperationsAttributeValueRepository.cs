@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories
 {
-    public interface IDocumentStatusOperationsAttributeValueRepository : IRepository<OperationsAttributeValue, long>
+    public interface IOperationsAttributeValueRepository : IRepository<OperationsAttributeValue, long>
     {
         new IEnumerable<OperationsAttributeValue> LoadByFilter(IFilterDataSource request,
                                               out int totalRecords);

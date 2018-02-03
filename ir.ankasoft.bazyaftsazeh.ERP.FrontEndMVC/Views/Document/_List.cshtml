@@ -91,7 +91,7 @@
                                 <tbody>
                                     @foreach (var item in Model.Data)
                                     {
-                                        <tr data-itemid='@item.recId' class="context-menu" > @*data-nextstep='@item.OperativeFormURL'*@
+                                        <tr data-itemid='@item.recId' class="context-menu" data-statuscode='@item.StatusCode'> @*data-nextstep='@item.OperativeFormURL'*@
                                             <td class="col-md-2"><a href="@Url.Action(MVC.Party.Display(item.LastOwnerRecId))">@Html.DisplayFor(modelItem => item.LastOwner)</a></td>
                                             <td class="col-md-2"><a href="@Url.Action(MVC.Party.Display(item.PlateOwnerRecId))">@Html.DisplayFor(modelItem => item.PlateOwner)</a></td>
                                             <td class="col-md-1">@Html.AnkaResource(modelItem => item.PlanType)</td>
