@@ -25,6 +25,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public string Value { get; set; }
 
+        public bool valueCouldPassValidation()
+        {
+            if (OperationsAttribute.DataType == Enums.DataType.Boolean)
+                if (Value == bool.TrueString)
+                    return true;
+                else
+                    return false;
+            if (!string.IsNullOrEmpty(Value))
+                return true;
+            return false;
+        }
+
         #region IDateTracking
 
         public DateTime createdDateTime { get; set; }

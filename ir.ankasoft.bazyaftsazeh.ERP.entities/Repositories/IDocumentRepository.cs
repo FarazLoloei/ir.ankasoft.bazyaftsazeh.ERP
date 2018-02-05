@@ -7,5 +7,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories
     {
         new IEnumerable<Document> LoadByFilter(IFilterDataSource request,
                                                out int totalRecords);
+        
     }
 }

@@ -20,23 +20,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             [OutputCache(Duration = 300, Location = System.Web.UI.OutputCacheLocation.Client)]
             public static List<SelectListItem> getProvinceCities()
             {
-                //string key = "anka_ProvinceCity";
-                //if (HttpContext.Current.Session[key] == null)
-                //{
-                //    ICityRepository _cityRepository = new CityRepository();
-
-                //    var provinceCityList = _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
-                //    {
-                //        return new SelectListItem() { Text = _.Item1, Value = _.Item2 };
-                //    }).ToList();
-
-                //    HttpContext.Current.Session[key] = provinceCityList;
-                //    return provinceCityList;
-                //}
-                //else
-                //{
-                //    return HttpContext.Current.Session[key] as List<SelectListItem>;
-                //}
                 ICityRepository _cityRepository = new CityRepository();
                 return _cityRepository.GetProvinceCity(string.Empty).Select(_ =>
                     {
@@ -157,6 +140,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     Value = $"{_.recId}",
                     Text = $"{_resource.GetString(_.Type.ToString())} {_.System} ({_.Capasity} {_resource.GetString(_.CapasityType.ToString()) })"
                 }).ToList();
+            }
+
+            public static void getDashboardOperations()
+            {
+                string key = $"dashboardOperations";
+                IDocumentOperationRepository _DocumentOperationRepository = new DocumentOperationRepository();
+                if (HttpContext.Current.Session[key] == null)
+                    HttpContext.Current.Session[key] = _DocumentOperationRepository.getAll();
             }
         }
 

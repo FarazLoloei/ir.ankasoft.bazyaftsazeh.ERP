@@ -73,6 +73,7 @@
     <Compile Include="Repositories\ICostRepository.cs" />
     <Compile Include="Repositories\IDocumentCostRepository.cs" />
     <Compile Include="Repositories\IDocumentImperfectionRepository.cs" />
+    <Compile Include="Repositories\IDocumentOperationRepository.cs" />
     <Compile Include="Repositories\IOperationsAttributeRepository.cs" />
     <Compile Include="Repositories\IOperationsAttributeValueRepository.cs" />
     <Compile Include="Repositories\IGovernmentPlanRepository.cs" />

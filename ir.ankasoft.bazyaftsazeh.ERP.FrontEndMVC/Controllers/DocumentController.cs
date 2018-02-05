@@ -67,6 +67,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         // GET: Document
         public virtual ActionResult Index(FilterDataSource request)
         {
+            Common.sessionManager.getDashboardOperations();
             Common.sessionManager.getContextMenu(nameof(DocumentController).Replace(nameof(Controller), string.Empty));
 
             request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
@@ -169,10 +170,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             {
                 try
                 {
+                    int statusLevelId = 4;
+                    var attributes = _operationsAttributeRepository.GetOperationsAttribute(statusLevelId);
                     using (_unitOfWorkFactory.Create())
                     {
                         var _document = Mapper.Map<Document>(request);
-                        //_document.Costs = Mapper.Map<List<DocumentCost>, List<ViewModelCreateAndModifyDocumentCost>>(request.CostCollection);
                         if (request.CostCollection != null)
                             _document.CostCollection = request.CostCollection.Select(_ =>
                             {
@@ -200,6 +202,32 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                             _document.ReplacementPlan = Mapper.Map<ReplacementPlan>(request.ReplacementPlan);
                         _document.Vehicle = Mapper.Map<Vehicle>(request.Vehicle);
                         _document.Vehicle.Plate = Mapper.Map<Plate>(request.Vehicle.Plate);
+
+                        //Insert New Status to Document
+                        _document.DocumentStatusCollection.Add(new DocumentStatus()
+                        {
+                            Description = string.Empty,
+                            DocumentOperationRefRecId = 3
+                        });
+
+                        //var nextStepDocumentStatus = new DocumentStatus()
+                        //{
+                        //    Description = string.Empty,
+                        //    DocumentOperationRefRecId = statusLevelId,
+                        //    AttributeValuesCollection = new List<OperationsAttributeValue>()
+                        //};
+
+                        //foreach (var item in attributes)
+                        //{
+                        //    nextStepDocumentStatus.AttributeValuesCollection.Add(new OperationsAttributeValue()
+                        //    {
+                        //        OperationsAttributeRefRecId = item.recId,
+                        //        Value = item.DataType == entities.Enums.DataType.Boolean ? false.ToString() : " ",
+                        //        DocumentStatusRefRecId = statusLevelId
+                        //    });
+                        //}
+                        _document.DocumentStatusCollection.Add(getStepAttributes(4));//(nextStepDocumentStatus);
+                        //_document.DocumentStatusCollection = _document.DocumentStatusCollection.Reverse().ToList();
                         _documentRepository.Add(_document);
                         return RedirectToAction(MVC.Document.Index());
                     }
@@ -334,23 +362,30 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [HttpGet]
         public virtual ActionResult Dashboard(long id, long statuscode)
         {
+            var document = _documentRepository.FindById(id, x => x.DocumentStatusCollection,
+                                                            x => x.DocumentStatusCollection.Select(_ => _.Operation.AttributeCollection));
+            var model = new ViewModelDocumentStatus();
+            model.AttributesList =
+                Mapper.Map<List<OperationsAttributeValue>,
+                           List<ViewModelOperationsAttribute>>
+                           (document.DocumentStatusCollection
+                                .OrderBy(x => x.DocumentOperationRefRecId)
+                                .Last().AttributeValuesCollection
+                                .ToList());
             var attributes = _operationsAttributeRepository.GetOperationsAttribute(statuscode);
-            var model = new ViewModelDocumentStatus(); //new List<ViewModelOperationsAttribute>();
-            foreach (var item in attributes)
-            {
-                model.AttributesList.Add(new ViewModelOperationsAttribute()
-                {
-                    OperationsAttributeTitleRefRecId = item.OperationRefRecId,
-                    OperationsAttributeTitle = item.Title,
-                    DataType = item.DataType,
-                    StatusRecId = statuscode
-                });
-            }
-            //model.AttributesList =
-            model.AttributesList.Where(_ => _.DataType == entities.Enums.DataType.Boolean)
-                .Select(_ => { return _.Value = false.ToString(); })
-                .ToList()                ;
-            model.AttributesList.OrderBy(x => x.DataType);
+
+            model.AttributesList = (from item in model.AttributesList
+                                    join attribute in attributes on item.OperationsAttributeTitleRefRecId equals attribute.recId
+                                    select new ViewModelOperationsAttribute()
+                                    {
+                                        recId = item.recId,
+                                        DataType = attribute.DataType,
+                                        OperationsAttributeTitleRefRecId = item.OperationsAttributeTitleRefRecId,
+                                        OperationsAttributeTitle = attribute.Title,
+                                        Value = item.Value,
+                                        StatusRecId = item.StatusRecId
+                                    }).OrderBy(x => x.DataType).ToList();
+
             model.Document.recId = id;
             model.StatusRecId = statuscode;
 
@@ -364,16 +399,24 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             {
                 using (_unitOfWorkFactory.Create())
                 {
-                    var document = _documentRepository.FindById(request.Document.recId);
+                    var document = _documentRepository.FindById(request.Document.recId, x => x.DocumentStatusCollection.Select(y => y.AttributeValuesCollection.Select(z => z.OperationsAttribute)));
                     document.GovernmentPlan = null;
                     document.ReplacementPlan = null;
-                    var _documentStatus = Mapper.Map<DocumentStatus>(request);
-                    _documentStatus.AttributeValuesCollection = Mapper.Map<List<ViewModelOperationsAttribute>, List<OperationsAttributeValue>>(request.AttributesList);
 
-                    document.DocumentStatusCollection.Add(_documentStatus);
+                    DocumentStatus oldDocumentStatus = document.DocumentStatusCollection.Where(x => x.DocumentOperationRefRecId == request.StatusRecId).Last();
 
-                    return RedirectToAction(MVC.Document.Index());
+                    foreach (var item in oldDocumentStatus.AttributeValuesCollection)
+                    {
+                        item.Value = request.AttributesList.Where(x => x.recId == item.recId).First().Value;
+                    }
+                    oldDocumentStatus.Description = request.Description;
+
+                    if (oldDocumentStatus.AttributeValuesCollection.Where(x => !x.valueCouldPassValidation()).Count() == 0)
+                    {
+                        document.DocumentStatusCollection.Add(getStepAttributes(request.StatusRecId + 1));
+                    }
                 }
+                return RedirectToAction(MVC.Document.Index());
             }
             catch (ModelValidationException modelValidationException)
             {
@@ -382,25 +425,34 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     ModelState.AddModelError(error.MemberNames.FirstOrDefault() ?? string.Empty, error.ErrorMessage);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
             }
             return View(request);
-
         }
 
-        //[HttpGet]
-        //public virtual ActionResult DocumentPreReqirement(long documentId)
-        //{
-        //    var model = new ViewModelPreRequirement() { DocumentRefRecId = documentId };
-        //    return View(model);
-        //}
+        private DocumentStatus getStepAttributes(long statusId)
+        {
+            var attributes = _operationsAttributeRepository.GetOperationsAttribute(statusId);
 
-        //[HttpPost]
-        //public virtual ActionResult DocumentPreReqirement(ViewModelPreRequirement request)
-        //{
-        //    var model = new ViewModelPreRequirement();
-        //    return View(model);
-        //}
+            var nextStepDocumentStatus = new DocumentStatus()
+            {
+                Description = string.Empty,
+                DocumentOperationRefRecId = statusId,
+                AttributeValuesCollection = new List<OperationsAttributeValue>()
+            };
+
+            foreach (var item in attributes)
+            {
+                nextStepDocumentStatus.AttributeValuesCollection.Add(new OperationsAttributeValue()
+                {
+                    OperationsAttributeRefRecId = item.recId,
+                    Value = item.DataType == entities.Enums.DataType.Boolean ? false.ToString() : " ",
+                    DocumentStatusRefRecId = statusId
+                });
+            }
+
+            return nextStepDocumentStatus;
+        }
     }
 }

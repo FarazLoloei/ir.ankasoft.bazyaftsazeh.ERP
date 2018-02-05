@@ -607,8 +607,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
             .ForMember(p => p.TotalCostValue, opt => opt.MapFrom(dest => dest.CostCollection.Sum(x => x.Value)))
             .ForMember(p => p.ImperfectionPriceSum, opt => opt.MapFrom(dest => dest.ImperfectionCollection.Sum(x => x.Value)))
             .ForMember(p => p.PaymentsTotalPrice, opt => opt.MapFrom(dest => dest.PaymentsCollection.Sum(x => x.Value)))
-            .ForMember(p => p.StatusCode, opt => opt.MapFrom(dest => dest.DocumentStatusCollection.Last().Operation.recId))
-            .ForMember(p => p.Status, opt => opt.MapFrom(dest => dest.DocumentStatusCollection.Last().Operation.Title));
+            .ForMember(p => p.StatusCode, opt => opt.MapFrom(dest => dest.DocumentStatusCollection.OrderBy(x => x.DocumentOperationRefRecId).Last().Operation.recId))
+            .ForMember(p => p.Status, opt => opt.MapFrom(dest => dest.DocumentStatusCollection.OrderBy(x => x.DocumentOperationRefRecId).Last().Operation.Title));
             //.ForMember(p => p.OperativeFormURL, opt => opt.MapFrom(dest => dest.DocumentStatusCollection.Last().Status.Form.FormURL));
 
             /*Create*/
@@ -785,7 +785,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.TransactionDateTime, t => t.Ignore())
                 .ForMember(p => p.DocumentOperationRefRecId, opt => opt.MapFrom(dest => dest.StatusRecId))
                 .ForMember(p => p.Operation, t => t.Ignore())
-                .ForMember(p => p.AttributeValuesCollection, t => t.Ignore())
+                .ForMember(p => p.AttributeValuesCollection, opt => opt.MapFrom(dest => dest.AttributesList))
 
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())
@@ -796,7 +796,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
             _.CreateMap<ViewModelOperationsAttribute, OperationsAttributeValue>()
                 .ForMember(p => p.DocumentStatusRefRecId, opt => opt.MapFrom(dest => dest.StatusRecId)) // Status Rec Id
-                .ForMember(p => p.OperationsAttributeRefRecId, opt=>opt.MapFrom(dest=>dest.OperationsAttributeTitleRefRecId))
+                .ForMember(p => p.OperationsAttributeRefRecId, opt => opt.MapFrom(dest => dest.OperationsAttributeTitleRefRecId))
                 .ForMember(p => p.DocumentStatus, t => t.Ignore())
                 .ForMember(p => p.OperationsAttribute, t => t.Ignore())
 
@@ -806,6 +806,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.creatorUser, t => t.Ignore())
                 .ForMember(p => p.modifierUserRefRecId, t => t.Ignore())
                 .ForMember(p => p.modifierUser, t => t.Ignore());
+
+            _.CreateMap<OperationsAttributeValue, ViewModelOperationsAttribute>()
+                .ForMember(p => p.StatusRecId, opt => opt.MapFrom(dest => dest.DocumentStatusRefRecId))
+                .ForMember(p => p.OperationsAttributeTitleRefRecId, opt => opt.MapFrom(dest => dest.OperationsAttributeRefRecId))
+                .ForMember(p => p.DataType, t => t.Ignore())
+                .ForMember(p => p.CheckBoxValue, t => t.Ignore());
+
+            ;
             //_.CreateMap<OperationsAttributeValue, ViewModelOperationsAttribute>();
 
         }

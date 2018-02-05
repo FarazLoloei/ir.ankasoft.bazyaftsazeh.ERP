@@ -23,6 +23,7 @@
                             {
                                 <fieldset>
                                     <div class="form-group ">
+                                        @Html.HiddenFor(model => Model.AttributesList[@item.i].recId)
                                         @Html.HiddenFor(model => Model.AttributesList[@item.i].OperationsAttributeTitleRefRecId)
                                         @Html.HiddenFor(model => Model.AttributesList[@item.i].OperationsAttributeTitle)
                                         @Html.HiddenFor(model => Model.AttributesList[@item.i].DataType)
@@ -33,12 +34,13 @@
                                             @switch (Model.AttributesList[@item.i].DataType)
                                             {
                                                 case ir.ankasoft.bazyaftsazeh.ERP.entities.Enums.DataType.Boolean:
+                                                    @Html.CheckBoxFor(model => Model.AttributesList[@item.i].CheckBoxValue, new { @class = "form-control" })
 
-                                                    <input type="checkbox" class="form-control" value=" @Boolean.Parse(Model.AttributesList[@item.i].Value)"
-                                                           name="AttributesList[@item.i].value" />
-                                                    break;
-                                                case ir.ankasoft.bazyaftsazeh.ERP.entities.Enums.DataType.String:
-                                                    @Html.TextBoxFor(model => Model.AttributesList[@item.i].Value, new { @class = "form-control" })
+                                                    @*<input type="checkbox" class="form-control" value=" @Boolean.Parse(Model.AttributesList[@item.i].Value)"
+                                                        name="AttributesList[@item.i].value" />*@
+                                                break;
+                                            case ir.ankasoft.bazyaftsazeh.ERP.entities.Enums.DataType.String:
+                                                @Html.TextBoxFor(model => Model.AttributesList[@item.i].Value, new { @class = "form-control" })
                                                     break;
 
                                             }

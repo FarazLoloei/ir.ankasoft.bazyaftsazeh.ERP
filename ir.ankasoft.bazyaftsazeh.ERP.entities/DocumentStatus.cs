@@ -52,11 +52,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (DocumentRefRecId < 1)
+            if (DocumentOperationRefRecId < 1)
                 yield return new ValidationResult(
                     string.Format(Resource._0CanntBeEmpty,
-                                  nameof(DocumentRefRecId)),
-                    new[] { nameof(DocumentRefRecId) });
+                                  nameof(DocumentOperationRefRecId)),
+                    new[] { nameof(DocumentOperationRefRecId) });
+
         }
 
         #endregion Validation

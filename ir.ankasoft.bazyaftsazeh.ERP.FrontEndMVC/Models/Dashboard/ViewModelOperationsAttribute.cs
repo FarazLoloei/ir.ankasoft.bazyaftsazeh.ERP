@@ -1,4 +1,5 @@
 ﻿using ir.ankasoft.bazyaftsazeh.ERP.entities.Enums;
+using System;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Dashboard
@@ -18,6 +19,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Dashboard
 
         public DataType DataType { get; set; }
 
+        public bool CheckBoxValue
+        {
+            get {
+                if (DataType != DataType.Boolean) return false;
+                Value = string.IsNullOrEmpty(Value) ? "false" : Value;
 
+                return Boolean.Parse(Value); }
+            set { Value = value.ToString(); }
+        }
     }
 }
