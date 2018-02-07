@@ -1,32 +1,28 @@
-﻿using ir.ankasoft.entities;
-using ir.ankasoft.infrastructure;
+﻿using ir.ankasoft.infrastructure;
 using ir.ankasoft.resource;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ir.ankasoft.bazyaftsazeh.ERP.entities
+namespace ir.ankasoft.entities
 {
-    public class DocumentStatus : DomainEntity<long>, IDateTracking, IUserTracking
+    public class ExceptionLogger : DomainEntity<long>, IDateTracking, IUserTracking
     {
-        public long DocumentRefRecId { get; set; }
+        [Required]
+        [MaxLength(150)]
+        public string Controller { get; set; }
 
-        [ForeignKey(nameof(DocumentRefRecId))]
-        public Document Document { get; set; }
+        [Required]
+        [MaxLength(150)]
+        public string Action { get; set; }
 
-        public string Description { get; set; }
+        public int StepCode { get; set; } = 0;
 
-        public DateTime TransactionDateTime { get; set; } = DateTime.Now;
+        [Required]
+        public string ExceptionMessage { get; set; }
 
-        public long DocumentOperationRefRecId { get; set; }
-
-        [ForeignKey(nameof(DocumentOperationRefRecId))]
-        public DocumentOperation Operation { get; set; }
-
-        public virtual ICollection<OperationsAttributeValue> AttributeValuesCollection { get; set; }
-
-        public virtual ICollection<ResourceRepo> ResourceRepoCollection { get; set; }
+        public string Paremeters { get; set; }
 
         #region IDateTracking
 
@@ -54,12 +50,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (DocumentOperationRefRecId < 1)
+            if (string.IsNullOrEmpty(Controller))
                 yield return new ValidationResult(
                     string.Format(Resource._0CanntBeEmpty,
-                                  nameof(DocumentOperationRefRecId)),
-                    new[] { nameof(DocumentOperationRefRecId) });
+                                  nameof(Controller)),
+                    new[] { nameof(Controller) });
 
+            if (string.IsNullOrEmpty(Action))
+                yield return new ValidationResult(
+                    string.Format(Resource._0CanntBeEmpty,
+                                  nameof(Action)),
+                    new[] { nameof(Action) });
         }
 
         #endregion Validation

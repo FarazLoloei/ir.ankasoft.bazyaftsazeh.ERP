@@ -23,11 +23,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-
-            if (IsRequired)
-                yield return new ValidationResult(
-               string.Format(Resource._0CanntBeEmpty, Title), new[] { Title });
-
             if (OperationRefRecId < 1)
                 yield return new ValidationResult(
                     string.Format(Resource._0CanntBeEmpty, nameof(OperationRefRecId)), new[] { nameof(OperationRefRecId) });

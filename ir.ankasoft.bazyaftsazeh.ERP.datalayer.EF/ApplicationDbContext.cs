@@ -1,4 +1,5 @@
-﻿using ir.ankasoft.bazyaftsazeh.ERP.entities;
+﻿using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
+using ir.ankasoft.bazyaftsazeh.ERP.entities;
 using ir.ankasoft.entities;
 using ir.ankasoft.infrastructure;
 using Microsoft.AspNet.Identity;
@@ -57,10 +58,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         public DbSet<ContextMenuItem> ContextMenuItems { get; set; }
         public DbSet<DocumentStatus> DocumentsStatus { get; set; }
         public DbSet<DocumentOperation> DocumentOperations { get; set; }
-        //public DbSet<DocumentPreRequirement> DocumentPreRequirements { get; set; }
         public DbSet<OperationsAttribute> DocumentOperationsAttributes { get; set; }
         public DbSet<OperationsAttributeValue> DocumentStatusOperationsAttributeValues { get; set; }
-
+        public DbSet<ExceptionLogger> Exceptions { get; set; }
+        public DbSet<ResourceRepo> ResourceRepoes { get; set; }
 
         public override int SaveChanges()
         {
@@ -239,6 +240,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                         }
                     }
                     dbContextTransaction.Rollback();
+                    var _exceptionLoggerRepository = new ExceptionLoggerRepository();
+                    _exceptionLoggerRepository.Log("DBContext", "SaveChanges", result.ToString(),
+                        Newtonsoft.Json.JsonConvert.SerializeObject(entityException));
                     throw new ModelValidationException(result.ToString(), entityException, allErrors);
                 }
             }
@@ -422,12 +426,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
                 .WithMany(x => x.DocumentStatusCollection)
                 .WillCascadeOnDelete(false);
 
-           
-
             modelBuilder.Entity<OperationsAttributeValue>()
                 .HasRequired(x => x.DocumentStatus)
                 .WithMany(x => x.AttributeValuesCollection)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ResourceRepo>()
+                .HasRequired(x => x.DocumentStatus)
+                .WithMany(x => x.ResourceRepoCollection)
+                .WillCascadeOnDelete(false);
+
         }
     }
 }

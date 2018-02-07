@@ -45,6 +45,8 @@
     <Compile Include="DocumentCost.cs" />
     <Compile Include="DocumentImperfection.cs" />
     <Compile Include="DocumentOperation.cs" />
+    <Compile Include="Enums\Individual.cs" />
+    <Compile Include="Enums\ResourceType.cs" />
     <Compile Include="OperationsAttribute.cs" />
     <Compile Include="DocumentStatus.cs" />
     <Compile Include="DocumentStatusAttributeValue.cs" />
@@ -85,8 +87,10 @@
     <Compile Include="Repositories\IPlateRepository.cs" />
     <Compile Include="Repositories\IPreDefineTitleRepository.cs" />
     <Compile Include="Repositories\IReplacementPlanRepository.cs" />
+    <Compile Include="Repositories\IResourceRepoRepository.cs" />
     <Compile Include="Repositories\IVehicleRepository.cs" />
     <Compile Include="Repositories\IVehicleTipRepository.cs" />
+    <Compile Include="ResourceRepo.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleTip.cs" />
   </ItemGroup>

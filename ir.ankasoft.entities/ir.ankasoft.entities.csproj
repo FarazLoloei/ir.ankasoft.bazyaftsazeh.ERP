@@ -78,6 +78,7 @@
     <Compile Include="Communication.cs" />
     <Compile Include="Enums\ObjectiveType.cs" />
     <Compile Include="Enums\PartyObjective.cs" />
+    <Compile Include="ExceptionLogger.cs" />
     <Compile Include="Objective.cs" />
     <Compile Include="ContextMenuItem.cs" />
     <Compile Include="EmailService.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Repositories\ICityRepository.cs" />
     <Compile Include="Repositories\ICommunicationRepository.cs" />
     <Compile Include="Repositories\IContextMenuItemRepository.cs" />
+    <Compile Include="Repositories\IExceptionLoggerRepository.cs" />
     <Compile Include="Repositories\IObjectiveRepository.cs" />
     <Compile Include="Repositories\INotificationRepository.cs" />
     <Compile Include="Repositories\IPartyRepository.cs" />

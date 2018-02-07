@@ -18,7 +18,7 @@
         protected override void Seed(ApplicationDbContext context)
         {
             //if (System.Diagnostics.Debugger.IsAttached == false)
-            //System.Diagnostics.Debugger.Launch();
+            //    System.Diagnostics.Debugger.Launch();
 
             //return;
             #region Identity Core
