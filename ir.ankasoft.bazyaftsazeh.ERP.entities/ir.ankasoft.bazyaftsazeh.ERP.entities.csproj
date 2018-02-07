@@ -45,7 +45,6 @@
     <Compile Include="DocumentCost.cs" />
     <Compile Include="DocumentImperfection.cs" />
     <Compile Include="DocumentOperation.cs" />
-    <Compile Include="Enums\Individual.cs" />
     <Compile Include="Enums\ResourceType.cs" />
     <Compile Include="OperationsAttribute.cs" />
     <Compile Include="DocumentStatus.cs" />
