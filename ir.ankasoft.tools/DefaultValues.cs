@@ -10,6 +10,7 @@ namespace ir.ankasoft.tools
         public const int page = 1;
         public const string EmptyString = "";
         public const string DefaultCurrency = "ریال";
+        public const string ResourceRelativePath = "~/App_Data/Resources";
 
         private static List<int> _pageSizeCollection = new List<int> { 5, 10, 25, 50, 100 };
 

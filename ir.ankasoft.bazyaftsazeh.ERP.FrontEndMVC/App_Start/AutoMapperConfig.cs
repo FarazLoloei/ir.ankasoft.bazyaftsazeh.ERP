@@ -235,6 +235,8 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                .ForMember(p => p.Family, t => t.Ignore())
                .ForMember(p => p.PartyRefRecId, t => t.Ignore())
                .ForMember(p => p.Party, t => t.Ignore())
+               .ForMember(p => p.FatherName, t => t.Ignore())
+               .ForMember(p => p.IndentifyNumber, t => t.Ignore())
                .ForMember(p => p.CommunicationCollection, t => t.Ignore())
                .ForMember(p => p.PostalAddressCollection, t => t.Ignore())
                .ForMember(p => p.createdDateTime, t => t.Ignore())
@@ -777,6 +779,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
         {
             _.CreateMap<DocumentStatus, ViewModelDocumentStatus>()
                 .ForMember(p => p.StatusRecId, t => t.Ignore())
+                .ForMember(p => p.ResourceList, t => t.Ignore())
                 .ForMember(p => p.AttributesList, t => t.Ignore());
 
             _.CreateMap<ViewModelDocumentStatus, DocumentStatus>()
@@ -786,6 +789,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 .ForMember(p => p.DocumentOperationRefRecId, opt => opt.MapFrom(dest => dest.StatusRecId))
                 .ForMember(p => p.Operation, t => t.Ignore())
                 .ForMember(p => p.AttributeValuesCollection, opt => opt.MapFrom(dest => dest.AttributesList))
+                .ForMember(p => p.ResourceRepoCollection, t => t.Ignore())
 
                 .ForMember(p => p.createdDateTime, t => t.Ignore())
                 .ForMember(p => p.modifiedDateTime, t => t.Ignore())

@@ -187,6 +187,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to مبلغ مبایله نامه.
+        /// </summary>
+        public static string AgreementPrice {
+            get {
+                return ResourceManager.GetString("AgreementPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الف.
         /// </summary>
         public static string Alef {
@@ -979,6 +988,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  نام پدر.
+        /// </summary>
+        public static string FatherName {
+            get {
+                return ResourceManager.GetString("FatherName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to فکس.
         /// </summary>
         public static string Fax {
@@ -1191,6 +1209,15 @@ namespace ir.ankasoft.resource {
         public static string ImporterNumber {
             get {
                 return ResourceManager.GetString("ImporterNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شماره شناسنامه.
+        /// </summary>
+        public static string IndentifyNumber {
+            get {
+                return ResourceManager.GetString("IndentifyNumber", resourceCulture);
             }
         }
         
@@ -1578,6 +1605,15 @@ namespace ir.ankasoft.resource {
         public static string MasterUnitOfMeasure {
             get {
                 return ResourceManager.GetString("MasterUnitOfMeasure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to حداکثر تعداد کاراکتر: 10 کاراکتر.
+        /// </summary>
+        public static string MaxLenght10 {
+            get {
+                return ResourceManager.GetString("MaxLenght10", resourceCulture);
             }
         }
         
@@ -2640,6 +2676,15 @@ namespace ir.ankasoft.resource {
         public static string SendVerificationCode {
             get {
                 return ResourceManager.GetString("SendVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سریال ثبتی.
+        /// </summary>
+        public static string Serial {
+            get {
+                return ResourceManager.GetString("Serial", resourceCulture);
             }
         }
         

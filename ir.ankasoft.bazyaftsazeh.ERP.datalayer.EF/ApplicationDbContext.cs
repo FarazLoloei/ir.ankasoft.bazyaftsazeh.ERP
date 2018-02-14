@@ -20,7 +20,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF
         public ApplicationDbContext()
             //: base("DefaultConnectionString")
             : base("Data Source=.;Initial Catalog=ir.ankasoft.bazyaftsazeh.ERP;Persist Security Info=True;User ID=bazyaftsazeh;Password=@BazyafSazeh!2#;MultipleActiveResultSets=True")
-        //: base("Data Source=87.247.179.160,1833;Initial Catalog=ir.anka.Storage;Persist Security Info=True;User ID=Anka;Password=AnkAt@123;MultipleActiveResultSets=True")
+        //: base("Data Source=67.225.166.182;Initial Catalog=ir.ankasoft.bazyaftsazeh.ERP;Persist Security Info=True;User ID=bazyaftsazeh;Password=@BazyafSazeh!2#;MultipleActiveResultSets=True")
         {//192.168.20.5
             //Configuration.LazyLoadingEnabled = false;
         }

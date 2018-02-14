@@ -11,11 +11,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
     public class ResourceRepo : DomainEntity<long>, IDateTracking, IUserTracking
     {
-        //public long DocumentRefRecId { get; set; }
-
-        //[ForeignKey(nameof(DocumentRefRecId))]
-        //public Document Document { get; set; }
-
         public long DocumentStatusRefRecId { get; set; }
 
         [ForeignKey(nameof(DocumentStatusRefRecId))]
@@ -25,7 +20,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public string FileOriginalTitle { get; set; }
 
-        private string _title;
+        private string _title = Guid.NewGuid().ToString();
         [MaxLength(36)]
         public string TitleGUID
         {
@@ -39,7 +34,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
             }
         }
 
-        public ResourceType Type { get; set; }
+        public ResourceType Type { get; set; } = ResourceType.File;
 
         #region IDateTracking
 

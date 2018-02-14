@@ -47,6 +47,17 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
         [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
         public DocumentPaymentType PaymentType { get; set; }
 
+        [Display(Name = nameof(AgreementPrice), ResourceType = typeof(Resource))]
+        public string AgreementPrice { get; set; } = "0";
+
+        [Display(Name = nameof(Serial), ResourceType = typeof(Resource))]
+        [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
+        [MaxLength(10, ErrorMessageResourceName = "MaxLenght10", ErrorMessageResourceType = typeof(Resource))]
+        public string Serial { get; set; }
+
+        [Display(Name = nameof(Description), ResourceType = typeof(Resource))]
+        public string Description { get; set; }
+
         //public long VehicleRecId { get; set; }
 
         public ViewModelCreateAndModifyVehicle Vehicle { get; set; } = new ViewModelCreateAndModifyVehicle();

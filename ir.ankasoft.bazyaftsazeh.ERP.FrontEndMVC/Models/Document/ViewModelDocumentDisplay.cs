@@ -74,5 +74,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
 
         [Display(Name = nameof(Status), ResourceType = typeof(Resource))]
         public string Status { get; set; }
+
+        [Display(Name = nameof(Serial), ResourceType = typeof(Resource))]
+        public string Serial { get; set; }
+
+        [Display(Name = nameof(AgreementPrice), ResourceType = typeof(Resource))]
+        public string AgreementPrice { get; set; }
     }
 }

@@ -5,8 +5,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities.Enums
 {
     public enum ResourceType : int
     {
+        [Display(Name = nameof(File), ResourceType = typeof(Resource))]
+        File = 1,
+
         [Display(Name = nameof(Image), ResourceType = typeof(Resource))]
-        Image = 1,
+        Image,
 
         [Display(Name = nameof(Video), ResourceType = typeof(Resource))]
         Video

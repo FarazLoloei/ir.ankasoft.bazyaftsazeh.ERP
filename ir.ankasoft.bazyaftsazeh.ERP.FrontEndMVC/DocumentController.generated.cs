@@ -206,6 +206,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string id = "id";
             public readonly string statuscode = "statuscode";
             public readonly string request = "request";
+            public readonly string File = "File";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -365,14 +366,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void DashboardOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus.ViewModelDocumentStatus request);
+        partial void DashboardOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus.ViewModelDocumentStatus request, System.Collections.Generic.List<System.Web.HttpPostedFileBase> File);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Dashboard(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus.ViewModelDocumentStatus request)
+        public override System.Web.Mvc.ActionResult Dashboard(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus.ViewModelDocumentStatus request, System.Collections.Generic.List<System.Web.HttpPostedFileBase> File)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Dashboard);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            DashboardOverride(callInfo, request);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "File", File);
+            DashboardOverride(callInfo, request, File);
             return callInfo;
         }
 

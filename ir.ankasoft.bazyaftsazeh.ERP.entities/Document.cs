@@ -11,6 +11,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 {
     public class Document : DomainEntity<long>, IDateTracking, IUserTracking
     {
+        [Required]
+        [MaxLength(50)]
+        public string Serial { get; set; }
+
         public long LastOwnerRefRecId { get; set; }
 
         [ForeignKey(nameof(LastOwnerRefRecId))]
@@ -76,6 +80,10 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
         public GovernmentPlan GovernmentPlan { get; set; } = new GovernmentPlan();
 
         public virtual ICollection<DocumentStatus> DocumentStatusCollection { get; set; } = new List<DocumentStatus>();
+
+        public string Description { get; set; }
+
+        public double AgreementPrice { get; set; } = 0;
 
         //public virtual ICollection<Payment> Payments { get; set; }
 

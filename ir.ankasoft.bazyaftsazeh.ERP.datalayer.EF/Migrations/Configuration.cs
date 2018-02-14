@@ -21,6 +21,7 @@
             //    System.Diagnostics.Debugger.Launch();
 
             //return;
+
             #region Identity Core
 
             const string adminName = "FarazLoloei", developerName = "farazloloei@gmail.com";
@@ -71,6 +72,7 @@
             }
 
             #endregion Identity Core
+
             context.Objectives.AddOrUpdate(_ => _.Title,
                 new Objective() { Title = "Party", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //1
                 new Objective() { Title = "Person", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //2
@@ -80,8 +82,66 @@
                 new Objective() { Title = "Imperfection", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //6
                 new Objective() { Title = "VehicleTip", Type = ankasoft.entities.Enums.ObjectiveType.Controller }, //7
                 new Objective() { Title = "Document", Type = ankasoft.entities.Enums.ObjectiveType.Controller } //8
+
                 );
             context.SaveChanges();
+
+            context.Objectives.AddOrUpdate(_ => _.Title,
+
+                new Objective() { Title = "Party.Index", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 1 },
+                new Objective() { Title = "Party.GetPartiesList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 1 },
+                new Objective() { Title = "Party.Create", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 1 },
+                new Objective() { Title = "Party.Display", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 1 },
+                new Objective() { Title = "Party.Modify", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 1 },
+                new Objective() { Title = "Party.Remove", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 1 },
+                new Objective() { Title = "Party.CommunicationList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 1 },
+                new Objective() { Title = "Party.PostalAddressList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 1 },
+
+                new Objective() { Title = "Person.Index", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 2 },
+                new Objective() { Title = "Person.Create", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 2 },
+                new Objective() { Title = "Person.Modify", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 2 },
+                new Objective() { Title = "Person.Remove", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 2 },
+                new Objective() { Title = "Person.CommunicationList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 2 },
+                new Objective() { Title = "Person.PostalAddressList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 2 },
+
+                new Objective() { Title = "Importer.Index", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 3 },
+                new Objective() { Title = "Importer.Create", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 3 },
+                new Objective() { Title = "Importer.Modify", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 3 },
+                new Objective() { Title = "Importer.Remove", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 3 },
+                new Objective() { Title = "Importer.CommunicationList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 3 },
+                new Objective() { Title = "Importer.PostalAddressList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 3 },
+
+                new Objective() { Title = "Organization.Index", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 4 },
+                new Objective() { Title = "Organization.Create", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 4 },
+                new Objective() { Title = "Organization.Modify", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 4 },
+                new Objective() { Title = "Organization.Remove", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 4 },
+                new Objective() { Title = "Organization.CommunicationList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 4 },
+                new Objective() { Title = "Organization.PostalAddressList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 4 },
+
+                new Objective() { Title = "Cost.Index", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 5 },
+                new Objective() { Title = "Cost.Create", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 5 },
+                new Objective() { Title = "Cost.Modify", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 5 },
+                new Objective() { Title = "Cost.Remove", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 5 },
+
+                new Objective() { Title = "Imperfection.Index", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 6 },
+                new Objective() { Title = "Imperfection.Create", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 6 },
+                new Objective() { Title = "Imperfection.Modify", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 6 },
+                new Objective() { Title = "Imperfection.Remove", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 6 },
+
+                new Objective() { Title = "VehicleTip.Index", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 7 },
+                new Objective() { Title = "VehicleTip.Create", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 7 },
+                new Objective() { Title = "VehicleTip.Modify", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 7 },
+                new Objective() { Title = "VehicleTip.Remove", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 7 },
+
+                new Objective() { Title = "Document.Index", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 8 },
+                new Objective() { Title = "Document.Create", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 8 },
+                new Objective() { Title = "Document.Modify", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 8 },
+                new Objective() { Title = "Document.CostList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 8 },
+                new Objective() { Title = "Document.ImperfectionList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 8 },
+                new Objective() { Title = "Document.PaymentsList", Type = ankasoft.entities.Enums.ObjectiveType.Action, ParentRefRecId = 8 }
+                );
+            context.SaveChanges();
+
             var _objectiveRefRecId = 1;
             context.ContextMenuItems.AddOrUpdate(
 
@@ -756,7 +816,7 @@
                 }
                 );
 
-            #endregion VehicleTip
+            #endregion Document
 
             context.DocumentOperations.AddOrUpdate(_ => _.Title,
                 //1
@@ -770,7 +830,9 @@
                 new DocumentOperation() { Title = "بررسی تسلسل اسناد", HasSubOperation = true },
                 //new DocumentOperation() { Title = "بررسی عدم خلافی" },
                 //5
-                new DocumentOperation() { Title = "تحویل خودرو به پارکینگ", HasSubOperation = true }
+                new DocumentOperation() { Title = "تحویل خودرو به پارکینگ", HasSubOperation = true, CouldAttachAnyFiles = true },
+                //6
+                new DocumentOperation() { Title = "لیست نواقصات احتمالی", HasSubOperation = true }
                 );
 
             context.SaveChanges();
@@ -784,8 +846,6 @@
                 new OperationsAttribute() { Title = "سایر مدارک ناموجود", IsRequired = true, OperationRefRecId = 4 },
                 new OperationsAttribute() { Title = "عکس های خودرو", IsRequired = true, DataType = entities.Enums.DataType.FileUploder, OperationRefRecId = 5 }
                 );
-
-
         }
     }
 }

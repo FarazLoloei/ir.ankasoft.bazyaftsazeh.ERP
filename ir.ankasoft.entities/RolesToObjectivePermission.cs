@@ -4,23 +4,25 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ir.ankasoft.entities
 {
-    public class Objective : DomainEntity<long>, IDateTracking, IUserTracking
+    public class RolesToObjectivePermission : DomainEntity<long>, IDateTracking, IUserTracking
     {
-        [Required]
-        [MaxLength(100)]
-        public string Title { get; set; }
+        public long RoleRefRecId { get; set; }
 
-        public Enums.ObjectiveType Type { get; set; }
+        [ForeignKey(nameof(RoleRefRecId))]
+        public ApplicationUserRole Role { get; set; }
 
-        public long? ParentRefRecId { get; set; }
+        public long ObjectiveRefRecId { get; set; }
 
-        [ForeignKey(nameof(ParentRefRecId))]
-        public Objective Parent { get; set; }
+        [ForeignKey(nameof(ObjectiveRefRecId))]
+        public Objective Objective { get; set; }
 
-        public virtual ICollection<ContextMenuItem> ItemCollection { get; set; }
+        public string ValidStatusIdCollectionCommaSeperate { get; set; }
 
         #region IDateTracking
 
@@ -48,9 +50,14 @@ namespace ir.ankasoft.entities
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrEmpty(Title))
+            if (RoleRefRecId < 1)
             {
-                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(Title)), new[] { nameof(Title) });
+                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(RoleRefRecId)), new[] { nameof(RoleRefRecId) });
+            }
+
+            if (ObjectiveRefRecId < 1)
+            {
+                yield return new ValidationResult(string.Format(Resource._0CanntBeEmpty, nameof(ObjectiveRefRecId)), new[] { nameof(ObjectiveRefRecId) });
             }
         }
 

@@ -10,7 +10,7 @@
             <div role="tabpanel">
                 <ul class="nav nav-tabs nav-justified">
                     <li role="presentation" class="active">
-                        <a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">@Resource.Information @Resource.Person</a>
+                        <a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">@Resource.VehicleInfo</a>
                     </li>
                     <li role="presentation">
                         <a href="#cost" aria-controls="cost" role="tab" data-toggle="tab">@Resource.Cost</a>
@@ -23,6 +23,15 @@
                     <div id="edit" role="tabpanel" class="tab-pane active">
                         <div class="row">
                             <div class="col-md-6">
+                                <fieldset>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Serial, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.Serial, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Serial, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </fieldset>
                                 <fieldset>
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.LastOwnerRecId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -78,6 +87,15 @@
                                             @Html.TextBoxFor(model => model.PaymentDateShamsi, new { @class = "form-control PaymentDateDataPicker" })
 
                                             @Html.ValidationMessageFor(model => model.PaymentDateShamsi, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.AgreementPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.AgreementPrice, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.AgreementPrice, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </fieldset>
@@ -274,6 +292,18 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="col-md-12">
+
+                            <fieldset>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </fieldset>
                             </div>
                         </div>
                     </div>

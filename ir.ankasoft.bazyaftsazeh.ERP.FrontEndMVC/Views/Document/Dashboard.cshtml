@@ -1,12 +1,15 @@
 ﻿@*@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document.ViewModelDisplayDocument>*@
 @using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus
+@using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 @model ViewModelDocumentStatus
-
+@{
+    var hasImages = Common.sessionManager.isOperationHasImage((int)Model.StatusRecId); //Session[$"dashboardOperations"] as IEnumerable<ViewModelContextMenu>;
+}
 <h3>@Resource.Document</h3>
 
 <div class="row">
     <div class="col-lg-12">
-        @using (Html.BeginForm(MVC.Document.Dashboard(), FormMethod.Post))
+        @using (Html.BeginForm(MVC.Document.Dashboard(), FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             @Html.HiddenFor(model => model.Document.recId)
@@ -35,14 +38,24 @@
                                             {
                                                 case ir.ankasoft.bazyaftsazeh.ERP.entities.Enums.DataType.Boolean:
                                                     @Html.CheckBoxFor(model => Model.AttributesList[@item.i].CheckBoxValue, new { @class = "form-control" })
-
-                                                    @*<input type="checkbox" class="form-control" value=" @Boolean.Parse(Model.AttributesList[@item.i].Value)"
-                                                        name="AttributesList[@item.i].value" />*@
-                                                break;
-                                            case ir.ankasoft.bazyaftsazeh.ERP.entities.Enums.DataType.String:
-                                                @Html.TextBoxFor(model => Model.AttributesList[@item.i].Value, new { @class = "form-control" })
                                                     break;
+                                                case ir.ankasoft.bazyaftsazeh.ERP.entities.Enums.DataType.String:
+                                                    @Html.TextBoxFor(model => Model.AttributesList[@item.i].Value, new { @class = "form-control" })
+                                                    break;
+                                                case ir.ankasoft.bazyaftsazeh.ERP.entities.Enums.DataType.FileUploder:
+                                                    if (hasImages)
+                                                    {
+                                                        <input type="file" name="files" />
+                                                        <input type="file" name="files" />
+                                                        @*<input type="file" name="file[1]" id="file[1]" />
+                                                        <input type="file" name="file[2]" id="file[2]" />
+                                                        <input type="file" name="file[3]" id="file[3]" />*@
+                                                    }
 
+
+
+                                                    @*<input type="file" name="@Model.ResourceList[item"/>*@
+                                                break;
                                             }
                                         </div>
                                     </div>

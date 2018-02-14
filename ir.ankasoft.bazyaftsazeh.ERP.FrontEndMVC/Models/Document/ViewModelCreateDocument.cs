@@ -43,8 +43,19 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Document
 
         [Display(Name = nameof(PaymentDateShamsi), ResourceType = typeof(Resource))]
         [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
-        [MaxLength(10, ErrorMessageResourceName = "MaxLenght100", ErrorMessageResourceType = typeof(Resource))]
+        [MaxLength(10, ErrorMessageResourceName = "MaxLenght10", ErrorMessageResourceType = typeof(Resource))]
         public string PaymentDateShamsi { get; set; }
+
+        [Display(Name = nameof(AgreementPrice), ResourceType = typeof(Resource))]
+        public string AgreementPrice { get; set; } = "0";
+
+        [Display(Name = nameof(Serial), ResourceType = typeof(Resource))]
+        [Required(ErrorMessageResourceName = "RequiredFiled", ErrorMessageResourceType = typeof(Resource))]
+        [MaxLength(10, ErrorMessageResourceName = "MaxLenght10", ErrorMessageResourceType = typeof(Resource))]
+        public string Serial { get; set; }
+
+        [Display(Name = nameof(Description), ResourceType = typeof(Resource))]
+        public string Description { get; set; }
 
         public List<ViewModelCreateAndModifyDocumentCost> CostCollection { get; set; }
 

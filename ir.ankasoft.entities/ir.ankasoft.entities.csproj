@@ -113,6 +113,7 @@
     <Compile Include="Repositories\IPersonRepository.cs" />
     <Compile Include="Repositories\IPostalAddressRepository.cs" />
     <Compile Include="Repositories\IProvinceRepository.cs" />
+    <Compile Include="RolesToObjectivePermission.cs" />
     <Compile Include="SmsService.cs" />
   </ItemGroup>
   <ItemGroup>

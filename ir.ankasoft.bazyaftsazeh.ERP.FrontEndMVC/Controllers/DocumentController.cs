@@ -12,9 +12,12 @@ using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Vehicle;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.VehiclePlate;
 using ir.ankasoft.entities.Repositories;
 using ir.ankasoft.infrastructure;
+
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
@@ -364,6 +367,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             var document = _documentRepository.FindById(id, x => x.DocumentStatusCollection,
                                                             x => x.DocumentStatusCollection.Select(_ => _.Operation.AttributeCollection));
+            if (document == null) return RedirectToAction(MVC.Document.Index());
             var model = new ViewModelDocumentStatus();
             model.AttributesList =
                 Mapper.Map<List<OperationsAttributeValue>,
@@ -372,6 +376,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                                 .OrderBy(x => x.DocumentOperationRefRecId)
                                 .Last().AttributeValuesCollection
                                 .ToList());
+
             var attributes = _operationsAttributeRepository.GetOperationsAttribute(statuscode);
 
             model.AttributesList = (from item in model.AttributesList
@@ -388,13 +393,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
 
             model.Document.recId = id;
             model.StatusRecId = statuscode;
+            model.Description = document.DocumentStatusCollection.Where(x => x.DocumentOperationRefRecId == statuscode).First().Description;
 
             return View(model);
         }
 
         [HttpPost]
-        public virtual ActionResult Dashboard(ViewModelDocumentStatus request)
+        public virtual ActionResult Dashboard(ViewModelDocumentStatus request, List<HttpPostedFileBase> Files)
         {
+            List<ResourceRepo> resourcesList = new List<ResourceRepo>();
             try
             {
                 using (_unitOfWorkFactory.Create())
@@ -403,8 +410,29 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                     document.GovernmentPlan = null;
                     document.ReplacementPlan = null;
 
-                    DocumentStatus oldDocumentStatus = document.DocumentStatusCollection.Where(x => x.DocumentOperationRefRecId == request.StatusRecId).Last();
+                    if (Files != null)
+                        foreach (var item in Files)
+                        {
+                            if (item.ContentLength > 0)
+                            {
+                                FileInfo fileInfo = new FileInfo(item.FileName);
+                                var resource = new ResourceRepo()
+                                {
+                                    FileOriginalTitle = fileInfo.Name,
 
+                                    DocumentStatusRefRecId = request.StatusRecId
+
+                                };
+
+                                resourcesList.Add(resource);
+                                var path = $"{Server.MapPath(tools.DefaultValues.ResourceRelativePath)}\\{resource.TitleGUID}{fileInfo.Extension}";
+                                item.SaveAs(path);
+                                request.AttributesList[0].Value = "valid";
+                            }
+                        }
+
+                    DocumentStatus oldDocumentStatus = document.DocumentStatusCollection.Where(x => x.DocumentOperationRefRecId == request.StatusRecId).Last();
+                    oldDocumentStatus.ResourceRepoCollection = resourcesList;
                     foreach (var item in oldDocumentStatus.AttributeValuesCollection)
                     {
                         item.Value = request.AttributesList.Where(x => x.recId == item.recId).First().Value;
@@ -427,8 +455,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             }
             catch (Exception ex)
             {
+                foreach (var item in resourcesList)
+                {
+                    FileInfo fileInfo = new FileInfo(item.FileOriginalTitle);
+                    System.IO.File.Delete($"{ Server.MapPath(tools.DefaultValues.ResourceRelativePath)}\\{item.TitleGUID}{fileInfo.Extension}");
+                }
             }
-            return View(request);
+            return RedirectToAction(MVC.Document.Dashboard(request.Document.recId, request.StatusRecId));
+            //return View(request, new { id = request.Document.recId , statuscode = request.StatusRecId });
         }
 
         private DocumentStatus getStepAttributes(long statusId)

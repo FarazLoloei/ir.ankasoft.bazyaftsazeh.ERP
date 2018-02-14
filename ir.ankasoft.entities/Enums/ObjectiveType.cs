@@ -2,6 +2,7 @@
 {
     public enum ObjectiveType
     {
-        Controller = 1
+        Controller = 1,
+        Action
     }
 }

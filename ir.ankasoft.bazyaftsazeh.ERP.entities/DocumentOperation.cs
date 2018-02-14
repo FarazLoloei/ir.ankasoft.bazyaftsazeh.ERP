@@ -13,6 +13,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.entities
 
         public bool HasSubOperation { get; set; } = false;
 
+        public bool CouldAttachAnyFiles { get; set; } = false;
+
+        public int MaxNumberOfImagesForAttach { get; set; } = 4;
+
+        public int MaxNumberOfVideosForAttach { get; set; } = 1;
+
+        [MaxLength(200)]
+        public string RelatedFormURL { get; set; }
+
+        [MaxLength(50)]
+        public string RolesList { get; set; } = "1";
+
         public virtual ICollection<OperationsAttribute> AttributeCollection { get; set; }
 
         #region Validation

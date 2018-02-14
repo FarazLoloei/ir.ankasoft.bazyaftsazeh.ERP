@@ -23,12 +23,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
                 "~/content/font-awesome.min.css", new CssRewriteUrlTransform()
             ));
 
-            bundles.Add(new StyleBundle(Bundles.Styles.bbcNassim).Include(
+            bundles.Add(new StyleBundle("~/bundles/bbcnassim").Include(//Bundles.Styles.bbcNassim
                 "~/Vendor/bbcnassim/css/font-bbcnassim.min.css", new CssRewriteUrlTransform()
 
             ));
 
-            bundles.Add(new StyleBundle(Bundles.Styles.iranSans).Include(
+            bundles.Add(new StyleBundle("~/Content/IranSans").Include(//Bundles.Styles.iranSans
                 "~/Content/IranSans/IranSans.css", new CssRewriteUrlTransform()
 
             ));

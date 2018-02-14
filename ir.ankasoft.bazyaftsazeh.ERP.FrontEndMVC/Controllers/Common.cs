@@ -1,4 +1,5 @@
 ﻿using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
+using ir.ankasoft.bazyaftsazeh.ERP.entities;
 using ir.ankasoft.bazyaftsazeh.ERP.entities.Repositories;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.entities;
@@ -148,6 +149,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 IDocumentOperationRepository _DocumentOperationRepository = new DocumentOperationRepository();
                 if (HttpContext.Current.Session[key] == null)
                     HttpContext.Current.Session[key] = _DocumentOperationRepository.getAll();
+            }
+
+            public static bool isOperationHasImage(int operationId)
+            {
+                getDashboardOperations();
+                var currentOperation = (HttpContext.Current.Session["dashboardOperations"] as IEnumerable<DocumentOperation>).ToList();
+                if (currentOperation[operationId-1].CouldAttachAnyFiles) return true;
+                return false;
             }
         }
 

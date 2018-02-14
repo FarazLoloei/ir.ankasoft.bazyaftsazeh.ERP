@@ -219,6 +219,7 @@
     <Compile Include="Models\Imperfection\ViewModelCreateAndModifyImperfection.cs" />
     <Compile Include="Models\Payment\ViewModelCreateAndModifyPayment.cs" />
     <Compile Include="Models\ReplacementPlan\ViewModelCreateReplacementPlan.cs" />
+    <Compile Include="Models\ResourceRepo\ViewModelResource.cs" />
     <Compile Include="Models\VehiclePlate\ViewModelCreateAndModifyVehiclePlate.cs" />
     <Compile Include="Models\Vehicle\ViewModelCreateAndModifyVehicle.cs" />
     <Compile Include="Models\Vehicle\ViewModelVehicleDisplay.cs" />
@@ -492,7 +493,9 @@
     <Content Include="Vendor\sweetalert\dist\sweetalert.js" />
     <Content Include="Vendor\sweetalert\dist\sweetalert.min.js" />
     <Content Include="Vendor\whirl\dist\whirl.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery.contextMenu.min.js.map" />
   </ItemGroup>
   <ItemGroup>
@@ -804,7 +807,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Resources\" />
     <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models
         public KeyValuePair<string, SortType> sort { get; set; }//= new KeyValuePair<string, SortType>("recId", SortType.ASC);
         public List<SelectListItem> PageSizeCollection { get; set; } = DefaultValues.PageSizeCollection;
         public KeyValuePair<string, string> Filter { get; set; }
+        public long StatusId { get; set; } = 0;//All Statuses
 
         public string sortBy { get; set; }
         public int sortType { get; set; }

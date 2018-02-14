@@ -23,5 +23,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus
         public string Description { get; set; }
 
         public List<ViewModelOperationsAttribute> AttributesList { get; set; } = new List<ViewModelOperationsAttribute>();
+
+        public List<HttpPostedFileBase> ResourceList { get; set; } = new List<HttpPostedFileBase>();
+
+        //public 
     }
 }

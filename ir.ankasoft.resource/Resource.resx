@@ -1233,4 +1233,19 @@
   <data name="Sanad" xml:space="preserve">
     <value>سند</value>
   </data>
+  <data name="MaxLenght10" xml:space="preserve">
+    <value>حداکثر تعداد کاراکتر: 10 کاراکتر</value>
+  </data>
+  <data name="FatherName" xml:space="preserve">
+    <value> نام پدر</value>
+  </data>
+  <data name="IndentifyNumber" xml:space="preserve">
+    <value>شماره شناسنامه</value>
+  </data>
+  <data name="AgreementPrice" xml:space="preserve">
+    <value>مبلغ مبایله نامه</value>
+  </data>
+  <data name="Serial" xml:space="preserve">
+    <value>سریال ثبتی</value>
+  </data>
 </root>

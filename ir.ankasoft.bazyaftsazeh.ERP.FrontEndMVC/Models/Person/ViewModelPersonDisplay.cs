@@ -23,5 +23,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Person
 
         [Display(Name = nameof(Mobile), ResourceType = typeof(Resource))]
         public string Mobile { get; set; }
+
+        [Display(Name = nameof(FatherName), ResourceType = typeof(Resource))]
+        public string FatherName { get; set; }
+
+        [Display(Name = nameof(IndentifyNumber), ResourceType = typeof(Resource))]
+        public string IndentifyNumber { get; set; }
     }
 }
