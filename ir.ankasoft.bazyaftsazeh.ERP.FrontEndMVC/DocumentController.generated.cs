@@ -206,7 +206,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string id = "id";
             public readonly string statuscode = "statuscode";
             public readonly string request = "request";
-            public readonly string File = "File";
+            public readonly string Files = "Files";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -366,15 +366,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         }
 
         [NonAction]
-        partial void DashboardOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus.ViewModelDocumentStatus request, System.Collections.Generic.List<System.Web.HttpPostedFileBase> File);
+        partial void DashboardOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus.ViewModelDocumentStatus request, System.Collections.Generic.List<System.Web.HttpPostedFileBase> Files);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Dashboard(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus.ViewModelDocumentStatus request, System.Collections.Generic.List<System.Web.HttpPostedFileBase> File)
+        public override System.Web.Mvc.ActionResult Dashboard(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.DocumentStatus.ViewModelDocumentStatus request, System.Collections.Generic.List<System.Web.HttpPostedFileBase> Files)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Dashboard);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "File", File);
-            DashboardOverride(callInfo, request, File);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "Files", Files);
+            DashboardOverride(callInfo, request, Files);
             return callInfo;
         }
 

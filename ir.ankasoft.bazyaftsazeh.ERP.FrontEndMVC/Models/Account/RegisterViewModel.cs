@@ -7,8 +7,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Account
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email", ResourceType = typeof(Resource))]
+        [Display(Name = nameof(Email), ResourceType = typeof(Resource))]
         public string Email { get; set; }
+
+        [Required]
+        [StringLength(100,
+            ErrorMessageResourceName = "The0MusBeAtLeast2CharactersLong",
+            MinimumLength = 6,
+            ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = nameof(UserName), ResourceType = typeof(Resource))]
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(100,

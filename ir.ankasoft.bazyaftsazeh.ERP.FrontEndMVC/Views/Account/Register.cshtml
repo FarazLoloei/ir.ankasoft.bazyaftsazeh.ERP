@@ -2,7 +2,8 @@
     Layout = MVC.Shared.Views._LayoutPage;
 }
 <div class="block-center mt-xl wd-xl">
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "mb-lg", role = "form" }))
+@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "mb-lg", role = "form" }))*@
+    @using (Html.BeginForm(MVC.Account.Register(), FormMethod.Post, new { @class = "mb-lg", role = "form" }))
     {
         @Html.AntiForgeryToken()
     <!-- START panel-->
@@ -13,15 +14,15 @@
                 </a>
             </div>
             <div class="panel-body">
-                <p class="text-center pv">SIGNUP TO GET INSTANT ACCESS.</p>
+                <p class="text-center pv">@Resource.ApplicationTitle</p>
                 <div class="form-group has-feedback">
                     <label for="signupInputEmail" class="text-muted">@Resource.Email</label>
-                    <input id="signupInputEmail" type="email" placeholder="ایمیل خود را وارد کنید" autocomplete="off" required="required" class="form-control" />
+                    <input id="signupInputEmail" type="email" placeholder="@Resource.EnterYourEmail" autocomplete="off" required="required" class="form-control" />
                     <span class="fa fa-envelope form-control-feedback text-muted"></span>
                 </div>
                 <div class="form-group has-feedback">
                     <label for="signupInputPassword" class="text-muted">@Resource.Password</label>
-                    <input id="signupInputPassword" type="password" placeholder="رمز عبور خود را وارد کنید" autocomplete="off" required="required" class="form-control" />
+                    <input id="signupInputPassword" type="password" placeholder="@Resource.EnterPassword" autocomplete="off" required="required" class="form-control" />
                     <span class="fa fa-lock form-control-feedback text-muted"></span>
                 </div>
                 <div class="form-group has-feedback">
@@ -29,7 +30,7 @@
                     <input id="signupInputRePassword" type="password" placeholder="@Resource.ConfirmPassword" autocomplete="off" required="required" data-parsley-equalto="#signupInputPassword1" class="form-control" />
                     <span class="fa fa-lock form-control-feedback text-muted"></span>
                 </div>
-                <div class="clearfix">
+                @*<div class="clearfix">
                     <div class="checkbox c-checkbox pull-right mt0">
                         <label>
                             <a href="#"> قوانین سایت</a> را قبول دارم
@@ -38,9 +39,9 @@
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-block btn-primary mt-lg">ایجاد حساب کاربری</button>
+                <button type="submit" class="btn btn-block btn-primary mt-lg">@Resource.RegisterNewAccount</button>
 
-                <p class="pt-lg text-center">قبلا حساب کاربری ایجاد نموده اید؟</p><a href="@Url.Action(MVC.Account.Login())" class="btn btn-block btn-default">وارد شوید</a>
+                <p class="pt-lg text-center">@Resource.AlreadyHaveAnAccount</p><a href="@Url.Action(MVC.Account.Login())" class="btn btn-block btn-default">@Resource.Login</a>*@
             </div>
         </div>
     <!-- END panel-->

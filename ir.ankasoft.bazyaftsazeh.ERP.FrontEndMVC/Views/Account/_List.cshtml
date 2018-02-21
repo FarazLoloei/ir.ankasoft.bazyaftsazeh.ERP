@@ -1,0 +1,121 @@
+﻿@model PagerModel<ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Account.ViewModelDisplayUser>
+
+<table class="table anka_dataTable table-striped table-bordered">
+    @{
+        var modelHeader = Model.Data.FirstOrDefault();
+        var defaultClass = "";
+        <thead>
+            @Html.Hidden("sortBy", Model.PageData.filterDataSource.sortBy)
+            @Html.Hidden("sortType", Model.PageData.filterDataSource.sortType)
+            <tr class="context-menu-header">
+                <th>
+                    <a href="#" data-column="@nameof(modelHeader.UserName)">
+                        @Html.LabelFor(modelItem => modelHeader.UserName)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.UserName))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
+                <th>
+                    <a href="#" data-column="@nameof(modelHeader.Email)">
+                        @Html.LabelFor(modelItem => modelHeader.Email)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.Email))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
+                <th>
+                    <a href="#" data-column="@nameof(modelHeader.EmailConfirmed)">
+                        @Html.LabelFor(modelItem => modelHeader.EmailConfirmed)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.EmailConfirmed))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
+                <th>
+                    <a href="#" data-column="@nameof(modelHeader.PhoneNumber)">
+                        @Html.LabelFor(modelItem => modelHeader.PhoneNumber)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.PhoneNumber))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+
+                </th>
+                <th>
+                    <a href="#" data-column="@nameof(modelHeader.PhoneNumberConfirmed)">
+                        @Html.LabelFor(modelItem => modelHeader.PhoneNumberConfirmed)
+                    </a>
+                    <span class="pull-right">
+                        @{
+                            defaultClass = "fa-sort";
+                            if (Model.PageData.filterDataSource.sortBy == nameof(modelHeader.PhoneNumberConfirmed))
+                            {
+                                defaultClass = Model.PageData.filterDataSource.sortType == 1 ? "fa-sort-amount-asc" : "fa-sort-amount-desc";
+                            }
+                        }
+                        <i class="fa @defaultClass" aria-hidden="true"></i>
+                    </span>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+                            if (Model.Data.Any())
+                            {
+                                <tbody>
+                                    @foreach (var item in Model.Data)
+                                    {
+                                        <tr data-itemid='@item.recId' class="context-menu">
+                                            @*data-nextstep='@item.OperativeFormURL'*@
+                                            <td class="col-md-2 text-right">@Html.DisplayFor(modelItem => item.UserName)</td>
+                                            <td class="col-md-2 text-right">@Html.DisplayFor(modelItem => item.Email)</td>
+                                            <td class="col-md-1">@Html.DisplayFor(modelItem => item.EmailConfirmed)</td>
+                                            <td class="col-md-1 text-right">@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                                            <td class="col-md-1">@Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)</td>
+                                            <td class="col-md-5"></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                @*<tfoot>
+                                        <tr>
+
+                                            <td class="col-md-2">@Html.Editor(Model.filter.NationalCode)</td>
+                                                <td class="col-md-2">@Html.Editor(Model.filter.Title)</td>
+                                                <td class="col-md-2"></td>
+                                                <td class="col-md-1"></td>
+                                                <td class="col-md-1"></td>
+                                                <td class="col-md-4"></td>
+                                        </tr>
+                                    </tfoot>*@
+                            }
+    }
+</table>
+
+@Html.Partial(MVC.Shared.Views._Pager, Model.PageData)

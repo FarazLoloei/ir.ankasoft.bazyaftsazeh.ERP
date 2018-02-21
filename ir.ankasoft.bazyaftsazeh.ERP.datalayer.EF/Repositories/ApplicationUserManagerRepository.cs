@@ -1,8 +1,13 @@
 ﻿using ir.ankasoft.entities;
+using ir.ankasoft.infrastructure;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic;
 
 namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
 {
@@ -85,6 +90,21 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories
                         dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
+        }
+
+        public IEnumerable<ApplicationUser> LoadByFilter(IFilterDataSource request,
+                                                         out int totalRecords)
+        {
+            var users = new ApplicationDbContext().Users.Where(x => x.UserName.Contains(request.keyword) ||
+                                                                    x.Email.Contains(request.keyword)).ToList();
+
+            totalRecords = users.Count();
+            return users.OrderBy(BuildOrderBy(request.sort.Key, request.sort.Value.ToString())).Skip((request.page * request.pageSize) - request.pageSize).Take(request.pageSize);
+        }
+
+        private string BuildOrderBy(string sortOn, string sortDirection)
+        {
+            return string.Format("{0} {1}", sortOn, sortDirection);
         }
     }
 }

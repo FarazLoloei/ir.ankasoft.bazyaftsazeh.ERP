@@ -214,6 +214,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to قبلا حساب کاربری ایجاد نموده اید؟.
+        /// </summary>
+        public static string AlreadyHaveAnAccount {
+            get {
+                return ResourceManager.GetString("AlreadyHaveAnAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to قبل از ظهر.
         /// </summary>
         public static string AM {
@@ -898,6 +907,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to تایید پست الکترونیکی.
+        /// </summary>
+        public static string EmailConfirmed {
+            get {
+                return ResourceManager.GetString("EmailConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ایمیل لینک.
         /// </summary>
         public static string EmailLink {
@@ -921,6 +939,15 @@ namespace ir.ankasoft.resource {
         public static string EnteredFieldNotValid {
             get {
                 return ResourceManager.GetString("EnteredFieldNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to رمز عبور خود را وارد کنید.
+        /// </summary>
+        public static string EnterPassword {
+            get {
+                return ResourceManager.GetString("EnterPassword", resourceCulture);
             }
         }
         
@@ -2167,6 +2194,24 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to شماره تلفن.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تایید شماره تلفن.
+        /// </summary>
+        public static string PhoneNumberConfirmed {
+            get {
+                return ResourceManager.GetString("PhoneNumberConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to وانت.
         /// </summary>
         public static string Pickup {
@@ -2397,6 +2442,15 @@ namespace ir.ankasoft.resource {
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ایجاد حساب کاربری.
+        /// </summary>
+        public static string RegisterNewAccount {
+            get {
+                return ResourceManager.GetString("RegisterNewAccount", resourceCulture);
             }
         }
         
@@ -3166,6 +3220,15 @@ namespace ir.ankasoft.resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to کاربر.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to نام کاربری.
         /// </summary>
         public static string UserName {
@@ -3180,6 +3243,15 @@ namespace ir.ankasoft.resource {
         public static string UsernameOrPasswordWasNotValid {
             get {
                 return ResourceManager.GetString("UsernameOrPasswordWasNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to کاربران.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
         

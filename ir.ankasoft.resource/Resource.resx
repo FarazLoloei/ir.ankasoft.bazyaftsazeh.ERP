@@ -1248,4 +1248,28 @@
   <data name="Serial" xml:space="preserve">
     <value>سریال ثبتی</value>
   </data>
+  <data name="AlreadyHaveAnAccount" xml:space="preserve">
+    <value>قبلا حساب کاربری ایجاد نموده اید؟</value>
+  </data>
+  <data name="EmailConfirmed" xml:space="preserve">
+    <value>تایید پست الکترونیکی</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>رمز عبور خود را وارد کنید</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>شماره تلفن</value>
+  </data>
+  <data name="PhoneNumberConfirmed" xml:space="preserve">
+    <value>تایید شماره تلفن</value>
+  </data>
+  <data name="RegisterNewAccount" xml:space="preserve">
+    <value>ایجاد حساب کاربری</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>کاربران</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>کاربر</value>
+  </data>
 </root>

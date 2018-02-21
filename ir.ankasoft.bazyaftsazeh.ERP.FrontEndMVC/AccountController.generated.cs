@@ -109,6 +109,12 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExternalLoginConfirmation);
             return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Index()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AccountController Actions { get { return MVC.Account; } }
@@ -127,6 +133,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string Login = "Login";
             public readonly string VerifyCode = "VerifyCode";
+            public readonly string RegisterByAdmin = "RegisterByAdmin";
             public readonly string Register = "Register";
             public readonly string ConfirmEmail = "ConfirmEmail";
             public readonly string ForgotPassword = "ForgotPassword";
@@ -139,6 +146,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string ExternalLoginConfirmation = "ExternalLoginConfirmation";
             public readonly string LogOff = "LogOff";
             public readonly string ExternalLoginFailure = "ExternalLoginFailure";
+            public readonly string Index = "Index";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -146,6 +154,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public const string Login = "Login";
             public const string VerifyCode = "VerifyCode";
+            public const string RegisterByAdmin = "RegisterByAdmin";
             public const string Register = "Register";
             public const string ConfirmEmail = "ConfirmEmail";
             public const string ForgotPassword = "ForgotPassword";
@@ -158,6 +167,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public const string ExternalLoginConfirmation = "ExternalLoginConfirmation";
             public const string LogOff = "LogOff";
             public const string ExternalLoginFailure = "ExternalLoginFailure";
+            public const string Index = "Index";
         }
 
 
@@ -178,6 +188,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             public readonly string provider = "provider";
             public readonly string returnUrl = "returnUrl";
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_RegisterByAdmin s_params_RegisterByAdmin = new ActionParamsClass_RegisterByAdmin();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_RegisterByAdmin RegisterByAdminParams { get { return s_params_RegisterByAdmin; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_RegisterByAdmin
+        {
             public readonly string model = "model";
         }
         static readonly ActionParamsClass_Register s_params_Register = new ActionParamsClass_Register();
@@ -249,6 +267,14 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public readonly string model = "model";
             public readonly string returnUrl = "returnUrl";
         }
+        static readonly ActionParamsClass_Index s_params_Index = new ActionParamsClass_Index();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Index IndexParams { get { return s_params_Index; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Index
+        {
+            public readonly string request = "request";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -260,26 +286,32 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _ExternalLoginsListPartial = "_ExternalLoginsListPartial";
+                public readonly string _List = "_List";
                 public readonly string ConfirmEmail = "ConfirmEmail";
                 public readonly string ExternalLoginConfirmation = "ExternalLoginConfirmation";
                 public readonly string ExternalLoginFailure = "ExternalLoginFailure";
                 public readonly string ForgotPassword = "ForgotPassword";
                 public readonly string ForgotPasswordConfirmation = "ForgotPasswordConfirmation";
+                public readonly string Index = "Index";
                 public readonly string Login = "Login";
                 public readonly string Register = "Register";
+                public readonly string RegisterByAdmin = "RegisterByAdmin";
                 public readonly string ResetPassword = "ResetPassword";
                 public readonly string ResetPasswordConfirmation = "ResetPasswordConfirmation";
                 public readonly string SendCode = "SendCode";
                 public readonly string VerifyCode = "VerifyCode";
             }
             public readonly string _ExternalLoginsListPartial = "~/Views/Account/_ExternalLoginsListPartial.cshtml";
+            public readonly string _List = "~/Views/Account/_List.cshtml";
             public readonly string ConfirmEmail = "~/Views/Account/ConfirmEmail.cshtml";
             public readonly string ExternalLoginConfirmation = "~/Views/Account/ExternalLoginConfirmation.cshtml";
             public readonly string ExternalLoginFailure = "~/Views/Account/ExternalLoginFailure.cshtml";
             public readonly string ForgotPassword = "~/Views/Account/ForgotPassword.cshtml";
             public readonly string ForgotPasswordConfirmation = "~/Views/Account/ForgotPasswordConfirmation.cshtml";
+            public readonly string Index = "~/Views/Account/Index.cshtml";
             public readonly string Login = "~/Views/Account/Login.cshtml";
             public readonly string Register = "~/Views/Account/Register.cshtml";
+            public readonly string RegisterByAdmin = "~/Views/Account/RegisterByAdmin.cshtml";
             public readonly string ResetPassword = "~/Views/Account/ResetPassword.cshtml";
             public readonly string ResetPasswordConfirmation = "~/Views/Account/ResetPasswordConfirmation.cshtml";
             public readonly string SendCode = "~/Views/Account/SendCode.cshtml";
@@ -339,6 +371,29 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.VerifyCode);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             VerifyCodeOverride(callInfo, model);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
+        }
+
+        [NonAction]
+        partial void RegisterByAdminOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult RegisterByAdmin()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RegisterByAdmin);
+            RegisterByAdminOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void RegisterByAdminOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Account.RegisterViewModel model);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> RegisterByAdmin(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Account.RegisterViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RegisterByAdmin);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            RegisterByAdminOverride(callInfo, model);
             return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
@@ -528,6 +583,18 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExternalLoginFailure);
             ExternalLoginFailureOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.FilterDataSource request);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Index(ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.FilterDataSource request)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "request", request);
+            IndexOverride(callInfo, request);
             return callInfo;
         }
 

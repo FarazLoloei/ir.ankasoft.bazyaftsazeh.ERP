@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ir.ankasoft.bazyaftsazeh.ERP.entities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Account;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cities;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Communication;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Cost;
@@ -100,6 +101,9 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
 
                 //*ContextMenu*/
                 ConfigContextMenu(_);
+
+                //*ContextMenu*/
+                ConfigUser(_);
             });
 
             MapperConfiguration.AssertConfigurationIsValid();
@@ -932,6 +936,15 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC
         private static void ConfigContextMenu(IMapperConfigurationExpression _)
         {
             _.CreateMap<ContextMenuItem, ViewModelContextMenu>();
+        }
+
+        private static void ConfigUser(IMapperConfigurationExpression _)
+        {
+            _.CreateMap<ApplicationUser, ViewModelDisplayUser>()
+                .ForMember(p => p.PhoneNumber, t => t.Ignore())
+                .ForMember(p => p.recId, opt => opt.MapFrom(dest => dest.Id));
+
+            //_.CreateMap<ViewModelDisplayUser, ApplicationUser>();
         }
     }
 }

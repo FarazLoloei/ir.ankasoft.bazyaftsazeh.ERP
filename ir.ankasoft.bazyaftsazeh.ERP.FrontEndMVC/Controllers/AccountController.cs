@@ -1,10 +1,13 @@
-﻿using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
+﻿using AutoMapper;
+using ir.ankasoft.bazyaftsazeh.ERP.datalayer.EF.Repositories;
+using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models;
 using ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Models.Account;
 using ir.ankasoft.entities;
 using ir.ankasoft.resource;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,8 +18,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
     [Authorize(Roles = "Developer")]
     public partial class AccountController : BaseController
     {
+        private IMapper Mapper;
+
         public AccountController()
         {
+            Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
         }
 
         public AccountController(ApplicationUserManagerRepository userManager, ApplicationSignInManagerRepository signInManager)
@@ -66,7 +72,6 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         [ValidateAntiForgeryToken]
         public virtual async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -139,6 +144,39 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             }
         }
 
+        [AllowAnonymous]
+        public virtual ActionResult RegisterByAdmin()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public virtual async Task<ActionResult> RegisterByAdmin(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                };
+
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction(MVC.Dashboard.Index());
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
@@ -156,10 +194,11 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 var user = new ApplicationUser
                 {
-                    UserName = model.Email,
-                    Email = model.Email
+                    UserName = model.UserName,
+                    Email = model.Email,
                 };
 
                 // Add the Address properties:
@@ -171,15 +210,16 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account",
-                        new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id,
-                        "Confirm your account",
-                        "Please confirm your account by clicking this link: <a href=\""
-                        + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account",
+                    //    new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id,
+                    //    "Confirm your account",
+                    //    "Please confirm your account by clicking this link: <a href=\""
+                    //    + callbackUrl + "\">link</a>");
+                    //ViewBag.Link = callbackUrl;
+                    //return View("DisplayEmail");
+                    return RedirectToAction(MVC.Dashboard.Index());
                 }
                 AddErrors(result);
             }
@@ -424,6 +464,55 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
             return View();
         }
 
+        public virtual ActionResult Index(FilterDataSource request)
+        {
+            //Common.sessionManager.getDashboardOperations();
+            Common.sessionManager.getContextMenu(nameof(AccountController).Replace(nameof(Controller), string.Empty));
+
+            request.sort = new KeyValuePair<string, tools.SortType>(request.sortBy, (tools.SortType)request.sortType);
+            if (Request.IsAjaxRequest())
+                return PartialView(MVC.Document.Views._List,
+                                   Load(request));
+            return View(Load(request));
+        }
+
+        private PagerModel<ViewModelDisplayUser> Load(FilterDataSource request)
+        {
+            var data = new List<ViewModelDisplayUser>();
+            int totalRecords;
+            //ApplicationUserManagerRepository _applicationUserManagerRepository = new ApplicationUserManagerRepository()
+            //var users = new datalayer.EF.ApplicationDbContext();
+            var list = _userManager.LoadByFilter(request, out totalRecords); // users.Users.ToList();
+
+            //IQueryable<Document> documents =
+            //    _documentRepository.LoadByFilter(
+            //        request, out totalRecords)
+            //                       .AsQueryable();
+            data = list.Select(x =>
+           {
+               return new ViewModelDisplayUser()
+               {
+                   recId = x.Id,
+                   Email = x.Email,
+                   EmailConfirmed = x.EmailConfirmed,
+                   PhoneNumber = x.PhoneNumber,
+                   PhoneNumberConfirmed = x.PhoneNumberConfirmed,
+                   UserName = x.UserName
+               };
+           }).ToList();
+            //data = Mapper.Map<List<ViewModelDisplayUser>>(list);
+            var model = new PagerModel<ViewModelDisplayUser>
+            {
+                Data = data,
+                PageData = new PagerData
+                {
+                    filterDataSource = request,
+                    TotalRows = data.Count//totalRecords,
+                },
+            };
+            return model;
+        }
+
         #region Helpers
 
         // Used for XSRF protection when adding external logins
@@ -441,7 +530,7 @@ namespace ir.ankasoft.bazyaftsazeh.ERP.FrontEndMVC.Controllers
         {
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError("", error);
+                ModelState.AddModelError(string.Empty, error);
             }
         }
 
